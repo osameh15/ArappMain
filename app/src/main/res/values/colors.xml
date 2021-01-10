@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="complementary1">#036969 </color>
-    <color name="splitComplementary2"> #B51F12 </color>
-    <color name="text1"> #ffffff </color>
-    <color name="text4">  #00cc92 </color>
-    <color name="text5">  #036969 </color>
-    <color name="text6">  #24384f</color>
-    <color name="colorAccentDark">  #033636 </color>
-    <color name="compound2">#24384F  </color>
-    <color name="compound3">#09B5B5  </color>
-    <color name="compound5">#E83223  </color>
-    <color name="shade4">#0AC2C2  </color>
-    <color name="shade5">#089C9C  </color>
-    <color name="shade6">#09B0B0</color>
-    <color name="shade7">#036969</color>
-    <color name="colorPrimary">#036969</color>
-    <color name="colorAccent">#F6F9FF</color>
-    <color name="background">#b9f3f2</color>
+    <!-- Base theme color (Light mode)-->
+    <color name="colorPrimary">#3baab0</color>
+    <color name="colorPrimaryDark">#266C70</color>
+    <color name="colorAccent">#6a65ab</color>
+    <color name="colorAccentDark">  #312E5E </color>
+
+    <!-- Secondary theme color (Light mode)-->
+    <color name="SecondaryColorPrimary">#036969</color>
+    <color name="SecondaryColorPrimaryDark">#036969</color>
+    <color name="SecondaryColorAccent">#F6F9FF</color>
+    <color name="SecondaryColorAccentDark">  #033636 </color>
+
+    <!-- Base theme color (Dark mode)-->
+    <color name="colorPrimaryNightMode">#036969</color>
+    <color name="colorPrimaryDarkNightMode">#036969</color>
+    <color name="colorAccentNightMode">#F6F9FF</color>
+    <color name="colorAccentDarkNightMode">  #033636 </color>
+
+    <!-- Other Theme color -->
+    <color name="background">#D8E1E1</color>
     <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="Red">#FF0000</color>
     <color name="disable">#aaa</color>
-    <color name="darker">#BFECECEC</color>
-    <color name="mainToolbar">#EDE8FF</color>
-    <color name="toastBackground">#133636</color>
-    <color name="toolbar_one">#f6f9ff</color>
-    <color name="toolbar_two">#e2ecff</color>
     <color name="glass_color">#66000000</color>
-    <color name="timer_color">#0C4F4F</color>
 
     <!-- Colors for activity of services and rating -->
     <color name="open_service">#00B54F</color>

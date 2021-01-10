@@ -7,8 +7,7 @@
         <item name="colorAccent">@color/colorPrimary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-
-        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
 
     <!-- Toolbar Theme -->
@@ -31,50 +30,50 @@
 <!--        <item name="stRadius">4dp</item>-->
 <!--    </style>-->
 
-    <!-- Validation Code Theme -->
+<!--    &lt;!&ndash; Validation Code Theme &ndash;&gt;
     <style name="ValidationCode" parent="Widget.AppCompat.EditText">
         <item name="android:background">@color/colorAccent</item>
         <item name="android:strokeColor">@color/shade6</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:maxLines">1</item>
-    </style>
+    </style>-->
 
     <!-- Navigation drawer Theme -->
-    <style name="NavigationView" >
+<!--    <style name="NavigationView" >
         <item name="fontFamily">@font/iransans_medium</item>
         <item name="android:textSize">12sp</item>
         <item name="colorPrimary">@color/text5</item>
         <item name="colorControlHighlight">@color/cardview_shadow_start_color</item>
-    </style>
+    </style>-->
 
     <!-- Edit Text Error Theme -->
-    <style name="error_appearance" parent="@android:style/TextAppearance">
+<!--    <style name="error_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/splitComplementary2</item>
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/iransans_light</item>
-    </style>
+    </style>-->
 
     <!-- Counter Theme -->
-    <style name="counter_appearance" parent="@android:style/TextAppearance">
+<!--    <style name="counter_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/text6</item>
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/iransans_light</item>
-    </style>
+    </style>-->
 
     <!-- Spinner Theme -->
-    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+<!--    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/iransans_bold</item>
-    </style>
+    </style>-->
 
     <!-- Bottom sheet theme -->
-    <style name="bottomSheetDialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">
+<!--    <style name="bottomSheetDialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/bottomSheetStyle</item>
     </style>
     <style name="bottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="background">@android:color/transparent</item>
-    </style>
+    </style>-->
 
     <!-- loading style -->
 <!--    <style name="loadingStyle">-->
