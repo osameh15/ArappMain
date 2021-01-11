@@ -4,22 +4,27 @@
     <color name="colorPrimary">#3baab0</color>
     <color name="colorPrimaryDark">#266C70</color>
     <color name="colorAccent">#6a65ab</color>
-    <color name="colorAccentDark">  #312E5E </color>
+    <color name="colorAccentDark">  #353266 </color> <!-- also Text color -->
+    <color name="lightBack">#f6fffb</color>
 
     <!-- Secondary theme color (Light mode)-->
-    <color name="SecondaryColorPrimary">#036969</color>
-    <color name="SecondaryColorPrimaryDark">#036969</color>
-    <color name="SecondaryColorAccent">#F6F9FF</color>
-    <color name="SecondaryColorAccentDark">  #033636 </color>
+    <color name="SecondaryColorPrimary">#B0DE54</color>
+    <color name="SecondaryColorPrimaryDark">#4b5e24</color>
+    <color name="SecondaryColorAccent">#00d99a</color>
+    <color name="SecondaryColorAccentDark">  #008c65 </color>
 
     <!-- Base theme color (Dark mode)-->
-    <color name="colorPrimaryNightMode">#036969</color>
-    <color name="colorPrimaryDarkNightMode">#036969</color>
-    <color name="colorAccentNightMode">#F6F9FF</color>
-    <color name="colorAccentDarkNightMode">  #033636 </color>
+    <color name="colorPrimaryNightMode">#3baab0</color>
+    <color name="colorPrimaryDarkNightMode">#266C70</color>
+    <color name="colorAccentNightMode">#6a65ab</color>
+    <color name="colorAccentDarkNightMode">#f6fffb</color> <!-- also Text color -->
+    <color name="nightBack">#323434</color>
+
+    <!-- Notification Color-->
+    <color name="notificationColorRed">#f84f31</color>
+    <color name="notificationColorGreen">#23c552</color>
 
     <!-- Other Theme color -->
-    <color name="background">#D8E1E1</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="Red">#FF0000</color>
