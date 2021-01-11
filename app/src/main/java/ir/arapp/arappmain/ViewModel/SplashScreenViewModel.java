@@ -1,4 +1,8 @@
 package ir.arapp.arappmain.ViewModel;
 
-public class SplashScreenViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class SplashScreenViewModel extends ViewModel
+{
+
 }

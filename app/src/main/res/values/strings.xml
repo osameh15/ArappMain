@@ -1,4 +1,6 @@
 <resources>
+    <!-- App Detail -->
     <string name="app_name">Arapp</string>
-    <string name="app_name_persion">آراپ</string>
+    <string name="app_name_persian">آراپ</string>
+    <string name="version">نسخه آلفا 0.5</string>
 </resources>
