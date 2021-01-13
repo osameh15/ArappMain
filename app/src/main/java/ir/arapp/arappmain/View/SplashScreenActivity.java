@@ -1,13 +1,10 @@
 package ir.arapp.arappmain.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.util.Log;
+
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.ViewModel.SplashScreenViewModel;
-import ir.arapp.arappmain.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreenActivity extends AppCompatActivity
 {

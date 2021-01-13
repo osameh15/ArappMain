@@ -3,19 +3,13 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-<!--    <data>
-        <variable
-            name="splashScreen"
-            type="ir.arapp.arappmain.ViewModel.SplashScreenViewModel" />
-    </data>-->
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".View.SplashScreenActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightBack"
-        tools:context=".View.SplashScreenActivity">
+        android:background="@color/lightBack">
 
         <!--logo_icon -->
         <TextView
@@ -34,12 +28,13 @@
             android:id="@+id/splashLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:lottie_fileName="splash.json"
+            app:lottie_fileName="logo.json"
             app:lottie_autoPlay="true"
             app:lottie_loop="false"
-            app:lottie_speed="1.8"
+            app:lottie_speed="2.0"
             app:lottie_imageAssetsFolder="images"
             android:layout_centerInParent="true"/>
 
     </RelativeLayout>
+
 </layout>
