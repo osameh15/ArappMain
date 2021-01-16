@@ -9,23 +9,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightBack">
+        android:background="@drawable/background_splash"
+        android:layoutDirection="rtl">
 
         <!--logo_icon -->
-        <TextView
-            android:id="@+id/version"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/version"
-            android:textSize="14sp"
-            android:textAlignment="center"
-            android:fontFamily="@font/iransans_bold"
-            android:textColor="@color/disable"
-            android:layout_alignParentBottom="true"/>
+        <!--<ImageView
+            android:layout_width="150dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo_ui"
+            android:contentDescription="@string/app_name" />-->
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splashLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:lottie_fileName="logo.json"
@@ -34,6 +30,62 @@
             app:lottie_speed="2.0"
             app:lottie_imageAssetsFolder="images"
             android:layout_centerInParent="true"/>
+
+        <!-- No Connection panel -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/wifiLogo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_above="@id/tryAgainText"
+            app:lottie_fileName="try_again.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_speed="1"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"/>
+        <TextView
+            android:id="@+id/tryAgainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tryAgain"
+            android:text="@string/no_connection"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:fontFamily="@font/iransans_bold"
+            android:textColor="@color/colorAccentDark"
+            android:visibility="visible"/>
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/tryAgain"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_above="@id/version"
+            android:background="@drawable/button_back"
+            android:fontFamily="@font/iransans_bold"
+            android:layout_centerHorizontal="true"
+            android:text="@string/try_again"
+            android:textColor="@color/lightBack"
+            android:textSize="18sp"
+            android:elevation="2dp"
+            app:spinning_bar_padding="10dp"
+            app:spinning_bar_color="@color/colorAccentDark"
+            app:spinning_bar_width="3dp"
+            android:visibility="visible"
+            tools:targetApi="lollipop"/>
+
+        <!-- Version text-->
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/version"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:fontFamily="@font/iransans_bold"
+            android:textColor="@color/disable"
+            android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
 

@@ -12,7 +12,7 @@ android
     defaultConfig
     {
         applicationId "ir.arapp.arappmain"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "0.5"
@@ -46,6 +46,7 @@ android
 
 dependencies
 {
+    def nav_version = "2.3.2"
     //Base dependencies ...
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
@@ -60,6 +61,12 @@ dependencies
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     // Loading button ...
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
+    //PinView ...
+    implementation 'com.chaos.view:pinview:1.4.3'
+    //Banner page view
+    implementation 'com.github.zhpanvip:BannerViewPager:3.1.6'
+    //Rounded Image View
+    implementation 'com.makeramen:roundedimageview:2.3.0'
     //Reactivex RxJava ...
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
@@ -72,6 +79,6 @@ dependencies
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     //Navigation
-    implementation 'androidx.navigation:navigation-fragment:2.3.2'
-    implementation 'androidx.navigation:navigation-ui:2.3.2'
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
 }
