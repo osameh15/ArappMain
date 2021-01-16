@@ -43,7 +43,7 @@
             app:lottie_loop="true"
             app:lottie_speed="1"
             android:layout_centerHorizontal="true"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
         <TextView
             android:id="@+id/tryAgainText"
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:textAlignment="center"
             android:fontFamily="@font/iransans_bold"
             android:textColor="@color/colorAccentDark"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/tryAgain"
             android:layout_width="250dp"
@@ -72,7 +72,7 @@
             app:spinning_bar_padding="10dp"
             app:spinning_bar_color="@color/colorAccentDark"
             app:spinning_bar_width="3dp"
-            android:visibility="visible"
+            android:visibility="gone"
             tools:targetApi="lollipop"/>
 
         <!-- Version text-->
