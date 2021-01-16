@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_auth"
     app:startDestination="@id/regLogFragment">
+
     <fragment
         android:id="@+id/regLogFragment"
-        android:name="ir.arapp.arappmain.View.RegLogFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.RegLogFragment"
         android:label="fragment_reg_log"
         tools:layout="@layout/fragment_reg_log" >
         <action
@@ -18,80 +20,61 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="ir.arapp.arappmain.View.LoginFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_forgetPassPhoneFragment"
             app:destination="@id/forgetPassPhoneFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_regLogFragment"
-            app:destination="@id/regLogFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassPhoneFragment"
-        android:name="ir.arapp.arappmain.View.ForgetPassPhoneFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.ForgetPassPhoneFragment"
         android:label="fragment_phone_forget_pass"
         tools:layout="@layout/fragment_phone_forget_pass" >
         <action
             android:id="@+id/action_forgetPassPhoneFragment_to_forgetPassValidateFragment"
             app:destination="@id/forgetPassValidateFragment" />
-        <action
-            android:id="@+id/action_forgetPassPhoneFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="ir.arapp.arappmain.View.RegisterFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
-        <action
-            android:id="@+id/action_registerFragment_to_registerPhoneFragment"
-            app:destination="@id/registerPhoneFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/registerValidateFragment"
-        android:name="ir.arapp.arappmain.View.RegisterValidateFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.RegisterValidateFragment"
         android:label="fragment_validate_register"
         tools:layout="@layout/fragment_validate_register" >
         <action
             android:id="@+id/action_registerValidateFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_registerValidateFragment_to_registerPhoneFragment"
-            app:destination="@id/registerPhoneFragment" />
+            app:destination="@id/registerFragment"
+            app:popUpTo="@id/registerPhoneFragment"
+            app:popUpToInclusive="?android:attr/windowOverscan" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassFragment"
-        android:name="ir.arapp.arappmain.View.ForgetPassFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.ForgetPassFragment"
         android:label="fragment_forget_pass"
-        tools:layout="@layout/fragment_forget_pass" >
-        <action
-            android:id="@+id/action_forgetPassFragment_to_forgetPassPhoneFragment"
-            app:destination="@id/forgetPassPhoneFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_forget_pass" />
     <fragment
         android:id="@+id/registerPhoneFragment"
-        android:name="ir.arapp.arappmain.View.RegisterPhoneFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.RegisterPhoneFragment"
         android:label="fragment_phone_register"
         tools:layout="@layout/fragment_phone_register" >
         <action
             android:id="@+id/action_registerPhoneFragment_to_registerValidateFragment"
             app:destination="@id/registerValidateFragment" />
-        <action
-            android:id="@+id/action_registerPhoneFragment_to_regLogFragment"
-            app:destination="@id/regLogFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassValidateFragment"
-        android:name="ir.arapp.arappmain.View.ForgetPassValidateFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.ForgetPassValidateFragment"
         android:label="fragment_validate_forget_pass"
         tools:layout="@layout/fragment_validate_forget_pass" >
         <action
             android:id="@+id/action_forgetPassValidateFragment_to_forgetPassFragment"
-            app:destination="@id/forgetPassFragment" />
-        <action
-            android:id="@+id/action_forgetPassValidateFragment_to_forgetPassPhoneFragment"
-            app:destination="@id/forgetPassPhoneFragment" />
+            app:destination="@id/forgetPassFragment"
+            app:popUpTo="@id/forgetPassPhoneFragment"
+            app:popUpToInclusive="?android:attr/windowOverscan" />
     </fragment>
 </navigation>

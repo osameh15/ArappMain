@@ -1,13 +1,16 @@
-package ir.arapp.arappmain.View;
+package ir.arapp.arappmain.View.Fragments;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import ir.arapp.arappmain.R;
 
-public class RegLogFragment extends Fragment
+public class RegisterPhoneFragment extends Fragment
 {
 
     @Override
@@ -20,6 +23,6 @@ public class RegLogFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reg_log, container, false);
+        return inflater.inflate(R.layout.fragment_phone_register, container, false);
     }
 }

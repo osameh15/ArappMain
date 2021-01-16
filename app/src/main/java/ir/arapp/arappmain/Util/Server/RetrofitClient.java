@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.Util;
+package ir.arapp.arappmain.Util.Server;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

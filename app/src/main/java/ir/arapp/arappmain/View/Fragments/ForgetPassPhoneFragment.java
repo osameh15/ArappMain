@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.View;
+package ir.arapp.arappmain.View.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

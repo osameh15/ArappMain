@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.View;
+package ir.arapp.arappmain.View.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import ir.arapp.arappmain.R;
 
-public class ForgetPassFragment extends Fragment
+public class ForgetPassValidateFragment extends Fragment
 {
 
     @Override
@@ -22,6 +22,6 @@ public class ForgetPassFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        return inflater.inflate(R.layout.fragment_validate_register, container, false);
     }
 }

@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".View.AuthActivity"></activity>
-        <activity android:name=".View.SplashScreenActivity">
+        <activity android:name=".View.Activities.AuthActivity"></activity>
+        <activity android:name=".View.Activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

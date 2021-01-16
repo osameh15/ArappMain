@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".View.SplashScreenActivity">
+    tools:context=".View.Activities.SplashScreenActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,7 +12,6 @@
         android:background="@drawable/background_splash"
         android:layoutDirection="rtl">
 
-        <!--logo_icon -->
         <!--<ImageView
             android:layout_width="150dp"
             android:layout_height="250dp"
@@ -21,7 +20,9 @@
             android:src="@drawable/logo_ui"
             android:contentDescription="@string/app_name" />-->
 
+        <!--logo_icon -->
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/splashLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:lottie_fileName="logo.json"
