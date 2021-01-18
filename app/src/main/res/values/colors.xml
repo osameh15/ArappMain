@@ -6,7 +6,6 @@
     <color name="colorAccent">#6a65ab</color>
     <color name="colorAccentDark">  #353266 </color> <!-- also Text color -->
     <color name="lightBack">#f6fffb</color>
-    <color name="splashBack">#f0fffa</color>
 
     <!-- Secondary theme color (Light mode)-->
     <color name="SecondaryColorPrimary">#B0DE54</color>
@@ -20,6 +19,12 @@
     <color name="colorAccentNightMode">#6a65ab</color>
     <color name="colorAccentDarkNightMode">#f6fffb</color> <!-- also Text color -->
     <color name="nightBack">#323434</color>
+
+    <!-- Splash Base Theme-->
+    <color name="splashStartColor">#f0fffa</color>
+    <color name="splashEndColor">#8000D99A</color>
+    <color name="splashButtonTextColor">#b8f7e4</color>
+    <color name="splashButtonBorder">#009C9A</color>
 
     <!-- Notification Color-->
     <color name="notificationColorRed">#f84f31</color>

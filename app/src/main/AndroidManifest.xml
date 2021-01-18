@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ir.arapp.arappmain">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -14,7 +18,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".View.Activities.HomeActivity"></activity>
+        <activity android:name=".View.Activities.HomeActivity"/>
         <activity android:name=".View.Activities.AuthActivity" />
         <activity android:name=".View.Activities.SplashScreenActivity">
             <intent-filter>
@@ -24,9 +28,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

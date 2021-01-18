@@ -12,14 +12,6 @@
         android:background="@drawable/background_splash"
         android:layoutDirection="rtl">
 
-        <!--<ImageView
-            android:layout_width="150dp"
-            android:layout_height="250dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:src="@drawable/logo_ui"
-            android:contentDescription="@string/app_name" />-->
-
         <!--logo_icon -->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/splashLogo"
@@ -33,60 +25,64 @@
             android:layout_centerInParent="true"/>
 
         <!-- No Connection panel -->
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/wifiLogo"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@id/tryAgainText"
-            app:lottie_fileName="try_again.json"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_speed="1"
-            android:layout_centerHorizontal="true"
-            android:visibility="gone"/>
-        <TextView
-            android:id="@+id/tryAgainText"
+        <LinearLayout
+            android:id="@+id/tryAgainLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="-10dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
             android:layout_above="@id/tryAgain"
-            android:text="@string/no_connection"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            android:fontFamily="@font/iransans_bold"
-            android:textColor="@color/colorAccentDark"
-            android:visibility="gone"/>
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:layoutDirection="rtl"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="-5dp"
+                android:text="@string/no_connection"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccentDark"/>
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:lottie_fileName="no_connection.json"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_speed="1.5"/>
+        </LinearLayout>
+        <com.marozzi.roundbutton.RoundButton
             android:id="@+id/tryAgain"
-            android:layout_width="250dp"
+            style="@style/ButtonLoading"
+            android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:layout_marginBottom="15dp"
-            android:layout_above="@id/version"
-            android:background="@drawable/button_back"
-            android:fontFamily="@font/iransans_bold"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="@string/try_again"
-            android:textColor="@color/lightBack"
-            android:textSize="18sp"
-            android:elevation="2dp"
-            app:spinning_bar_padding="10dp"
-            app:spinning_bar_color="@color/colorAccentDark"
-            app:spinning_bar_width="3dp"
-            android:visibility="gone"
-            tools:targetApi="lollipop"/>
-
-        <!-- Version text-->
-        <TextView
-            android:id="@+id/version"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/version"
-            android:textSize="12sp"
-            android:textAlignment="center"
-            android:fontFamily="@font/iransans_bold"
-            android:textColor="@color/disable"
-            android:layout_alignParentBottom="true"/>
+            app:rb_animation_alpha="true"
+            app:rb_animation_progress_color="@color/splashButtonBorder"
+            app:rb_animation_progress_padding="8dp"
+            app:rb_animation_progress_width="3dp"
+            app:rb_animation_progress_style="circle"
+            app:rb_animation_corner_radius="5dp"
+            app:rb_animation_duration="500"
+            app:rb_background_color="@android:color/transparent"
+            app:rb_success_resource="@drawable/ic_done_white_48dp"
+            app:rb_background_color_pressed="@color/splashButtonBorder"
+            app:rb_corner_color="@color/splashButtonBorder"
+            app:rb_corner_color_pressed="@color/splashButtonBorder"
+            app:rb_corner_radius="5dp"
+            app:rb_corner_width="2dp"
+            app:rb_text_color="@color/colorAccentDark"
+            app:rb_text_color_pressed="@color/splashButtonTextColor"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

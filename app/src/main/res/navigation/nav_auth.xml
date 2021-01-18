@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_loginFragment_to_forgetPassPhoneFragment"
             app:destination="@id/forgetPassPhoneFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_regLogFragment"
+            app:destination="@id/regLogFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassPhoneFragment"
@@ -35,6 +38,9 @@
         <action
             android:id="@+id/action_forgetPassPhoneFragment_to_forgetPassValidateFragment"
             app:destination="@id/forgetPassValidateFragment" />
+        <action
+            android:id="@+id/action_forgetPassPhoneFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -51,6 +57,9 @@
             app:destination="@id/registerFragment"
             app:popUpTo="@id/registerPhoneFragment"
             app:popUpToInclusive="?android:attr/windowOverscan" />
+        <action
+            android:id="@+id/action_registerValidateFragment_to_registerPhoneFragment"
+            app:destination="@id/registerPhoneFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassFragment"
@@ -65,6 +74,9 @@
         <action
             android:id="@+id/action_registerPhoneFragment_to_registerValidateFragment"
             app:destination="@id/registerValidateFragment" />
+        <action
+            android:id="@+id/action_registerPhoneFragment_to_regLogFragment"
+            app:destination="@id/regLogFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassValidateFragment"
@@ -76,5 +88,8 @@
             app:destination="@id/forgetPassFragment"
             app:popUpTo="@id/forgetPassPhoneFragment"
             app:popUpToInclusive="?android:attr/windowOverscan" />
+        <action
+            android:id="@+id/action_forgetPassValidateFragment_to_forgetPassPhoneFragment"
+            app:destination="@id/forgetPassPhoneFragment" />
     </fragment>
 </navigation>

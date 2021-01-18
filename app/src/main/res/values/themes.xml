@@ -16,6 +16,16 @@
         <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
+    <!-- Button loading theme -->
+    <style name="ButtonLoading">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/iransans_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0.02</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
     <!-- Toast Theme -->
 <!--    <style name="toastTheme">-->
 <!--        <item name="stTextBold">false</item>-->

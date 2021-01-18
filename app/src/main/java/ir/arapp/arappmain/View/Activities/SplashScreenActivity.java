@@ -6,12 +6,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
+import com.marozzi.roundbutton.RoundButton;
+
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SessionManager;
@@ -19,10 +23,10 @@ import ir.arapp.arappmain.Util.Services.SessionManager;
 public class SplashScreenActivity extends AppCompatActivity
 {
     //region Variables
+    private Boolean flag = false;
     LottieAnimationView splashLogo;
-    LottieAnimationView WiFi;
-    CircularProgressButton tryAgainButton;
-    TextView tryAgainText;
+    LinearLayout tryAgainLinearLayout;
+    RoundButton tryAgainButton;
     //Session manager
     private SessionManager sessionManager;
     //endregion
@@ -37,13 +41,15 @@ public class SplashScreenActivity extends AppCompatActivity
 
         //Hooks
         splashLogo = findViewById(R.id.splashLogo);
-        WiFi = findViewById(R.id.wifiLogo);
+        tryAgainLinearLayout = findViewById(R.id.tryAgainLinearLayout);
         tryAgainButton = findViewById(R.id.tryAgain);
-        tryAgainText = findViewById(R.id.tryAgainText);
         sessionManager = new SessionManager(this);
 
-        //Set background drawable for try button ...
-        tryAgainButton.setBackgroundResource(R.drawable.button_back);
+        //Try again click listener
+        tryAgainButton.setOnClickListener(view -> loading());
+
+        //Check User logged in
+        flag = sessionManager.isLoggedIn();
 
         //Check net connection
         checkInternet();
@@ -55,9 +61,9 @@ public class SplashScreenActivity extends AppCompatActivity
         if (sessionManager.checkConnection())
         {
             //set timer to go to next activity
-            int SPLASH_SCREEN = 2100;
-            //Check User logged in
-            if (sessionManager.isLoggedIn())
+            int SPLASH_SCREEN = 2400;
+
+            if (flag)
             {
                 new Handler().postDelayed(this::goToHomeActivity, SPLASH_SCREEN);
             }
@@ -68,20 +74,51 @@ public class SplashScreenActivity extends AppCompatActivity
         }
         else
         {
-            WiFi.setVisibility(View.VISIBLE);
+            tryAgainLinearLayout.setVisibility(View.VISIBLE);
             tryAgainButton.setVisibility(View.VISIBLE);
-            tryAgainText.setVisibility(View.VISIBLE);
         }
     }
 
+    //region goTo another activities
     private void goToRegLogActivity()
     {
         Intent regLogActivity = new Intent(SplashScreenActivity.this, AuthActivity.class);
         startActivity(regLogActivity);
         finish();
     }
-
     private void goToHomeActivity()
     {
+        Intent homeActivity = new Intent(SplashScreenActivity.this, HomeActivity.class);
+        startActivity(homeActivity);
+        finish();
     }
+    //endregion
+
+    //region try again connection
+    private void loading()
+    {
+        int TRY_AGAIN = 1000;
+        tryAgainButton.startAnimation();
+        new Handler().postDelayed(this::tryAgain, TRY_AGAIN);
+    }
+    private void tryAgain()
+    {
+        if (sessionManager.checkConnection())
+        {
+            //Check User logged in
+            if (flag)
+            {
+                goToHomeActivity();
+            }
+            else
+            {
+                goToRegLogActivity();
+            }
+        }
+        else
+        {
+            tryAgainButton.revertAnimation();
+        }
+    }
+    //endregion
 }

@@ -4,9 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <gradient
-        android:startColor="@color/splashBack"
-        android:endColor="@color/SecondaryColorAccent"
-        android:gradientRadius="900dp"
+        android:startColor="@color/splashStartColor"
+        android:endColor="@color/splashEndColor"
+        android:gradientRadius="720dp"
         android:centerX="0.5"
         android:centerY="0.4"
         android:type="radial"/>
