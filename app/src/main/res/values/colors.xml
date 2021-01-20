@@ -18,7 +18,7 @@
     <color name="colorPrimaryDarkNightMode">#266C70</color>
     <color name="colorAccentNightMode">#6a65ab</color>
     <color name="colorAccentDarkNightMode">#f6fffb</color> <!-- also Text color -->
-    <color name="nightBack">#323434</color>
+    <color name="darkBack">#323434</color>
 
     <!-- Splash Base Theme-->
     <color name="splashStartColor">#f0fffa</color>

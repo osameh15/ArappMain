@@ -16,7 +16,9 @@
             app:destination="@id/registerPhoneFragment" />
         <action
             android:id="@+id/action_regLogFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

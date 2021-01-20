@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegLogFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/app_name" />
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:background="@color/lightBack"
+        android:fitsSystemWindows="true">
 
-</FrameLayout>
+        <!--logo_icon -->
+        <ImageView
+            android:id="@+id/regLogLogo"
+            android:layout_width="123dp"
+            android:layout_height="223dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo"
+            android:transitionName="logo"
+            android:contentDescription="@string/app_name"
+            tools:targetApi="lollipop" />
+
+        <!-- Register/Login Panel -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/regLogLogo"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:gravity="center">
+
+            <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/signUpRegLog"
+                style="@style/ButtonLoading"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/sign_up"
+                android:textSize="16sp"
+                app:rb_background_color="@color/colorAccent"
+                app:rb_background_color_pressed="@color/colorAccentDark"
+                app:rb_corner_radius="8dp"
+                app:rb_corner_width="0dp"
+                app:rb_text_color="@color/lightBack"
+                app:rb_text_color_pressed="@color/disable"/>
+            <TextView
+                android:id="@+id/loginRegLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_arapp"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccent"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

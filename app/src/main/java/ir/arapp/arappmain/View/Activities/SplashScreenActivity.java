@@ -1,22 +1,22 @@
 package ir.arapp.arappmain.View.Activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Pair;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.marozzi.roundbutton.RoundButton;
-
-import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SessionManager;
 
@@ -37,7 +37,8 @@ public class SplashScreenActivity extends AppCompatActivity
         setContentView(R.layout.activity_splash_screen);
 
         //Set Fullscreen
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
+                |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
         //Hooks
         splashLogo = findViewById(R.id.splashLogo);
@@ -80,10 +81,14 @@ public class SplashScreenActivity extends AppCompatActivity
     }
 
     //region goTo another activities
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void goToRegLogActivity()
     {
         Intent regLogActivity = new Intent(SplashScreenActivity.this, AuthActivity.class);
-        startActivity(regLogActivity);
+        Pair[] pairs = new Pair[1];
+        pairs[0] = new Pair<View, String>(splashLogo, "logo");
+        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(SplashScreenActivity.this, pairs);
+        startActivity(regLogActivity, activityOptions.toBundle());
         finish();
     }
     private void goToHomeActivity()
@@ -101,6 +106,7 @@ public class SplashScreenActivity extends AppCompatActivity
         tryAgainButton.startAnimation();
         new Handler().postDelayed(this::tryAgain, TRY_AGAIN);
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void tryAgain()
     {
         if (sessionManager.checkConnection())
