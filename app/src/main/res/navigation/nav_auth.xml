@@ -13,12 +13,15 @@
         tools:layout="@layout/fragment_reg_log" >
         <action
             android:id="@+id/action_regLogFragment_to_registerPhoneFragment"
-            app:destination="@id/registerPhoneFragment" />
+            app:destination="@id/registerPhoneFragment"
+            app:enterAnim="@anim/fragment_close_enter" />
         <action
             android:id="@+id/action_regLogFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/fragment_close_enter"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -30,7 +33,8 @@
             app:destination="@id/forgetPassPhoneFragment" />
         <action
             android:id="@+id/action_loginFragment_to_regLogFragment"
-            app:destination="@id/regLogFragment" />
+            app:destination="@id/regLogFragment"
+            app:enterAnim="@anim/fragment_close_enter" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassPhoneFragment"

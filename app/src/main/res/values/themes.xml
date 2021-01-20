@@ -1,13 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base Theme -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/SecondaryColorPrimary</item>
+        <item name="android:colorBackground">@color/lightBack</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorError">@color/notificationColorRed</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
 

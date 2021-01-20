@@ -30,7 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/regLogLogo"
-            android:layout_marginTop="30dp"
             android:orientation="vertical"
             android:layout_centerHorizontal="true"
             android:gravity="center">

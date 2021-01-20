@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.LoginFragment">
 
     <RelativeLayout
@@ -17,7 +17,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layoutDirection="rtl"
+                android:gravity="center_vertical|start"
+                android:hint="@string/phone_number"
+                android:textColorHint="@color/colorAccentDark"
+                app:placeholderText="09*********"
+                app:placeholderTextColor="@color/colorPrimaryDark"
+                android:elevation="2dp"
+                app:boxStrokeColor="@color/colorAccentDark"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeErrorColor="@color/notificationColorRed"
+                app:boxStrokeWidth="2dp"
+                tools:targetApi="lollipop">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone"
+                android:imeOptions="actionNext"
+                android:textSize="14sp"
+                android:textColor="@color/colorAccentDark"
+                android:fontFamily="@font/iransans"
+                android:maxLength="11"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
