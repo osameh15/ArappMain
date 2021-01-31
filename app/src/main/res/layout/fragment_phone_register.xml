@@ -1,14 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegisterPhoneFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/app_name" />
+        android:fitsSystemWindows="true"
+        android:gravity="center_horizontal"
+        android:background="@color/lightBack"
+        android:layoutDirection="rtl">
 
-</FrameLayout>
+        <!-- Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/registerToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/Theme.MyFancyTheme"
+            android:background="@drawable/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lightBack"
+                    android:text="@string/register"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/iransans"/>
+
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/register_title"
+                android:textSize="16sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccentDark"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layoutDirection="rtl"
+                android:gravity="center_vertical|start"
+                android:hint="@string/phone_number"
+                app:placeholderText="09*********">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="phone"
+                    android:imeOptions="actionDone"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorAccentDark"
+                    android:fontFamily="@font/iransans"
+                    android:maxLength="11"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/phoneRegisterButton"
+                style="@style/ButtonLoading"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/submit_continue"/>
+
+        </LinearLayout>
+
+        <!-- Login panel -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layoutDirection="rtl">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_sign_up"
+                android:textSize="14sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccentDark"/>
+            <TextView
+                android:id="@+id/SignUpLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/login"
+                android:textSize="16sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccent"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

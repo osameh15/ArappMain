@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         //Hooks
-        signUp = view.findViewById(R.id.signUpLogin);
+        signUp = view.findViewById(R.id.LoginSignUp);
         forgetPass = view.findViewById(R.id.forgetPasswordLogin);
         login = view.findViewById(R.id.login);
 
@@ -52,6 +52,7 @@ public class LoginFragment extends Fragment
 
         final NavController navController = Navigation.findNavController(view);
 
+        //OnClick
         signUp.setOnClickListener(view1 -> goToRegister(navController));
         forgetPass.setOnClickListener(view1 -> goToForgetPass(navController));
     }
@@ -60,28 +61,24 @@ public class LoginFragment extends Fragment
     public void onResume()
     {
         super.onResume();
-        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                |WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
 
     //region fragment navigation
     private void goToRegister(NavController navController)
     {
         navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                |WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
     private void goToForgetPass(NavController navController)
     {
         navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                |WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
     private void goToHomeActivity(NavController navController)
     {
         navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                |WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
     //endregion
 

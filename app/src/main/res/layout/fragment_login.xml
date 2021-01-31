@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.LoginFragment">
@@ -94,10 +95,13 @@
             <com.marozzi.roundbutton.RoundButton
                 android:id="@+id/login"
                 style="@style/ButtonLoading"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:text="@string/login"/>
 
         </LinearLayout>
@@ -120,7 +124,7 @@
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>
             <TextView
-                android:id="@+id/signUpLogin"
+                android:id="@+id/LoginSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

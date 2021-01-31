@@ -37,10 +37,11 @@
             <com.marozzi.roundbutton.RoundButton
                 android:id="@+id/signUpRegLog"
                 style="@style/ButtonLoading"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:layout_width="220dp"
+                android:layout_height="55dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/sign_up"/>
+                android:text="@string/sign_up"
+                android:gravity="center"/>
             <TextView
                 android:id="@+id/loginRegLog"
                 android:layout_width="match_parent"
