@@ -14,6 +14,7 @@
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
 
+        <!--Login panel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +23,7 @@
             android:layout_centerInParent="true">
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/TextInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -31,18 +32,7 @@
                 android:layoutDirection="rtl"
                 android:gravity="center_vertical|start"
                 android:hint="@string/phone_number"
-                android:textColorHint="@color/colorAccentDark"
-                app:placeholderText="09*********"
-                app:placeholderTextColor="@color/colorPrimaryDark"
-                android:elevation="2dp"
-                app:boxStrokeColor="@color/colorAccentDark"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeErrorColor="@color/notificationColorRed"
-                app:boxStrokeWidth="2dp"
-                tools:targetApi="lollipop">
+                app:placeholderText="09*********">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -53,6 +43,62 @@
                 android:fontFamily="@font/iransans"
                 android:maxLength="11"/>
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layoutDirection="rtl"
+                android:gravity="center_vertical|start"
+                android:hint="@string/password"
+                app:placeholderText="******"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleContentDescription="@string/app_name_persian">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorAccentDark"
+                    android:fontFamily="@font/iransans"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- Forget password -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layoutDirection="rtl">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forget_password_text"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/iransans_bold"
+                    android:textColor="@color/colorAccentDark"/>
+                <TextView
+                    android:id="@+id/forgetPasswordLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/forget_pass"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/iransans_bold"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+            <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/login"
+                style="@style/ButtonLoading"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/login"/>
 
         </LinearLayout>
 
@@ -74,7 +120,7 @@
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/signUpLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

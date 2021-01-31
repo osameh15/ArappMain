@@ -59,7 +59,7 @@
         </LinearLayout>
         <com.marozzi.roundbutton.RoundButton
             android:id="@+id/tryAgain"
-            style="@style/ButtonLoading"
+            style="@style/ButtonLoadingTransparent"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:gravity="center"
@@ -67,21 +67,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="@string/try_again"
-            app:rb_animation_alpha="true"
-            app:rb_animation_progress_color="@color/splashButtonBorder"
-            app:rb_animation_progress_padding="8dp"
-            app:rb_animation_progress_width="3dp"
-            app:rb_animation_progress_style="circle"
-            app:rb_animation_corner_radius="5dp"
-            app:rb_animation_duration="500"
-            app:rb_background_color="@android:color/transparent"
-            app:rb_background_color_pressed="@color/splashButtonBorder"
-            app:rb_corner_color="@color/splashButtonBorder"
-            app:rb_corner_color_pressed="@color/splashButtonBorder"
-            app:rb_corner_radius="5dp"
-            app:rb_corner_width="2dp"
-            app:rb_text_color="@color/colorAccentDark"
-            app:rb_text_color_pressed="@color/splashButtonTextColor"
             android:visibility="gone"/>
 
     </RelativeLayout>

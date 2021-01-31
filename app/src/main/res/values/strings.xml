@@ -9,8 +9,13 @@
     <!-- RegLog Fragment -->
     <string name="sign_up">عضویت</string>
     <string name="login_arapp">ورود به آراپ</string>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Login Fragment -->
     <string name="sign_up_login">هنوز در آراپ عضویت ندارید؟</string>
     <string name="phone_number">شماره موبایل</string>
+    <string name="password">رمز عبور</string>
+    <string name="forget_password_text">رمز عبور خود را فراموش کرده اید؟</string>
+    <string name="forget_pass">بازیابی رمز عبور</string>
+    <string name="login">ورود</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

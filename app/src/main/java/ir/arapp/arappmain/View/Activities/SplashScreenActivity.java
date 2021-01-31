@@ -85,10 +85,17 @@ public class SplashScreenActivity extends AppCompatActivity
     private void goToRegLogActivity()
     {
         Intent regLogActivity = new Intent(SplashScreenActivity.this, AuthActivity.class);
-        Pair[] pairs = new Pair[1];
-        pairs[0] = new Pair<View, String>(splashLogo, "logo");
-        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(SplashScreenActivity.this, pairs);
-        startActivity(regLogActivity, activityOptions.toBundle());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            Pair[] pairs = new Pair[1];
+            pairs[0] = new Pair<View, String>(splashLogo, "logo");
+            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(SplashScreenActivity.this, pairs);
+            startActivity(regLogActivity, activityOptions.toBundle());
+        }
+        else
+        {
+            startActivity(regLogActivity);
+        }
         finish();
     }
     private void goToHomeActivity()

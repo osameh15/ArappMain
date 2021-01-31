@@ -14,7 +14,10 @@
         <action
             android:id="@+id/action_regLogFragment_to_registerPhoneFragment"
             app:destination="@id/registerPhoneFragment"
-            app:enterAnim="@anim/fragment_close_enter" />
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
         <action
             android:id="@+id/action_regLogFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -30,23 +33,45 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_forgetPassPhoneFragment"
-            app:destination="@id/forgetPassPhoneFragment" />
+            app:destination="@id/forgetPassPhoneFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit"/>
         <action
             android:id="@+id/action_loginFragment_to_regLogFragment"
             app:destination="@id/regLogFragment"
-            app:enterAnim="@anim/fragment_close_enter" />
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerPhoneFragment"
+            app:destination="@id/registerPhoneFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassPhoneFragment"
         android:name="ir.arapp.arappmain.View.Fragments.ForgetPassPhoneFragment"
         android:label="fragment_phone_forget_pass"
-        tools:layout="@layout/fragment_phone_forget_pass" >
+        tools:layout="@layout/fragment_phone_forget_pass">
         <action
             android:id="@+id/action_forgetPassPhoneFragment_to_forgetPassValidateFragment"
-            app:destination="@id/forgetPassValidateFragment" />
+            app:destination="@id/forgetPassValidateFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit"/>
         <action
             android:id="@+id/action_forgetPassPhoneFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -62,10 +87,18 @@
             android:id="@+id/action_registerValidateFragment_to_registerFragment"
             app:destination="@id/registerFragment"
             app:popUpTo="@id/registerPhoneFragment"
-            app:popUpToInclusive="?android:attr/windowOverscan" />
+            app:popUpToInclusive="?android:attr/windowOverscan"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
         <action
             android:id="@+id/action_registerValidateFragment_to_registerPhoneFragment"
-            app:destination="@id/registerPhoneFragment" />
+            app:destination="@id/registerPhoneFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassFragment"
@@ -79,10 +112,18 @@
         tools:layout="@layout/fragment_phone_register" >
         <action
             android:id="@+id/action_registerPhoneFragment_to_registerValidateFragment"
-            app:destination="@id/registerValidateFragment" />
+            app:destination="@id/registerValidateFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
         <action
             android:id="@+id/action_registerPhoneFragment_to_regLogFragment"
-            app:destination="@id/regLogFragment" />
+            app:destination="@id/regLogFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassValidateFragment"
@@ -93,9 +134,17 @@
             android:id="@+id/action_forgetPassValidateFragment_to_forgetPassFragment"
             app:destination="@id/forgetPassFragment"
             app:popUpTo="@id/forgetPassPhoneFragment"
-            app:popUpToInclusive="?android:attr/windowOverscan" />
+            app:popUpToInclusive="?android:attr/windowOverscan"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
         <action
             android:id="@+id/action_forgetPassValidateFragment_to_forgetPassPhoneFragment"
-            app:destination="@id/forgetPassPhoneFragment" />
+            app:destination="@id/forgetPassPhoneFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
     </fragment>
 </navigation>

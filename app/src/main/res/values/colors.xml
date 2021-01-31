@@ -6,6 +6,7 @@
     <color name="colorAccent">#6a65ab</color>
     <color name="colorAccentDark">  #353266 </color> <!-- also Text color -->
     <color name="lightBack">#f6fffb</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#6a65ab</color>
 
     <!-- Secondary theme color (Light mode)-->
     <color name="SecondaryColorPrimary">#B0DE54</color>
