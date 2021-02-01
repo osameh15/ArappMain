@@ -55,8 +55,7 @@
                 android:gravity="center_vertical|start"
                 android:hint="@string/password"
                 app:placeholderText="******"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleContentDescription="@string/app_name_persian">
+                app:passwordToggleEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -66,7 +65,7 @@
                     android:textColor="@color/colorAccentDark"
                     android:fontFamily="@font/iransans"/>
             </com.google.android.material.textfield.TextInputLayout>
-            <!-- Forget password -->
+            <!-- Forget password panel -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

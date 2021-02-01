@@ -79,12 +79,26 @@
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
     </style>
-
     <!-- Edit Text Error Theme -->
     <style name="ErrorTextStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/notificationColorRed</item>
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/iransans</item>
+    </style>
+
+    <!-- Validation Code Theme -->
+    <style name="ValidationCode" parent="PinWidget.PinView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="itemSpacing">8dp</item>
+        <item name="itemCount">6</item>
+        <item name="itemRadius">6dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineColor">@drawable/pin_view</item>
+        <item name="hideLineWhenFilled">false</item>
+        <item name="lineWidth">2dp</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <!-- Toast Theme -->
@@ -101,14 +115,6 @@
 <!--        <item name="stLength">SHORT</item>-->
 <!--        <item name="stRadius">4dp</item>-->
 <!--    </style>-->
-
-<!--    &lt;!&ndash; Validation Code Theme &ndash;&gt;
-    <style name="ValidationCode" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@color/colorAccent</item>
-        <item name="android:strokeColor">@color/shade6</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:maxLines">1</item>
-    </style>-->
 
     <!-- Navigation drawer Theme -->
 <!--    <style name="NavigationView" >

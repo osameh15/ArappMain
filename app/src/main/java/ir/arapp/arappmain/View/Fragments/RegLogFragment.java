@@ -24,9 +24,11 @@ import ir.arapp.arappmain.R;
 
 public class RegLogFragment extends Fragment
 {
-    //Variables
+
+    //region Variables
     RoundButton register;
     TextView login;
+    //endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -58,10 +60,6 @@ public class RegLogFragment extends Fragment
         //OnClick
         register.setOnClickListener(view1 -> goToRegisterFragment(navController));
         login.setOnClickListener(view1 -> goToLoginFragment(navController));
-
-        //To Navigate, pop up and disable back navigate on phone ...
-        /*NavOptions navOptions = new NavOptions.Builder().setPopUpTo(R.id.regLogFragment, true).build();
-        navController.navigate(R.id.action_regLogFragment_to_loginFragment, null, navOptions);*/
     }
 
     @Override

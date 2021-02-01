@@ -38,6 +38,7 @@
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
 
+        <!-- Phone Input panel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +54,6 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputStyle"
                 android:layout_width="match_parent"

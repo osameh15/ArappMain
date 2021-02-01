@@ -20,10 +20,11 @@ import ir.arapp.arappmain.R;
 public class LoginFragment extends Fragment
 {
 
-    //Variable
+    //region Variable
     TextView signUp;
     TextView forgetPass;
     RoundButton login;
+    //endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)

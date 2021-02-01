@@ -8,26 +8,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toolbar;
-
 import com.google.android.material.appbar.MaterialToolbar;
 import com.marozzi.roundbutton.RoundButton;
-
 import ir.arapp.arappmain.R;
 
 public class RegisterPhoneFragment extends Fragment
 {
 
-    //Variable
+    //region Variable
     MaterialToolbar toolbar;
     TextView login;
     RoundButton register;
+    //endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -73,9 +70,10 @@ public class RegisterPhoneFragment extends Fragment
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
 
+    //Back button navigation
     private void onNavigateUp()
     {
-        getActivity().onBackPressed();
+        requireActivity().onBackPressed();
     }
 
     //region fragment navigation

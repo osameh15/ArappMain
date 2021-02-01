@@ -22,6 +22,7 @@ import ir.arapp.arappmain.Util.Services.SessionManager;
 
 public class SplashScreenActivity extends AppCompatActivity
 {
+
     //region Variables
     private Boolean flag = false;
     LottieAnimationView splashLogo;
@@ -30,6 +31,7 @@ public class SplashScreenActivity extends AppCompatActivity
     //Session manager
     private SessionManager sessionManager;
     //endregion
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

@@ -9,6 +9,9 @@ import ir.arapp.arappmain.R;
 public class AuthActivity extends AppCompatActivity
 {
 
+    //region Variable
+    //endregion
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

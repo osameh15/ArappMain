@@ -2,6 +2,7 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegisterValidateFragment">
 
     <RelativeLayout
@@ -13,7 +14,7 @@
         android:layoutDirection="rtl">
 
         <!-- Toolbar -->
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/registerToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -33,7 +34,91 @@
                     android:fontFamily="@font/iransans"/>
 
             </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <!-- Phone Input panel -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/verification_code"
+                android:textSize="18sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccentDark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/verification_code_text"
+                android:textSize="16sp"
+                android:fontFamily="@font/iransans"
+                android:textColor="@color/colorAccent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layoutDirection="rtl">
+                <TextView
+                    android:id="@+id/timerValidationCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/timer_count"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/iransans_bold"
+                    android:textColor="@color/colorAccentDark"/>
+                <TextView
+                    android:id="@+id/sendValidationCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/verification_code_retry"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/iransans_bold"
+                    android:textColor="@color/disable"/>
+            </LinearLayout>
+            <com.chaos.view.PinView
+                android:id="@+id/otpRegister"
+                style="@style/ValidationCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                app:viewType="rectangle"
+                android:inputType="number"/>
+            <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/phoneRegisterButton"
+                style="@style/ButtonLoading"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/submit_continue"/>
+            <TextView
+                android:id="@+id/changePhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/edit_phone_number"
+                android:textSize="16sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccentDark"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 
