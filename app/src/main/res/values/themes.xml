@@ -13,7 +13,7 @@
 
     <!-- Toolbar Theme -->
     <style name="Theme.MyFancyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/lightBack</item>
     </style>
 
     <!-- Button loading theme -->
@@ -70,7 +70,7 @@
         <item name="android:textColorHint">@color/colorAccent</item>
         <item name="android:elevation" tools:targetApi="lollipop">2dp</item>
         <item name="placeholderTextColor">@color/colorPrimaryDark</item>
-        <item name="boxStrokeColor">@color/colorAccentDark</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
         <item name="boxStrokeErrorColor">@color/notificationColorRed</item>
         <item name="errorTextAppearance">@style/ErrorTextStyle</item>
         <item name="boxStrokeWidth">2dp</item>

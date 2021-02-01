@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.marozzi.roundbutton.RoundButton;
 
 import ir.arapp.arappmain.R;
@@ -22,6 +25,7 @@ public class RegisterPhoneFragment extends Fragment
 {
 
     //Variable
+    MaterialToolbar toolbar;
     TextView login;
     RoundButton register;
 
@@ -29,6 +33,7 @@ public class RegisterPhoneFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -38,8 +43,13 @@ public class RegisterPhoneFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_phone_register, container, false);
 
         //Hooks
+        toolbar = view.findViewById(R.id.registerToolbar);
         login = view.findViewById(R.id.SignUpLogin);
         register = view.findViewById(R.id.phoneRegisterButton);
+
+        //Toolbar
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         return view;
     }
@@ -54,12 +64,18 @@ public class RegisterPhoneFragment extends Fragment
         //OnClick
         login.setOnClickListener(view1 -> goToLogin(navController));
         register.setOnClickListener(view1 -> goToCodeRegister(navController));
+        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
     }
 
     public void onResume()
     {
         super.onResume();
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
+
+    private void onNavigateUp()
+    {
+        getActivity().onBackPressed();
     }
 
     //region fragment navigation
