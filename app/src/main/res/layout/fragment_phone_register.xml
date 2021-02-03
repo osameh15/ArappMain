@@ -22,7 +22,6 @@
             android:theme="@style/Theme.MyFancyTheme"
             android:background="@drawable/toolbar"
             android:layoutDirection="rtl">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -34,7 +33,6 @@
                     android:text="@string/register"
                     android:textSize="18sp"
                     android:fontFamily="@font/iransans"/>
-
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -42,16 +40,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="?attr/actionBarSize"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_centerInParent="true">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/register_title"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>
             <com.google.android.material.textfield.TextInputLayout
@@ -87,7 +85,6 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/submit_continue"/>
-
         </LinearLayout>
 
         <!-- Login panel -->

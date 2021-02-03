@@ -17,7 +17,11 @@ import androidx.navigation.Navigation;
 
 import com.chaos.view.PinView;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.marozzi.roundbutton.RoundButton;
+
+import java.util.Objects;
 
 import ir.arapp.arappmain.R;
 
@@ -55,8 +59,8 @@ public class RegisterValidateFragment extends Fragment
         register = view.findViewById(R.id.phoneRegisterButton);
 
         //Toolbar
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         return view;
     }
@@ -71,11 +75,11 @@ public class RegisterValidateFragment extends Fragment
         //OnClick
         changeNumber.setOnClickListener(view1 -> goToPhoneRegister(navController));
         register.setOnClickListener(view1 -> goToRegister(navController));
-        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp(navController));
+        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
     }
 
     //Back button navigation
-    private void onNavigateUp(NavController navController)
+    private void onNavigateUp()
     {
         requireActivity().onBackPressed();
         /*NavOptions navOptions = new NavOptions.Builder().setPopUpTo(R.id.regLogFragment, true).build();

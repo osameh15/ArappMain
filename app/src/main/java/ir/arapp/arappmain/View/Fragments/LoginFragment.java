@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.marozzi.roundbutton.RoundButton;
 
 import ir.arapp.arappmain.R;
@@ -62,25 +64,30 @@ public class LoginFragment extends Fragment
     public void onResume()
     {
         super.onResume();
-        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     //region fragment navigation
     private void goToRegister(NavController navController)
     {
         navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     private void goToForgetPass(NavController navController)
     {
         navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     private void goToHomeActivity(NavController navController)
     {
         navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     //endregion
 
+    //SnackBar
+/*    Snackbar snackbar = Snackbar.make(view, "سلام بر همه!", BaseTransientBottomBar.LENGTH_LONG);
+        snackbar.setDuration(6000);
+        snackbar.setAction("باشه!!", view1 -> {snackbar.dismiss();});
+        snackbar.show();*/
 }

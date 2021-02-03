@@ -10,6 +10,7 @@
     <string name="sign_up">عضویت</string>
     <string name="login_arapp">ورود به آراپ</string>
     <!-- Login Fragment -->
+    <string name="login_text">جهت ورود، شماره موبایل و رمز عبور را وارد نمایید</string>
     <string name="sign_up_login">هنوز در آراپ عضویت ندارید؟</string>
     <string name="phone_number">شماره موبایل</string>
     <string name="password">رمز عبور</string>
@@ -27,4 +28,8 @@
     <string name="verification_code_retry">ارسال مجدد کد فعالسازی</string>
     <string name="edit_phone_number">اصلاح شماره موبایل</string>
     <!-- Forget Password Fragments -->
+    <string name="forget_pass_title">جهت بازیابی رمز عبور، شماره موبایل خود را وارد کنید</string>
+    <string name="forget_pass_new_pass">رمز عبور جدید خود را وارد نمایید</string>
+    <string name="confirm_password">تکرار رمز عبور</string>
+    <string name="submit_login">ورود به آراپ</string>
 </resources>

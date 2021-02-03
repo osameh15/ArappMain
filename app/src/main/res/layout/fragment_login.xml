@@ -19,10 +19,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="?attr/actionBarSize"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_centerInParent="true">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/login_text"
+                android:textSize="15sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/colorAccentDark"/>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TextInputStyle"
                 android:layout_width="match_parent"
@@ -32,8 +43,7 @@
                 android:layout_marginBottom="10dp"
                 android:layoutDirection="rtl"
                 android:gravity="center_vertical|start"
-                android:hint="@string/phone_number"
-                app:placeholderText="09*********">
+                android:hint="@string/phone_number">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -54,7 +64,6 @@
                 android:layoutDirection="rtl"
                 android:gravity="center_vertical|start"
                 android:hint="@string/password"
-                app:placeholderText="******"
                 app:passwordToggleEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

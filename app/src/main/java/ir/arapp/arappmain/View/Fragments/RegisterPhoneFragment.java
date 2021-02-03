@@ -15,6 +15,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.marozzi.roundbutton.RoundButton;
+
+import java.util.Objects;
+
 import ir.arapp.arappmain.R;
 
 public class RegisterPhoneFragment extends Fragment
@@ -45,8 +48,8 @@ public class RegisterPhoneFragment extends Fragment
         register = view.findViewById(R.id.phoneRegisterButton);
 
         //Toolbar
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         return view;
     }
@@ -56,6 +59,7 @@ public class RegisterPhoneFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        //Nav Controller
         final NavController navController = Navigation.findNavController(view);
 
         //OnClick
@@ -67,7 +71,7 @@ public class RegisterPhoneFragment extends Fragment
     public void onResume()
     {
         super.onResume();
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     //Back button navigation

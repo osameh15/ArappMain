@@ -34,7 +34,7 @@ public class RegLogFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS | WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class RegLogFragment extends Fragment
     public void onResume()
     {
         super.onResume();
-        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     //region fragment navigation
@@ -78,7 +78,7 @@ public class RegLogFragment extends Fragment
     private void goToRegisterFragment(NavController navController)
     {
         navController.navigate(R.id.action_regLogFragment_to_registerPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS | WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     //endregion
 

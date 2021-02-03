@@ -44,7 +44,9 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/registerPhoneFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassPhoneFragment"
@@ -83,7 +85,7 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpToInclusive="?android:attr/windowOverscan" />
+            app:popUpToInclusive="?android:attr/windowOverscan"/>
         <action
             android:id="@+id/action_registerValidateFragment_to_registerPhoneFragment"
             app:destination="@id/registerPhoneFragment"
@@ -117,7 +119,9 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassValidateFragment"
@@ -127,18 +131,19 @@
         <action
             android:id="@+id/action_forgetPassValidateFragment_to_forgetPassFragment"
             app:destination="@id/forgetPassFragment"
-            app:popUpTo="@id/forgetPassPhoneFragment"
-            app:popUpToInclusive="?android:attr/windowOverscan"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="?android:attr/windowOverscan" />
         <action
             android:id="@+id/action_forgetPassValidateFragment_to_forgetPassPhoneFragment"
             app:destination="@id/forgetPassPhoneFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/forgetPassPhoneFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
