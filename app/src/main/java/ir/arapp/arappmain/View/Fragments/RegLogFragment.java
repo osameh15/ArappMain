@@ -91,11 +91,11 @@ public class RegLogFragment extends Fragment
                 || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==PackageManager.PERMISSION_DENIED)
             {
                 //show popup for runtime permission
-                requireActivity().requestPermissions(permissions, PERMISSION_CODE);
+                requestPermissions(permissions, PERMISSION_CODE);
             }
         }
         //handle result of runtime permission
-        super.onRequestPermissionsResult(PERMISSION_CODE, permissions, grantResult);
+        onRequestPermissionsResult(PERMISSION_CODE, permissions, grantResult);
     }
 
     //region fragment navigation

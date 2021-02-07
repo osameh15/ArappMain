@@ -60,10 +60,10 @@
                 android:layout_marginEnd="35dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layoutDirection="rtl"
+                android:layoutDirection="locale"
                 android:gravity="center_vertical|start"
                 android:hint="@string/phone_number"
-                app:placeholderText="09*********">
+                app:placeholderText="@string/placeholder_phone">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

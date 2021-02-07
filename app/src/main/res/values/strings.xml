@@ -23,6 +23,7 @@
     <string name="name">نام و نام خانوادگی</string>
     <string name="mail">ایمیل</string>
     <string name="phone_number">شماره موبایل</string>
+    <string name="placeholder_phone">09*********</string>
     <string name="password">رمز عبور</string>
     <string name="confirm_password">تکرار رمز عبور</string>
     <string name="type_of_service">نوع سرویس:</string>

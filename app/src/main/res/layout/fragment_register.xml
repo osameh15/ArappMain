@@ -20,7 +20,6 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/Theme.MyFancyTheme"
             android:background="@drawable/toolbar">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -32,7 +31,6 @@
                     android:text="@string/sign_up"
                     android:textSize="18sp"
                     android:fontFamily="@font/iransans"/>
-
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -51,7 +49,6 @@
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="15dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,18 +86,20 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:gravity="center_vertical|start"
                     android:hint="@string/mail">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textEmailAddress"
+                        android:nextFocusDown="@id/registerPassword"
                         android:imeOptions="actionNext"
+                        android:singleLine="true"
                         android:textSize="14sp"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"
-                        android:maxLength="11"/>
+                        android:maxLength="64"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/TextInputStyle"
@@ -109,21 +108,21 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:gravity="center_vertical|start"
-                    android:hint="@string/phone_number">
+                    android:hint="@string/phone_number"
+                    android:enabled="false">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:enabled="false"
-                        android:inputType="phone"
-                        android:imeOptions="actionNext"
                         android:textSize="14sp"
-                        android:textColor="@color/colorAccentDark"
-                        android:fontFamily="@font/iransans"
-                        android:maxLength="11"/>
+                        android:text="@string/placeholder_phone"
+                        android:textColor="@color/disable"
+                        android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/registerPassword"
                     style="@style/TextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,7 +130,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:layoutDirection="rtl"
-                    android:gravity="center_vertical|start"
+                    android:gravity="center_vertical|end"
                     android:hint="@string/password"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
@@ -140,10 +139,12 @@
                         android:inputType="textPassword"
                         android:imeOptions="actionNext"
                         android:textSize="14sp"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/registerConfirmPassword"
                     style="@style/TextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,7 +152,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:layoutDirection="rtl"
-                    android:gravity="center_vertical|start"
+                    android:gravity="center_vertical|end"
                     android:hint="@string/confirm_password"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
@@ -160,6 +161,7 @@
                         android:inputType="textPassword"
                         android:imeOptions="actionDone"
                         android:textSize="14sp"
+                        android:textAlignment="viewEnd"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -174,12 +176,12 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginEnd="12dp"
                     android:drawablePadding="5dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_assignment_turned_in_24"/>
+                    app:drawableStartCompat="@drawable/ic_baseline_person_pin_circle_24"/>
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="2dp"
                     android:layout_gravity="center"
                     android:orientation="horizontal">
                     <com.google.android.material.radiobutton.MaterialRadioButton
@@ -218,7 +220,6 @@
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
                     android:text="@string/register"/>
-
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

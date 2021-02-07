@@ -33,7 +33,6 @@
             android:orientation="vertical"
             android:layout_centerHorizontal="true"
             android:gravity="center">
-
             <com.marozzi.roundbutton.RoundButton
                 android:id="@+id/signUpRegLog"
                 style="@style/ButtonLoading"
@@ -51,7 +50,6 @@
                 android:textAlignment="center"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccent"/>
-
         </LinearLayout>
 
     </RelativeLayout>
