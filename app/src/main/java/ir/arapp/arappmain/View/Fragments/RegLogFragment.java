@@ -1,10 +1,14 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
@@ -15,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marozzi.roundbutton.RoundButton;
 
@@ -26,6 +31,10 @@ public class RegLogFragment extends Fragment
 {
 
     //region Variables
+    private static final int PERMISSION_CODE = 1001;
+    //permission not generated
+    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION};
+    int[] grantResult = {1, 2};
     RoundButton register;
     TextView login;
     //endregion
@@ -46,6 +55,9 @@ public class RegLogFragment extends Fragment
         //Hooks
         register = view.findViewById(R.id.signUpRegLog);
         login = view.findViewById(R.id.loginRegLog);
+
+        //Check permission
+        checkPermission();
 
         return view;
     }
@@ -69,8 +81,24 @@ public class RegLogFragment extends Fragment
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
+    //Check permission
+    private void checkPermission()
+    {
+        //check runtime permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+                || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==PackageManager.PERMISSION_DENIED)
+            {
+                //show popup for runtime permission
+                requireActivity().requestPermissions(permissions, PERMISSION_CODE);
+            }
+        }
+        //handle result of runtime permission
+        super.onRequestPermissionsResult(PERMISSION_CODE, permissions, grantResult);
+    }
+
     //region fragment navigation
-    //Go To another fragments
     private void goToLoginFragment(NavController navController)
     {
         navController.navigate(R.id.action_regLogFragment_to_loginFragment);

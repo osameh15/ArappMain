@@ -21,8 +21,6 @@
 
     <!-- Snack bar Style -->
     <style name="MaterialSnackBarTheme" parent="@style/Widget.MaterialComponents.Snackbar">
-        <!-- <item name="backgroundTint">#00cc77</item>-->
-        <!-- <item name="android:background">@drawable/snackbar_background</item>-->
         <item name="backgroundTint">@color/colorAccentDark</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
         <item name="boxCornerRadiusTopEnd">8dp</item>
@@ -36,10 +34,12 @@
     <style name="MaterialSnackBarTextButtonTheme" parent="@style/Widget.MaterialComponents.Button.TextButton.Snackbar">
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="android:textColor">@color/SecondaryColorPrimary</item>
+        <item name="android:textSize">12sp</item>
         <item name="fontFamily">@font/iransans_bold</item>
     </style>
     <style name="MaterialSnackBarTextViewTheme" parent="@style/Widget.MaterialComponents.Snackbar.TextView">
         <item name="android:textColor">@color/lightBack</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:alpha">1.0</item>
         <item name="fontFamily">@font/iransans</item>
     </style>

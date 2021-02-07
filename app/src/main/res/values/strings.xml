@@ -9,14 +9,6 @@
     <!-- RegLog Fragment -->
     <string name="sign_up">عضویت</string>
     <string name="login_arapp">ورود به آراپ</string>
-    <!-- Login Fragment -->
-    <string name="login_text">جهت ورود، شماره موبایل و رمز عبور را وارد نمایید</string>
-    <string name="sign_up_login">هنوز در آراپ عضویت ندارید؟</string>
-    <string name="phone_number">شماره موبایل</string>
-    <string name="password">رمز عبور</string>
-    <string name="forget_password_text">رمز عبور خود را فراموش کرده اید؟</string>
-    <string name="forget_pass">بازیابی رمز عبور</string>
-    <string name="login">ورود</string>
     <!-- Register Fragments -->
     <string name="register">ثبت نام</string>
     <string name="register_title">برای عضویت شماره موبایل خود را وارد نمایید</string>
@@ -27,9 +19,24 @@
     <string name="timer_count">00:00</string>
     <string name="verification_code_retry">ارسال مجدد کد فعالسازی</string>
     <string name="edit_phone_number">اصلاح شماره موبایل</string>
-    <!-- Forget Password Fragments -->
-    <string name="forget_pass_title">جهت بازیابی رمز عبور، شماره موبایل خود را وارد کنید</string>
-    <string name="forget_pass_new_pass">رمز عبور جدید خود را وارد نمایید</string>
+    <string name="register_text">جهت تکمیل ثبت نام خود، اطلاعات زیر را تکمیل نمایید</string>
+    <string name="name">نام و نام خانوادگی</string>
+    <string name="mail">ایمیل</string>
+    <string name="phone_number">شماره موبایل</string>
+    <string name="password">رمز عبور</string>
     <string name="confirm_password">تکرار رمز عبور</string>
+    <string name="type_of_service">نوع سرویس:</string>
+    <string name="set_service">سرویس دهنده</string>
+    <string name="get_service">سرویس گیرنده</string>
+    <string name="law">قوانین آراپ را مطالعه کرده و می پذیرم.</string>
+    <!-- Login Fragment -->
+    <string name="login_text">جهت ورود، شماره موبایل و رمز عبور را وارد نمایید</string>
+    <string name="sign_up_login">هنوز در آراپ عضویت ندارید؟</string>
+    <string name="forget_password_text">رمز عبور خود را فراموش کرده اید؟</string>
+    <string name="forget_pass">بازیابی رمز عبور</string>
+    <string name="login">ورود</string>
+    <!-- Forget Password Fragments -->
+    <string name="forget_pass_text">جهت بازیابی رمز عبور، شماره موبایل خود را وارد کنید</string>
+    <string name="forget_pass_new_pass">رمز عبور جدید خود را وارد نمایید</string>
     <string name="submit_login">ورود به آراپ</string>
 </resources>

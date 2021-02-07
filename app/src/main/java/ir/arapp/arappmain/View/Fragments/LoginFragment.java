@@ -80,8 +80,6 @@ public class LoginFragment extends Fragment
     }
     private void goToHomeActivity(NavController navController)
     {
-        navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     //endregion
 

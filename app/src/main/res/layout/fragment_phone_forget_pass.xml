@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/forget_pass_title"
+                android:text="@string/forget_pass_text"
                 android:textSize="15sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>

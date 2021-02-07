@@ -23,7 +23,6 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_centerInParent="true">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +110,6 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/login"/>
-
         </LinearLayout>
 
         <!-- Sign up panel -->
@@ -123,7 +121,6 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layoutDirection="rtl">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,7 +137,6 @@
                 android:textSize="16sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccent"/>
-
         </LinearLayout>
 
     </RelativeLayout>
