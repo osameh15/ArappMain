@@ -63,6 +63,27 @@
                     style="@style/TextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layoutDirection="locale"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/phone_number"
+                    android:enabled="false">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:textSize="14sp"
+                        android:text="@string/placeholder_phone"
+                        android:textColor="@color/disable"
+                        android:fontFamily="@font/iransans"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
@@ -95,31 +116,10 @@
                         android:inputType="textEmailAddress"
                         android:nextFocusDown="@id/registerPassword"
                         android:imeOptions="actionNext"
-                        android:singleLine="true"
                         android:textSize="14sp"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"
                         android:maxLength="64"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInputStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layoutDirection="locale"
-                    android:gravity="center_vertical|start"
-                    android:hint="@string/phone_number"
-                    android:enabled="false">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textSize="14sp"
-                        android:text="@string/placeholder_phone"
-                        android:textColor="@color/disable"
-                        android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/registerPassword"
