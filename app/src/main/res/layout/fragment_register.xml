@@ -87,7 +87,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:gravity="center_vertical|start"
                     android:hint="@string/name">
                     <com.google.android.material.textfield.TextInputEditText
@@ -166,22 +166,10 @@
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <!-- Type of Service panel -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/type_of_service"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/iransans_bold"
-                    android:textColor="@color/colorAccentDark"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:drawablePadding="5dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_person_pin_circle_24"/>
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:layout_marginBottom="2dp"
                     android:layout_gravity="center"
                     android:orientation="horizontal">
                     <com.google.android.material.radiobutton.MaterialRadioButton
@@ -200,15 +188,34 @@
                         android:fontFamily="@font/iransans_bold"
                         android:textColor="@color/colorAccent"/>
                 </RadioGroup>
-                <com.google.android.material.checkbox.MaterialCheckBox
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/law"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/iransans_bold"
-                    android:textColor="@color/colorAccentDark"/>
+                    android:orientation="horizontal"
+                    android:layoutDirection="rtl">
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="-8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/law"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iransans_bold"
+                        android:textColor="@color/colorAccent"/>
+                    <TextView
+                        android:id="@+id/LoginSignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/accept_law"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iransans_bold"
+                        android:textColor="@color/colorAccentDark"/>
+                </LinearLayout>
                 <com.marozzi.roundbutton.RoundButton
                     android:id="@+id/signUp"
                     style="@style/ButtonLoading"
@@ -216,7 +223,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="14sp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
                     android:text="@string/register"/>

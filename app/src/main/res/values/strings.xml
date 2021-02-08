@@ -29,7 +29,8 @@
     <string name="type_of_service">نوع سرویس:</string>
     <string name="set_service">سرویس دهنده</string>
     <string name="get_service">سرویس گیرنده</string>
-    <string name="law">قوانین آراپ را مطالعه کرده و می پذیرم.</string>
+    <string name="law">قوانین آراپ</string>
+    <string name="accept_law">را مطالعه کرده و می پذیرم.</string>
     <!-- Login Fragment -->
     <string name="login_text">جهت ورود، شماره موبایل و رمز عبور را وارد نمایید</string>
     <string name="sign_up_login">هنوز در آراپ عضویت ندارید؟</string>
