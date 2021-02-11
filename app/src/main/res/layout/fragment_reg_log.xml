@@ -6,52 +6,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegLogFragment">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical"
         android:background="@color/lightBack"
         android:fitsSystemWindows="true">
 
         <!--logo_icon -->
-        <ImageView
-            android:id="@+id/regLogLogo"
-            android:layout_width="123dp"
-            android:layout_height="223dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/logo"
-            android:transitionName="logo"
-            android:contentDescription="@string/app_name"
-            tools:targetApi="lollipop" />
+            <ImageView
+                android:id="@+id/regLogLogo"
+                android:layout_width="123dp"
+                android:layout_height="223dp"
+                android:src="@drawable/logo"
+                android:transitionName="logo"
+                android:contentDescription="@string/app_name"
+                tools:targetApi="lollipop" />
+            <!-- Register/Login Panel -->
+                <com.marozzi.roundbutton.RoundButton
+                    android:id="@+id/signUpRegLog"
+                    style="@style/ButtonLoading"
+                    android:layout_width="220dp"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/sign_up"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/loginRegLog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_arapp"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/iransans_bold"
+                    android:textColor="@color/colorAccent"/>
 
-        <!-- Register/Login Panel -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/regLogLogo"
-            android:orientation="vertical"
-            android:layout_centerHorizontal="true"
-            android:gravity="center">
-            <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/signUpRegLog"
-                style="@style/ButtonLoading"
-                android:layout_width="220dp"
-                android:layout_height="55dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/sign_up"
-                android:gravity="center"/>
-            <TextView
-                android:id="@+id/loginRegLog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/login_arapp"
-                android:textSize="16sp"
-                android:textAlignment="center"
-                android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccent"/>
         </LinearLayout>
-
-    </RelativeLayout>
 
 </layout>

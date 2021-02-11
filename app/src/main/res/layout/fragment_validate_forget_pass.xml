@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/verification_code_text"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccent"/>
             <LinearLayout

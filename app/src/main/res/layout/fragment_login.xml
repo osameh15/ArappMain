@@ -6,6 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.LoginFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="ir.arapp.arappmain.viewmodel.LoginViewModel"/>
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -127,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up_login"
                 android:textSize="14sp"
-                android:fontFamily="@font/iransans_bold"
+                android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccentDark"/>
             <TextView
                 android:id="@+id/LoginSignUp"
@@ -135,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="@string/sign_up"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccent"/>
         </LinearLayout>

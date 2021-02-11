@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_sign_up"
                 android:textSize="14sp"
-                android:fontFamily="@font/iransans_bold"
+                android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccentDark"/>
             <TextView
                 android:id="@+id/SignUpLogin"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="@string/login"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccent"/>
         </LinearLayout>

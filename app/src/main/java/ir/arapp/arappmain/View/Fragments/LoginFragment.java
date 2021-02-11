@@ -1,23 +1,23 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.marozzi.roundbutton.RoundButton;
-
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.View.Activities.HomeActivity;
+import ir.arapp.arappmain.View.Activities.SplashScreenActivity;
+import ir.arapp.arappmain.viewmodel.LoginViewModel;
+import ir.arapp.arappmain.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment
 {
@@ -26,6 +26,7 @@ public class LoginFragment extends Fragment
     TextView signUp;
     TextView forgetPass;
     RoundButton login;
+    //LoginViewModel loginViewModel;
     //endregion
 
     @Override
@@ -38,7 +39,10 @@ public class LoginFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
+        //FragmentLoginBinding fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
         View view = inflater.inflate(R.layout.fragment_login, container, false);
+/*        loginViewModel = new LoginViewModel();
+        fragmentLoginBinding.setViewModel(loginViewModel);*/
 
         //Hooks
         signUp = view.findViewById(R.id.LoginSignUp);
@@ -46,6 +50,7 @@ public class LoginFragment extends Fragment
         login = view.findViewById(R.id.login);
 
         return view;
+        //return fragmentLoginBinding.getRoot();
     }
 
     @Override
@@ -58,6 +63,7 @@ public class LoginFragment extends Fragment
         //OnClick
         signUp.setOnClickListener(view1 -> goToRegister(navController));
         forgetPass.setOnClickListener(view1 -> goToForgetPass(navController));
+        login.setOnClickListener(view1 -> goToHomeActivity(navController));
     }
 
     @Override
@@ -80,6 +86,9 @@ public class LoginFragment extends Fragment
     }
     private void goToHomeActivity(NavController navController)
     {
+        Intent homeActivity = new Intent(getActivity(), HomeActivity.class);
+        startActivity(homeActivity);
+        requireActivity().finish();
     }
     //endregion
 
