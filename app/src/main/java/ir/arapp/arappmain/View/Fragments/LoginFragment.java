@@ -19,6 +19,7 @@ import com.marozzi.roundbutton.RoundButton;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
+import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.HomeActivity;
 import ir.arapp.arappmain.viewmodel.LoginViewModel;
 import ir.arapp.arappmain.databinding.FragmentLoginBinding;
@@ -28,6 +29,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
 
     //region Variable
     LoginViewModel loginViewModel;
+    private SnackBarToast snackBarToast;
     //endregion
 
     @Override
@@ -46,32 +48,36 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         fragmentLoginBinding.setViewModel(loginViewModel);
         loginViewModel.snackBarMessage = this;
         loginViewModel.navigateFragment = this;
-
-        //return view;
+        //Hooks
+        snackBarToast = new SnackBarToast(fragmentLoginBinding.getRoot());
+        //return view
         return fragmentLoginBinding.getRoot();
     }
-
+    //On resume
     @Override
     public void onResume()
     {
         super.onResume();
-        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-
     //region fragment navigation
     @Override
     public void navigateToFragment(String fragment)
     {
+        //Nav Controller
         final NavController navController = Navigation.findNavController(getView());
         if (fragment.equals("signUp"))
         {
             navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                    |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         if(fragment.equals("forgetPass"))
         {
             navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
-            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                    |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
         if (fragment.equals("home"))
         {
@@ -81,23 +87,15 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         }
     }
     //endregion
-
     //region error/success message
     @Override
     public void onSuccess()
     {
-        snackBar("با موفقیت وارد شدید");
     }
     @Override
     public void onFailure(String message)
     {
-        snackBar(message);
-    }
-    private void snackBar(String message)
-    {
-        Snackbar snackbar = Snackbar.make(requireView(), message, BaseTransientBottomBar.LENGTH_LONG);
-        snackbar.setDuration(2300);
-        snackbar.show();
+        snackBarToast.snackBarShortTime(message);
     }
     //endregion
 }

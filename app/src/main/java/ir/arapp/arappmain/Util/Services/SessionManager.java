@@ -17,10 +17,8 @@ public class SessionManager
     //Context
     private final Context _context;
     //Shared preference
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-    //Shared preference
-    private final int PRIVATE_MODE = 0;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor editor;
     //shared preference filename
     private static final String PREF_NAME = "arapp";
     private static final String KEY_IS_LOGGED_IN= "isLoggedIn";
@@ -32,10 +30,11 @@ public class SessionManager
     public SessionManager(Context _context)
     {
         this._context = _context;
+        //Shared preference
+        int PRIVATE_MODE = 0;
         sharedPreferences = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = sharedPreferences.edit();
     }
-
     //region login manager
     //Set login and session modified
     public void setLogin(boolean isLoggedIn)
@@ -52,7 +51,6 @@ public class SessionManager
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
     //endregion
-
     //region net connection
     public boolean checkConnection()
     {
@@ -62,7 +60,6 @@ public class SessionManager
         return null != networkInfo;
     }
     //endregion
-
     //region Version
     //Check version name...
     public String getVersionName(Context _context, Class cls)

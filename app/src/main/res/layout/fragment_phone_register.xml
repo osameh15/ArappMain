@@ -76,6 +76,7 @@
                     android:inputType="phone"
                     android:imeOptions="actionDone"
                     android:textSize="14sp"
+                    android:text="@={viewModel.phone}"
                     android:textColor="@color/colorAccentDark"
                     android:fontFamily="@font/iransans"
                     android:maxLength="11"/>
@@ -90,7 +91,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="@string/submit_continue"/>
+                android:text="@string/submit_continue"
+                android:onClick="@{()->viewModel.onButtonClick()}"/>
         </LinearLayout>
 
         <!-- Login panel -->
@@ -117,7 +119,8 @@
                 android:text="@string/login"
                 android:textSize="14sp"
                 android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent"
+                android:onClick="@{()->viewModel.loginButton()}"/>
         </LinearLayout>
 
     </RelativeLayout>

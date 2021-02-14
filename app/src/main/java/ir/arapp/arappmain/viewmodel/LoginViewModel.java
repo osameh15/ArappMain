@@ -14,7 +14,7 @@ public class LoginViewModel extends ViewModel
     public SnackBarMessage snackBarMessage = null;
     public NavigateFragment navigateFragment = null;
     //endregion
-
+    //region Methods
     //Sign Up button
     public void signUpButton()
     {
@@ -43,7 +43,7 @@ public class LoginViewModel extends ViewModel
             snackBarMessage.onFailure("رمزعبور را وارد نمایید");
             return;
         }
-        snackBarMessage.onSuccess();
+        navigateFragment.navigateToFragment("home");
     }
-    //Login Button Click listener
+    //endregion
 }

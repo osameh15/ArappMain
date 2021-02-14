@@ -14,22 +14,26 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.marozzi.roundbutton.RoundButton;
 
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.NavigateFragment;
+import ir.arapp.arappmain.Util.Services.SnackBarMessage;
+import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentPhoneRegisterBinding;
 import ir.arapp.arappmain.viewmodel.PhoneRegisterViewModel;
 
-public class RegisterPhoneFragment extends Fragment
+public class RegisterPhoneFragment extends Fragment implements NavigateFragment, SnackBarMessage
 {
 
     //region Variable
+    private SnackBarToast snackBarToast;
     PhoneRegisterViewModel phoneRegisterViewModel;
     MaterialToolbar toolbar;
-    TextView login;
-    RoundButton register;
     //endregion
 
     @Override
@@ -44,57 +48,61 @@ public class RegisterPhoneFragment extends Fragment
     {
         // Inflate the layout for this fragment
         FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
+        //set view model
         phoneRegisterViewModel = new PhoneRegisterViewModel();
         fragmentPhoneRegisterBinding.setViewModel(phoneRegisterViewModel);
-
+        phoneRegisterViewModel.navigateFragment = this;
+        phoneRegisterViewModel.snackBarMessage = this;
         //Hooks
         toolbar = fragmentPhoneRegisterBinding.getRoot().findViewById(R.id.registerToolbar);
-/*        login = view.findViewById(R.id.SignUpLogin);
-        register = view.findViewById(R.id.phoneRegisterButton);*/
-
+        snackBarToast = new SnackBarToast(fragmentPhoneRegisterBinding.getRoot());
         //Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+        //OnClick
+        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
+        //return view
         return fragmentPhoneRegisterBinding.getRoot();
     }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-
-        //Nav Controller
-        final NavController navController = Navigation.findNavController(view);
-
-        //OnClick
-/*        login.setOnClickListener(view1 -> goToLogin(navController));
-        register.setOnClickListener(view1 -> goToCodeRegister(navController));*/
-        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-    }
-
+    //On resume
     public void onResume()
     {
         super.onResume();
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-
     //Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
     }
-
     //region fragment navigation
-    private void goToCodeRegister(NavController navController)
+    @Override
+    public void navigateToFragment(String message)
     {
-        navController.navigate(R.id.action_registerPhoneFragment_to_registerValidateFragment);
-    }
+        //Nav Controller
+        final NavController navController = Navigation.findNavController(getView());
 
-    private void goToLogin(NavController navController)
+        if (message.equals("login"))
+        {
+            navController.navigate(R.id.action_registerPhoneFragment_to_loginFragment);
+            requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+        if (message.equals("validate"))
+        {
+            navController.navigate(R.id.action_registerPhoneFragment_to_registerValidateFragment);
+        }
+    }
+    //endregion
+    //region error/success message
+    @Override
+    public void onSuccess()
     {
-        navController.navigate(R.id.action_registerPhoneFragment_to_loginFragment);
-        requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
+    @Override
+    public void onFailure(String message)
+    {
+        snackBarToast.snackBarShortTime(message);
     }
     //endregion
 }
