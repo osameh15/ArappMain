@@ -10,13 +10,13 @@
     <string name="sign_up">عضویت</string>
     <string name="login_arapp">ورود به آراپ</string>
     <!-- Register Fragments -->
-    <string name="register">ثبت نام</string>
-    <string name="register_title">برای عضویت شماره موبایل خود را وارد نمایید</string>
+    <string name="register">عضویت در آراپ</string>
+    <string name="register_title">جهت عضویت، شماره موبایل خود را وارد نمایید</string>
     <string name="login_sign_up">آیا در آراپ عضویت دارید؟</string>
     <string name="submit_continue">تایید و ادامه</string>
     <string name="verification_code">کد تایید</string>
     <string name="verification_code_text">رمز یکبار مصرف، به شماره وارد شده ارسال شد</string>
-    <string name="timer_count">00:00</string>
+    <string name="timer_count">01:59</string>
     <string name="verification_code_retry">ارسال مجدد کد فعالسازی</string>
     <string name="edit_phone_number">اصلاح شماره موبایل</string>
     <string name="register_text">جهت تکمیل عضویت خود، اطلاعات زیر را وارد نمایید</string>
@@ -26,7 +26,6 @@
     <string name="placeholder_phone">09*********</string>
     <string name="password">رمز عبور</string>
     <string name="confirm_password">تکرار رمز عبور</string>
-    <string name="type_of_service">نوع سرویس:</string>
     <string name="set_service">سرویس دهنده</string>
     <string name="get_service">سرویس گیرنده</string>
     <string name="law">قوانین آراپ</string>

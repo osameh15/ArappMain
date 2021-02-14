@@ -58,32 +58,14 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccent"/>
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/timerValidationCode"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layoutDirection="rtl">
-                <TextView
-                    android:id="@+id/timerValidationCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/timer_count"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/iransans_bold"
-                    android:textColor="@color/colorAccentDark"/>
-                <TextView
-                    android:id="@+id/sendValidationCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/verification_code_retry"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/iransans_bold"
-                    android:textColor="@color/disable"/>
-            </LinearLayout>
+                android:text="@string/timer_count"
+                android:textSize="16sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccentDark"/>
             <com.chaos.view.PinView
                 android:id="@+id/otpForgetPass"
                 style="@style/ValidationCode"
@@ -97,7 +79,7 @@
                 android:inputType="number"/>
             <com.marozzi.roundbutton.RoundButton
                 android:id="@+id/forgetPassButton"
-                style="@style/ButtonLoading"
+                style="@style/ButtonDisableLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="36dp"
@@ -105,6 +87,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:enabled="true"
                 android:text="@string/submit_continue"/>
             <TextView
                 android:id="@+id/changePhoneNumber"
@@ -114,7 +97,7 @@
                 android:text="@string/edit_phone_number"
                 android:textSize="15sp"
                 android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccentDark"/>
+                android:textColor="@color/colorAccent"/>
         </LinearLayout>
 
     </RelativeLayout>

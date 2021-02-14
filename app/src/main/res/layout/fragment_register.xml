@@ -101,27 +101,6 @@
                         android:maxLength="48"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextInputStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layoutDirection="locale"
-                    android:gravity="center_vertical|start"
-                    android:hint="@string/mail">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/registerPassword"
-                        android:imeOptions="actionNext"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorAccentDark"
-                        android:fontFamily="@font/iransans"
-                        android:maxLength="64"/>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/registerPassword"
                     style="@style/TextInputStyle"
                     android:layout_width="match_parent"
@@ -130,7 +109,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:layoutDirection="rtl"
-                    android:gravity="center_vertical|end"
+                    android:gravity="center_vertical"
                     android:hint="@string/password"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
@@ -138,8 +117,8 @@
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
                         android:imeOptions="actionNext"
+                        android:textAlignment="viewStart"
                         android:textSize="14sp"
-                        android:textAlignment="viewEnd"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -152,7 +131,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:layoutDirection="rtl"
-                    android:gravity="center_vertical|end"
+                    android:gravity="center_vertical"
                     android:hint="@string/confirm_password"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
@@ -160,8 +139,8 @@
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
                         android:imeOptions="actionDone"
+                        android:textAlignment="viewStart"
                         android:textSize="14sp"
-                        android:textAlignment="viewEnd"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>

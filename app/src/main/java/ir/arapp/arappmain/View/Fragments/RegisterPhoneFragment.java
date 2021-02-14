@@ -19,11 +19,14 @@ import com.marozzi.roundbutton.RoundButton;
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.databinding.FragmentPhoneRegisterBinding;
+import ir.arapp.arappmain.viewmodel.PhoneRegisterViewModel;
 
 public class RegisterPhoneFragment extends Fragment
 {
 
     //region Variable
+    PhoneRegisterViewModel phoneRegisterViewModel;
     MaterialToolbar toolbar;
     TextView login;
     RoundButton register;
@@ -37,21 +40,23 @@ public class RegisterPhoneFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_phone_register, container, false);
+        FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
+        phoneRegisterViewModel = new PhoneRegisterViewModel();
+        fragmentPhoneRegisterBinding.setViewModel(phoneRegisterViewModel);
 
         //Hooks
-        toolbar = view.findViewById(R.id.registerToolbar);
-        login = view.findViewById(R.id.SignUpLogin);
-        register = view.findViewById(R.id.phoneRegisterButton);
+        toolbar = fragmentPhoneRegisterBinding.getRoot().findViewById(R.id.registerToolbar);
+/*        login = view.findViewById(R.id.SignUpLogin);
+        register = view.findViewById(R.id.phoneRegisterButton);*/
 
         //Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        return view;
+        return fragmentPhoneRegisterBinding.getRoot();
     }
 
     @Override
@@ -63,8 +68,8 @@ public class RegisterPhoneFragment extends Fragment
         final NavController navController = Navigation.findNavController(view);
 
         //OnClick
-        login.setOnClickListener(view1 -> goToLogin(navController));
-        register.setOnClickListener(view1 -> goToCodeRegister(navController));
+/*        login.setOnClickListener(view1 -> goToLogin(navController));
+        register.setOnClickListener(view1 -> goToCodeRegister(navController));*/
         toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
     }
 

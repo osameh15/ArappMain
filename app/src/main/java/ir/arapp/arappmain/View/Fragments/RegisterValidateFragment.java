@@ -30,7 +30,6 @@ public class RegisterValidateFragment extends Fragment
 
     //region Variables
     MaterialToolbar toolbar;
-    TextView tryAgain;
     TextView changeNumber;
     PinView pinView;
     TextView timer;
@@ -52,7 +51,6 @@ public class RegisterValidateFragment extends Fragment
 
         //Hooks
         toolbar = view.findViewById(R.id.registerToolbar);
-        tryAgain = view.findViewById(R.id.sendValidationCode);
         changeNumber = view.findViewById(R.id.changePhoneNumber);
         pinView = view.findViewById(R.id.otpRegister);
         timer = view.findViewById(R.id.timerValidationCode);

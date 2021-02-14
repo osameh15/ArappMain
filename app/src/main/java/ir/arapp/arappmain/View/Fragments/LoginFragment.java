@@ -12,21 +12,22 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.marozzi.roundbutton.RoundButton;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.NavigateFragment;
+import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.View.Activities.HomeActivity;
-import ir.arapp.arappmain.View.Activities.SplashScreenActivity;
 import ir.arapp.arappmain.viewmodel.LoginViewModel;
 import ir.arapp.arappmain.databinding.FragmentLoginBinding;
 
-public class LoginFragment extends Fragment
+public class LoginFragment extends Fragment implements SnackBarMessage, NavigateFragment
 {
 
     //region Variable
-    TextView signUp;
-    TextView forgetPass;
-    RoundButton login;
-    //LoginViewModel loginViewModel;
+    LoginViewModel loginViewModel;
     //endregion
 
     @Override
@@ -36,34 +37,18 @@ public class LoginFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        //FragmentLoginBinding fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
-/*        loginViewModel = new LoginViewModel();
-        fragmentLoginBinding.setViewModel(loginViewModel);*/
+        FragmentLoginBinding fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
+        //set view model
+        loginViewModel = new LoginViewModel();
+        fragmentLoginBinding.setViewModel(loginViewModel);
+        loginViewModel.snackBarMessage = this;
+        loginViewModel.navigateFragment = this;
 
-        //Hooks
-        signUp = view.findViewById(R.id.LoginSignUp);
-        forgetPass = view.findViewById(R.id.forgetPasswordLogin);
-        login = view.findViewById(R.id.login);
-
-        return view;
-        //return fragmentLoginBinding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-
-        final NavController navController = Navigation.findNavController(view);
-
-        //OnClick
-        signUp.setOnClickListener(view1 -> goToRegister(navController));
-        forgetPass.setOnClickListener(view1 -> goToForgetPass(navController));
-        login.setOnClickListener(view1 -> goToHomeActivity(navController));
+        //return view;
+        return fragmentLoginBinding.getRoot();
     }
 
     @Override
@@ -74,27 +59,45 @@ public class LoginFragment extends Fragment
     }
 
     //region fragment navigation
-    private void goToRegister(NavController navController)
+    @Override
+    public void navigateToFragment(String fragment)
     {
-        navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
-    private void goToForgetPass(NavController navController)
-    {
-        navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
-    private void goToHomeActivity(NavController navController)
-    {
-        Intent homeActivity = new Intent(getActivity(), HomeActivity.class);
-        startActivity(homeActivity);
-        requireActivity().finish();
+        final NavController navController = Navigation.findNavController(getView());
+        if (fragment.equals("signUp"))
+        {
+            navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
+            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        if(fragment.equals("forgetPass"))
+        {
+            navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
+            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        if (fragment.equals("home"))
+        {
+            Intent homeActivity = new Intent(getActivity(), HomeActivity.class);
+            startActivity(homeActivity);
+            requireActivity().finish();
+        }
     }
     //endregion
 
-    //SnackBar
-/*    Snackbar snackbar = Snackbar.make(view, "سلام بر همه!", BaseTransientBottomBar.LENGTH_LONG);
-        snackbar.setDuration(6000);
-        snackbar.setAction("باشه!!", view1 -> {snackbar.dismiss();});
-        snackbar.show();*/
+    //region error/success message
+    @Override
+    public void onSuccess()
+    {
+        snackBar("با موفقیت وارد شدید");
+    }
+    @Override
+    public void onFailure(String message)
+    {
+        snackBar(message);
+    }
+    private void snackBar(String message)
+    {
+        Snackbar snackbar = Snackbar.make(requireView(), message, BaseTransientBottomBar.LENGTH_LONG);
+        snackbar.setDuration(2300);
+        snackbar.show();
+    }
+    //endregion
 }

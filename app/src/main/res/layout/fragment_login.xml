@@ -55,6 +55,7 @@
                 android:inputType="phone"
                 android:imeOptions="actionNext"
                 android:textSize="14sp"
+                android:text="@={viewModel.phone}"
                 android:textColor="@color/colorAccentDark"
                 android:fontFamily="@font/iransans"
                 android:maxLength="11"/>
@@ -67,7 +68,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layoutDirection="rtl"
-                android:gravity="center_vertical|end"
+                android:gravity="center_vertical"
                 android:hint="@string/password"
                 app:passwordToggleEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
@@ -75,8 +76,9 @@
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
                     android:imeOptions="actionDone"
+                    android:textAlignment="viewStart"
                     android:textSize="14sp"
-                    android:textAlignment="viewEnd"
+                    android:text="@={viewModel.password}"
                     android:textColor="@color/colorAccentDark"
                     android:fontFamily="@font/iransans"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -104,7 +106,8 @@
                     android:text="@string/forget_pass"
                     android:textSize="14sp"
                     android:fontFamily="@font/iransans_bold"
-                    android:textColor="@color/colorAccent"/>
+                    android:textColor="@color/colorAccent"
+                    android:onClick="@{()->viewModel.forgetPassButton()}"/>
             </LinearLayout>
             <com.marozzi.roundbutton.RoundButton
                 android:id="@+id/login"
@@ -116,7 +119,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="@string/login"/>
+                android:text="@string/login"
+                android:onClick="@{()->viewModel.onButtonClick()}"/>
         </LinearLayout>
 
         <!-- Sign up panel -->
@@ -143,7 +147,8 @@
                 android:text="@string/sign_up"
                 android:textSize="14sp"
                 android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent"
+                android:onClick="@{()->viewModel.signUpButton()}"/>
         </LinearLayout>
 
     </RelativeLayout>

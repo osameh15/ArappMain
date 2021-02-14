@@ -26,7 +26,6 @@ public class ForgetPassValidateFragment extends Fragment
 
     //region Variables
     MaterialToolbar toolbar;
-    TextView tryAgain;
     TextView changeNumber;
     PinView pinView;
     TextView timer;
@@ -49,7 +48,6 @@ public class ForgetPassValidateFragment extends Fragment
         //Hooks
         toolbar = view.findViewById(R.id.forgetPassToolbar);
         timer = view.findViewById(R.id.timerValidationCode);
-        tryAgain = view.findViewById(R.id.sendValidationCode);
         pinView = view.findViewById(R.id.otpForgetPass);
         forgetPass = view.findViewById(R.id.forgetPassButton);
         changeNumber = view.findViewById(R.id.changePhoneNumber);
