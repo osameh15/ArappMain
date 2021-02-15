@@ -4,36 +4,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.chaos.view.PinView;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.marozzi.roundbutton.RoundButton;
-
 import java.util.Objects;
-
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.NavigateFragment;
+import ir.arapp.arappmain.Util.Services.SnackBarMessage;
+import ir.arapp.arappmain.databinding.FragmentValidateRegisterBinding;
+import ir.arapp.arappmain.viewmodel.RegisterValidateViewModel;
 
-public class RegisterValidateFragment extends Fragment
+public class RegisterValidateFragment extends Fragment implements SnackBarMessage, NavigateFragment
 {
 
     //region Variables
-    MaterialToolbar toolbar;
-    TextView changeNumber;
-    PinView pinView;
-    TextView timer;
-    RoundButton register;
+    RegisterValidateViewModel registerValidateViewModel;
     //endregion
 
     @Override
@@ -44,55 +39,54 @@ public class RegisterValidateFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_validate_register, container, false);
-
-        //Hooks
-        toolbar = view.findViewById(R.id.registerToolbar);
-        changeNumber = view.findViewById(R.id.changePhoneNumber);
-        pinView = view.findViewById(R.id.otpRegister);
-        timer = view.findViewById(R.id.timerValidationCode);
-        register = view.findViewById(R.id.phoneRegisterButton);
-
+        FragmentValidateRegisterBinding fragmentValidateRegisterBinding = FragmentValidateRegisterBinding.inflate(inflater, container, false);
+        //set view model
+        registerValidateViewModel = ViewModelProviders.of(requireActivity()).get(RegisterValidateViewModel.class);
+        fragmentValidateRegisterBinding.setViewModel(registerValidateViewModel);
+        registerValidateViewModel.navigateFragment = this;
+        registerValidateViewModel.snackBarMessage = this;
         //Toolbar
-        ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(fragmentValidateRegisterBinding.registerToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        return view;
+        fragmentValidateRegisterBinding.registerToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
+        //return view
+        return fragmentValidateRegisterBinding.getRoot();
     }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-
-        final NavController navController = Navigation.findNavController(view);
-
-        //OnClick
-        changeNumber.setOnClickListener(view1 -> goToPhoneRegister(navController));
-        register.setOnClickListener(view1 -> goToRegister(navController));
-        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-    }
-
     //Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
-        /*NavOptions navOptions = new NavOptions.Builder().setPopUpTo(R.id.regLogFragment, true).build();
-        navController.navigate(R.id.action_regLogFragment_to_loginFragment, null, navOptions);*/
     }
-
     //region fragment navigation
-    private void goToPhoneRegister(NavController navController)
+    @Override
+    public void navigateToFragment(String message)
     {
-        navController.navigate(R.id.action_registerValidateFragment_to_registerPhoneFragment);
-    }
+        //Nav Controller
+        final NavController navController = Navigation.findNavController(getView());
 
-    private void goToRegister(NavController navController)
+        if (message.equals("phoneRegister"))
+        {
+            navController.navigate(R.id.action_registerValidateFragment_to_registerPhoneFragment);
+        }
+        if (message.equals("register"))
+        {
+            navController.navigate(R.id.action_registerValidateFragment_to_registerFragment);
+        }
+    }
+    //endregion
+    //region error/success message
+    @Override
+    public void onSuccess()
     {
-        navController.navigate(R.id.action_registerValidateFragment_to_registerFragment);
+
+    }
+    @Override
+    public void onFailure(String message)
+    {
+
     }
     //endregion
 }

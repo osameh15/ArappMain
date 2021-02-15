@@ -75,6 +75,7 @@ dependencies
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
     // Annotation processor

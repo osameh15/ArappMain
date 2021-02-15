@@ -5,6 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegisterValidateFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="ir.arapp.arappmain.viewmodel.RegisterValidateViewModel"/>
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,15 +65,13 @@
                 android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccent"/>
             <TextView
-                android:id="@+id/timerValidationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/timer_count"
+                android:text="@={viewModel.timer}"
                 android:textSize="16sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>
             <com.chaos.view.PinView
-                android:id="@+id/otpRegister"
                 style="@style/ValidationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -76,9 +80,9 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 app:viewType="rectangle"
+                android:text="@={viewModel.validate}"
                 android:inputType="number"/>
             <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/phoneRegisterButton"
                 style="@style/ButtonDisableLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -88,16 +92,17 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:enabled="true"
-                android:text="@string/submit_continue"/>
+                android:text="@string/submit_continue"
+                android:onClick="@{()->viewModel.validateCodeNumber()}"/>
             <TextView
-                android:id="@+id/changePhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/edit_phone_number"
                 android:textSize="14sp"
                 android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent"
+                android:onClick="@{()->viewModel.editPhoneNumber()}"/>
         </LinearLayout>
 
     </RelativeLayout>

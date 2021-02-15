@@ -3,20 +3,17 @@ package ir.arapp.arappmain.View.Fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.TextView;
+
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.marozzi.roundbutton.RoundButton;
 
 import java.util.Objects;
 
@@ -25,15 +22,14 @@ import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentPhoneRegisterBinding;
-import ir.arapp.arappmain.viewmodel.PhoneRegisterViewModel;
+import ir.arapp.arappmain.viewmodel.RegisterPhoneViewModel;
 
 public class RegisterPhoneFragment extends Fragment implements NavigateFragment, SnackBarMessage
 {
 
     //region Variable
     private SnackBarToast snackBarToast;
-    PhoneRegisterViewModel phoneRegisterViewModel;
-    MaterialToolbar toolbar;
+    RegisterPhoneViewModel registerPhoneViewModel;
     //endregion
 
     @Override
@@ -49,18 +45,17 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
         // Inflate the layout for this fragment
         FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
         //set view model
-        phoneRegisterViewModel = new PhoneRegisterViewModel();
-        fragmentPhoneRegisterBinding.setViewModel(phoneRegisterViewModel);
-        phoneRegisterViewModel.navigateFragment = this;
-        phoneRegisterViewModel.snackBarMessage = this;
+        registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterPhoneViewModel.class);
+        fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
+        registerPhoneViewModel.navigateFragment = this;
+        registerPhoneViewModel.snackBarMessage = this;
         //Hooks
-        toolbar = fragmentPhoneRegisterBinding.getRoot().findViewById(R.id.registerToolbar);
         snackBarToast = new SnackBarToast(fragmentPhoneRegisterBinding.getRoot());
         //Toolbar
-        ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentPhoneRegisterBinding.registerToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         //OnClick
-        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
+        fragmentPhoneRegisterBinding.registerToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
         //return view
         return fragmentPhoneRegisterBinding.getRoot();
     }

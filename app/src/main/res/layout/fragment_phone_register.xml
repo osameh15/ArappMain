@@ -9,7 +9,7 @@
     <data>
         <variable
             name="viewModel"
-            type="ir.arapp.arappmain.viewmodel.PhoneRegisterViewModel"/>
+            type="ir.arapp.arappmain.viewmodel.RegisterPhoneViewModel"/>
     </data>
 
     <RelativeLayout
@@ -82,7 +82,6 @@
                     android:maxLength="11"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/phoneRegisterButton"
                 style="@style/ButtonLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -112,7 +111,6 @@
                 android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccentDark"/>
             <TextView
-                android:id="@+id/SignUpLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

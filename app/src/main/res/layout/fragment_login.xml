@@ -99,7 +99,6 @@
                     android:fontFamily="@font/iransans_bold"
                     android:textColor="@color/colorAccentDark"/>
                 <TextView
-                    android:id="@+id/forgetPasswordLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -110,7 +109,6 @@
                     android:onClick="@{()->viewModel.forgetPassButton()}"/>
             </LinearLayout>
             <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/login"
                 style="@style/ButtonLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -140,7 +138,6 @@
                 android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccentDark"/>
             <TextView
-                android:id="@+id/LoginSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

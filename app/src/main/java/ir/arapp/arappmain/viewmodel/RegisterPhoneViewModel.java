@@ -1,9 +1,11 @@
 package ir.arapp.arappmain.viewmodel;
 
+import androidx.lifecycle.ViewModel;
+
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 
-public class PhoneRegisterViewModel
+public class RegisterPhoneViewModel extends ViewModel
 {
     //region Variable
     public String phone = "";

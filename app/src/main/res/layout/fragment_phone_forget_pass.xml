@@ -5,6 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.ForgetPassPhoneFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="ir.arapp.arappmain.viewmodel.ForgetPassPhoneViewModel"/>
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,12 +73,12 @@
                     android:inputType="phone"
                     android:imeOptions="actionDone"
                     android:textSize="14sp"
+                    android:text="@={viewModel.phone}"
                     android:textColor="@color/colorAccentDark"
                     android:fontFamily="@font/iransans"
                     android:maxLength="11"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/phoneForgetPassButton"
                 style="@style/ButtonLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -81,7 +87,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="@string/submit_continue"/>
+                android:text="@string/submit_continue"
+                android:onClick="@{()->viewModel.onButtonClick()}"/>
         </LinearLayout>
 
     </RelativeLayout>

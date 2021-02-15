@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -44,7 +45,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         // Inflate the layout for this fragment
         FragmentLoginBinding fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
         //set view model
-        loginViewModel = new LoginViewModel();
+        loginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
         fragmentLoginBinding.setViewModel(loginViewModel);
         loginViewModel.snackBarMessage = this;
         loginViewModel.navigateFragment = this;
