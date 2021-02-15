@@ -13,6 +13,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
@@ -24,7 +25,8 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
 
     //region Variable
     ForgetPassPhoneViewModel forgetPassPhoneViewModel;
-    SnackBarToast snackBarToast;
+    private HideShowKeyboard hideShowKeyboard;
+    private SnackBarToast snackBarToast;
     //endregion
 
     @Override
@@ -46,6 +48,7 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
         forgetPassPhoneViewModel.snackBarMessage = this;
         //Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneForgetPassBinding.getRoot());
+        hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentPhoneForgetPassBinding.getRoot());
         //Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentPhoneForgetPassBinding.forgetPassToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -76,12 +79,13 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
         if (message.equals("validate"))
         {
             navController.navigate(R.id.action_forgetPassPhoneFragment_to_forgetPassValidateFragment);
+            hideShowKeyboard.hideKeyboardFrom(true);
         }
     }
     //endregion
     //region error/success message
     @Override
-    public void onSuccess()
+    public void onSuccess(String message)
     {
     }
     @Override

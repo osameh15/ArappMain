@@ -4,19 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.chaos.view.PinView;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.marozzi.roundbutton.RoundButton;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
@@ -79,7 +74,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     //endregion
     //region error/success message
     @Override
-    public void onSuccess()
+    public void onSuccess(String message)
     {
 
     }

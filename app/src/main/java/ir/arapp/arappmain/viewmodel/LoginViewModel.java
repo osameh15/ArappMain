@@ -1,11 +1,15 @@
 package ir.arapp.arappmain.viewmodel;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 import ir.arapp.arappmain.Model.User;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 
-public class LoginViewModel extends ViewModel
+public class LoginViewModel extends AndroidViewModel
 {
     //region Variable
     private User user;
@@ -13,7 +17,14 @@ public class LoginViewModel extends ViewModel
     public String password = "";
     public SnackBarMessage snackBarMessage = null;
     public NavigateFragment navigateFragment = null;
+
     //endregion
+
+    public LoginViewModel(@NonNull Application application)
+    {
+        super(application);
+    }
+
     //region Methods
     //Sign Up button
     public void signUpButton()

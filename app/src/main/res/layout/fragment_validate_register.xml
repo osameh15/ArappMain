@@ -79,10 +79,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                app:viewType="rectangle"
-                android:text="@={viewModel.validate}"
-                android:inputType="number"/>
+                android:text="@={viewModel.validate}"/>
             <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/validateButton"
                 style="@style/ButtonDisableLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -91,8 +90,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:enabled="true"
-                android:text="@string/submit_continue"
+                android:enabled="false"
+                android:text="@={viewModel.buttonText}"
                 android:onClick="@{()->viewModel.validateCodeNumber()}"/>
             <TextView
                 android:layout_width="wrap_content"

@@ -1,17 +1,28 @@
 package ir.arapp.arappmain.viewmodel;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 
-public class RegisterPhoneViewModel extends ViewModel
+public class RegisterPhoneViewModel extends AndroidViewModel
 {
     //region Variable
     public String phone = "";
     public SnackBarMessage snackBarMessage = null;
     public NavigateFragment navigateFragment = null;
     //endregion
+
+    //constructor
+    public RegisterPhoneViewModel(@NonNull Application application)
+    {
+        super(application);
+    }
+
     //region methods
     //Submit phone Button
     public void onButtonClick()

@@ -1,5 +1,7 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,12 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-
-import com.google.android.material.appbar.MaterialToolbar;
+import android.view.inputmethod.InputMethodManager;
 
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
@@ -29,6 +31,7 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
 
     //region Variable
     private SnackBarToast snackBarToast;
+    private HideShowKeyboard hideKeyboardFrom;
     RegisterPhoneViewModel registerPhoneViewModel;
     //endregion
 
@@ -51,6 +54,7 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
         registerPhoneViewModel.snackBarMessage = this;
         //Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneRegisterBinding.getRoot());
+        hideKeyboardFrom = new HideShowKeyboard(getContext(), fragmentPhoneRegisterBinding.getRoot());
         //Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentPhoneRegisterBinding.registerToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -82,16 +86,18 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
         {
             navController.navigate(R.id.action_registerPhoneFragment_to_loginFragment);
             requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            hideKeyboardFrom.hideKeyboardFrom(true);
         }
         if (message.equals("validate"))
         {
             navController.navigate(R.id.action_registerPhoneFragment_to_registerValidateFragment);
+            hideKeyboardFrom.hideKeyboardFrom(true);
         }
     }
     //endregion
     //region error/success message
     @Override
-    public void onSuccess()
+    public void onSuccess(String message)
     {
     }
     @Override

@@ -133,6 +133,8 @@
         <item name="itemSpacing">8dp</item>
         <item name="itemCount">6</item>
         <item name="itemRadius">6dp</item>
+        <item name="viewType">rectangle</item>
+        <item name="android:inputType">number</item>
         <item name="android:textSize">14sp</item>
         <item name="lineColor">@drawable/pin_view</item>
         <item name="hideLineWhenFilled">false</item>

@@ -6,18 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.marozzi.roundbutton.RoundButton;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
@@ -31,6 +28,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
     //region Variable
     LoginViewModel loginViewModel;
     private SnackBarToast snackBarToast;
+    private HideShowKeyboard hideShowKeyboard;
     //endregion
 
     @Override
@@ -51,6 +49,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         loginViewModel.navigateFragment = this;
         //Hooks
         snackBarToast = new SnackBarToast(fragmentLoginBinding.getRoot());
+        hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentLoginBinding.getRoot());
         //return view
         return fragmentLoginBinding.getRoot();
     }
@@ -73,24 +72,27 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
             navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
             requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                     |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            hideShowKeyboard.hideKeyboardFrom(true);
         }
         if(fragment.equals("forgetPass"))
         {
             navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
             requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                     |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            hideShowKeyboard.hideKeyboardFrom(true);
         }
         if (fragment.equals("home"))
         {
             Intent homeActivity = new Intent(getActivity(), HomeActivity.class);
             startActivity(homeActivity);
+            hideShowKeyboard.hideKeyboardFrom(true);
             requireActivity().finish();
         }
     }
     //endregion
     //region error/success message
     @Override
-    public void onSuccess()
+    public void onSuccess(String message)
     {
     }
     @Override
