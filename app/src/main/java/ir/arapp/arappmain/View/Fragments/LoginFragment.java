@@ -26,6 +26,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
 {
 
     //region Variable
+    FragmentLoginBinding fragmentLoginBinding;
     LoginViewModel loginViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
@@ -41,7 +42,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        FragmentLoginBinding fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
+        fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
         //set view model
         loginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
         fragmentLoginBinding.setViewModel(loginViewModel);

@@ -30,6 +30,7 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
 {
 
     //region Variable
+    FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideKeyboardFrom;
     RegisterPhoneViewModel registerPhoneViewModel;
@@ -46,7 +47,7 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
+        fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
         //set view model
         registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterPhoneViewModel.class);
         fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
