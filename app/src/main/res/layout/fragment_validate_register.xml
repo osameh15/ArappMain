@@ -6,6 +6,7 @@
     tools:context=".View.Fragments.RegisterValidateFragment">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="ir.arapp.arappmain.viewmodel.RegisterValidateViewModel"/>
@@ -66,12 +67,11 @@
                 android:textColor="@color/colorAccent"/>
 
             <TextView
+                android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/iransans_bold"
-                android:text="@={viewModel.timer}"
-                android:textColor="@{viewModel.timerColor}"
-                android:textSize="16sp" />
+                android:textColor="@color/colorAccentDark"
+                android:textSize="16sp"/>
             <com.chaos.view.PinView
                 android:id="@+id/pinView"
                 style="@style/ValidationCode"
@@ -92,8 +92,22 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="@={viewModel.buttonText}"
+                android:text="@string/submit_continue"
+                android:visibility="@{viewModel.flag ? View.GONE : View.VISIBLE}"
                 android:onClick="@{()->viewModel.validateCodeNumber()}"/>
+            <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/tryAgainButton"
+                style="@style/ButtonLoadingPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/verification_code_retry"
+                android:visibility="@{viewModel.flag ? View.VISIBLE : View.GONE}"
+                android:onClick="@{()->viewModel.resendCode()}"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import ir.arapp.arappmain.R;
@@ -17,21 +18,35 @@ public class RegisterValidateViewModel extends AndroidViewModel
 {
     //region Variable
     public String validate = "";
-    public String timer = "01:59";
-    public int timerColor = getApplication().getResources().getColor(R.color.colorAccentDark);
-    public String buttonText = getApplication().getResources().getString(R.string.submit_continue);
-    public SnackBarMessage snackBarMessage = null;
-    public NavigateFragment navigateFragment = null;
-    public CheckPinView checkPinView = null;
+    public MutableLiveData<Boolean> flag;
+    public MutableLiveData<Long> currentTime;
     private CountDownTimer countDownTimer;
+    public SnackBarMessage snackBarMessage;
+    public NavigateFragment navigateFragment;
+    public CheckPinView checkPinView;
     //endregion
-
+    //Constructor
     public RegisterValidateViewModel(@NonNull Application application)
     {
         super(application);
+        //Hooks
+        currentTime = new MutableLiveData<>();
+        flag = new MutableLiveData<>();
+        flag.setValue(false);
+        snackBarMessage = null;
+        navigateFragment = null;
+        checkPinView = null;
+        startCountDownTimer();
     }
 
     //region Methods
+    //On Cleared
+    @Override
+    public void onCleared()
+    {
+        super.onCleared();
+        countDownTimer.cancel();
+    }
     //validate code
     public void validateCodeNumber()
     {
@@ -43,20 +58,47 @@ public class RegisterValidateViewModel extends AndroidViewModel
         {
             if (validate.length() == 0)
             {
-                checkPinView.checkPin();
+                checkPinView.checkPin("error");
                 snackBarMessage.onFailure("ابتدا کد ارسال شده را وارد نمایید");
             }
             else
             {
-                checkPinView.checkPin();
+                checkPinView.checkPin("error");
                 snackBarMessage.onFailure("کد وارد شده صحیح نیست");
             }
         }
+    }
+    //resend Code
+    public void resendCode()
+    {
+        flag.setValue(false);
+        validate = "";
+        checkPinView.checkPin("resend");
+        startCountDownTimer();
     }
     //edit phone number
     public void editPhoneNumber()
     {
         navigateFragment.navigateToFragment("phoneRegister");
+    }
+    //Countdown timer
+    public void startCountDownTimer()
+    {
+        countDownTimer = new CountDownTimer(20000, 1000)
+        {
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+                currentTime.setValue(millisUntilFinished/1000);
+            }
+            @Override
+            public void onFinish()
+            {
+                currentTime.setValue(0L);
+                flag.setValue(true);
+            }
+        };
+        countDownTimer.start();
     }
     //endregion
 }

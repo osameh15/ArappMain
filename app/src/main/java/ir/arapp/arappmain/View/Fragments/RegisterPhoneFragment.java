@@ -75,6 +75,7 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
+        hideKeyboardFrom.hideKeyboardFrom(true);
     }
     //region fragment navigation
     @Override

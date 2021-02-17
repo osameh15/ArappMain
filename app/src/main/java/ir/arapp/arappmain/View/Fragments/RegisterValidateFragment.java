@@ -1,15 +1,26 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -17,8 +28,11 @@ import androidx.navigation.Navigation;
 import com.chaos.view.PinView;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.CheckPinView;
+import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
@@ -32,6 +46,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     FragmentValidateRegisterBinding fragmentValidateRegisterBinding;
     RegisterValidateViewModel registerValidateViewModel;
     private SnackBarToast snackBarToast;
+    private HideShowKeyboard hideShowKeyboard;
     //endregion
 
     @Override
@@ -41,6 +56,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
         setHasOptionsMenu(true);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -52,28 +68,87 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
         registerValidateViewModel.navigateFragment = this;
         registerValidateViewModel.snackBarMessage = this;
         registerValidateViewModel.checkPinView = this;
+        //Life cycle owner
+        fragmentValidateRegisterBinding.setLifecycleOwner(this);
         //Hooks
         snackBarToast = new SnackBarToast(fragmentValidateRegisterBinding.getRoot());
+        hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentValidateRegisterBinding.getRoot());
         //Toolbar
         ((AppCompatActivity) requireActivity()).setSupportActionBar(fragmentValidateRegisterBinding.registerToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         fragmentValidateRegisterBinding.registerToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
         //pin view animation
         fragmentValidateRegisterBinding.pinView.setAnimationEnable(true);
-        fragmentValidateRegisterBinding.pinView.setTransformationMethod(new PasswordTransformationMethod());
+        pinViewTryAgainLineColor();
+        //timer
+        registerValidateViewModel.currentTime.observe(fragmentValidateRegisterBinding.getLifecycleOwner(), this::setTimer);
         //return view
         return fragmentValidateRegisterBinding.getRoot();
     }
+
     //Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
+        hideShowKeyboard.hideKeyboardFrom(true);
+    }
+    //set timer text and color
+    @SuppressLint("SetTextI18n")
+    private void setTimer(Long s)
+    {
+        long min = s/60;
+        long sec = s%60;
+        if (s < 10)
+        {
+            fragmentValidateRegisterBinding.timer.setText("0" + min + ":" + "0" + sec);
+            fragmentValidateRegisterBinding.timer.setTextColor(getResources().getColor(R.color.notificationColorRed));
+        }
+        else if (s == 0)
+        {
+            fragmentValidateRegisterBinding.timer.setText("00:00");
+        }
+        else
+        {
+            fragmentValidateRegisterBinding.timer.setText("0" + min + ":" + sec);
+        }
     }
     //check pin code error
     @Override
-    public void checkPin()
+    public void checkPin(String type)
     {
-        fragmentValidateRegisterBinding.pinView.setLineColor(ResourcesCompat.getColor(getResources(), R.color.notificationColorRed, requireActivity().getTheme()));
+        if (type.equals("error"))
+        {
+            fragmentValidateRegisterBinding.pinView.setLineColor(
+                    ResourcesCompat.getColor(getResources(), R.color.notificationColorRed, requireActivity().getTheme()));
+        }
+        if (type.equals("resend"))
+        {
+            fragmentValidateRegisterBinding.timer.setTextColor(getResources().getColor(R.color.colorAccentDark));
+            fragmentValidateRegisterBinding.pinView.setText("");
+            fragmentValidateRegisterBinding.pinView.setLineColor(
+                    ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, requireActivity().getTheme()));
+        }
+    }
+    //Pin View change Line Color
+    private void pinViewTryAgainLineColor()
+    {
+        fragmentValidateRegisterBinding.pinView.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+                fragmentValidateRegisterBinding.pinView.setLineColor(
+                        ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, requireActivity().getTheme()));
+            }
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+            }
+        });
     }
     //region fragment navigation
     @Override
@@ -85,6 +160,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
         if (message.equals("phoneRegister"))
         {
             navController.navigate(R.id.action_registerValidateFragment_to_registerPhoneFragment);
+            getActivity().getViewModelStore().clear();
         }
         if (message.equals("register"))
         {

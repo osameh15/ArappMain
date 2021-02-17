@@ -91,6 +91,29 @@
         <item name="rb_text_color">@color/lightBack</item>
         <item name="rb_text_color_pressed">@color/disable</item>
     </style>
+    <style name="ButtonLoadingPrimary">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/iransans_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0.02</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="rb_animation_alpha">true</item>
+        <item name="rb_animation_progress_color">@color/colorPrimaryDark</item>
+        <item name="rb_animation_progress_padding">8dp</item>
+        <item name="rb_animation_progress_width">3dp</item>
+        <item name="rb_animation_progress_style">circle</item>
+        <item name="rb_animation_corner_radius">8dp</item>
+        <item name="rb_animation_duration">500</item>
+        <item name="rb_background_color">@color/colorPrimary</item>
+        <item name="rb_background_color_pressed">@color/colorPrimaryDark</item>
+        <item name="rb_corner_color">@color/colorPrimaryDark</item>
+        <item name="rb_corner_color_pressed">@color/colorPrimary</item>
+        <item name="rb_corner_radius">8dp</item>
+        <item name="rb_corner_width">0dp</item>
+        <item name="rb_text_color">@color/lightBack</item>
+        <item name="rb_text_color_pressed">@color/disable</item>
+    </style>
     <style name="ButtonDisableLoading">
         <item name="android:textSize">15sp</item>
         <item name="android:fontFamily">@font/iransans_bold</item>
@@ -136,7 +159,7 @@
         <item name="viewType">rectangle</item>
         <item name="android:inputType">number</item>
         <item name="android:textSize">14sp</item>
-        <item name="lineColor">@drawable/pin_view</item>
+        <item name="lineColor">@color/colorPrimaryDark</item>
         <item name="hideLineWhenFilled">false</item>
         <item name="lineWidth">2dp</item>
         <item name="android:cursorVisible">false</item>
