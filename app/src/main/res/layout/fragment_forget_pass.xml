@@ -14,7 +14,7 @@
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
 
-        <!-- Toolbar -->
+<!--         Toolbar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/forgetPassToolbar"
             android:layout_width="match_parent"
@@ -34,8 +34,7 @@
                     android:fontFamily="@font/iransans"/>
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
-
-        <!--Submit New Password panel -->
+<!--        Submit New Password panel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

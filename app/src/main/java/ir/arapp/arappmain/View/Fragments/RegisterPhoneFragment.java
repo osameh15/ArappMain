@@ -1,7 +1,5 @@
 package ir.arapp.arappmain.View.Fragments;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 
 import java.util.Objects;
 
@@ -29,12 +26,12 @@ import ir.arapp.arappmain.viewmodel.RegisterPhoneViewModel;
 public class RegisterPhoneFragment extends Fragment implements NavigateFragment, SnackBarMessage
 {
 
-    //region Variable
+//    region Variable
     FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideKeyboardFrom;
     RegisterPhoneViewModel registerPhoneViewModel;
-    //endregion
+//    endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -46,42 +43,44 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
         fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
-        //set view model
+//        set view model
         registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterPhoneViewModel.class);
         fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
         registerPhoneViewModel.navigateFragment = this;
         registerPhoneViewModel.snackBarMessage = this;
-        //Hooks
+//        Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneRegisterBinding.getRoot());
         hideKeyboardFrom = new HideShowKeyboard(getContext(), fragmentPhoneRegisterBinding.getRoot());
-        //Toolbar
+//        Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentPhoneRegisterBinding.registerToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        //OnClick
+//        OnClick
         fragmentPhoneRegisterBinding.registerToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-        //return view
+//        return view
         return fragmentPhoneRegisterBinding.getRoot();
     }
-    //On resume
+
+//    region methods
+//    On resume
     public void onResume()
     {
         super.onResume();
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                 |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-    //Back button navigation
+//    Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
         hideKeyboardFrom.hideKeyboardFrom(true);
     }
-    //region fragment navigation
+//    fragment navigation
     @Override
     public void navigateToFragment(String message)
     {
-        //Nav Controller
+//        Nav Controller
         final NavController navController = Navigation.findNavController(getView());
 
         if (message.equals("login"))
@@ -96,8 +95,7 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
             hideKeyboardFrom.hideKeyboardFrom(true);
         }
     }
-    //endregion
-    //region error/success message
+//    error/success message
     @Override
     public void onSuccess(String message)
     {
@@ -107,5 +105,5 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
     {
         snackBarToast.snackBarShortTime(message);
     }
-    //endregion
+//    endregion
 }

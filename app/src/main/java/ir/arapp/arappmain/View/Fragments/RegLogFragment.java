@@ -26,18 +26,18 @@ import com.marozzi.roundbutton.RoundButton;
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.databinding.FragmentRegLogBinding;
 
 public class RegLogFragment extends Fragment
 {
 
-    //region Variables
+//    region Variables
+    private FragmentRegLogBinding fragmentRegLogBinding;
     private static final int PERMISSION_CODE = 1001;
-    //permission not generated
+//    permission not generated
     String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION};
     int[] grantResult = {1, 2};
-    RoundButton register;
-    TextView login;
-    //endregion
+//    endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -47,58 +47,52 @@ public class RegLogFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_reg_log, container, false);
-
-        //Hooks
-        register = view.findViewById(R.id.signUpRegLog);
-        login = view.findViewById(R.id.loginRegLog);
-
-        //Check permission
+//         Inflate the layout for this fragment
+        fragmentRegLogBinding = FragmentRegLogBinding.inflate(inflater, container, false);
+//        Check permission
         checkPermission();
-
-        return view;
+//        return view
+        return fragmentRegLogBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-
+//        Nav Controller
         final NavController navController = Navigation.findNavController(view);
-
-        //OnClick
-        register.setOnClickListener(view1 -> goToRegisterFragment(navController));
-        login.setOnClickListener(view1 -> goToLoginFragment(navController));
+//        OnClick
+        fragmentRegLogBinding.signUpRegLog.setOnClickListener(view1 -> goToRegisterFragment(navController));
+        fragmentRegLogBinding.loginRegLog.setOnClickListener(view1 -> goToLoginFragment(navController));
     }
 
+//    region methods
+//    on Resume
     @Override
     public void onResume()
     {
         super.onResume();
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-
-    //Check permission
+//    Check permission
     private void checkPermission()
     {
-        //check runtime permission
+//        check runtime permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
                 || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==PackageManager.PERMISSION_DENIED)
             {
-                //show popup for runtime permission
+//                show popup for runtime permission
                 requestPermissions(permissions, PERMISSION_CODE);
             }
         }
-        //handle result of runtime permission
+//        handle result of runtime permission
         onRequestPermissionsResult(PERMISSION_CODE, permissions, grantResult);
     }
-
-    //region fragment navigation
+//   fragment navigation
     private void goToLoginFragment(NavController navController)
     {
         navController.navigate(R.id.action_regLogFragment_to_loginFragment);
@@ -108,6 +102,5 @@ public class RegLogFragment extends Fragment
         navController.navigate(R.id.action_regLogFragment_to_registerPhoneFragment);
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS | WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-    //endregion
-
+//    endregion
 }

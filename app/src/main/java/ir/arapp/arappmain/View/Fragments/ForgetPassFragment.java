@@ -19,9 +19,9 @@ import ir.arapp.arappmain.R;
 public class ForgetPassFragment extends Fragment
 {
 
-    //region Variable
+//    region Variable
     MaterialToolbar toolbar;
-    //endregion
+//    endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -33,16 +33,14 @@ public class ForgetPassFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_forget_pass, container, false);
-
-        //Hooks
+//        Hooks
         toolbar = view.findViewById(R.id.forgetPassToolbar);
-
-        //Toolbar
+//        Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+//        return view
         return view;
     }
 
@@ -55,9 +53,13 @@ public class ForgetPassFragment extends Fragment
         toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
     }
 
-    //Back button navigation
+//    region methods
+//    Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
     }
+//    fragment navigation
+//    error/success message
+//    endregion
 }

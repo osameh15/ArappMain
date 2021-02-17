@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegisterValidateFragment">
 
+<!--    view model-->
     <data>
         <import type="android.view.View"/>
         <variable
@@ -20,7 +21,7 @@
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
 
-        <!-- Toolbar -->
+<!--         Toolbar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/registerToolbar"
             android:layout_width="match_parent"
@@ -40,8 +41,7 @@
                     android:fontFamily="@font/iransans"/>
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
-
-        <!-- Verification Code panel -->
+<!--         Verification Code panel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,6 +82,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:text="@={viewModel.validate}"/>
+<!--            go to register-->
             <com.marozzi.roundbutton.RoundButton
                 android:id="@+id/validateButton"
                 style="@style/ButtonLoading"
@@ -95,6 +96,7 @@
                 android:text="@string/submit_continue"
                 android:visibility="@{viewModel.flag ? View.GONE : View.VISIBLE}"
                 android:onClick="@{()->viewModel.validateCodeNumber()}"/>
+<!--            resend code button-->
             <com.marozzi.roundbutton.RoundButton
                 android:id="@+id/tryAgainButton"
                 style="@style/ButtonLoadingPrimary"

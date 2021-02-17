@@ -9,8 +9,8 @@ import ir.arapp.arappmain.R;
 public class HomeActivity extends AppCompatActivity
 {
 
-    //region Variables
-    //endregion
+//    region Variables
+//    endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

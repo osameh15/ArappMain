@@ -25,36 +25,32 @@ import ir.arapp.arappmain.databinding.FragmentLoginBinding;
 public class LoginFragment extends Fragment implements SnackBarMessage, NavigateFragment
 {
 
-    //region Variable
+//    region Variable
     FragmentLoginBinding fragmentLoginBinding;
     LoginViewModel loginViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
-    //endregion
-
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-    }
+//    endregion
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
         fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
-        //set view model
+//        set view model
         loginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
         fragmentLoginBinding.setViewModel(loginViewModel);
         loginViewModel.snackBarMessage = this;
         loginViewModel.navigateFragment = this;
-        //Hooks
+//        Hooks
         snackBarToast = new SnackBarToast(fragmentLoginBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentLoginBinding.getRoot());
-        //return view
+//        return view
         return fragmentLoginBinding.getRoot();
     }
-    //On resume
+    
+//    region methods
+//    On resume
     @Override
     public void onResume()
     {
@@ -62,11 +58,11 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                 |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-    //region fragment navigation
+//    fragment navigation
     @Override
     public void navigateToFragment(String fragment)
     {
-        //Nav Controller
+//        Nav Controller
         final NavController navController = Navigation.findNavController(getView());
         if (fragment.equals("signUp"))
         {
@@ -87,11 +83,11 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
             Intent homeActivity = new Intent(getActivity(), HomeActivity.class);
             startActivity(homeActivity);
             hideShowKeyboard.hideKeyboardFrom(true);
+            getActivity().getViewModelStore().clear();
             requireActivity().finish();
         }
     }
-    //endregion
-    //region error/success message
+//    error/success message
     @Override
     public void onSuccess(String message)
     {
@@ -101,5 +97,5 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
     {
         snackBarToast.snackBarShortTime(message);
     }
-    //endregion
+//    endregion
 }

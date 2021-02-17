@@ -7,18 +7,20 @@ import android.view.inputmethod.InputMethodManager;
 
 public class HideShowKeyboard
 {
-    //region Variable
+
+//    region Variable
     private final Context context;
     private final View view;
+//    endregion
 
+//    Constructor
     public HideShowKeyboard(Context context, View view)
     {
         this.context = context;
         this.view = view;
     }
-
-    //endregion
-    //Method for close or show input method(keyboard) ...
+//    region methods
+//    Method for close or show input method(keyboard) ...
     public void hideKeyboardFrom(boolean flag)
     {
         InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -31,4 +33,5 @@ public class HideShowKeyboard
             inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
         }
     }
+//    endregion
 }

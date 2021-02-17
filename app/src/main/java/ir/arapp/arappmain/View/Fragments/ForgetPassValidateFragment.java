@@ -24,13 +24,13 @@ import ir.arapp.arappmain.R;
 public class ForgetPassValidateFragment extends Fragment
 {
 
-    //region Variables
+//    region Variables
     MaterialToolbar toolbar;
     TextView changeNumber;
     PinView pinView;
     TextView timer;
     RoundButton forgetPass;
-    //endregion
+//    endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -42,20 +42,18 @@ public class ForgetPassValidateFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_validate_forget_pass, container, false);
-
-        //Hooks
+//        Hooks
         toolbar = view.findViewById(R.id.forgetPassToolbar);
         timer = view.findViewById(R.id.timerValidationCode);
         pinView = view.findViewById(R.id.otpForgetPass);
         forgetPass = view.findViewById(R.id.forgetPassButton);
         changeNumber = view.findViewById(R.id.changePhoneNumber);
-
-        //Toolbar
+//        Toolbar
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+//        return view
         return view;
     }
 
@@ -66,19 +64,18 @@ public class ForgetPassValidateFragment extends Fragment
 
         final NavController navController = Navigation.findNavController(view);
 
-        //OnClick
         toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
         forgetPass.setOnClickListener(view1 -> goToForgetPass(navController));
         changeNumber.setOnClickListener(view1 -> goToPhoneForgetPass(navController));
     }
 
-    //Back button navigation
+//    region methods
+//    Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
     }
-
-    //region fragment navigation
+//    fragment navigation
     private void goToPhoneForgetPass(NavController navController)
     {
         navController.navigate(R.id.action_forgetPassValidateFragment_to_forgetPassPhoneFragment);
@@ -88,5 +85,5 @@ public class ForgetPassValidateFragment extends Fragment
     {
         navController.navigate(R.id.action_forgetPassValidateFragment_to_forgetPassFragment);
     }
-    //endregion
+//    endregion
 }

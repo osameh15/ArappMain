@@ -16,7 +16,8 @@ import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 
 public class RegisterValidateViewModel extends AndroidViewModel
 {
-    //region Variable
+
+//    region Variable
     public String validate = "";
     public MutableLiveData<Boolean> flag;
     public MutableLiveData<Long> currentTime;
@@ -24,31 +25,33 @@ public class RegisterValidateViewModel extends AndroidViewModel
     public SnackBarMessage snackBarMessage;
     public NavigateFragment navigateFragment;
     public CheckPinView checkPinView;
-    //endregion
+//    endregion
 
-    //Constructor
+//    Constructor
     public RegisterValidateViewModel(@NonNull Application application)
     {
         super(application);
-        //Hooks
+//        Hooks
         currentTime = new MutableLiveData<>();
         flag = new MutableLiveData<>();
+//        set data
         flag.setValue(false);
         snackBarMessage = null;
         navigateFragment = null;
         checkPinView = null;
+//        start countdown timer
         startCountDownTimer();
     }
 
-    //region Methods
-    //On Cleared
+//    region Methods
+//    On Cleared
     @Override
-    public void onCleared()
+    protected void onCleared()
     {
         super.onCleared();
         countDownTimer.cancel();
     }
-    //validate code
+//    validate code
     public void validateCodeNumber()
     {
         if (validate.equals("232323"))
@@ -69,7 +72,7 @@ public class RegisterValidateViewModel extends AndroidViewModel
             }
         }
     }
-    //resend Code
+//    resend Code
     public void resendCode()
     {
         flag.setValue(false);
@@ -77,10 +80,10 @@ public class RegisterValidateViewModel extends AndroidViewModel
         checkPinView.checkPin("resend");
         startCountDownTimer();
     }
-    //Countdown timer
+//    Countdown timer
     public void startCountDownTimer()
     {
-        countDownTimer = new CountDownTimer(80000, 1000)
+        countDownTimer = new CountDownTimer(120000, 1000)
         {
             @Override
             public void onTick(long millisUntilFinished)
@@ -96,10 +99,10 @@ public class RegisterValidateViewModel extends AndroidViewModel
         };
         countDownTimer.start();
     }
-    //edit phone number
+//    edit phone number
     public void editPhoneNumber()
     {
         navigateFragment.navigateToFragment("phoneRegister");
     }
-    //endregion
+//    endregion
 }

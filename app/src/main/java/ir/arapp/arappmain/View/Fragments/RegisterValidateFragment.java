@@ -42,12 +42,12 @@ import ir.arapp.arappmain.viewmodel.RegisterValidateViewModel;
 public class RegisterValidateFragment extends Fragment implements SnackBarMessage, NavigateFragment, CheckPinView
 {
 
-    //region Variables
+//    region Variables
     FragmentValidateRegisterBinding fragmentValidateRegisterBinding;
     RegisterValidateViewModel registerValidateViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
-    //endregion
+//    endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -60,39 +60,40 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
          fragmentValidateRegisterBinding = FragmentValidateRegisterBinding.inflate(inflater, container, false);
-        //set view model
+//        set view model
         registerValidateViewModel = ViewModelProviders.of(requireActivity()).get(RegisterValidateViewModel.class);
         fragmentValidateRegisterBinding.setViewModel(registerValidateViewModel);
         registerValidateViewModel.navigateFragment = this;
         registerValidateViewModel.snackBarMessage = this;
         registerValidateViewModel.checkPinView = this;
-        //Life cycle owner
+//        Life cycle owner
         fragmentValidateRegisterBinding.setLifecycleOwner(this);
-        //Hooks
+//        Hooks
         snackBarToast = new SnackBarToast(fragmentValidateRegisterBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentValidateRegisterBinding.getRoot());
-        //Toolbar
+//        Toolbar
         ((AppCompatActivity) requireActivity()).setSupportActionBar(fragmentValidateRegisterBinding.registerToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         fragmentValidateRegisterBinding.registerToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-        //pin view animation
+//        pin view animation
         fragmentValidateRegisterBinding.pinView.setAnimationEnable(true);
         pinViewTryAgainLineColor();
-        //timer
+//        timer
         registerValidateViewModel.currentTime.observe(fragmentValidateRegisterBinding.getLifecycleOwner(), this::setTimer);
-        //return view
+//        return view
         return fragmentValidateRegisterBinding.getRoot();
     }
 
-    //Back button navigation
+//    region methods
+//    Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
         hideShowKeyboard.hideKeyboardFrom(true);
     }
-    //set timer text and color
+//    set timer text and color
     @SuppressLint("SetTextI18n")
     private void setTimer(Long s)
     {
@@ -105,7 +106,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
             fragmentValidateRegisterBinding.timer.setTextColor(getResources().getColor(R.color.notificationColorRed));
         }
     }
-    //check pin code error
+//    check pin code error
     @Override
     public void checkPin(String type)
     {
@@ -122,7 +123,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
                     ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, requireActivity().getTheme()));
         }
     }
-    //Pin View change Line Color
+//    Pin View change Line Color
     private void pinViewTryAgainLineColor()
     {
         fragmentValidateRegisterBinding.pinView.addTextChangedListener(new TextWatcher()
@@ -143,11 +144,11 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
             }
         });
     }
-    //region fragment navigation
+//    fragment navigation
     @Override
     public void navigateToFragment(String message)
     {
-        //Nav Controller
+//        Nav Controller
         final NavController navController = Navigation.findNavController(getView());
 
         if (message.equals("phoneRegister"))
@@ -160,8 +161,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
             navController.navigate(R.id.action_registerValidateFragment_to_registerFragment);
         }
     }
-    //endregion
-    //region error/success message
+//    error/success message
     @Override
     public void onSuccess(String message)
     {
@@ -171,5 +171,5 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     {
         snackBarToast.snackBarShortTime(message);
     }
-    //endregion
+//    endregion
 }

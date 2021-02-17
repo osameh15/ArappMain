@@ -7,27 +7,30 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class SnackBarToast
 {
-    //region Variable
+//    region Variable
     View view;
-    //endregion
+//    endregion
 
-    //Constructor
+//    Constructor
     public SnackBarToast(View view)
     {
         this.view = view;
     }
-    //region Methods
+
+//    region Methods
+//    snack bar short time display
     public void snackBarShortTime(String message)
     {
         Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_SHORT);
         snackbar.setDuration(1500);
         snackbar.show();
     }
+//    snack bar short time display
     public void snackBarLongTime(String message)
     {
         Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_LONG);
         snackbar.setDuration(3000);
         snackbar.show();
     }
-    //endregion
+//    endregion
 }

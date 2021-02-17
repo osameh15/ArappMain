@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegisterPhoneFragment">
 
+<!--    view model-->
     <data>
         <variable
             name="viewModel"
@@ -20,7 +21,7 @@
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
 
-        <!-- Toolbar -->
+<!--         Toolbar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/registerToolbar"
             android:layout_width="match_parent"
@@ -41,8 +42,7 @@
                     android:fontFamily="@font/iransans"/>
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
-
-        <!-- Phone Input panel -->
+<!--         Phone Input panel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,8 +93,7 @@
                 android:text="@string/submit_continue"
                 android:onClick="@{()->viewModel.onButtonClick()}"/>
         </LinearLayout>
-
-        <!-- Login panel -->
+<!--         Login panel-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package ir.arapp.arappmain.View.Activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -19,51 +20,44 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.marozzi.roundbutton.RoundButton;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SessionManager;
+import ir.arapp.arappmain.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreenActivity extends AppCompatActivity
 {
 
-    //region Variables
+//    region Variables
+    private ActivitySplashScreenBinding activitySplashScreenBinding;
     private Boolean flag = false;
-    LottieAnimationView splashLogo;
-    LinearLayout tryAgainLinearLayout;
-    RoundButton tryAgainButton;
-    //Session manager
     private SessionManager sessionManager;
-    //endregion
+//    endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+//        inflate layout
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        activitySplashScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen);
 
-        //Set Fullscreen
+//        Set Fullscreen
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
                 |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-
-        //Hooks
-        splashLogo = findViewById(R.id.splashLogo);
-        tryAgainLinearLayout = findViewById(R.id.tryAgainLinearLayout);
-        tryAgainButton = findViewById(R.id.tryAgain);
+//        Hooks
         sessionManager = new SessionManager(this);
-
-        //Try again click listener
-        tryAgainButton.setOnClickListener(view -> loading());
-
-        //Check User logged in
+//        Try again click listener
+        activitySplashScreenBinding.tryAgain.setOnClickListener(view -> loading());
+//        Check User logged in
         flag = sessionManager.isLoggedIn();
-
-        //Check net connection
+//        Check net connection
         checkInternet();
     }
 
-    //Check Internet Connection
+//    region methods
+//    Check Internet Connection
     private void checkInternet()
     {
         if (sessionManager.checkConnection())
         {
-            //set timer to go to next activity
+//            set timer to go to next activity
             int SPLASH_SCREEN = 2400;
 
             if (flag)
@@ -77,12 +71,11 @@ public class SplashScreenActivity extends AppCompatActivity
         }
         else
         {
-            tryAgainLinearLayout.setVisibility(View.VISIBLE);
-            tryAgainButton.setVisibility(View.VISIBLE);
+            activitySplashScreenBinding.tryAgainLinearLayout.setVisibility(View.VISIBLE);
+            activitySplashScreenBinding.tryAgain.setVisibility(View.VISIBLE);
         }
     }
-
-    //region goTo another activities
+//    goTo another activities
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void goToRegLogActivity()
     {
@@ -90,7 +83,7 @@ public class SplashScreenActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
             Pair[] pairs = new Pair[1];
-            pairs[0] = new Pair<View, String>(splashLogo, "logo");
+            pairs[0] = new Pair<View, String>(activitySplashScreenBinding.splashLogo, "logo");
             ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(SplashScreenActivity.this, pairs);
             startActivity(regLogActivity, activityOptions.toBundle());
         }
@@ -106,13 +99,11 @@ public class SplashScreenActivity extends AppCompatActivity
         startActivity(homeActivity);
         finish();
     }
-    //endregion
-
-    //region try again connection
+//    try again connection
     private void loading()
     {
         int TRY_AGAIN = 1000;
-        tryAgainButton.startAnimation();
+        activitySplashScreenBinding.tryAgain.startAnimation();
         new Handler().postDelayed(this::tryAgain, TRY_AGAIN);
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -120,7 +111,7 @@ public class SplashScreenActivity extends AppCompatActivity
     {
         if (sessionManager.checkConnection())
         {
-            //Check User logged in
+//            Check User logged in
             if (flag)
             {
                 goToHomeActivity();
@@ -132,8 +123,8 @@ public class SplashScreenActivity extends AppCompatActivity
         }
         else
         {
-            tryAgainButton.revertAnimation();
+            activitySplashScreenBinding.tryAgain.revertAnimation();
         }
     }
-    //endregion
+//    endregion
 }

@@ -8,12 +8,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient
 {
-    //region Variable
+
+//    region Variable
     private static final String BASE_URL = "http://cafestudy.ir/public/";
     private static RetrofitClient mInstance;
     private final Retrofit retrofit;
-    //endregion
-    //region Retrofit client
+//    endregion
+
+//    region Retrofit client
     private RetrofitClient()
     {
         Gson gson = new GsonBuilder()
@@ -37,5 +39,5 @@ public class RetrofitClient
     {
         return retrofit.create(Api.class);
     }
-    //endregion
+//    endregion
 }

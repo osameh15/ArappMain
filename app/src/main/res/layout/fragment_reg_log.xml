@@ -15,7 +15,7 @@
         android:background="@color/lightBack"
         android:fitsSystemWindows="true">
 
-        <!--logo_icon -->
+<!--        logo_icon -->
             <ImageView
                 android:id="@+id/regLogLogo"
                 android:layout_width="123dp"
@@ -24,7 +24,7 @@
                 android:transitionName="logo"
                 android:contentDescription="@string/app_name"
                 tools:targetApi="lollipop" />
-            <!-- Register/Login Panel -->
+<!--             Register/Login Panel -->
                 <com.marozzi.roundbutton.RoundButton
                     android:id="@+id/signUpRegLog"
                     style="@style/ButtonLoading"

@@ -22,9 +22,9 @@ import ir.arapp.arappmain.R;
 public class RegisterFragment extends Fragment
 {
 
-    //region Variable
+//    region Variable
     MaterialToolbar toolbar;
-    //endregion
+//    endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -36,39 +36,28 @@ public class RegisterFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
-        //Hooks
+//        Hooks
         toolbar = view.findViewById(R.id.registerToolbar);
-
-        //Toolbar
+//        Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
+//        return view
         return view;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-
-        //Nav Controller
-        final NavController navController = Navigation.findNavController(view);
-
-        //OnClick
-        toolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-    }
-
-    //Back button navigation
+//    region methods
+//    Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
     }
-
-    //region fragment navigation
+//    fragment navigation
     private void goToHome(NavController navController)
     {
     }
-    //endregion
+//    endregion
 }

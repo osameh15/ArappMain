@@ -11,57 +11,59 @@ import android.util.Log;
 
 public class SessionManager
 {
-    //region variables
-    //log tag
+
+//    region variables
+//    log tag
     private final static String TAG = SessionManager.class.getSimpleName();
-    //Context
+//    Context
     private final Context _context;
-    //Shared preference
+//    Shared preference
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;
-    //shared preference filename
+//    shared preference filename
     private static final String PREF_NAME = "arapp";
     private static final String KEY_IS_LOGGED_IN= "isLoggedIn";
     private static final String KEY_VERSION_NAME = "versionName";
-    //endregion
+//    endregion
 
-    //Constructor
+//    Constructor
     @SuppressLint("CommitPrefEdits")
     public SessionManager(Context _context)
     {
         this._context = _context;
-        //Shared preference
+//        Shared preference
         int PRIVATE_MODE = 0;
         sharedPreferences = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = sharedPreferences.edit();
     }
-    //region login manager
-    //Set login and session modified
+
+//    region methods
+//    net connection
+public boolean checkConnection()
+{
+    ConnectivityManager connectivityManager = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+    return null != networkInfo;
+}
+//    region login manager
+//    Set login and session modified
     public void setLogin(boolean isLoggedIn)
     {
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn);
-        //commit change ...
+//        commit change ...
         editor.commit();
 
         Log.d(TAG, "user login session modified!");
     }
-    // get login session modified ...
+//     get login session modified ...
     public boolean isLoggedIn()
     {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
-    //endregion
-    //region net connection
-    public boolean checkConnection()
-    {
-        ConnectivityManager connectivityManager = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-        return null != networkInfo;
-    }
-    //endregion
-    //region Version
-    //Check version name...
+//    endregion
+//    region Version
+//    Check version name...
     public String getVersionName(Context _context, Class cls)
     {
         try
@@ -75,19 +77,20 @@ public class SessionManager
             return null;
         }
     }
-    //set pop up dialog(recently changed)only once time after each app update...
+//    set pop up dialog(recently changed)only once time after each app update...
     public void setStoredVersionName(String versionName)
     {
         editor.putString(KEY_VERSION_NAME, versionName);
-        //commit change
+//        commit change
         editor.commit();
 
         Log.d(TAG, "Version name session modified!");
     }
-    //get stored version name ...
+//    get stored version name ...
     public String getStoredVersionName()
     {
         return sharedPreferences.getString(KEY_VERSION_NAME, "");
     }
-    //endregion
+//    endregion
+//    endregion
 }

@@ -5,6 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.ForgetPassValidateFragment">
 
+<!--    view model-->
+    <data>
+
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,7 +18,7 @@
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
 
-        <!-- Toolbar -->
+<!--         Toolbar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/forgetPassToolbar"
             android:layout_width="match_parent"
@@ -33,8 +38,7 @@
                     android:fontFamily="@font/iransans"/>
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
-
-        <!-- Verification Code panel -->
+<!--         Verification Code panel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

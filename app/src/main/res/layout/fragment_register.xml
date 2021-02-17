@@ -5,6 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.RegisterFragment">
 
+<!--    view model-->
+    <data>
+
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,7 +18,7 @@
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
 
-        <!-- Toolbar -->
+<!--         Toolbar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/registerToolbar"
             android:layout_width="match_parent"
@@ -33,7 +38,7 @@
                     android:fontFamily="@font/iransans"/>
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
-
+        <!--Register panel -->
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -41,8 +46,6 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:fillViewport="true">
-
-            <!--Register panel -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,7 +147,7 @@
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
-                <!-- Type of Service panel -->
+<!--                 Type of Service panel -->
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -167,6 +170,7 @@
                         android:fontFamily="@font/iransans_bold"
                         android:textColor="@color/colorAccent"/>
                 </RadioGroup>
+<!--                accept arapp law-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -207,7 +211,6 @@
                     android:gravity="center"
                     android:text="@string/register"/>
             </LinearLayout>
-
         </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>

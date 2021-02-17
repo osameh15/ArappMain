@@ -13,7 +13,7 @@
         android:layoutDirection="rtl"
         android:fitsSystemWindows="true">
 
-        <!--logo_icon -->
+<!--        logo_icon -->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/splashLogo"
             android:layout_width="match_parent"
@@ -24,8 +24,7 @@
             app:lottie_speed="2.0"
             app:lottie_imageAssetsFolder="images"
             android:layout_centerInParent="true"/>
-
-        <!-- No Connection panel -->
+<!--         No Connection panel -->
         <LinearLayout
             android:id="@+id/tryAgainLinearLayout"
             android:layout_width="match_parent"

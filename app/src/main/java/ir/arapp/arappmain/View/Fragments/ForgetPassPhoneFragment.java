@@ -23,12 +23,12 @@ import ir.arapp.arappmain.viewmodel.ForgetPassPhoneViewModel;
 public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage, NavigateFragment
 {
 
-    //region Variable
+//    region Variable
     FragmentPhoneForgetPassBinding fragmentPhoneForgetPassBinding;
     ForgetPassPhoneViewModel forgetPassPhoneViewModel;
     private HideShowKeyboard hideShowKeyboard;
     private SnackBarToast snackBarToast;
-    //endregion
+//    endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -40,41 +40,42 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+//         Inflate the layout for this fragment
         fragmentPhoneForgetPassBinding = FragmentPhoneForgetPassBinding.inflate(inflater, container, false);
-        //set view model
+//        set view model
         forgetPassPhoneViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassPhoneViewModel.class);
         fragmentPhoneForgetPassBinding.setViewModel(forgetPassPhoneViewModel);
         forgetPassPhoneViewModel.navigateFragment = this;
         forgetPassPhoneViewModel.snackBarMessage = this;
-        //Hooks
+//        Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneForgetPassBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentPhoneForgetPassBinding.getRoot());
-        //Toolbar
+//        Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentPhoneForgetPassBinding.forgetPassToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        //OnClick
         fragmentPhoneForgetPassBinding.forgetPassToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-        //return view
+//        return view
         return fragmentPhoneForgetPassBinding.getRoot();
     }
-    //on resume
+
+//    region methods
+//    on resume
     public void onResume()
     {
         super.onResume();
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                 |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-    //Back button navigation
+//    Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
     }
-    //region fragment navigation
+//    fragment navigation
     @Override
     public void navigateToFragment(String message)
     {
-        //Nav Controller
+//        Nav Controller
         final NavController navController = Navigation.findNavController(getView());
 
         if (message.equals("validate"))
@@ -83,8 +84,7 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
             hideShowKeyboard.hideKeyboardFrom(true);
         }
     }
-    //endregion
-    //region error/success message
+//    error/success message
     @Override
     public void onSuccess(String message)
     {
@@ -94,5 +94,5 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
     {
         snackBarToast.snackBarShortTime(message);
     }
-    //endregion
+//    endregion
 }
