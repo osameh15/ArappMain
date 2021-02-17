@@ -25,6 +25,7 @@ public class RegisterValidateViewModel extends AndroidViewModel
     public NavigateFragment navigateFragment;
     public CheckPinView checkPinView;
     //endregion
+
     //Constructor
     public RegisterValidateViewModel(@NonNull Application application)
     {
@@ -76,15 +77,10 @@ public class RegisterValidateViewModel extends AndroidViewModel
         checkPinView.checkPin("resend");
         startCountDownTimer();
     }
-    //edit phone number
-    public void editPhoneNumber()
-    {
-        navigateFragment.navigateToFragment("phoneRegister");
-    }
     //Countdown timer
     public void startCountDownTimer()
     {
-        countDownTimer = new CountDownTimer(20000, 1000)
+        countDownTimer = new CountDownTimer(80000, 1000)
         {
             @Override
             public void onTick(long millisUntilFinished)
@@ -99,6 +95,11 @@ public class RegisterValidateViewModel extends AndroidViewModel
             }
         };
         countDownTimer.start();
+    }
+    //edit phone number
+    public void editPhoneNumber()
+    {
+        navigateFragment.navigateToFragment("phoneRegister");
     }
     //endregion
 }

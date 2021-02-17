@@ -98,18 +98,11 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     {
         long min = s/60;
         long sec = s%60;
+        @SuppressLint("DefaultLocale") String time = String.format("%02d:%02d", min, sec);
+        fragmentValidateRegisterBinding.timer.setText(time);
         if (s < 10)
         {
-            fragmentValidateRegisterBinding.timer.setText("0" + min + ":" + "0" + sec);
             fragmentValidateRegisterBinding.timer.setTextColor(getResources().getColor(R.color.notificationColorRed));
-        }
-        else if (s == 0)
-        {
-            fragmentValidateRegisterBinding.timer.setText("00:00");
-        }
-        else
-        {
-            fragmentValidateRegisterBinding.timer.setText("0" + min + ":" + sec);
         }
     }
     //check pin code error
