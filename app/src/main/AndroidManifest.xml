@@ -21,9 +21,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".View.Activities.HomeActivity"/>
-        <activity android:name=".View.Activities.AuthActivity" />
-        <activity android:name=".View.Activities.SplashScreenActivity">
+        <activity
+            android:name=".View.Activities.HomeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".View.Activities.AuthActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".View.Activities.SplashScreenActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
