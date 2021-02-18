@@ -71,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorAccentDark"
+                android:fontFamily="@font/iransans_bold"
                 android:textSize="16sp"/>
             <com.chaos.view.PinView
                 android:id="@+id/pinView"
@@ -84,7 +85,6 @@
                 android:text="@={viewModel.validate}"/>
 <!--            go to register-->
             <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/validateButton"
                 style="@style/ButtonLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -98,7 +98,6 @@
                 android:onClick="@{()->viewModel.validateCodeNumber()}"/>
 <!--            resend code button-->
             <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/tryAgainButton"
                 style="@style/ButtonLoadingPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

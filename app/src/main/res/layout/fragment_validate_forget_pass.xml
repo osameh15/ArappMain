@@ -7,7 +7,10 @@
 
 <!--    view model-->
     <data>
-
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="ir.arapp.arappmain.viewmodel.ForgetPassValidateViewModel"/>
     </data>
 
     <RelativeLayout
@@ -63,15 +66,14 @@
                 android:fontFamily="@font/iransans"
                 android:textColor="@color/colorAccent"/>
             <TextView
-                android:id="@+id/timerValidationCode"
+                android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/timer_count"
                 android:textSize="16sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>
             <com.chaos.view.PinView
-                android:id="@+id/otpForgetPass"
+                android:id="@+id/pinView"
                 style="@style/ValidationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -80,10 +82,11 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 app:viewType="rectangle"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:text="@={viewModel.validate}"/>
+<!--            Go to change pass-->
             <com.marozzi.roundbutton.RoundButton
-                android:id="@+id/forgetPassButton"
-                style="@style/ButtonDisableLoading"
+                style="@style/ButtonLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginStart="36dp"
@@ -91,17 +94,31 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:enabled="true"
-                android:text="@string/submit_continue"/>
+                android:text="@string/submit_continue"
+                android:visibility="@{viewModel.flag ? View.GONE : View.VISIBLE}"
+                android:onClick="@{()->viewModel.validateCodeNumber()}"/>
+            <!--            resend code button-->
+            <com.marozzi.roundbutton.RoundButton
+                style="@style/ButtonLoadingPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/verification_code_retry"
+                android:visibility="@{viewModel.flag ? View.VISIBLE : View.GONE}"
+                android:onClick="@{()->viewModel.resendCode()}"/>
             <TextView
-                android:id="@+id/changePhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/edit_phone_number"
                 android:textSize="15sp"
                 android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent"
+                android:onClick="@{()->viewModel.editPhoneNumber()}"/>
         </LinearLayout>
 
     </RelativeLayout>
