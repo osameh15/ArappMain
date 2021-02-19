@@ -35,17 +35,17 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//         Inflate the layout for this fragment
+//        Inflate the layout for this fragment
         fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
-//        set view model
-        loginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
+//        Set view model
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         fragmentLoginBinding.setViewModel(loginViewModel);
         loginViewModel.snackBarMessage = this;
         loginViewModel.navigateFragment = this;
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentLoginBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentLoginBinding.getRoot());
-//        return view
+//        Return view
         return fragmentLoginBinding.getRoot();
     }
     
@@ -58,39 +58,41 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                 |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-//    fragment navigation
+//    Fragment navigation
     @Override
     public void navigateToFragment(String fragment)
     {
 //        Nav Controller
-        final NavController navController = Navigation.findNavController(getView());
-        if (fragment.equals("signUp"))
+        final NavController navController = Navigation.findNavController(requireView());
+
+        switch (fragment)
         {
-            navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
-            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                    |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            hideShowKeyboard.hideKeyboardFrom(true);
-        }
-        if(fragment.equals("forgetPass"))
-        {
-            navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
-            requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                    |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            hideShowKeyboard.hideKeyboardFrom(true);
-        }
-        if (fragment.equals("home"))
-        {
-            Intent homeActivity = new Intent(getActivity(), HomeActivity.class);
-            startActivity(homeActivity);
-            hideShowKeyboard.hideKeyboardFrom(true);
-            getActivity().getViewModelStore().clear();
-            requireActivity().finish();
+            case "signUp":
+                navController.navigate(R.id.action_loginFragment_to_registerPhoneFragment);
+                requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                        | WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                hideShowKeyboard.hideKeyboardFrom(true);
+                break;
+            case "forgetPass":
+                navController.navigate(R.id.action_loginFragment_to_forgetPassPhoneFragment);
+                requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                        | WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                hideShowKeyboard.hideKeyboardFrom(true);
+                break;
+            case "home":
+                Intent homeActivity = new Intent(requireActivity(), HomeActivity.class);
+                startActivity(homeActivity);
+                hideShowKeyboard.hideKeyboardFrom(true);
+                requireActivity().getViewModelStore().clear();
+                requireActivity().finish();
+                break;
         }
     }
-//    error/success message
+//    Error/success message
     @Override
     public void onSuccess(String message)
     {
+        snackBarToast.snackBarShortTime(message);
     }
     @Override
     public void onFailure(String message)

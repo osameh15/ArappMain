@@ -18,24 +18,18 @@ public class SpecialServiceFragment extends Fragment
 //    endregion
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//         Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_special_service, container, false);
+//        Inflate the layout for this fragment
 
 //        Hooks
 
-        return view;
+//        Return view
+        return inflater.inflate(R.layout.fragment_special_service, container, false);
     }
 
 //    region methods
-//    fragment navigation
-//    error/success message
+//    Fragment navigation
+//    Error/success message
 //    endregion
 }

@@ -7,7 +7,9 @@
 
 <!--    view model-->
     <data>
-
+        <variable
+            name="viewModel"
+            type="ir.arapp.arappmain.viewmodel.RegisterViewModel"/>
     </data>
 
     <RelativeLayout

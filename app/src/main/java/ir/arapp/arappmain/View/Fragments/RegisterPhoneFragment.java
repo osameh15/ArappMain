@@ -28,37 +28,29 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
 
 //    region Variable
     FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding;
-    private SnackBarToast snackBarToast;
-    private HideShowKeyboard hideKeyboardFrom;
     RegisterPhoneViewModel registerPhoneViewModel;
+    private SnackBarToast snackBarToast;
+    private HideShowKeyboard hideShowKeyboard;
 //    endregion
-
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//         Inflate the layout for this fragment
+//        Inflate the layout for this fragment
         fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
-//        set view model
-        registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterPhoneViewModel.class);
+//        Set view model
+        registerPhoneViewModel = ViewModelProviders.of(this).get(RegisterPhoneViewModel.class);
         fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
         registerPhoneViewModel.navigateFragment = this;
         registerPhoneViewModel.snackBarMessage = this;
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneRegisterBinding.getRoot());
-        hideKeyboardFrom = new HideShowKeyboard(getContext(), fragmentPhoneRegisterBinding.getRoot());
+        hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentPhoneRegisterBinding.getRoot());
 //        Toolbar
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentPhoneRegisterBinding.registerToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-//        OnClick
         fragmentPhoneRegisterBinding.registerToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-//        return view
+//        Return view
         return fragmentPhoneRegisterBinding.getRoot();
     }
 
@@ -74,31 +66,32 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
-        hideKeyboardFrom.hideKeyboardFrom(true);
     }
-//    fragment navigation
+//    Fragment navigation
     @Override
     public void navigateToFragment(String message)
     {
 //        Nav Controller
-        final NavController navController = Navigation.findNavController(getView());
+        final NavController navController = Navigation.findNavController(requireView());
 
-        if (message.equals("login"))
+        switch (message)
         {
-            navController.navigate(R.id.action_registerPhoneFragment_to_loginFragment);
-            requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-            hideKeyboardFrom.hideKeyboardFrom(true);
-        }
-        if (message.equals("validate"))
-        {
-            navController.navigate(R.id.action_registerPhoneFragment_to_registerValidateFragment);
-            hideKeyboardFrom.hideKeyboardFrom(true);
+            case "login":
+                navController.navigate(R.id.action_registerPhoneFragment_to_loginFragment);
+                requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+                hideShowKeyboard.hideKeyboardFrom(true);
+                break;
+            case "validate":
+                navController.navigate(R.id.action_registerPhoneFragment_to_registerValidateFragment);
+                hideShowKeyboard.hideKeyboardFrom(true);
+                break;
         }
     }
-//    error/success message
+//    Error/success message
     @Override
     public void onSuccess(String message)
     {
+        snackBarToast.snackBarShortTime(message);
     }
     @Override
     public void onFailure(String message)

@@ -13,14 +13,14 @@ public class SessionManager
 {
 
 //    region variables
-//    log tag
+//    Log tag
     private final static String TAG = SessionManager.class.getSimpleName();
 //    Context
     private final Context _context;
 //    Shared preference
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;
-//    shared preference filename
+//    Shared preference filename
     private static final String PREF_NAME = "arapp";
     private static final String KEY_IS_LOGGED_IN= "isLoggedIn";
     private static final String KEY_VERSION_NAME = "versionName";
@@ -38,7 +38,7 @@ public class SessionManager
     }
 
 //    region methods
-//    net connection
+//    Check Net connection
 public boolean checkConnection()
 {
     ConnectivityManager connectivityManager = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -51,12 +51,12 @@ public boolean checkConnection()
     public void setLogin(boolean isLoggedIn)
     {
         editor.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn);
-//        commit change ...
+//        Commit change ...
         editor.commit();
 
         Log.d(TAG, "user login session modified!");
     }
-//     get login session modified ...
+//     Get login session modified ...
     public boolean isLoggedIn()
     {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
@@ -77,16 +77,16 @@ public boolean checkConnection()
             return null;
         }
     }
-//    set pop up dialog(recently changed)only once time after each app update...
+//    Set pop up dialog(recently changed)only once time after each app update...
     public void setStoredVersionName(String versionName)
     {
         editor.putString(KEY_VERSION_NAME, versionName);
-//        commit change
+//        Commit change
         editor.commit();
 
         Log.d(TAG, "Version name session modified!");
     }
-//    get stored version name ...
+//    Get stored version name ...
     public String getStoredVersionName()
     {
         return sharedPreferences.getString(KEY_VERSION_NAME, "");

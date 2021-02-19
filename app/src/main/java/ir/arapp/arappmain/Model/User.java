@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class User
 {
+//    region Variable
     @SerializedName("id")
     String id;
     @SerializedName("type")
@@ -40,174 +41,148 @@ public class User
     String updatedAt;
     @SerializedName("deletedAt")
     String deletedAt;
+//    endregion
 
+//    region Methods
+//    region Getter
     public String getId()
     {
         return id;
     }
-
     public String getType()
     {
         return type;
     }
-
     public String getName()
     {
         return name;
     }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
     public String getPhone()
     {
         return phone;
     }
-
-    public void setPhone(String phone)
-    {
-        this.phone = phone;
-    }
-
     public String getMail()
     {
         return mail;
     }
-
-    public void setMail(String mail)
-    {
-        this.mail = mail;
-    }
-
     public String getService()
     {
         return service;
     }
-
-    public void setService(String service)
-    {
-        this.service = service;
-    }
-
     public String getPassword()
     {
         return password;
     }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
-
     public String getAvatar()
     {
         return avatar;
     }
-
-    public void setAvatar(String avatar)
-    {
-        this.avatar = avatar;
-    }
-
     public String getGender()
     {
         return gender;
     }
-
-    public void setGender(String gender)
-    {
-        this.gender = gender;
-    }
-
     public String getEdu()
     {
         return edu;
     }
-
-    public void setEdu(String edu)
-    {
-        this.edu = edu;
-    }
-
     public String getProvince()
     {
         return province;
     }
-
-    public void setProvince(String province)
-    {
-        this.province = province;
-    }
-
     public String getCity()
     {
         return city;
     }
-
-    public void setCity(String city)
-    {
-        this.city = city;
-    }
-
     public String getNotify()
     {
         return notify;
     }
-
-    public void setNotify(String notify)
-    {
-        this.notify = notify;
-    }
-
     public String getVerifiedCode()
     {
         return verifiedCode;
     }
-
-    public void setVerifiedCode(String verifiedCode)
-    {
-        this.verifiedCode = verifiedCode;
-    }
-
     public String getVerifiedAt()
     {
         return verifiedAt;
     }
-
-    public void setVerifiedAt(String verifiedAt)
-    {
-        this.verifiedAt = verifiedAt;
-    }
-
     public String getCreatedAt()
     {
         return createdAt;
     }
-
-    public void setCreatedAt(String createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
     public String getUpdatedAt()
     {
         return updatedAt;
     }
-
-    public void setUpdatedAt(String updatedAt)
-    {
-        this.updatedAt = updatedAt;
-    }
-
     public String getDeletedAt()
     {
         return deletedAt;
     }
-
+//    endregion
+//    region Setter
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+    public void setMail(String mail)
+    {
+        this.mail = mail;
+    }
+    public void setService(String service)
+    {
+        this.service = service;
+    }
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+    public void setAvatar(String avatar)
+    {
+        this.avatar = avatar;
+    }
+    public void setGender(String gender)
+    {
+        this.gender = gender;
+    }
+    public void setEdu(String edu)
+    {
+        this.edu = edu;
+    }
+    public void setProvince(String province)
+    {
+        this.province = province;
+    }
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+    public void setNotify(String notify)
+    {
+        this.notify = notify;
+    }
+    public void setVerifiedCode(String verifiedCode)
+    {
+        this.verifiedCode = verifiedCode;
+    }
+    public void setVerifiedAt(String verifiedAt)
+    {
+        this.verifiedAt = verifiedAt;
+    }
+    public void setCreatedAt(String createdAt)
+    {
+        this.createdAt = createdAt;
+    }
+    public void setUpdatedAt(String updatedAt)
+    {
+        this.updatedAt = updatedAt;
+    }
     public void setDeletedAt(String deletedAt)
     {
         this.deletedAt = deletedAt;
     }
+//    endregion
+//    endregion
 }

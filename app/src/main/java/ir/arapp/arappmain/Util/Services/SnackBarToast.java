@@ -18,14 +18,14 @@ public class SnackBarToast
     }
 
 //    region Methods
-//    snack bar short time display
+//    Snack bar short time display
     public void snackBarShortTime(String message)
     {
         Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_SHORT);
         snackbar.setDuration(1500);
         snackbar.show();
     }
-//    snack bar short time display
+//    Snack bar short time display
     public void snackBarLongTime(String message)
     {
         Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_LONG);

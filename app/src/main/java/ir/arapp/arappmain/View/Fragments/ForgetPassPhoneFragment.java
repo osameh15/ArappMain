@@ -31,19 +31,12 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
 //    endregion
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//         Inflate the layout for this fragment
+//        Inflate the layout for this fragment
         fragmentPhoneForgetPassBinding = FragmentPhoneForgetPassBinding.inflate(inflater, container, false);
-//        set view model
-        forgetPassPhoneViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassPhoneViewModel.class);
+//        Set view model
+        forgetPassPhoneViewModel = ViewModelProviders.of(this).get(ForgetPassPhoneViewModel.class);
         fragmentPhoneForgetPassBinding.setViewModel(forgetPassPhoneViewModel);
         forgetPassPhoneViewModel.navigateFragment = this;
         forgetPassPhoneViewModel.snackBarMessage = this;
@@ -54,12 +47,12 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentPhoneForgetPassBinding.forgetPassToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         fragmentPhoneForgetPassBinding.forgetPassToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-//        return view
+//        Return view
         return fragmentPhoneForgetPassBinding.getRoot();
     }
 
 //    region methods
-//    on resume
+//    On resume
     public void onResume()
     {
         super.onResume();
@@ -71,12 +64,12 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
     {
         requireActivity().onBackPressed();
     }
-//    fragment navigation
+//    Fragment navigation
     @Override
     public void navigateToFragment(String message)
     {
 //        Nav Controller
-        final NavController navController = Navigation.findNavController(getView());
+        final NavController navController = Navigation.findNavController(requireView());
 
         if (message.equals("validate"))
         {
@@ -84,10 +77,11 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
             hideShowKeyboard.hideKeyboardFrom(true);
         }
     }
-//    error/success message
+//    Error/success message
     @Override
     public void onSuccess(String message)
     {
+        snackBarToast.snackBarShortTime(message);
     }
     @Override
     public void onFailure(String message)

@@ -34,7 +34,7 @@ public class RegLogFragment extends Fragment
 //    region Variables
     private FragmentRegLogBinding fragmentRegLogBinding;
     private static final int PERMISSION_CODE = 1001;
-//    permission not generated
+//    Permission not generated
     String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION};
     int[] grantResult = {1, 2};
 //    endregion
@@ -49,11 +49,11 @@ public class RegLogFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//         Inflate the layout for this fragment
+//        Inflate the layout for this fragment
         fragmentRegLogBinding = FragmentRegLogBinding.inflate(inflater, container, false);
 //        Check permission
         checkPermission();
-//        return view
+//        Return view
         return fragmentRegLogBinding.getRoot();
     }
 
@@ -69,7 +69,7 @@ public class RegLogFragment extends Fragment
     }
 
 //    region methods
-//    on Resume
+//    On Resume
     @Override
     public void onResume()
     {
@@ -79,20 +79,20 @@ public class RegLogFragment extends Fragment
 //    Check permission
     private void checkPermission()
     {
-//        check runtime permission
+//        Check runtime permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
                 || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) ==PackageManager.PERMISSION_DENIED)
             {
-//                show popup for runtime permission
+//                Show popup for runtime permission
                 requestPermissions(permissions, PERMISSION_CODE);
             }
         }
-//        handle result of runtime permission
+//        Handle result of runtime permission
         onRequestPermissionsResult(PERMISSION_CODE, permissions, grantResult);
     }
-//   fragment navigation
+//   Fragment navigation
     private void goToLoginFragment(NavController navController)
     {
         navController.navigate(R.id.action_regLogFragment_to_loginFragment);

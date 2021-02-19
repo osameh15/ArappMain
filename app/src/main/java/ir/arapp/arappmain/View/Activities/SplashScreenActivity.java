@@ -3,21 +3,11 @@ package ir.arapp.arappmain.View.Activities;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
-import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Pair;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.airbnb.lottie.LottieAnimationView;
-import com.marozzi.roundbutton.RoundButton;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.databinding.ActivitySplashScreenBinding;
@@ -34,7 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-//        inflate layout
+//       Inflate layout
         super.onCreate(savedInstanceState);
         activitySplashScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen);
 
@@ -57,7 +47,7 @@ public class SplashScreenActivity extends AppCompatActivity
     {
         if (sessionManager.checkConnection())
         {
-//            set timer to go to next activity
+//            Set timer to go to next activity
             int SPLASH_SCREEN = 2400;
 
             if (flag)
@@ -75,22 +65,11 @@ public class SplashScreenActivity extends AppCompatActivity
             activitySplashScreenBinding.tryAgain.setVisibility(View.VISIBLE);
         }
     }
-//    goTo another activities
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    GoTo another activities
     private void goToRegLogActivity()
     {
         Intent regLogActivity = new Intent(SplashScreenActivity.this, AuthActivity.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            Pair[] pairs = new Pair[1];
-            pairs[0] = new Pair<View, String>(activitySplashScreenBinding.splashLogo, "logo");
-            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(SplashScreenActivity.this, pairs);
-            startActivity(regLogActivity, activityOptions.toBundle());
-        }
-        else
-        {
-            startActivity(regLogActivity);
-        }
+        startActivity(regLogActivity);
         finish();
     }
     private void goToHomeActivity()
@@ -99,7 +78,7 @@ public class SplashScreenActivity extends AppCompatActivity
         startActivity(homeActivity);
         finish();
     }
-//    try again connection
+//    Try again connection
     private void loading()
     {
         int TRY_AGAIN = 1000;

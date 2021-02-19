@@ -35,19 +35,12 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
 //    endregion
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-//         Inflate the layout for this fragment
+//        Inflate the layout for this fragment
         fragmentValidateForgetPassBinding = FragmentValidateForgetPassBinding.inflate(inflater, container, false);
-//        set view model
-        forgetPassValidateViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassValidateViewModel.class);
+//        Set view model
+        forgetPassValidateViewModel = ViewModelProviders.of(this).get(ForgetPassValidateViewModel.class);
         fragmentValidateForgetPassBinding.setViewModel(forgetPassValidateViewModel);
         forgetPassValidateViewModel.snackBarMessage = this;
         forgetPassValidateViewModel.navigateFragment = this;
@@ -61,12 +54,12 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
         ((AppCompatActivity) requireActivity()).setSupportActionBar(fragmentValidateForgetPassBinding.forgetPassToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         fragmentValidateForgetPassBinding.forgetPassToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
-    //        pin view animation
+//        Pin view animation
         fragmentValidateForgetPassBinding.pinView.setAnimationEnable(true);
         pinViewTryAgainLineColor();
-//        timer
+//        Timer
         forgetPassValidateViewModel.currentTime.observe(Objects.requireNonNull(fragmentValidateForgetPassBinding.getLifecycleOwner()), this::setTimer);
-//        return view
+//        Return view
         return fragmentValidateForgetPassBinding.getRoot();
     }
 
@@ -75,9 +68,8 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
-        hideShowKeyboard.hideKeyboardFrom(true);
     }
-    //    set timer text and color
+//    Set timer text and color
     @SuppressLint("SetTextI18n")
     private void setTimer(Long s)
     {
@@ -90,24 +82,25 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
             fragmentValidateForgetPassBinding.timer.setTextColor(getResources().getColor(R.color.notificationColorRed));
         }
     }
-    //    check pin code error
+//    Check pin code error
     @Override
     public void checkPin(String type)
     {
-        if (type.equals("error"))
+        switch (type)
         {
-            fragmentValidateForgetPassBinding.pinView.setLineColor(
-                    ResourcesCompat.getColor(getResources(), R.color.notificationColorRed, requireActivity().getTheme()));
-        }
-        if (type.equals("resend"))
-        {
-            fragmentValidateForgetPassBinding.timer.setTextColor(getResources().getColor(R.color.colorAccentDark));
-            fragmentValidateForgetPassBinding.pinView.setText("");
-            fragmentValidateForgetPassBinding.pinView.setLineColor(
-                    ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, requireActivity().getTheme()));
+            case "error":
+                fragmentValidateForgetPassBinding.pinView.setLineColor(
+                        ResourcesCompat.getColor(getResources(), R.color.notificationColorRed, requireActivity().getTheme()));
+                break;
+            case "resend":
+                fragmentValidateForgetPassBinding.timer.setTextColor(getResources().getColor(R.color.colorAccentDark));
+                fragmentValidateForgetPassBinding.pinView.setText("");
+                fragmentValidateForgetPassBinding.pinView.setLineColor(
+                        ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, requireActivity().getTheme()));
+                break;
         }
     }
-    //    Pin View change Line Color
+//    Pin View change Line Color
     private void pinViewTryAgainLineColor()
     {
         fragmentValidateForgetPassBinding.pinView.addTextChangedListener(new TextWatcher()
@@ -128,27 +121,31 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
             }
         });
     }
-//    fragment navigation
+//    Fragment navigation
     @Override
     public void navigateToFragment(String message)
     {
 //        Nav Controller
         final NavController navController = Navigation.findNavController(fragmentValidateForgetPassBinding.getRoot());
 
-        if (message.equals("forgetPass"))
+        switch (message)
         {
-            navController.navigate(R.id.action_forgetPassValidateFragment_to_forgetPassFragment);
-        }
-        if (message.equals("phone"))
-        {
-            navController.navigate(R.id.action_forgetPassValidateFragment_to_forgetPassPhoneFragment);
-            requireActivity().getViewModelStore().clear();
+            case "forgetPass":
+                navController.navigate(R.id.action_forgetPassValidateFragment_to_forgetPassFragment);
+                hideShowKeyboard.hideKeyboardFrom(true);
+                break;
+            case "phone":
+                navController.navigate(R.id.action_forgetPassValidateFragment_to_forgetPassPhoneFragment);
+                requireActivity().getViewModelStore().clear();
+                hideShowKeyboard.hideKeyboardFrom(true);
+                break;
         }
     }
-//    error/success message
+//    Error/success message
     @Override
     public void onSuccess(String message)
     {
+        snackBarToast.snackBarShortTime(message);
     }
     @Override
     public void onFailure(String message)

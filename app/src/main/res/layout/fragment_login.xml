@@ -29,7 +29,9 @@
             android:paddingTop="?attr/actionBarSize"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
