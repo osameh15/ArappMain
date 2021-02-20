@@ -81,7 +81,7 @@
                         android:layout_height="match_parent"
                         android:enabled="false"
                         android:textSize="14sp"
-                        android:text="@string/placeholder_phone"
+                        android:text="@={viewModel.phone}"
                         android:textColor="@color/disable"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>

@@ -35,8 +35,10 @@ public class ForgetPassFragment extends Fragment implements SnackBarMessage, Nav
 //       Inflate the layout for this fragment
         fragmentForgetPassBinding = FragmentForgetPassBinding.inflate(inflater, container, false);
 //        Set View model
-        forgetPassViewModel = ViewModelProviders.of(this).get(ForgetPassViewModel.class);
+        forgetPassViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentForgetPassBinding.setViewModel(forgetPassViewModel);
+        forgetPassViewModel.snackBarMessage = this;
+        forgetPassViewModel.navigateFragment = this;
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentForgetPassBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentForgetPassBinding.getRoot());
@@ -71,7 +73,7 @@ public class ForgetPassFragment extends Fragment implements SnackBarMessage, Nav
     @Override
     public void onSuccess(String message)
     {
-        snackBarToast.snackBarShortTime(message);
+        snackBarToast.snackBarLongTime(message);
     }
     @Override
     public void onFailure(String message)

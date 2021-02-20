@@ -13,7 +13,6 @@
             type="ir.arapp.arappmain.viewmodel.ForgetPassViewModel"/>
     </data>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,8 +65,8 @@
                 style="@style/TextInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginEnd="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layoutDirection="rtl"
                 android:gravity="center_vertical"
@@ -79,6 +78,7 @@
                     android:inputType="textPassword"
                     android:imeOptions="actionNext"
                     android:textSize="14sp"
+                    android:text="@={viewModel.password}"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorAccentDark"
                     android:fontFamily="@font/iransans"/>
@@ -87,8 +87,8 @@
                 style="@style/TextInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginEnd="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layoutDirection="rtl"
                 android:gravity="center_vertical"
@@ -101,6 +101,7 @@
                     android:imeOptions="actionDone"
                     android:textAlignment="viewStart"
                     android:textSize="14sp"
+                    android:text="@={viewModel.cnfPassword}"
                     android:textColor="@color/colorAccentDark"
                     android:fontFamily="@font/iransans"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -108,12 +109,13 @@
                 style="@style/ButtonLoading"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginStart="34dp"
-                android:layout_marginEnd="34sp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
-                android:text="@string/login_arapp"/>
+                android:text="@string/login_arapp"
+                android:onClick="@{()->viewModel.checkPassword()}"/>
         </LinearLayout>
 
     </RelativeLayout>

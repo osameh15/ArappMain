@@ -22,14 +22,14 @@ import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentValidateForgetPassBinding;
-import ir.arapp.arappmain.viewmodel.ForgetPassValidateViewModel;
+import ir.arapp.arappmain.viewmodel.ForgetPassViewModel;
 
 public class ForgetPassValidateFragment extends Fragment implements SnackBarMessage, NavigateFragment, CheckPinView
 {
 
 //    region Variables
     FragmentValidateForgetPassBinding fragmentValidateForgetPassBinding;
-    ForgetPassValidateViewModel forgetPassValidateViewModel;
+    ForgetPassViewModel forgetPassValidateViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
 //    endregion
@@ -40,7 +40,7 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
 //        Inflate the layout for this fragment
         fragmentValidateForgetPassBinding = FragmentValidateForgetPassBinding.inflate(inflater, container, false);
 //        Set view model
-        forgetPassValidateViewModel = ViewModelProviders.of(this).get(ForgetPassValidateViewModel.class);
+        forgetPassValidateViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentValidateForgetPassBinding.setViewModel(forgetPassValidateViewModel);
         forgetPassValidateViewModel.snackBarMessage = this;
         forgetPassValidateViewModel.navigateFragment = this;
@@ -58,7 +58,7 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
         fragmentValidateForgetPassBinding.pinView.setAnimationEnable(true);
         pinViewTryAgainLineColor();
 //        Timer
-        forgetPassValidateViewModel.currentTime.observe(Objects.requireNonNull(fragmentValidateForgetPassBinding.getLifecycleOwner()), this::setTimer);
+        forgetPassValidateViewModel.currentTime.observe(fragmentValidateForgetPassBinding.getLifecycleOwner(), this::setTimer);
 //        Return view
         return fragmentValidateForgetPassBinding.getRoot();
     }

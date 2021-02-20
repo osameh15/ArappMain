@@ -22,14 +22,14 @@ import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentValidateRegisterBinding;
-import ir.arapp.arappmain.viewmodel.RegisterValidateViewModel;
+import ir.arapp.arappmain.viewmodel.RegisterViewModel;
 
 public class RegisterValidateFragment extends Fragment implements SnackBarMessage, NavigateFragment, CheckPinView
 {
 
 //    region Variables
     FragmentValidateRegisterBinding fragmentValidateRegisterBinding;
-    RegisterValidateViewModel registerValidateViewModel;
+    RegisterViewModel registerValidateViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
 //    endregion
@@ -40,7 +40,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
 //        Inflate the layout for this fragment
          fragmentValidateRegisterBinding = FragmentValidateRegisterBinding.inflate(inflater, container, false);
 //        Set view model
-        registerValidateViewModel = ViewModelProviders.of(this).get(RegisterValidateViewModel.class);
+        registerValidateViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentValidateRegisterBinding.setViewModel(registerValidateViewModel);
         registerValidateViewModel.navigateFragment = this;
         registerValidateViewModel.snackBarMessage = this;
@@ -58,7 +58,7 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
         fragmentValidateRegisterBinding.pinView.setAnimationEnable(true);
         pinViewTryAgainLineColor();
 //        Timer
-        registerValidateViewModel.currentTime.observe(Objects.requireNonNull(fragmentValidateRegisterBinding.getLifecycleOwner()), this::setTimer);
+        registerValidateViewModel.currentTime.observe(fragmentValidateRegisterBinding.getLifecycleOwner(), this::setTimer);
 //        Return view
         return fragmentValidateRegisterBinding.getRoot();
     }

@@ -1,7 +1,6 @@
 package ir.arapp.arappmain.View.Fragments;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -12,23 +11,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-
 import java.util.Objects;
-
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.CheckPinView;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentPhoneRegisterBinding;
-import ir.arapp.arappmain.viewmodel.RegisterPhoneViewModel;
+import ir.arapp.arappmain.viewmodel.RegisterViewModel;
 
-public class RegisterPhoneFragment extends Fragment implements NavigateFragment, SnackBarMessage
+public class RegisterPhoneFragment extends Fragment implements NavigateFragment, SnackBarMessage, CheckPinView
 {
 
 //    region Variable
     FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding;
-    RegisterPhoneViewModel registerPhoneViewModel;
+    RegisterViewModel registerPhoneViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
 //    endregion
@@ -39,10 +37,11 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
 //        Inflate the layout for this fragment
         fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
 //        Set view model
-        registerPhoneViewModel = ViewModelProviders.of(this).get(RegisterPhoneViewModel.class);
+        registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
         registerPhoneViewModel.navigateFragment = this;
         registerPhoneViewModel.snackBarMessage = this;
+        registerPhoneViewModel.checkPinView = this;
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneRegisterBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentPhoneRegisterBinding.getRoot());
@@ -86,6 +85,11 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
                 hideShowKeyboard.hideKeyboardFrom(true);
                 break;
         }
+    }
+//    Check pin view :}
+    @Override
+    public void checkPin(String type)
+    {
     }
 //    Error/success message
     @Override

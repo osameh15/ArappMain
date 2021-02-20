@@ -5,8 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import ir.arapp.arappmain.Model.User;
+import java.util.Objects;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 
@@ -16,8 +15,8 @@ public class LoginViewModel extends AndroidViewModel
 //    region Variable
     public MutableLiveData<String> phone;
     public MutableLiveData<String> password;
-    public SnackBarMessage snackBarMessage = null;
-    public NavigateFragment navigateFragment = null;
+    public SnackBarMessage snackBarMessage;
+    public NavigateFragment navigateFragment;
 //    endregion
 
 //    Constructor
@@ -52,17 +51,17 @@ public class LoginViewModel extends AndroidViewModel
 //    Login Button Click listener
     public void onButtonClick()
     {
-        if (phone.getValue().isEmpty() && password.getValue().isEmpty())
+        if (Objects.requireNonNull(phone.getValue()).isEmpty() && Objects.requireNonNull(password.getValue()).isEmpty())
         {
             snackBarMessage.onFailure("ابتدا شماره موبایل و رمزعبور را وارد نمایید");
             return;
         }
-        if (phone.getValue().isEmpty())
+        else if (phone.getValue().isEmpty())
         {
             snackBarMessage.onFailure("شماره موبایل را وارد نمایید");
             return;
         }
-        if (password.getValue().isEmpty())
+        else if (Objects.requireNonNull(password.getValue()).isEmpty())
         {
             snackBarMessage.onFailure("رمزعبور را وارد نمایید");
             return;

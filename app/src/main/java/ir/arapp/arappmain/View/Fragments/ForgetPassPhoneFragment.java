@@ -13,19 +13,20 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.CheckPinView;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
 import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentPhoneForgetPassBinding;
-import ir.arapp.arappmain.viewmodel.ForgetPassPhoneViewModel;
+import ir.arapp.arappmain.viewmodel.ForgetPassViewModel;
 
-public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage, NavigateFragment
+public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage, NavigateFragment, CheckPinView
 {
 
 //    region Variable
     FragmentPhoneForgetPassBinding fragmentPhoneForgetPassBinding;
-    ForgetPassPhoneViewModel forgetPassPhoneViewModel;
+    ForgetPassViewModel forgetPassPhoneViewModel;
     private HideShowKeyboard hideShowKeyboard;
     private SnackBarToast snackBarToast;
 //    endregion
@@ -36,10 +37,11 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
 //        Inflate the layout for this fragment
         fragmentPhoneForgetPassBinding = FragmentPhoneForgetPassBinding.inflate(inflater, container, false);
 //        Set view model
-        forgetPassPhoneViewModel = ViewModelProviders.of(this).get(ForgetPassPhoneViewModel.class);
+        forgetPassPhoneViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentPhoneForgetPassBinding.setViewModel(forgetPassPhoneViewModel);
         forgetPassPhoneViewModel.navigateFragment = this;
         forgetPassPhoneViewModel.snackBarMessage = this;
+        forgetPassPhoneViewModel.checkPinView = this;
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneForgetPassBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentPhoneForgetPassBinding.getRoot());
@@ -77,12 +79,18 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
             hideShowKeyboard.hideKeyboardFrom(true);
         }
     }
-//    Error/success message
+//    Check Pin View :}
+    @Override
+    public void checkPin(String type)
+    {
+    }
+    //    Error/success message
     @Override
     public void onSuccess(String message)
     {
         snackBarToast.snackBarShortTime(message);
     }
+
     @Override
     public void onFailure(String message)
     {

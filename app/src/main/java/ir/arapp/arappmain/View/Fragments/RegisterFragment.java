@@ -34,8 +34,10 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Navig
 //        Inflate the layout for this fragment
         fragmentRegisterBinding = FragmentRegisterBinding.inflate(inflater, container, false);
 //        Set View model
-        registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentRegisterBinding.setViewModel(registerViewModel);
+        registerViewModel.snackBarMessage = this;
+        registerViewModel.navigateFragment = this;
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentRegisterBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentRegisterBinding.getRoot());

@@ -9,7 +9,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="ir.arapp.arappmain.viewmodel.ForgetPassValidateViewModel"/>
+            type="ir.arapp.arappmain.viewmodel.ForgetPassViewModel"/>
     </data>
 
     <RelativeLayout

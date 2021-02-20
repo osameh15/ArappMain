@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
 //        Inflate the layout for this fragment
         fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
 //        Set view model
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        loginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
         fragmentLoginBinding.setViewModel(loginViewModel);
         loginViewModel.snackBarMessage = this;
         loginViewModel.navigateFragment = this;
