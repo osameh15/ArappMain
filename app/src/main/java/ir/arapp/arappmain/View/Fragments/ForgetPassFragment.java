@@ -12,14 +12,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentForgetPassBinding;
 import ir.arapp.arappmain.viewmodel.ForgetPassViewModel;
 
-public class ForgetPassFragment extends Fragment implements SnackBarMessage, NavigateFragment
+public class ForgetPassFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
 
 //    region Variable
@@ -38,7 +38,9 @@ public class ForgetPassFragment extends Fragment implements SnackBarMessage, Nav
         forgetPassViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentForgetPassBinding.setViewModel(forgetPassViewModel);
         forgetPassViewModel.snackBarMessage = this;
-        forgetPassViewModel.navigateFragment = this;
+        forgetPassViewModel.fragmentManager = this;
+//        Set Life Cycle
+            fragmentForgetPassBinding.setLifecycleOwner(this);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentForgetPassBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentForgetPassBinding.getRoot());
@@ -55,6 +57,7 @@ public class ForgetPassFragment extends Fragment implements SnackBarMessage, Nav
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
+        requireActivity().getViewModelStore().clear();
     }
 //    Fragment navigation
     @Override
@@ -68,6 +71,11 @@ public class ForgetPassFragment extends Fragment implements SnackBarMessage, Nav
             navController.navigate(R.id.action_forgetPassFragment_to_loginFragment);
             hideShowKeyboard.hideKeyboardFrom(true);
         }
+    }
+//    Check Pin View!
+    @Override
+    public void setFunction(String type)
+    {
     }
 //    Error/success message
     @Override

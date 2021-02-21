@@ -16,15 +16,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.CheckPinView;
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentValidateRegisterBinding;
 import ir.arapp.arappmain.viewmodel.RegisterViewModel;
 
-public class RegisterValidateFragment extends Fragment implements SnackBarMessage, NavigateFragment, CheckPinView
+public class RegisterValidateFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
 
 //    region Variables
@@ -42,9 +41,8 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
 //        Set view model
         registerValidateViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentValidateRegisterBinding.setViewModel(registerValidateViewModel);
-        registerValidateViewModel.navigateFragment = this;
         registerValidateViewModel.snackBarMessage = this;
-        registerValidateViewModel.checkPinView = this;
+        registerValidateViewModel.fragmentManager = this;
 //        Life cycle owner
         fragmentValidateRegisterBinding.setLifecycleOwner(this);
 //        Hooks
@@ -57,8 +55,6 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
 //        Pin view animation
         fragmentValidateRegisterBinding.pinView.setAnimationEnable(true);
         pinViewTryAgainLineColor();
-//        Timer
-        registerValidateViewModel.currentTime.observe(fragmentValidateRegisterBinding.getLifecycleOwner(), this::setTimer);
 //        Return view
         return fragmentValidateRegisterBinding.getRoot();
     }
@@ -69,22 +65,9 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     {
         requireActivity().onBackPressed();
     }
-//    Set timer text and color
-    @SuppressLint("SetTextI18n")
-    private void setTimer(Long s)
-    {
-        long min = s/60;
-        long sec = s%60;
-        @SuppressLint("DefaultLocale") String time = String.format("%02d:%02d", min, sec);
-        fragmentValidateRegisterBinding.timer.setText(time);
-        if (s < 10)
-        {
-            fragmentValidateRegisterBinding.timer.setTextColor(getResources().getColor(R.color.notificationColorRed));
-        }
-    }
-//    Check pin code error
+//    Set methods for specific function
     @Override
-    public void checkPin(String type)
+    public void setFunction(String type)
     {
         switch (type)
         {

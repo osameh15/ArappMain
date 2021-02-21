@@ -14,15 +14,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.HomeActivity;
 import ir.arapp.arappmain.viewmodel.LoginViewModel;
 import ir.arapp.arappmain.databinding.FragmentLoginBinding;
 
-public class LoginFragment extends Fragment implements SnackBarMessage, NavigateFragment
+public class LoginFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
 
 //    region Variable
@@ -41,7 +41,9 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         loginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
         fragmentLoginBinding.setViewModel(loginViewModel);
         loginViewModel.snackBarMessage = this;
-        loginViewModel.navigateFragment = this;
+        loginViewModel.fragmentManager = this;
+//        Set Life Cycle
+            fragmentLoginBinding.setLifecycleOwner(this);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentLoginBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentLoginBinding.getRoot());
@@ -58,7 +60,8 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                 |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-//    Fragment navigation
+
+    //    Fragment navigation
     @Override
     public void navigateToFragment(String fragment)
     {
@@ -87,6 +90,11 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Navigate
                 requireActivity().finish();
                 break;
         }
+    }
+//    Set methods for specific function
+    @Override
+    public void setFunction(String type)
+    {
     }
 //    Error/success message
     @Override

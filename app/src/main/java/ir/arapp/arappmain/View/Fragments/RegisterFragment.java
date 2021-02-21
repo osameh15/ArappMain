@@ -10,15 +10,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import java.util.Objects;
+
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.HomeActivity;
 import ir.arapp.arappmain.databinding.FragmentRegisterBinding;
 import ir.arapp.arappmain.viewmodel.RegisterViewModel;
 
-public class RegisterFragment extends Fragment implements SnackBarMessage, NavigateFragment
+public class RegisterFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
 
 //    region Variable
@@ -37,7 +38,9 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Navig
         registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentRegisterBinding.setViewModel(registerViewModel);
         registerViewModel.snackBarMessage = this;
-        registerViewModel.navigateFragment = this;
+        registerViewModel.fragmentManager = this;
+//        Set Life Cycle
+        fragmentRegisterBinding.setLifecycleOwner(this);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentRegisterBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentRegisterBinding.getRoot());
@@ -54,6 +57,7 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Navig
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
+        requireActivity().getViewModelStore().clear();
     }
 //    Fragment navigation
     @Override
@@ -68,11 +72,16 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Navig
             requireActivity().finish();
         }
     }
+//    Set methods for specific function
+    @Override
+    public void setFunction(String type)
+    {
+    }
 //    Error/success message
     @Override
     public void onSuccess(String message)
     {
-        snackBarToast.snackBarShortTime(message);
+        snackBarToast.snackBarLongTime(message);
     }
     @Override
     public void onFailure(String message)

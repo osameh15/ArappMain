@@ -6,7 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import java.util.Objects;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
+
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 
 public class LoginViewModel extends AndroidViewModel
@@ -16,7 +17,7 @@ public class LoginViewModel extends AndroidViewModel
     public MutableLiveData<String> phone;
     public MutableLiveData<String> password;
     public SnackBarMessage snackBarMessage;
-    public NavigateFragment navigateFragment;
+    public FragmentManager fragmentManager;
 //    endregion
 
 //    Constructor
@@ -41,12 +42,12 @@ public class LoginViewModel extends AndroidViewModel
 //    Sign Up button
     public void signUpButton()
     {
-        navigateFragment.navigateToFragment("signUp");
+        fragmentManager.navigateToFragment("signUp");
     }
 //    Forget Pass button
     public void forgetPassButton()
     {
-        navigateFragment.navigateToFragment("forgetPass");
+        fragmentManager.navigateToFragment("forgetPass");
     }
 //    Login Button Click listener
     public void onButtonClick()
@@ -66,7 +67,8 @@ public class LoginViewModel extends AndroidViewModel
             snackBarMessage.onFailure("رمزعبور را وارد نمایید");
             return;
         }
-        navigateFragment.navigateToFragment("home");
+//        Todo connect to server
+        fragmentManager.navigateToFragment("home");
     }
 //    endregion
 }

@@ -13,15 +13,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.CheckPinView;
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentPhoneForgetPassBinding;
 import ir.arapp.arappmain.viewmodel.ForgetPassViewModel;
 
-public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage, NavigateFragment, CheckPinView
+public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
 
 //    region Variable
@@ -39,9 +38,10 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
 //        Set view model
         forgetPassPhoneViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentPhoneForgetPassBinding.setViewModel(forgetPassPhoneViewModel);
-        forgetPassPhoneViewModel.navigateFragment = this;
         forgetPassPhoneViewModel.snackBarMessage = this;
-        forgetPassPhoneViewModel.checkPinView = this;
+        forgetPassPhoneViewModel.fragmentManager = this;
+//        Set Life Cycle
+            fragmentPhoneForgetPassBinding.setLifecycleOwner(this);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneForgetPassBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentPhoneForgetPassBinding.getRoot());
@@ -79,12 +79,12 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
             hideShowKeyboard.hideKeyboardFrom(true);
         }
     }
-//    Check Pin View :}
+//    Set methods for specific function
     @Override
-    public void checkPin(String type)
+    public void setFunction(String type)
     {
     }
-    //    Error/success message
+//    Error/success message
     @Override
     public void onSuccess(String message)
     {

@@ -85,7 +85,6 @@ public class SplashScreenActivity extends AppCompatActivity
         activitySplashScreenBinding.tryAgain.startAnimation();
         new Handler().postDelayed(this::tryAgain, TRY_AGAIN);
     }
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void tryAgain()
     {
         if (sessionManager.checkConnection())

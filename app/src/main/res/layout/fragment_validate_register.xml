@@ -71,7 +71,8 @@
                 android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccentDark"
+                android:text="@={viewModel.time}"
+                android:textColor="@{viewModel.timeColor}"
                 android:fontFamily="@font/iransans_bold"
                 android:textSize="16sp"/>
             <com.chaos.view.PinView

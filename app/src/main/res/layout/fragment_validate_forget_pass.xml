@@ -71,8 +71,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:text="@={viewModel.time}"
                 android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccentDark"/>
+                android:textColor="@{viewModel.timeColor}"/>
             <com.chaos.view.PinView
                 android:id="@+id/pinView"
                 style="@style/ValidationCode"

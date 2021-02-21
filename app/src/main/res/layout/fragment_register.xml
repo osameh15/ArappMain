@@ -7,6 +7,7 @@
 
 <!--    view model-->
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="ir.arapp.arappmain.viewmodel.RegisterViewModel"/>
@@ -101,12 +102,12 @@
                         android:inputType="text"
                         android:imeOptions="actionNext"
                         android:textSize="14sp"
+                        android:text="@={viewModel.name}"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"
                         android:maxLength="48"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/registerPassword"
                     style="@style/TextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -124,11 +125,11 @@
                         android:imeOptions="actionNext"
                         android:textAlignment="viewStart"
                         android:textSize="14sp"
+                        android:text="@={viewModel.password}"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/registerConfirmPassword"
                     style="@style/TextInputStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -146,6 +147,7 @@
                         android:imeOptions="actionDone"
                         android:textAlignment="viewStart"
                         android:textSize="14sp"
+                        android:text="@={viewModel.cnfPassword}"
                         android:textColor="@color/colorAccentDark"
                         android:fontFamily="@font/iransans"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -163,14 +165,16 @@
                         android:text="@string/set_service"
                         android:textSize="14sp"
                         android:fontFamily="@font/iransans_bold"
-                        android:textColor="@color/colorAccent"/>
+                        android:textColor="@color/colorAccent"
+                        android:onClick="@{()->viewModel.setService()}"/>
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/get_service"
                         android:textSize="14sp"
                         android:fontFamily="@font/iransans_bold"
-                        android:textColor="@color/colorAccent"/>
+                        android:textColor="@color/colorAccent"
+                        android:onClick="@{()->viewModel.getService()}"/>
                 </RadioGroup>
 <!--                accept arapp law-->
                 <LinearLayout
@@ -183,16 +187,17 @@
                     <com.google.android.material.checkbox.MaterialCheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="-8dp"/>
+                        android:layout_marginEnd="-8dp"
+                        android:onClick="@{()->viewModel.setCheckBox()}"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/law"
                         android:textSize="14sp"
                         android:fontFamily="@font/iransans_bold"
-                        android:textColor="@color/colorAccent"/>
+                        android:textColor="@color/colorAccent"
+                        android:onClick="@{()->viewModel.readPrivacy()}"/>
                     <TextView
-                        android:id="@+id/LoginSignUp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -202,7 +207,18 @@
                         android:textColor="@color/colorAccentDark"/>
                 </LinearLayout>
                 <com.marozzi.roundbutton.RoundButton
-                    android:id="@+id/signUp"
+                    style="@style/ButtonDisableLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="@string/register"
+                    android:enabled="false"
+                    android:visibility="@{viewModel.checkBox ? View.GONE : View.VISIBLE}"/>
+                <com.marozzi.roundbutton.RoundButton
                     style="@style/ButtonLoading"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -211,7 +227,9 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
-                    android:text="@string/register"/>
+                    android:text="@string/register"
+                    android:visibility="@{viewModel.checkBox ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{()->viewModel.onRegisterButtonClick()}"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

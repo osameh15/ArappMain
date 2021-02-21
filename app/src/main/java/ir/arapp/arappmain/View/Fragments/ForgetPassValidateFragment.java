@@ -1,6 +1,5 @@
 package ir.arapp.arappmain.View.Fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,15 +15,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.CheckPinView;
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentValidateForgetPassBinding;
 import ir.arapp.arappmain.viewmodel.ForgetPassViewModel;
 
-public class ForgetPassValidateFragment extends Fragment implements SnackBarMessage, NavigateFragment, CheckPinView
+public class ForgetPassValidateFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
 
 //    region Variables
@@ -43,8 +41,7 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
         forgetPassValidateViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentValidateForgetPassBinding.setViewModel(forgetPassValidateViewModel);
         forgetPassValidateViewModel.snackBarMessage = this;
-        forgetPassValidateViewModel.navigateFragment = this;
-        forgetPassValidateViewModel.checkPinView = this;
+        forgetPassValidateViewModel.fragmentManager = this;
 //        Life cycle owner
         fragmentValidateForgetPassBinding.setLifecycleOwner(this);
 //        Hooks
@@ -57,8 +54,6 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
 //        Pin view animation
         fragmentValidateForgetPassBinding.pinView.setAnimationEnable(true);
         pinViewTryAgainLineColor();
-//        Timer
-        forgetPassValidateViewModel.currentTime.observe(fragmentValidateForgetPassBinding.getLifecycleOwner(), this::setTimer);
 //        Return view
         return fragmentValidateForgetPassBinding.getRoot();
     }
@@ -69,22 +64,9 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
     {
         requireActivity().onBackPressed();
     }
-//    Set timer text and color
-    @SuppressLint("SetTextI18n")
-    private void setTimer(Long s)
-    {
-        long min = s/60;
-        long sec = s%60;
-        @SuppressLint("DefaultLocale") String time = String.format("%02d:%02d", min, sec);
-        fragmentValidateForgetPassBinding.timer.setText(time);
-        if (s < 10)
-        {
-            fragmentValidateForgetPassBinding.timer.setTextColor(getResources().getColor(R.color.notificationColorRed));
-        }
-    }
-//    Check pin code error
+//    Set methods for specific function
     @Override
-    public void checkPin(String type)
+    public void setFunction(String type)
     {
         switch (type)
         {

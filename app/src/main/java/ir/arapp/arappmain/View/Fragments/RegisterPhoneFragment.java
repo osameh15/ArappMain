@@ -13,15 +13,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.CheckPinView;
+import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
-import ir.arapp.arappmain.Util.Services.NavigateFragment;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentPhoneRegisterBinding;
 import ir.arapp.arappmain.viewmodel.RegisterViewModel;
 
-public class RegisterPhoneFragment extends Fragment implements NavigateFragment, SnackBarMessage, CheckPinView
+public class RegisterPhoneFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
 
 //    region Variable
@@ -39,9 +38,10 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
 //        Set view model
         registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
-        registerPhoneViewModel.navigateFragment = this;
         registerPhoneViewModel.snackBarMessage = this;
-        registerPhoneViewModel.checkPinView = this;
+        registerPhoneViewModel.fragmentManager = this;
+//        Set Life Cycle
+        fragmentPhoneRegisterBinding.setLifecycleOwner(this);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentPhoneRegisterBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentPhoneRegisterBinding.getRoot());
@@ -86,9 +86,9 @@ public class RegisterPhoneFragment extends Fragment implements NavigateFragment,
                 break;
         }
     }
-//    Check pin view :}
+//    Set methods for specific function
     @Override
-    public void checkPin(String type)
+    public void setFunction(String type)
     {
     }
 //    Error/success message
