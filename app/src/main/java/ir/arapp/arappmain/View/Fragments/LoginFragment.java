@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
+import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.HomeActivity;
@@ -30,6 +31,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Fragment
     LoginViewModel loginViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
+    private SessionManager sessionManager;
 //    endregion
 
     @Override
@@ -45,6 +47,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Fragment
 //        Set Life Cycle
             fragmentLoginBinding.setLifecycleOwner(this);
 //        Hooks
+        sessionManager = new SessionManager(requireContext());
         snackBarToast = new SnackBarToast(fragmentLoginBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentLoginBinding.getRoot());
 //        Return view
@@ -83,6 +86,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Fragment
                 hideShowKeyboard.hideKeyboardFrom(true);
                 break;
             case "home":
+                sessionManager.setLogin(true);
                 Intent homeActivity = new Intent(requireActivity(), HomeActivity.class);
                 startActivity(homeActivity);
                 hideShowKeyboard.hideKeyboardFrom(true);

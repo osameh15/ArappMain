@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base Theme -->
+<!--     Base Theme -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -14,12 +14,12 @@
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
 
-    <!-- Toolbar Theme -->
+<!--     Toolbar Theme -->
     <style name="Theme.MyFancyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlNormal">@color/lightBack</item>
     </style>
 
-    <!-- Snack bar Style -->
+<!--     Snack bar Style -->
     <style name="MaterialSnackBarTheme" parent="@style/Widget.MaterialComponents.Snackbar">
         <item name="backgroundTint">@color/colorPrimary</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
@@ -44,7 +44,7 @@
         <item name="fontFamily">@font/iransans</item>
     </style>
 
-    <!-- Button loading theme -->
+<!--     Button loading theme -->
     <style name="ButtonLoadingTransparent">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/iransans_bold</item>
@@ -128,7 +128,7 @@
         <item name="rb_text_color">@color/lightBack</item>
     </style>
 
-    <!-- Text Input Style -->
+<!--     Text Input Style -->
     <style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextColor">@color/colorAccentDark</item>
         <item name="android:textColorHint">@color/colorAccent</item>
@@ -143,14 +143,14 @@
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
     </style>
-    <!-- Edit Text Error Theme -->
+<!--     Edit Text Error Theme -->
     <style name="ErrorTextStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/notificationColorRed</item>
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/iransans</item>
     </style>
 
-    <!-- Validation Code Theme -->
+<!--     Validation Code Theme -->
     <style name="ValidationCode" parent="PinWidget.PinView">
         <item name="android:background">@android:color/transparent</item>
         <item name="fontFamily">@font/iransans_bold</item>
@@ -168,6 +168,11 @@
         <item name="android:maxLines">1</item>
     </style>
 
+<!--    Bottom Navigation View Text Appearance-->
+    <style name="textAppearanceBottomNavigation">
+        <item name="android:fontFamily">@font/iransans_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
     <!-- Navigation drawer Theme -->
 <!--    <style name="NavigationView" >
         <item name="fontFamily">@font/iransans_medium</item>

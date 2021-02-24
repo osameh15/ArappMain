@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/ic_outline_home_24"
+            android:title="@string/home_page"/>
+        <item
+            android:id="@+id/categoryFragment"
+            android:icon="@drawable/ic_outline_format_list_bulleted_24"
+            android:title="@string/category"/>
+        <item
+            android:id="@+id/notificationFragment"
+            android:icon="@drawable/ic_baseline_notifications_none_24"
+            android:title="@string/notification"/>
+        <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_baseline_person_outline_24"
+            android:title="@string/profile"/>
+    </group>
+</menu>

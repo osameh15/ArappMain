@@ -1,15 +1,15 @@
 <resources>
-    <!-- App Detail -->
+<!--     App Detail -->
     <string name="app_name">Arapp</string>
     <string name="app_name_persian">آراپ</string>
     <string name="version">نسخه آلفا 0.5</string>
-    <!-- Splash Screen -->
+<!--     Splash Screen -->
     <string name="no_connection">عدم اتصال به اینترنت!</string>
     <string name="try_again">تلاش مجدد</string>
-    <!-- RegLog Fragment -->
+<!--     RegLog Fragment -->
     <string name="sign_up">عضویت</string>
     <string name="login_arapp">ورود به آراپ</string>
-    <!-- Register Fragments -->
+<!--     Register Fragments -->
     <string name="register">عضویت در آراپ</string>
     <string name="register_title">جهت عضویت، شماره موبایل خود را وارد نمایید</string>
     <string name="login_sign_up">آیا در آراپ عضویت دارید؟</string>
@@ -30,13 +30,18 @@
     <string name="get_service">سرویس گیرنده</string>
     <string name="law">قوانین آراپ</string>
     <string name="accept_law">را مطالعه کرده و می پذیرم.</string>
-    <!-- Login Fragment -->
+<!--     Login Fragment -->
     <string name="login_text">جهت ورود، شماره موبایل و رمز عبور را وارد نمایید</string>
     <string name="sign_up_login">هنوز در آراپ عضویت ندارید؟</string>
     <string name="forget_password_text">رمز عبور خود را فراموش کرده اید؟</string>
     <string name="forget_pass">بازیابی رمز عبور</string>
     <string name="login">ورود</string>
-    <!-- Forget Password Fragments -->
+<!--     Forget Password Fragments -->
     <string name="forget_pass_text">جهت بازیابی رمز عبور، شماره موبایل خود را وارد نمایید</string>
     <string name="forget_pass_new_pass">رمز عبور جدید خود را وارد نمایید</string>
+<!--    Bottom navigation-->
+    <string name="home_page">صفحه اصلی</string>
+    <string name="category">دسته بندی</string>
+    <string name="notification">اعلانات</string>
+    <string name="profile">صفحه کاربری</string>
 </resources>

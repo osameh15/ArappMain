@@ -13,6 +13,7 @@ import java.util.Objects;
 
 import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
+import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.HomeActivity;
@@ -27,6 +28,7 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Fragm
     RegisterViewModel registerViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
+    private SessionManager sessionManager;
 //    endregion
 
     @Override
@@ -42,6 +44,7 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Fragm
 //        Set Life Cycle
         fragmentRegisterBinding.setLifecycleOwner(this);
 //        Hooks
+        sessionManager = new SessionManager(requireContext());
         snackBarToast = new SnackBarToast(fragmentRegisterBinding.getRoot());
         hideShowKeyboard = new HideShowKeyboard(getContext(), fragmentRegisterBinding.getRoot());
 //        Toolbar
@@ -66,6 +69,7 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Fragm
         if (message.equals("home"))
         {
             Intent homeActivity = new Intent(requireActivity(), HomeActivity.class);
+            sessionManager.setLogin(true);
             startActivity(homeActivity);
             hideShowKeyboard.hideKeyboardFrom(true);
             requireActivity().getViewModelStore().clear();
