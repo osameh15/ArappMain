@@ -30,6 +30,7 @@ public class RegisterViewModel extends AndroidViewModel
     public MutableLiveData<String> phone;
     public MutableLiveData<String> validate;
     public MutableLiveData<Boolean> flag;
+    private final MutableLiveData<Boolean> checkTime;          // check current time is start();
     public MutableLiveData<Long> currentTime;
     public MutableLiveData<String> time;
     public MutableLiveData<Integer> timeColor;
@@ -50,10 +51,11 @@ public class RegisterViewModel extends AndroidViewModel
 //        Hooks
         phone = new MutableLiveData<>();
         validate = new MutableLiveData<>();
+        flag = new MutableLiveData<>();
+        checkTime = new MutableLiveData<>();
         currentTime = new MutableLiveData<>();
         time = new MutableLiveData<>();
         timeColor = new MutableLiveData<>();
-        flag = new MutableLiveData<>();
         name = new MutableLiveData<>();
         password = new MutableLiveData<>();
         cnfPassword = new MutableLiveData<>();
@@ -61,11 +63,12 @@ public class RegisterViewModel extends AndroidViewModel
         service = new MutableLiveData<>();
 //        set data
         phone.setValue("");
+        flag.setValue(false);
+        checkTime.setValue(false);
         currentTime.setValue(0L);
         validate.setValue("");
         time.setValue("");
         timeColor.setValue(getApplication().getResources().getColor(R.color.colorAccentDark));
-        flag.setValue(false);
         name.setValue("");
         password.setValue("");
         cnfPassword.setValue("");
@@ -79,7 +82,10 @@ public class RegisterViewModel extends AndroidViewModel
     protected void onCleared()
     {
         super.onCleared();
-        countDownTimer.cancel();
+        if (checkTime.getValue())
+        {
+            countDownTimer.cancel();
+        }
     }
 //    Submit phone Button
     public void onPhoneButtonClick()
@@ -150,6 +156,7 @@ public class RegisterViewModel extends AndroidViewModel
 //    Countdown timer
     public void startCountDownTimer()
     {
+        checkTime.setValue(true);
         countDownTimer = new CountDownTimer(120000, 1000)
         {
             @Override
@@ -163,6 +170,7 @@ public class RegisterViewModel extends AndroidViewModel
             {
                 currentTime.setValue(0L);
                 flag.setValue(true);
+                checkTime.setValue(false);
             }
         };
         countDownTimer.start();

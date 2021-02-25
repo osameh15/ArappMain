@@ -32,6 +32,7 @@ public class ForgetPassViewModel extends AndroidViewModel
     public MutableLiveData<String> phone;
     public MutableLiveData<String> validate;
     public MutableLiveData<Boolean> flag;
+    private final MutableLiveData<Boolean> checkTime;     // check current time is start();
     public MutableLiveData<Long> currentTime;
     public MutableLiveData<String> time;
     public MutableLiveData<Integer> timeColor;
@@ -49,6 +50,7 @@ public class ForgetPassViewModel extends AndroidViewModel
 //        Hooks
         phone = new MutableLiveData<>();
         validate = new MutableLiveData<>();
+        checkTime = new MutableLiveData<>();
         currentTime = new MutableLiveData<>();
         flag = new MutableLiveData<>();
         password = new MutableLiveData<>();
@@ -58,6 +60,7 @@ public class ForgetPassViewModel extends AndroidViewModel
 //        set data
         phone.setValue("");
         validate.setValue("");
+        checkTime.setValue(false);
         currentTime.setValue(0L);
         flag.setValue(false);
         password.setValue("");
@@ -72,7 +75,10 @@ public class ForgetPassViewModel extends AndroidViewModel
     protected void onCleared()
     {
         super.onCleared();
-        countDownTimer.cancel();
+        if (checkTime.getValue())
+        {
+            countDownTimer.cancel();
+        }
     }
 //    on Button click listener
     public void onPhoneButtonClick()
@@ -131,6 +137,7 @@ public class ForgetPassViewModel extends AndroidViewModel
 //    Countdown timer
     public void startCountDownTimer()
     {
+        checkTime.setValue(true);
         countDownTimer = new CountDownTimer(120000, 1000)
         {
             @Override
@@ -144,6 +151,7 @@ public class ForgetPassViewModel extends AndroidViewModel
             {
                 currentTime.setValue(0L);
                 flag.setValue(true);
+                checkTime.setValue(false);
             }
         };
         countDownTimer.start();

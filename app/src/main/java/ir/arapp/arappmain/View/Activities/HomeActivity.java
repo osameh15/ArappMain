@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.databinding.ActivityHomeBinding;
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
@@ -43,6 +44,8 @@ public class HomeActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //        Bottom navigation Manager
         bottomBarManager();
+        SessionManager sessionManager = new SessionManager(this);
+        sessionManager.setLogin(false);
     }
 
 //    region Methods
