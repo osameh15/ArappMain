@@ -1,4 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_faves"
+            android:icon="@drawable/ic_baseline_bookmark_border_24"
+            android:title="@string/favorite"/>
+    </group>
+
+    <item
+        android:id="@+id/nav_newsReceive"
+        app:actionViewClass="androidx.appcompat.widget.AppCompatCheckBox"
+        android:icon="@drawable/ic_baseline_notifications_none_24"
+        android:title="@string/notify_receives"/>
+
+    <group
+        android:id="@+id/supportMenuGroup"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/inviteFriends"
+            android:icon="@drawable/ic_baseline_share_24"
+            android:title="@string/invite_friends"/>
+        <item
+            android:id="@+id/nav_rating"
+            android:icon="@drawable/ic_baseline_star_outline_24"
+            android:title="@string/rate_arapp"/>
+    </group>
+
+    <group
+        android:id="@+id/aboutMenuGroup"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/recentUpdates"
+            android:icon="@drawable/ic_outline_update_24"
+            android:title="@string/recently_changed"/>
+        <item
+            android:id="@+id/nav_aboutUs"
+            android:icon="@drawable/ic_outline_error_outline_24"
+            android:title="@string/about_us"/>
+        <item
+            android:id="@+id/nav_contactUS"
+            android:icon="@drawable/ic_baseline_mail_outline_24"
+            android:title="@string/contact_us"/>
+    </group>
+
+    <group
+        android:id="@+id/question_freq"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_question"
+            android:icon="@drawable/ic_baseline_help_outline_24"
+            android:title="@string/help_us"/>
+    </group>
 
 </menu>

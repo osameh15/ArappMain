@@ -74,13 +74,15 @@
 
 <!--        Drawer Navigation menu-->
         <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_drawer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/splashButtonTextColor"
             android:theme="@style/NavigationView"
             android:layoutDirection="rtl"
             android:layout_gravity="end"
-            app:menu="@menu/bottom_navigation"/>
+            app:headerLayout="@layout/drawer_header"
+            app:menu="@menu/drawer_layout"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:layoutDirection="rtl"
+    android:padding="10dp"
+    android:gravity="center_vertical">
+
+<!--        Profile avatar-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="16dp"
+        app:cardElevation="5dp">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="15dp"
+            app:riv_border_width="1dp"
+            app:riv_border_color="@color/colorAccentDark"
+            app:riv_mutate_background="false"
+            app:riv_tile_mode="clamp"
+            app:riv_oval="false"
+            android:src="@drawable/icon"/>
+    </androidx.cardview.widget.CardView>
+<!--    Info pannel-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/nav_profileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="14sp"
+            android:fontFamily="@font/iransans_bold"
+            android:textColor="@color/colorAccentDark"/>
+        <TextView
+            android:id="@+id/nav_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/mail"
+            android:textSize="12sp"
+            android:fontFamily="@font/iransans"
+            android:textColor="@color/colorAccentDark"/>
+<!--        Arapp coin-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            tools:ignore="UseCompoundDrawables">
+        <ImageView
+                android:id="@+id/deleteService"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/arapp_coin"
+                android:contentDescription="@string/app_name"/>
+            <TextView
+                android:id="@+id/nav_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="@string/timer_count"
+                android:textSize="14sp"
+                android:fontFamily="@font/iransans_bold"
+                android:textColor="@color/colorAccentDark"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

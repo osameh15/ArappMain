@@ -44,4 +44,13 @@
     <string name="category">دسته بندی</string>
     <string name="notification">اعلانات</string>
     <string name="profile">صفحه کاربری</string>
+<!--    Bottom navigation-->
+    <string name="favorite">نشان شده ها</string>
+    <string name="notify_receives">دریافت اعلانات</string>
+    <string name="invite_friends">پیشنهاد به دوستان</string>
+    <string name="rate_arapp">امتیاز به آراپ</string>
+    <string name="help_us">سوالات متداول</string>
+    <string name="contact_us">ارتباط با آراپ</string>
+    <string name="about_us">درباره آراپ</string>
+    <string name="recently_changed">تغییرات اخیر</string>
 </resources>
