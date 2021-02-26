@@ -9,12 +9,18 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
+
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SessionManager;
+import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.ActivityHomeBinding;
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
@@ -26,6 +32,8 @@ public class HomeActivity extends AppCompatActivity
     NavHostFragment navHostFragment;
     NavController navController;
     AppBarConfiguration appBarConfiguration;
+    private SnackBarToast snackBarToast;
+    private long backPressedTime;
 //    endregion
 
     @Override
@@ -35,20 +43,20 @@ public class HomeActivity extends AppCompatActivity
         activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 //        Hooks
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.mainFragment);
+        snackBarToast = new SnackBarToast(activityHomeBinding.getRoot());
 //        Action bar
         setSupportActionBar(activityHomeBinding.homeToolbar);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 //        Nav Controller for Bottom Navigation
         navController = navHostFragment.getNavController();
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //        Bottom navigation Manager
         bottomBarManager();
-        SessionManager sessionManager = new SessionManager(this);
-        sessionManager.setLogin(false);
     }
 
 //    region Methods
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -58,13 +66,30 @@ public class HomeActivity extends AppCompatActivity
         activityHomeBinding.bottomNavigationView.setupWithNavController(menu, navController);
         return true;
     }
-
+    @Override
+    public void onBackPressed()
+    {
+        if (Objects.equals(Objects.requireNonNull(navController.getCurrentDestination()).getLabel(), "صفحه اصلی"))
+        {
+            snackBarToast.snackBarShortTime("جهت خروج از برنامه، بازگشت را مجددا فشار دهید!", activityHomeBinding.bottomNavigationView);
+            if (backPressedTime + 2000 > System.currentTimeMillis())
+            {
+                finishAffinity();
+            }
+            backPressedTime = System.currentTimeMillis();
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+    }
     @Override
     public boolean onSupportNavigateUp()
     {
         navController.navigateUp();
         return true;
     }
+    //    Bottom bar manager to handle bottom navigation
     private void bottomBarManager()
     {
         activityHomeBinding.bottomNavigationView.setBadgeAtTabIndex(2, new AnimatedBottomBar.Badge());

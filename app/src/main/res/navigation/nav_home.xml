@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_home"
@@ -7,8 +8,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="ir.arapp.arappmain.View.Fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="@string/home_page"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
@@ -16,7 +17,7 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="ir.arapp.arappmain.View.Fragments.CategoryFragment"
-        android:label="fragment_category"
+        android:label="@string/category"
         tools:layout="@layout/fragment_category" >
         <action
             android:id="@+id/action_categoryFragment_to_notificationFragment"
@@ -25,7 +26,7 @@
     <fragment
         android:id="@+id/notificationFragment"
         android:name="ir.arapp.arappmain.View.Fragments.NotificationFragment"
-        android:label="fragment_notification"
+        android:label="@string/notification"
         tools:layout="@layout/fragment_notification" >
         <action
             android:id="@+id/action_notificationFragment_to_profileFragment"
@@ -34,6 +35,6 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="ir.arapp.arappmain.View.Fragments.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

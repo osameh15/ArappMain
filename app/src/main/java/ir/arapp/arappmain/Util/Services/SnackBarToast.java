@@ -18,18 +18,33 @@ public class SnackBarToast
     }
 
 //    region Methods
-//    Snack bar short time display
+//    Snack bar short time display (1.5 sec)
     public void snackBarShortTime(String message)
     {
         Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_SHORT);
-        snackbar.setDuration(1500);
+        snackbar.setDuration(2000);
         snackbar.show();
     }
-//    Snack bar short time display
+//    Snack bar short time display anchor view (1.5 sec)
+    public void snackBarShortTime(String message, View view)
+    {
+        Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_SHORT);
+        snackbar.setAnchorView(view);
+        snackbar.setDuration(2000);
+        snackbar.show();
+    }
+//    Snack bar long time display (3 sec)
     public void snackBarLongTime(String message)
     {
         Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_LONG);
-        snackbar.setDuration(3000);
+        snackbar.setDuration(3500);
+        snackbar.show();
+    }
+//    Snack bar long time display with anchor view (3 sec)
+    public void snackBarLongTime(String message, View view)
+    {
+        Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_LONG);
+        snackbar.setDuration(3500);
         snackbar.show();
     }
 //    endregion
