@@ -3,7 +3,8 @@
     <string name="app_name">Arapp</string>
     <string name="app_name_persian">آراپ</string>
     <string name="version">نسخه آلفا 0.5</string>
-<!--     Splash Screen -->
+    <string name="update">تغییرات نسخه 0.6.0: \n1- طراحی و بازسازی صفحه اول برنامه \n2- طراحی و تکمیل صفحات احراز هویت \n3- طراحی منوی زیر برای صفحه اصلی</string>
+    <!--     Splash Screen -->
     <string name="no_connection">عدم اتصال به اینترنت!</string>
     <string name="try_again">تلاش مجدد</string>
 <!--     RegLog Fragment -->
@@ -44,7 +45,7 @@
     <string name="category">دسته بندی</string>
     <string name="notification">اعلانات</string>
     <string name="profile">صفحه کاربری</string>
-<!--    Bottom navigation-->
+<!--    Drawer navigation-->
     <string name="favorite">نشان شده ها</string>
     <string name="notify_receives">دریافت اعلانات</string>
     <string name="invite_friends">پیشنهاد به دوستان</string>
@@ -53,4 +54,6 @@
     <string name="contact_us">ارتباط با آراپ</string>
     <string name="about_us">درباره آراپ</string>
     <string name="recently_changed">تغییرات اخیر</string>
+<!--    Dialogs Text-->
+    <string name="no_change">تغییرات جدیدی اعمال نشده است</string>
 </resources>

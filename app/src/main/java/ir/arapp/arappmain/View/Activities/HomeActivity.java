@@ -1,6 +1,5 @@
 package ir.arapp.arappmain.View.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
@@ -9,23 +8,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-
-import com.google.android.material.navigation.NavigationView;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
+import android.widget.ImageView;
+import android.widget.TextView;
 import java.util.Objects;
-
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
@@ -123,54 +116,52 @@ public class HomeActivity extends AppCompatActivity
         }
         else if (!storedVersionName.equals(versionName))
         {
-//            Todo show recently update dialog
+            showRecentlyUpdatesDialog();
         }
         sessionManager.setStoredVersionName(versionName);
     }
-//    Navigation Drawer Manager and animated drawer layout
+//    region Navigation drawer
+//   Navigation Drawer Manager and animated drawer layout
     private void navigationDrawerManager()
     {
         activityHomeBinding.navigationDrawer.bringToFront();
-        activityHomeBinding.navigationDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+        activityHomeBinding.navigationDrawer.setNavigationItemSelectedListener(item ->
+        {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_faves)
             {
-                int itemId = item.getItemId();
-                if (itemId == R.id.nav_faves)
-                {
-                    snackBarToast.snackBarShortTime("نشان شده ها", activityHomeBinding.bottomNavigationView);
-                }
-                else if (itemId == R.id.nav_newsReceive)
-                {
-                    snackBarToast.snackBarShortTime("دریافت اعلان", activityHomeBinding.bottomNavigationView);
-                }
-                else if (itemId == R.id.nav_inviteFriends)
-                {
-                    snackBarToast.snackBarShortTime("پیشنهاد به دوستان", activityHomeBinding.bottomNavigationView);
-                }
-                else if (itemId == R.id.nav_rating)
-                {
-                    snackBarToast.snackBarShortTime("امتیاز به آراپ", activityHomeBinding.bottomNavigationView);
-                }
-                else if (itemId == R.id.nav_recentUpdates)
-                {
-                    snackBarToast.snackBarShortTime("تغییرات اخیر", activityHomeBinding.bottomNavigationView);
-                }
-                else if (itemId == R.id.nav_aboutUs)
-                {
-                    snackBarToast.snackBarShortTime("درباره ما", activityHomeBinding.bottomNavigationView);
-                }
-                else if (itemId == R.id.nav_contactUS)
-                {
-                    snackBarToast.snackBarShortTime("ارتباط با ما", activityHomeBinding.bottomNavigationView);
-                }
-                else if (itemId == R.id.nav_question)
-                {
-                    snackBarToast.snackBarShortTime("سوالات متداول", activityHomeBinding.bottomNavigationView);
-                }
-                activityHomeBinding.drawerLayout.closeDrawer(GravityCompat.END);
-                return true;
+                snackBarToast.snackBarShortTime("نشان شده ها", activityHomeBinding.bottomNavigationView);
             }
+            else if (itemId == R.id.nav_newsReceive)
+            {
+                snackBarToast.snackBarShortTime("دریافت اعلان", activityHomeBinding.bottomNavigationView);
+            }
+            else if (itemId == R.id.nav_inviteFriends)
+            {
+                snackBarToast.snackBarShortTime("پیشنهاد به دوستان", activityHomeBinding.bottomNavigationView);
+            }
+            else if (itemId == R.id.nav_rating)
+            {
+                snackBarToast.snackBarShortTime("امتیاز به آراپ", activityHomeBinding.bottomNavigationView);
+            }
+            else if (itemId == R.id.nav_recentUpdates)
+            {
+                showRecentlyUpdatesDialog();
+            }
+            else if (itemId == R.id.nav_aboutUs)
+            {
+                snackBarToast.snackBarShortTime("درباره ما", activityHomeBinding.bottomNavigationView);
+            }
+            else if (itemId == R.id.nav_contactUS)
+            {
+                snackBarToast.snackBarShortTime("ارتباط با ما", activityHomeBinding.bottomNavigationView);
+            }
+            else if (itemId == R.id.nav_question)
+            {
+                snackBarToast.snackBarShortTime("سوالات متداول", activityHomeBinding.bottomNavigationView);
+            }
+            activityHomeBinding.drawerLayout.closeDrawer(GravityCompat.END);
+            return true;
         });
         animatedDrawerLayout();
     }
@@ -194,11 +185,37 @@ public class HomeActivity extends AppCompatActivity
             }
         });
     }
-    //    Bottom bar manager to handle bottom navigation
+//    endregion
+//        Bottom bar manager to handle bottom navigation
     private void bottomBarManager()
     {
         activityHomeBinding.bottomNavigationView.setBadgeAtTabIndex(2, new AnimatedBottomBar.Badge());
     }
+//    region Dialogs
+//    Recently Update Dialogs
+    private void showRecentlyUpdatesDialog()
+    {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_recently_update_dialog);
+        ImageView close = dialog.findViewById(R.id.close_dialog);
+        TextView textView = dialog.findViewById(R.id.recentlyChangesText);
+        textView.setMovementMethod(new ScrollingMovementMethod());
+        textView.setText(getResources().getString(R.string.update));
+        close.setOnClickListener(view -> dialog.dismiss());
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+//    About us dialog
+    private void showAboutUsDialog()
+    {
+        Dialog dialog = new Dialog(this);
+    }
+//    Contact us dialog
+    private void showContactUsDialog()
+    {
+        Dialog dialog = new Dialog(this);
+    }
+//    endregion
 //    endregion
 }
 
