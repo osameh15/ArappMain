@@ -3,14 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_faves"
-            android:icon="@drawable/ic_baseline_bookmark_border_24"
-            android:title="@string/favorite"/>
-    </group>
-
+    <item
+        android:id="@+id/nav_faves"
+        android:icon="@drawable/ic_baseline_bookmark_border_24"
+        android:title="@string/favorite"/>
     <item
         android:id="@+id/nav_newsReceive"
         app:actionViewClass="androidx.appcompat.widget.AppCompatCheckBox"
@@ -21,7 +17,7 @@
         android:id="@+id/supportMenuGroup"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/inviteFriends"
+            android:id="@+id/nav_inviteFriends"
             android:icon="@drawable/ic_baseline_share_24"
             android:title="@string/invite_friends"/>
         <item
@@ -34,7 +30,7 @@
         android:id="@+id/aboutMenuGroup"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/recentUpdates"
+            android:id="@+id/nav_recentUpdates"
             android:icon="@drawable/ic_outline_update_24"
             android:title="@string/recently_changed"/>
         <item

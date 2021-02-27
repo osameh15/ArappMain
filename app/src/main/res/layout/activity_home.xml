@@ -18,8 +18,9 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/homeToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:theme="@style/Theme.MyFancyTheme"
+                android:background="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -39,7 +40,6 @@
                 app:defaultNavHost="true"/>
             <!--            Bottom Navigation-->
             <View
-                android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:background="@drawable/border_shadow"
@@ -74,7 +74,7 @@
 
 <!--        Drawer Navigation menu-->
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_drawer"
+            android:id="@+id/navigationDrawer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/splashButtonTextColor"
