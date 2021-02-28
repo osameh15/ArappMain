@@ -32,6 +32,7 @@
     <color name="notificationColorGreen">#23c552</color>
 
     <!-- Other Theme color -->
+    <color name="dialogColor">#EDE8FF</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="Red">#FF0000</color>

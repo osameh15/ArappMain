@@ -4,6 +4,7 @@
     <string name="app_name_persian">آراپ</string>
     <string name="version">نسخه آلفا 0.5</string>
     <string name="update">تغییرات نسخه 0.6.0: \n1- طراحی و بازسازی صفحه اول برنامه \n2- طراحی و تکمیل صفحات احراز هویت \n3- طراحی منوی زیر برای صفحه اصلی</string>
+    <string name="about">آراپ، انتخاب همه سلیقه ها</string>
     <!--     Splash Screen -->
     <string name="no_connection">عدم اتصال به اینترنت!</string>
     <string name="try_again">تلاش مجدد</string>

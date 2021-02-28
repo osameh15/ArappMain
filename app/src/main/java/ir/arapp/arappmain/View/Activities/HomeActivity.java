@@ -150,7 +150,7 @@ public class HomeActivity extends AppCompatActivity
             }
             else if (itemId == R.id.nav_aboutUs)
             {
-                snackBarToast.snackBarShortTime("درباره ما", activityHomeBinding.bottomNavigationView);
+                showAboutUsDialog();
             }
             else if (itemId == R.id.nav_contactUS)
             {
@@ -209,6 +209,11 @@ public class HomeActivity extends AppCompatActivity
     private void showAboutUsDialog()
     {
         Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custom_about_us_dialog);
+        ImageView close = dialog.findViewById(R.id.close_dialog);
+        close.setOnClickListener(view-> dialog.dismiss());
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 //    Contact us dialog
     private void showContactUsDialog()

@@ -34,25 +34,25 @@
                 android:layout_marginEnd="10dp"
                 android:textAlignment="center"
                 android:fontFamily="@font/iransans_bold"
-                android:text="@string/recently_changed"
+                android:text="@string/about_us"
                 android:textColor="@color/colorAccentDark"
                 android:textSize="14sp"/>
-            <com.airbnb.lottie.LottieAnimationView
+            <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="center"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_fileName="update.json"/>
+                android:src="@drawable/logo"
+                android:contentDescription="@string/app_name" />
             <TextView
-                android:id="@+id/recentlyChangesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:textAlignment="textStart"
                 android:fontFamily="@font/iransans_bold"
-                android:text="@string/no_change"
+                android:text="@string/about"
                 android:textColor="@color/colorAccentDark"
                 android:textSize="13sp"
                 android:scrollbars="vertical"
