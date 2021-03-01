@@ -75,7 +75,7 @@ public class ForgetPassViewModel extends AndroidViewModel
     protected void onCleared()
     {
         super.onCleared();
-        if (checkTime.getValue())
+        if (Objects.requireNonNull(checkTime.getValue()))
         {
             countDownTimer.cancel();
         }
@@ -89,9 +89,9 @@ public class ForgetPassViewModel extends AndroidViewModel
             return;
         }
 //        Start Countdown timer
-        if (currentTime.getValue().equals(0L))
+        if (Objects.equals(currentTime.getValue(), 0L))
         {
-            if (flag.getValue().equals(true))
+            if (Objects.equals(flag.getValue(), true))
             {
                 resendCode();
             }
@@ -159,7 +159,7 @@ public class ForgetPassViewModel extends AndroidViewModel
 //    Timer color and text
     private void setTimer(MutableLiveData<Long> s)
     {
-        long min = s.getValue()/60;
+        long min = Objects.requireNonNull(s.getValue()) /60;
         long sec = s.getValue()%60;
         @SuppressLint("DefaultLocale") String timeToFormat = String.format("%02d:%02d", min, sec);
         time.setValue(timeToFormat);

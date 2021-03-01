@@ -17,13 +17,19 @@
         android:id="@+id/supportMenuGroup"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/nav_inviteFriends"
-            android:icon="@drawable/ic_baseline_share_24"
-            android:title="@string/invite_friends"/>
-        <item
-            android:id="@+id/nav_rating"
-            android:icon="@drawable/ic_baseline_star_outline_24"
-            android:title="@string/rate_arapp"/>
+            android:id="@+id/nav_share"
+            android:title="@string/share">
+            <menu>
+                <item
+                    android:id="@+id/nav_inviteFriends"
+                    android:icon="@drawable/ic_baseline_share_24"
+                    android:title="@string/invite_friends"/>
+                <item
+                    android:id="@+id/nav_rating"
+                    android:icon="@drawable/ic_baseline_star_outline_24"
+                    android:title="@string/rate_arapp"/>
+            </menu>
+        </item>
     </group>
 
     <group
@@ -50,6 +56,12 @@
             android:id="@+id/nav_question"
             android:icon="@drawable/ic_baseline_help_outline_24"
             android:title="@string/help_us"/>
+        <item
+            android:id="@+id/nav_tag"
+            android:title="@string/app_version"
+            android:checkable="false"
+            android:enabled="false"
+            app:actionViewClass="android.widget.TextView" />
     </group>
 
 </menu>

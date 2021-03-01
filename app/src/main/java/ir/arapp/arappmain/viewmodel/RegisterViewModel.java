@@ -82,7 +82,7 @@ public class RegisterViewModel extends AndroidViewModel
     protected void onCleared()
     {
         super.onCleared();
-        if (checkTime.getValue())
+        if (Objects.requireNonNull(checkTime.getValue()))
         {
             countDownTimer.cancel();
         }
@@ -104,9 +104,9 @@ public class RegisterViewModel extends AndroidViewModel
         }
 //        Todo connect to server and send sms validation code
 //        Start Countdown timer
-        if (currentTime.getValue().equals(0L))
+        if (Objects.equals(currentTime.getValue(), 0L))
         {
-            if (flag.getValue().equals(true))
+            if (Objects.equals(flag.getValue(), true))
             {
                 resendCode();
             }
@@ -178,7 +178,7 @@ public class RegisterViewModel extends AndroidViewModel
 //    Timer color and text
     private void setTimer(MutableLiveData<Long> s)
     {
-        long min = s.getValue()/60;
+        long min = Objects.requireNonNull(s.getValue()) /60;
         long sec = s.getValue()%60;
         @SuppressLint("DefaultLocale") String timeToFormat = String.format("%02d:%02d", min, sec);
         time.setValue(timeToFormat);
@@ -195,24 +195,26 @@ public class RegisterViewModel extends AndroidViewModel
 //    check accept application law
     public void setCheckBox()
     {
-        if (checkBox.getValue().equals(false))
+        if (Objects.equals(checkBox.getValue(), false))
         {
             checkBox.setValue(true);
         }
-        else if (checkBox.getValue().equals(true))
+        else if (Objects.equals(checkBox.getValue(), true))
         {
             checkBox.setValue(false);
         }
     }
     public void readPrivacy()
     {
-//        Todo link privacy and policy and connect to server
-        snackBarMessage.onSuccess("مطالعه قوانین آراپ");
+        fragmentManager.setFunction("privacy");
     }
 //    Ob Register Button Click
     public void onRegisterButtonClick()
     {
-        if (name.getValue().isEmpty() && password.getValue().isEmpty() && cnfPassword.getValue().isEmpty() && service.getValue().isEmpty())
+        if (Objects.requireNonNull(name.getValue()).isEmpty() &&
+                Objects.requireNonNull(password.getValue()).isEmpty() &&
+                Objects.requireNonNull(cnfPassword.getValue()).isEmpty() &&
+                Objects.requireNonNull(service.getValue()).isEmpty())
         {
             snackBarMessage.onFailure("ابتدا مشخصات خود را تکمیل نمایید");
         }
@@ -220,11 +222,11 @@ public class RegisterViewModel extends AndroidViewModel
         {
             snackBarMessage.onFailure("نام خود را وارد نمایید");
         }
-        else if (password.getValue().isEmpty())
+        else if (Objects.requireNonNull(password.getValue()).isEmpty())
         {
             snackBarMessage.onFailure("رمز عبور را وارد نمایید");
         }
-        else if (service.getValue().isEmpty())
+        else if (Objects.requireNonNull(service.getValue()).isEmpty())
         {
             snackBarMessage.onFailure("نوع سرویس خود را مشخص نمایید");
         }
@@ -246,7 +248,7 @@ public class RegisterViewModel extends AndroidViewModel
 //    check password and confirm
     private boolean checkPassword()
     {
-        if (password.getValue().length() < 6)
+        if (Objects.requireNonNull(password.getValue()).length() < 6)
         {
             snackBarMessage.onFailure("رمزعبور حداقل باید دارای 6 کاراکتر باشد");
             return false;

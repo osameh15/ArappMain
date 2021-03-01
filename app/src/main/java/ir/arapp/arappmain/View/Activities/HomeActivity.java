@@ -8,16 +8,26 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.marozzi.roundbutton.RoundButton;
+
 import java.util.Objects;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SessionManager;
@@ -29,7 +39,7 @@ public class HomeActivity extends AppCompatActivity
 {
 
 //    region Variables
-    private static final float END_SCALE = 0.7f;
+    private static final float END_SCALE = 0.9f;
     ActivityHomeBinding activityHomeBinding;
     NavHostFragment navHostFragment;
     NavController navController;
@@ -70,9 +80,13 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
+//        Hooks
+//        MenuInflater drawerInflater = new MenuInflater(this);
+//        Inflate
+//        drawerInflater.inflate(R.menu.drawer_layout, menu);
+        getMenuInflater().inflate(R.menu.bottom_navigation, menu);
+//        App version Text layout
 //        Handle replace fragment
-        MenuInflater menuInflater = new MenuInflater(this);
-        menuInflater.inflate(R.menu.bottom_navigation, menu);
         activityHomeBinding.bottomNavigationView.setupWithNavController(menu, navController);
         return true;
     }
@@ -154,7 +168,7 @@ public class HomeActivity extends AppCompatActivity
             }
             else if (itemId == R.id.nav_contactUS)
             {
-                snackBarToast.snackBarShortTime("ارتباط با ما", activityHomeBinding.bottomNavigationView);
+                showContactUsDialog();
             }
             else if (itemId == R.id.nav_question)
             {
@@ -174,14 +188,15 @@ public class HomeActivity extends AppCompatActivity
             {
 //                 Scale the View based on current slide offset
                 final float diffScaledOffset = slideOffset * (1 - END_SCALE);
-                final float offsetScale = 1 - diffScaledOffset;
+//                For Scale layout when drawer opened
+/*                final float offsetScale = 1 - diffScaledOffset;
                 activityHomeBinding.mainFragment.setScaleX(offsetScale);
-                activityHomeBinding.mainFragment.setScaleY(offsetScale);
+                activityHomeBinding.mainFragment.setScaleY(offsetScale);*/
 //                 Translate the View, accounting for the scaled width
                 final float xOffset = drawerView.getWidth() * slideOffset;
-                final float xOffsetDiff = activityHomeBinding.mainFragment.getWidth() * diffScaledOffset / 2;
+                final float xOffsetDiff = activityHomeBinding.homeLayout.getWidth() * diffScaledOffset / 2;
                 final float xTranslation = xOffsetDiff - xOffset;
-                activityHomeBinding.mainFragment.setTranslationX(xTranslation);
+                activityHomeBinding.homeLayout.setTranslationX(xTranslation);
             }
         });
     }
@@ -190,18 +205,28 @@ public class HomeActivity extends AppCompatActivity
     private void bottomBarManager()
     {
         activityHomeBinding.bottomNavigationView.setBadgeAtTabIndex(2, new AnimatedBottomBar.Badge());
+        /* Set Badge Count to bottom navigation
+        new AnimatedBottomBar.Badge(
+        "23",
+        getResources().getColor(R.color.notificationColorRed),
+        getResources().getColor(R.color.lightBack),
+        12)); */
     }
 //    region Dialogs
 //    Recently Update Dialogs
     private void showRecentlyUpdatesDialog()
     {
         Dialog dialog = new Dialog(this);
+//        Set layout inflater
         dialog.setContentView(R.layout.custom_recently_update_dialog);
+//        Hooks
         ImageView close = dialog.findViewById(R.id.close_dialog);
         TextView textView = dialog.findViewById(R.id.recentlyChangesText);
+//        Set action
         textView.setMovementMethod(new ScrollingMovementMethod());
         textView.setText(getResources().getString(R.string.update));
         close.setOnClickListener(view -> dialog.dismiss());
+//        Set background and show dialog
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
@@ -209,24 +234,58 @@ public class HomeActivity extends AppCompatActivity
     private void showAboutUsDialog()
     {
         Dialog dialog = new Dialog(this);
+//        Set layout inflater
         dialog.setContentView(R.layout.custom_about_us_dialog);
+//        Hooks
         ImageView close = dialog.findViewById(R.id.close_dialog);
+//        Set action
         close.setOnClickListener(view-> dialog.dismiss());
+//        Set background and show dialog
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
 //    Contact us dialog
+    @SuppressLint("QueryPermissionsNeeded")
     private void showContactUsDialog()
     {
         Dialog dialog = new Dialog(this);
+//        Set layout inflater
+        dialog.setContentView(R.layout.custom_contact_us_dialog);
+//        Hooks
+        ImageView close = dialog.findViewById(R.id.close_dialog);
+        RoundButton call = dialog.findViewById(R.id.call);
+        RoundButton mail = dialog.findViewById(R.id.mail);
+//        Set action
+        close.setOnClickListener(view -> dialog.dismiss());
+        call.setOnClickListener(view ->
+        {
+            Uri number = Uri.parse("tel:+989112834604");
+            Intent dial = new Intent(Intent.ACTION_DIAL, number);
+            if (dial.resolveActivity(getPackageManager()) != null)
+            {
+                startActivity(dial);
+            }
+        });
+        mail.setOnClickListener(view ->
+        {
+            Intent email = new Intent(Intent.ACTION_SEND);
+            email.setType("message/rfc822");
+            email.putExtra(Intent.EXTRA_EMAIL, new String[]{"Sajjad.Haghzad@gmail.com"});
+            email.putExtra(Intent.EXTRA_SUBJECT, "گزارش مشکلات/ارتباط با ما");
+            email.putExtra(Intent.EXTRA_TEXT, "");
+            try
+            {
+                startActivity(Intent.createChooser(email, "ارسال ایمیل از طریق:"));
+            }
+            catch (android.content.ActivityNotFoundException ex)
+            {
+                snackBarToast.snackBarShortTime("هیچ کلاینتی برای ارسال ایمیل یافت نشد!");
+            }
+        });
+//        Set background and show dialog
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 //    endregion
 //    endregion
 }
-
-/* Set Badge Count to bottom navigation
-new AnimatedBottomBar.Badge(
-        "23",
-        getResources().getColor(R.color.notificationColorRed),
-        getResources().getColor(R.color.lightBack),
-        12));*/

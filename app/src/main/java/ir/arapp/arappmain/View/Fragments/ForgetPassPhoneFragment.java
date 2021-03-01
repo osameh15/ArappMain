@@ -90,7 +90,6 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
     {
         snackBarToast.snackBarShortTime(message);
     }
-
     @Override
     public void onFailure(String message)
     {

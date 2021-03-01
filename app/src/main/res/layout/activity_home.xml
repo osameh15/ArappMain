@@ -12,6 +12,7 @@
         android:background="@color/lightBack">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/homeLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <!--         Toolbar -->
@@ -57,7 +58,7 @@
                 app:abb_textAppearance="@style/textAppearanceBottomNavigation"
                 app:abb_rippleEnabled="true"
                 app:abb_rippleColor="@color/colorAccentDark"
-                app:abb_indicatorColor="@color/colorAccentDark"
+                app:abb_indicatorColor="@color/colorPrimary"
                 app:abb_indicatorAnimation="slide"
                 app:abb_indicatorAppearance="round"
                 app:abb_indicatorLocation="top"
@@ -75,12 +76,16 @@
 <!--        Drawer Navigation menu-->
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationDrawer"
+            app:itemShapeAppearanceOverlay="@style/NavigationView.ShapeAppearanceOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/splashButtonTextColor"
-            android:theme="@style/NavigationView"
+            android:background="@color/lightBack"
             android:layoutDirection="rtl"
             android:layout_gravity="end"
+            app:itemIconTint="@color/colorAccent"
+            app:itemTextColor="@color/colorAccentDark"
+            app:itemTextAppearance="@style/NavigationView.TextAppearance"
+            android:theme="@style/NavigationView"
             app:headerLayout="@layout/drawer_header"
             app:menu="@menu/drawer_layout"/>
 

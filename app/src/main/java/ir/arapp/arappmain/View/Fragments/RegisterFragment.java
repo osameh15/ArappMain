@@ -1,16 +1,27 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.marozzi.roundbutton.RoundButton;
+
 import java.util.Objects;
 
+import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
 import ir.arapp.arappmain.Util.Services.SessionManager;
@@ -80,6 +91,24 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Fragm
     @Override
     public void setFunction(String type)
     {
+//        Privacy Bottom sheet dialog
+        if (type.equals("privacy"))
+        {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.bottomSheetDialogTheme);
+//            Set layout inflater
+            @SuppressLint("InflateParams") View view = LayoutInflater.from(requireContext()).inflate(R.layout.custom_privacy_app_bottom_sheet, null);
+//            Hooks
+            TextView textView = view.findViewById(R.id.privacy_text);
+            RoundButton close = view.findViewById(R.id.closeBottomSheet);
+//            Set action
+            textView.setMovementMethod(new ScrollingMovementMethod());
+            if (close != null)
+            {
+                close.setOnClickListener(view1 -> bottomSheetDialog.dismiss());
+            }
+            bottomSheetDialog.setContentView(view);
+            bottomSheetDialog.show();
+        }
     }
 //    Error/success message
     @Override

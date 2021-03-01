@@ -63,8 +63,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Fragment
         requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                 |  WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-
-    //    Fragment navigation
+//        Fragment navigation
     @Override
     public void navigateToFragment(String fragment)
     {

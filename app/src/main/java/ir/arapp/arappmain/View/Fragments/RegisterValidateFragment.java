@@ -1,6 +1,5 @@
 package ir.arapp.arappmain.View.Fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
