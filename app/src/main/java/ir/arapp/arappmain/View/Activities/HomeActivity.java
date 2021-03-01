@@ -30,12 +30,13 @@ import com.marozzi.roundbutton.RoundButton;
 
 import java.util.Objects;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.DrawerManager;
 import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.ActivityHomeBinding;
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
-public class HomeActivity extends AppCompatActivity
+public class HomeActivity extends AppCompatActivity implements DrawerManager
 {
 
 //    region Variables
@@ -80,12 +81,8 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-//        Hooks
-//        MenuInflater drawerInflater = new MenuInflater(this);
 //        Inflate
-//        drawerInflater.inflate(R.menu.drawer_layout, menu);
         getMenuInflater().inflate(R.menu.bottom_navigation, menu);
-//        App version Text layout
 //        Handle replace fragment
         activityHomeBinding.bottomNavigationView.setupWithNavController(menu, navController);
         return true;
@@ -152,7 +149,7 @@ public class HomeActivity extends AppCompatActivity
             }
             else if (itemId == R.id.nav_inviteFriends)
             {
-                snackBarToast.snackBarShortTime("پیشنهاد به دوستان", activityHomeBinding.bottomNavigationView);
+                shareApp();
             }
             else if (itemId == R.id.nav_rating)
             {
@@ -173,6 +170,7 @@ public class HomeActivity extends AppCompatActivity
             else if (itemId == R.id.nav_question)
             {
                 snackBarToast.snackBarShortTime("سوالات متداول", activityHomeBinding.bottomNavigationView);
+                sessionManager.setLogin(false);
             }
             activityHomeBinding.drawerLayout.closeDrawer(GravityCompat.END);
             return true;
@@ -261,9 +259,13 @@ public class HomeActivity extends AppCompatActivity
         {
             Uri number = Uri.parse("tel:+989112834604");
             Intent dial = new Intent(Intent.ACTION_DIAL, number);
-            if (dial.resolveActivity(getPackageManager()) != null)
+            try
             {
                 startActivity(dial);
+            }
+            catch (android.content.ActivityNotFoundException ex)
+            {
+                snackBarToast.snackBarShortTime("هیچ کلاینتی برای تماس یافت نشد!");
             }
         });
         mail.setOnClickListener(view ->
@@ -285,6 +287,41 @@ public class HomeActivity extends AppCompatActivity
 //        Set background and show dialog
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
+    }
+//    Share app to another one
+    private void shareApp()
+    {
+        String message = "لینک دانلود آراپ از کافه بازار:"+"\n"+"https://arappOfficial.com";
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.putExtra(Intent.EXTRA_TEXT, message);
+        share.setType("text/plain");
+//        Choose app to send link
+        try
+        {
+            startActivity(Intent.createChooser(share, "اشتراک گذاری از طریق:"));
+        }
+        catch (android.content.ActivityNotFoundException ex)
+        {
+            snackBarToast.snackBarShortTime("هیچ کلاینتی یافت نشد!");
+        }
+    }
+//    Drawer Manager and handle it
+    @Override
+    public void setDrawerLocked(boolean shouldLock)
+    {
+        if (shouldLock)
+        {
+            activityHomeBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
+        else
+        {
+            activityHomeBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        }
+    }
+    @Override
+    public void openDrawer()
+    {
+        activityHomeBinding.drawerLayout.openDrawer(GravityCompat.END);
     }
 //    endregion
 //    endregion

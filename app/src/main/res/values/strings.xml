@@ -65,4 +65,6 @@
     <string name="mail_us">ایمیل به آراپ</string>
     <!--    Bottom Sheet Text-->
     <string name="understand">متوجه شدم</string>
+<!--    Home Fragment-->
+    <string name="search_hint">جستجو در آراپ</string>
 </resources>

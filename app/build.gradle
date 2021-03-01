@@ -59,11 +59,15 @@ dependencies
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+//    Drawer Navigation
+    implementation 'com.rom4ek:arcnavigationview:2.0.0'
 //    Bottom Navigation ...
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10"
 //    Lottie file ...
     implementation "com.airbnb.android:lottie:3.4.2"
+//    Search View Material
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
 //     Glide ...
     implementation "com.github.bumptech.glide:glide:4.11.0"
 //     Loading button ...

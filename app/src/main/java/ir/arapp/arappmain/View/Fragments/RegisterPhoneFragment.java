@@ -95,12 +95,12 @@ public class RegisterPhoneFragment extends Fragment implements SnackBarMessage, 
     @Override
     public void onSuccess(String message)
     {
-        snackBarToast.snackBarShortTime(message);
+        snackBarToast.snackBarShortTime(message, fragmentPhoneRegisterBinding.loginPanelLayout);
     }
     @Override
     public void onFailure(String message)
     {
-        snackBarToast.snackBarShortTime(message);
+        snackBarToast.snackBarShortTime(message, fragmentPhoneRegisterBinding.loginPanelLayout);
     }
 //    endregion
 }

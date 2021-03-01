@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/homeToolbar"
                 app:navGraph="@navigation/nav_home"
                 app:defaultNavHost="true"/>
             <!--            Bottom Navigation-->
@@ -72,20 +72,22 @@
                 app:abb_tabs="@menu/bottom_navigation"
                 app:abb_selectedIndex="0"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 <!--        Drawer Navigation menu-->
-        <com.google.android.material.navigation.NavigationView
+        <com.rom4ek.arcnavigationview.ArcNavigationView
             android:id="@+id/navigationDrawer"
             app:itemShapeAppearanceOverlay="@style/NavigationView.ShapeAppearanceOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/lightBack"
+            android:fitsSystemWindows="true"
             android:layoutDirection="rtl"
             android:layout_gravity="end"
             app:itemIconTint="@color/colorAccent"
             app:itemTextColor="@color/colorAccentDark"
             app:itemTextAppearance="@style/NavigationView.TextAppearance"
             android:theme="@style/NavigationView"
+            app:arc_cropDirection="cropOutside"
+            app:arc_width="26dp"
             app:headerLayout="@layout/drawer_header"
             app:menu="@menu/drawer_layout"/>
 

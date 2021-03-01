@@ -125,10 +125,11 @@
         </LinearLayout>
 <!--         Sign up panel -->
         <LinearLayout
+            android:id="@+id/signUpLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="26dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:layoutDirection="rtl">

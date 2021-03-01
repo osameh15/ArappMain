@@ -35,7 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_margin="4dp">
         <TextView
             android:id="@+id/nav_profileName"
             android:layout_width="match_parent"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
+<menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -49,19 +49,19 @@
             android:title="@string/contact_us"/>
     </group>
 
-    <group
-        android:id="@+id/question_freq"
-        android:checkableBehavior="none">
-        <item
-            android:id="@+id/nav_question"
-            android:icon="@drawable/ic_baseline_help_outline_24"
-            android:title="@string/help_us"/>
-        <item
-            android:id="@+id/nav_tag"
-            android:title="@string/app_version"
-            android:checkable="false"
-            android:enabled="false"
-            app:actionViewClass="android.widget.TextView" />
-    </group>
+    <item
+        android:id="@+id/nav_question"
+        android:icon="@drawable/ic_baseline_help_outline_24"
+        android:title="@string/help_us"/>
+    <item
+        android:id="@+id/blankMenu"
+        tools:ignore="MenuTitle"
+        android:enabled="false"
+        android:checkable="false"/>
+    <item
+        android:id="@+id/nav_tag"
+        android:title="@string/app_version"
+        android:checkable="false"
+        android:enabled="false" />
 
 </menu>

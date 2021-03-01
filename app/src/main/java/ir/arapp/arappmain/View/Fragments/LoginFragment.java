@@ -103,12 +103,12 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Fragment
     @Override
     public void onSuccess(String message)
     {
-        snackBarToast.snackBarShortTime(message);
+        snackBarToast.snackBarShortTime(message, fragmentLoginBinding.signUpLayout);
     }
     @Override
     public void onFailure(String message)
     {
-        snackBarToast.snackBarShortTime(message);
+        snackBarToast.snackBarShortTime(message, fragmentLoginBinding.signUpLayout);
     }
 //    endregion
 }
