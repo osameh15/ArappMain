@@ -73,7 +73,7 @@
                 app:abb_selectedIndex="0"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 <!--        Drawer Navigation menu-->
-        <com.rom4ek.arcnavigationview.ArcNavigationView
+        <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationDrawer"
             app:itemShapeAppearanceOverlay="@style/NavigationView.ShapeAppearanceOverlay"
             android:layout_width="match_parent"
@@ -86,8 +86,6 @@
             app:itemTextColor="@color/colorAccentDark"
             app:itemTextAppearance="@style/NavigationView.TextAppearance"
             android:theme="@style/NavigationView"
-            app:arc_cropDirection="cropOutside"
-            app:arc_width="26dp"
             app:headerLayout="@layout/drawer_header"
             app:menu="@menu/drawer_layout"/>
 

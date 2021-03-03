@@ -36,7 +36,14 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
     }
 
 //    region methods
-//    region Search view bar
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+    }
+
+    //    region Search view bar
     @Override
     public void onSearchStateChanged(boolean enabled)
     {
