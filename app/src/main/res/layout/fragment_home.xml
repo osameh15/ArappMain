@@ -21,12 +21,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:padding="1.25dp"
             android:background="@drawable/search_border"
+            android:gravity="center"
+            android:padding="1.25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:gravity="center">
+            app:layout_constraintTop_toTopOf="parent">
+<!--            <com.arlib.floatingsearchview.FloatingSearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layoutDirection="rtl"
+                app:floatingSearch_close_search_on_keyboard_dismiss="true"
+                app:floatingSearch_leftActionMode="showHamburger"
+                app:floatingSearch_searchBarMarginLeft="1dp"
+                app:floatingSearch_searchBarMarginRight="1dp"
+                app:floatingSearch_searchBarMarginTop="1dp"
+                app:floatingSearch_searchHint="@string/search_hint"
+                app:floatingSearch_showSearchKey="false"
+                app:floatingSearch_suggestionsListAnimDuration="250" />-->
             <com.mancj.materialsearchbar.MaterialSearchBar
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"

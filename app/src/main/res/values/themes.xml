@@ -192,6 +192,29 @@
         <item name="elevation">2dp</item>
     </style>
 <!--    Search View theme-->
+<!--    <style name="SearchViewMaterial" parent="MaterialSearchBarLight">
+        <item name="floatingSearch_searchBarMarginLeft">1dp</item>
+        <item name="floatingSearch_searchBarMarginRight">1dp</item>
+        <item name="floatingSearch_searchBarMarginTop">1dp</item>
+        <item name="floatingSearch_showSearchKey">true</item>
+        <item name="floatingSearch_close_search_on_keyboard_dismiss">true</item>
+        <item name="floatingSearch_suggestionsListAnimDuration">250</item>
+        <item name="floatingSearch_searchSuggestionTextSize">14dp</item>
+        <item name="floatingSearch_showMoveSuggestionUp">true</item>
+        <item name="floatingSearch_leftActionMode">showHamburger</item>
+        <item name="floatingSearch_backgroundColor">@color/searchBarPrimaryColor</item>
+        <item name="floatingSearch_viewSearchInputTextColor">@color/colorAccentDark</item>
+        <item name="floatingSearch_viewSuggestionItemTextColor">@color/colorAccentDark</item>
+        <item name="floatingSearch_hintTextColor">@color/searchBarHintColor</item>
+        <item name="floatingSearch_dividerColor">@color/searchBarDividerColor</item>
+        <item name="floatingSearch_clearBtnColor">@color/searchBarClearIconTintColor</item>
+        <item name="floatingSearch_leftActionColor">@color/colorAccentDark</item>
+        <item name="floatingSearch_menuItemIconColor">@color/colorAccentDark</item>
+        <item name="floatingSearch_suggestionRightIconColor">@color/colorAccentDark</item>
+        <item name="floatingSearch_actionMenuOverflowColor">@color/searchBarMenuIconTintColor</item>
+        <item name="fontFamily">@font/iransans_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>-->
     <style name="SearchViewMaterial" parent="MaterialSearchBarLight">
         <item name="mt_searchBarColor">@color/searchBarPrimaryColor</item>
         <item name="mt_dividerColor">@color/colorPrimaryDark</item>
@@ -200,23 +223,17 @@
         <item name="mt_searchIconTint">@color/colorAccentDark</item>
         <item name="mt_clearIconTint">@color/colorAccentDark</item>
         <item name="mt_menuIconTint">@color/colorAccentDark</item>
+        <item name="mt_backIconDrawable">@drawable/ic_arrow_forward_black_48dp</item>
         <item name="mt_backIconTint">@color/colorAccentDark</item>
         <item name="mt_textCursorTint">@color/colorAccent</item>
         <item name="mt_textColor">@color/colorAccentDark</item>
         <item name="mt_hintColor">@color/searchBarHintColor</item>
-        <item name="mt_placeholderColor">@color/colorPrimaryDark</item>
+        <item name="mt_placeholderColor">@color/searchBarPlaceholderColor</item>
         <item name="mt_highlightedTextColor">@color/colorAccent</item>
         <item name="mt_maxSuggestionsCount">6</item>
         <item name="fontFamily">@font/iransans_medium</item>
         <item name="android:textSize">14sp</item>
     </style>
-
-    <!-- Counter Theme -->
-<!--    <style name="counter_appearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/text6</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">@font/iransans_light</item>
-    </style>-->
 
     <!-- Spinner Theme -->
 <!--    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
