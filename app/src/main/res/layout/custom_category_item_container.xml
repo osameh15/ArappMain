@@ -11,10 +11,11 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/categoryItemContainer"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="160dp"
         android:scaleType="fitXY"
         app:riv_mutate_background="false"
         app:riv_tile_mode="clamp"
         app:riv_oval="false"
-        app:riv_corner_radius="10dp"/>
+        app:riv_corner_radius="10dp"
+        android:src="@drawable/arapp_default"/>
 </androidx.cardview.widget.CardView>

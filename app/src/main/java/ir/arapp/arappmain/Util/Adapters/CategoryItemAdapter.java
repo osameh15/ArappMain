@@ -1,5 +1,6 @@
 package ir.arapp.arappmain.Util.Adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +11,29 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import java.util.ArrayList;
 import ir.arapp.arappmain.Model.CategoryItem;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.SnackBarToast;
 
 public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapter.CategoryItemViewHolder>
 {
 //    region Variable
+    private final View view;
     private ArrayList<CategoryItem> categoryItems = new ArrayList<>();
+    private SnackBarToast snackBarToast;
 //    endregion
+
+//    region Methods
+//    Constructor
+    public CategoryItemAdapter(View view)
+    {
+        this.view = view;
+    }
     @NonNull
     @Override
     public CategoryItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
 //        Inflate Layout
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_category_item_container, parent, false);
+        snackBarToast = new SnackBarToast(view);
         return new CategoryItemViewHolder(itemView);
     }
     @Override
@@ -30,6 +42,10 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
 //        Bind View holder
         CategoryItem currentItem = categoryItems.get(position);
         holder.roundedImageView.setImageResource(currentItem.getPicture());
+        holder.cardView.setOnClickListener(view ->
+        {
+            snackBarToast.snackBarShortTime(currentItem.getName());
+        });
     }
     @Override
     public int getItemCount()
@@ -57,4 +73,5 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
             roundedImageView = itemView.findViewById(R.id.categoryItemContainer);
         }
     }
+//    endregion
 }

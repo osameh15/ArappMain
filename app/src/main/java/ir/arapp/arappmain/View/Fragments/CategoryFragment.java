@@ -37,7 +37,7 @@ public class CategoryFragment extends Fragment
 //        Set View model
         categoryViewModel = ViewModelProviders.of(requireActivity()).get(CategoryViewModel.class);
 //        Hooks
-        categoryItemAdapter = new CategoryItemAdapter();
+        categoryItemAdapter = new CategoryItemAdapter(fragmentCategoryBinding.getRoot());
 //        Set life cycle
         fragmentCategoryBinding.setLifecycleOwner(this);
 //        Recycler view Category items
