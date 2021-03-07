@@ -14,8 +14,7 @@
             android:id="@+id/categoryRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:background="@color/lightBack"/>
+            android:scrollbars="vertical"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

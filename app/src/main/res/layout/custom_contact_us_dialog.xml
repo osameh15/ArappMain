@@ -54,7 +54,7 @@
                 android:textAlignment="textStart"
                 android:fontFamily="@font/iransans_bold"
                 android:text="@string/contact_us_text"
-                android:textColor="@color/colorAccentDark"
+                android:textColor="@color/colorAccent"
                 android:textSize="13sp"
                 android:scrollbars="vertical"
                 android:maxLines="12"/>

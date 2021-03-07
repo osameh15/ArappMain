@@ -6,7 +6,7 @@ public class CategoryItem
 {
 //    region Variable
     @SerializedName("id")
-    String id;
+    int id;
     @SerializedName("name")
     String name;
     @SerializedName("picture")
@@ -14,14 +14,14 @@ public class CategoryItem
 //    endregion
 //    region Methods
 //    Constructor
-    public CategoryItem(String id, String name, int picture)
+    public CategoryItem(int id, String name, int picture)
     {
         this.id = id;
         this.name = name;
         this.picture = picture;
     }
     //    region Setter
-    public void setId(String id)
+    public void setId(int id)
     {
         this.id = id;
     }
@@ -35,7 +35,7 @@ public class CategoryItem
     }
 //    endregion
 //    region Getter
-    public String getId()
+    public int getId()
     {
         return id;
     }

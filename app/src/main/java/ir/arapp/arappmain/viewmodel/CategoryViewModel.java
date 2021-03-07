@@ -15,6 +15,7 @@ public class CategoryViewModel extends AndroidViewModel
     ArrayList<CategoryItem> categoryItems;
     MutableLiveData<ArrayList<CategoryItem>> allCategoryItems;
 //    endregion
+
 //    Constructor
     public CategoryViewModel(@NonNull Application application)
     {
@@ -25,6 +26,7 @@ public class CategoryViewModel extends AndroidViewModel
 //        Initialize
         init();
     }
+
 //    region Methods
 //    Initialize function and variables
     private void init()
@@ -32,15 +34,15 @@ public class CategoryViewModel extends AndroidViewModel
         populateList();
         allCategoryItems.setValue(categoryItems);
     }
-//    Set data in category array list
+//    Set data to category array list
     private void populateList()
     {
-        categoryItems.add(new CategoryItem("1", "رستوران", R.drawable.restaurant));
-        categoryItems.add(new CategoryItem("2", "فست فود", R.drawable.fast_food));
-        categoryItems.add(new CategoryItem("3", "کافه", R.drawable.cafe));
-        categoryItems.add(new CategoryItem("4", "هتل", R.drawable.hotels));
-        categoryItems.add(new CategoryItem("5", "مسافرخانه", R.drawable.rest_room));
-        categoryItems.add(new CategoryItem("6", "مراکز خرید", R.drawable.shops));
+        categoryItems.add(new CategoryItem(1, "رستوران", R.drawable.restaurant));
+        categoryItems.add(new CategoryItem(2, "فست فود", R.drawable.fast_food));
+        categoryItems.add(new CategoryItem(3, "کافه", R.drawable.cafe));
+        categoryItems.add(new CategoryItem(4, "هتل", R.drawable.hotels));
+        categoryItems.add(new CategoryItem(5, "مسافرخانه", R.drawable.rest_room));
+        categoryItems.add(new CategoryItem(6, "مراکز خرید", R.drawable.shops));
     }
     //    Get all Category items
     public MutableLiveData<ArrayList<CategoryItem>> getAllCategoryItems()

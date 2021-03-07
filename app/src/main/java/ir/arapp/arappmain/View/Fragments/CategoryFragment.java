@@ -52,7 +52,6 @@ public class CategoryFragment extends Fragment
         return fragmentCategoryBinding.getRoot();
     }
 
-
 //    region methods
     private void setRecyclerView()
     {
@@ -60,7 +59,5 @@ public class CategoryFragment extends Fragment
         fragmentCategoryBinding.categoryRecyclerView.setHasFixedSize(true);
         fragmentCategoryBinding.categoryRecyclerView.setAdapter(categoryItemAdapter);
     }
-//    Fragment navigation
-//    Error/success message
 //    endregion
 }
