@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import ir.arapp.arappmain.R;
@@ -29,6 +32,7 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
 //        Search View Material
         fragmentHomeBinding.searchView.setArrowIcon(R.drawable.ic_arrow_forward_black_48dp);
         fragmentHomeBinding.searchView.setOnSearchActionListener(this);
+        fragmentHomeBinding.searchView.setOnClickListener(view -> onSearchClick());
 //        Drawer Locked
         ((DrawerManager) requireActivity()).setDrawerLocked(false);
 //        Return view
@@ -36,14 +40,17 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
     }
 
 //    region methods
-
     @Override
     public void onDestroy()
     {
         super.onDestroy();
     }
-
-    //    region Search view bar
+//    region Search view bar
+    private void onSearchClick()
+    {
+        final NavController navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_homeFragment_to_searchFragment);
+    }
     @Override
     public void onSearchStateChanged(boolean enabled)
     {
@@ -67,6 +74,7 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
                 break;
         }
     }
+//    endregion
 //    Fragment navigation
 //    Error/success message
 //    endregion

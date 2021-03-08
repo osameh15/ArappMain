@@ -29,14 +29,16 @@ public class NotificationViewModel extends AndroidViewModel
     }
 
 //    region Methods
+//    Initialize function and variables
     private void init()
     {
         populateList();
         allNotificationList.setValue(notificationArrayList);
     }
-//    Set data in notification list
+//    Set data to notification list
     private void populateList()
     {
+//        TODO connect to server
         notificationArrayList.add(new Notification(1, "آراپ", "امتیاز بده، بهترین را انتخاب کن",
                 "اپلیکیشن آراپ از اول مهرماه سال 1400 مهمان گرم خانه های شما خواهد بود. منتظر حمایت گرم شما خواهیم بود",
                 R.drawable.icon, R.drawable.arapp_default, "10 اسفند 1399"));

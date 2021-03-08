@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     android:layout_margin="8dp"
+    app:cardElevation="3dp"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:layoutDirection="rtl">

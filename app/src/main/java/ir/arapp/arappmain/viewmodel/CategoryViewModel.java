@@ -6,14 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
-import ir.arapp.arappmain.Model.CategoryItem;
+import ir.arapp.arappmain.Model.Category;
 import ir.arapp.arappmain.R;
 
 public class CategoryViewModel extends AndroidViewModel
 {
 //    region Variable
-    ArrayList<CategoryItem> categoryItems;
-    MutableLiveData<ArrayList<CategoryItem>> allCategoryItems;
+    ArrayList<Category> categories;
+    MutableLiveData<ArrayList<Category>> allCategoryItems;
 //    endregion
 
 //    Constructor
@@ -21,8 +21,8 @@ public class CategoryViewModel extends AndroidViewModel
     {
         super(application);
 //        Hooks
+        categories = new ArrayList<>();
         allCategoryItems =  new MutableLiveData<>();
-        categoryItems = new ArrayList<>();
 //        Initialize
         init();
     }
@@ -32,20 +32,21 @@ public class CategoryViewModel extends AndroidViewModel
     private void init()
     {
         populateList();
-        allCategoryItems.setValue(categoryItems);
+        allCategoryItems.setValue(categories);
     }
 //    Set data to category array list
     private void populateList()
     {
-        categoryItems.add(new CategoryItem(1, "رستوران", R.drawable.restaurant));
-        categoryItems.add(new CategoryItem(2, "فست فود", R.drawable.fast_food));
-        categoryItems.add(new CategoryItem(3, "کافه", R.drawable.cafe));
-        categoryItems.add(new CategoryItem(4, "هتل", R.drawable.hotels));
-        categoryItems.add(new CategoryItem(5, "مسافرخانه", R.drawable.rest_room));
-        categoryItems.add(new CategoryItem(6, "مراکز خرید", R.drawable.shops));
+//        TODO connect to server
+        categories.add(new Category(1, "رستوران", R.drawable.restaurant));
+        categories.add(new Category(2, "فست فود", R.drawable.fast_food));
+        categories.add(new Category(3, "کافه", R.drawable.cafe));
+        categories.add(new Category(4, "هتل", R.drawable.hotels));
+        categories.add(new Category(5, "مسافرخانه", R.drawable.rest_room));
+        categories.add(new Category(6, "مراکز خرید", R.drawable.shops));
     }
     //    Get all Category items
-    public MutableLiveData<ArrayList<CategoryItem>> getAllCategoryItems()
+    public MutableLiveData<ArrayList<Category>> getAllCategoryItems()
     {
         return allCategoryItems;
     }

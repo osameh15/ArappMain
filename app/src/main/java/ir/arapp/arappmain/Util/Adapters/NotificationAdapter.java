@@ -18,6 +18,7 @@ import ir.arapp.arappmain.R;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>
 {
+
 //    region Variables
     ArrayList<Notification> notificationArrayList = new ArrayList<>();
 //    endregion
@@ -28,9 +29,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
 //        Inflate layout
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_notification_container, parent, false);
-//        return view
-        return new NotificationViewHolder(view);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_notification_container, parent, false);
+//        Return view
+        return new NotificationViewHolder(itemView);
     }
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position)
@@ -41,7 +42,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         {
             return;
         }
-//        Bind view holder
+//        Set data and update xml
         holder.image.setImageResource(currentNotification.getImage());
         holder.title.setText(currentNotification.getTitle());
         holder.subtitle.setText(currentNotification.getSubtitle());

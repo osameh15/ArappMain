@@ -7,14 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import java.util.ArrayList;
-
-import ir.arapp.arappmain.Model.CategoryItem;
-import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.CategoryItemAdapter;
 import ir.arapp.arappmain.Util.Services.DrawerManager;
 import ir.arapp.arappmain.databinding.FragmentCategoryBinding;
@@ -43,7 +38,7 @@ public class CategoryFragment extends Fragment
 //        Recycler view Category items
         categoryViewModel.getAllCategoryItems().observe(getViewLifecycleOwner(), categoryItems ->
         {
-            categoryItemAdapter.setCategoryItems(categoryItems);
+            categoryItemAdapter.setCategories(categoryItems);
             setRecyclerView();
         });
 //        Drawer Locked
@@ -53,9 +48,9 @@ public class CategoryFragment extends Fragment
     }
 
 //    region methods
+//    Set category adapter and layout manager
     private void setRecyclerView()
     {
-        fragmentCategoryBinding.categoryRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         fragmentCategoryBinding.categoryRecyclerView.setHasFixedSize(true);
         fragmentCategoryBinding.categoryRecyclerView.setAdapter(categoryItemAdapter);
     }

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import java.util.ArrayList;
-import ir.arapp.arappmain.Model.CategoryItem;
+import ir.arapp.arappmain.Model.Category;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 
@@ -16,7 +16,7 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
 {
 //    region Variable
     private final View view;
-    private ArrayList<CategoryItem> categoryItems = new ArrayList<>();
+    private ArrayList<Category> categories = new ArrayList<>();
     private SnackBarToast snackBarToast;
 //    endregion
 
@@ -38,20 +38,21 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
     @Override
     public void onBindViewHolder(@NonNull CategoryItemViewHolder holder, int position)
     {
-//        Bind View holder
-        CategoryItem currentItem = categoryItems.get(position);
+//        get current item in category
+        Category currentItem = categories.get(position);
+//        Set data and update xml
         holder.roundedImageView.setImageResource(currentItem.getPicture());
         holder.cardView.setOnClickListener(view -> snackBarToast.snackBarShortTime(currentItem.getName()));
     }
     @Override
     public int getItemCount()
     {
-        return categoryItems.size();
+        return categories.size();
     }
 //    Notify Data changed
-    public void setCategoryItems(ArrayList<CategoryItem> categoryItems)
+    public void setCategories(ArrayList<Category> categories)
     {
-        this.categoryItems = categoryItems;
+        this.categories = categories;
         notifyDataSetChanged();
     }
 //    View holder class

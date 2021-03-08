@@ -2,51 +2,50 @@ package ir.arapp.arappmain.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CategoryItem
+public class Profile
 {
 //    region Variable
     @SerializedName("id")
     int id;
+    @SerializedName("image")
+    int image;
     @SerializedName("name")
     String name;
-    @SerializedName("picture")
-    int picture;
 //    endregion
+
 //    region Methods
 //    Constructor
-    public CategoryItem(int id, String name, int picture)
+    public Profile(int id, int image, String name)
     {
         this.id = id;
+        this.image = image;
         this.name = name;
-        this.picture = picture;
     }
-    //    region Setter
+//    Setter
     public void setId(int id)
     {
         this.id = id;
+    }
+    public void setImage(int image)
+    {
+        this.image = image;
     }
     public void setName(String name)
     {
         this.name = name;
     }
-    public void setPicture(int picture)
-    {
-        this.picture = picture;
-    }
-//    endregion
-//    region Getter
+//    Getter
     public int getId()
     {
         return id;
+    }
+    public int getImage()
+    {
+        return image;
     }
     public String getName()
     {
         return name;
     }
-    public int getPicture()
-    {
-        return picture;
-    }
-//    endregion
 //    endregion
 }
