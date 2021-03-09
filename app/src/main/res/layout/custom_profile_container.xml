@@ -3,12 +3,12 @@
     android:id="@+id/profileCardView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
+    android:layout_width="140dp"
+    android:layout_height="140dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="0dp"
+    app:cardElevation="3dp"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/transparent"
+    app:cardBackgroundColor="@color/white"
     android:layoutDirection="rtl">
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
         android:gravity="center">
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/profileImageContainer"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_gravity="center"
             android:src="@drawable/icon"/>
         <TextView

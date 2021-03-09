@@ -36,7 +36,6 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Fragm
 
 //    region Variable
     FragmentRegisterBinding fragmentRegisterBinding;
-    RegisterViewModel registerViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
     private SessionManager sessionManager;
@@ -48,7 +47,7 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Fragm
 //        Inflate the layout for this fragment
         fragmentRegisterBinding = FragmentRegisterBinding.inflate(inflater, container, false);
 //        Set View model
-        registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
+        RegisterViewModel registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentRegisterBinding.setViewModel(registerViewModel);
         registerViewModel.snackBarMessage = this;
         registerViewModel.fragmentManager = this;

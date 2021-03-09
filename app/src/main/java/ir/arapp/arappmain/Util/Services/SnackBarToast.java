@@ -44,6 +44,7 @@ public class SnackBarToast
     public void snackBarLongTime(String message, View view)
     {
         Snackbar snackbar = Snackbar.make(view, message, BaseTransientBottomBar.LENGTH_LONG);
+        snackbar.setAnchorView(view);
         snackbar.setDuration(3500);
         snackbar.show();
     }

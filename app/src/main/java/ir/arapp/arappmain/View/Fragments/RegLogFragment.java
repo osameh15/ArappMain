@@ -21,7 +21,7 @@ public class RegLogFragment extends Fragment
 {
 
 //    region Variables
-    private FragmentRegLogBinding fragmentRegLogBinding;
+    FragmentRegLogBinding fragmentRegLogBinding;
     private static final int PERMISSION_CODE = 1001;
 //    Permission not generated
     String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION};

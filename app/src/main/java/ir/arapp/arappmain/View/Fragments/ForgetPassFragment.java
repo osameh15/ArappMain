@@ -24,7 +24,6 @@ public class ForgetPassFragment extends Fragment implements SnackBarMessage, Fra
 
 //    region Variable
     FragmentForgetPassBinding fragmentForgetPassBinding;
-    ForgetPassViewModel forgetPassViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
 //    endregion
@@ -35,7 +34,7 @@ public class ForgetPassFragment extends Fragment implements SnackBarMessage, Fra
 //       Inflate the layout for this fragment
         fragmentForgetPassBinding = FragmentForgetPassBinding.inflate(inflater, container, false);
 //        Set View model
-        forgetPassViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
+        ForgetPassViewModel forgetPassViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentForgetPassBinding.setViewModel(forgetPassViewModel);
         forgetPassViewModel.snackBarMessage = this;
         forgetPassViewModel.fragmentManager = this;

@@ -25,7 +25,6 @@ public class RegisterPhoneFragment extends Fragment implements SnackBarMessage, 
 
 //    region Variable
     FragmentPhoneRegisterBinding fragmentPhoneRegisterBinding;
-    RegisterViewModel registerPhoneViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
 //    endregion
@@ -36,7 +35,7 @@ public class RegisterPhoneFragment extends Fragment implements SnackBarMessage, 
 //        Inflate the layout for this fragment
         fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
 //        Set view model
-        registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
+        RegisterViewModel registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
         fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
         registerPhoneViewModel.snackBarMessage = this;
         registerPhoneViewModel.fragmentManager = this;

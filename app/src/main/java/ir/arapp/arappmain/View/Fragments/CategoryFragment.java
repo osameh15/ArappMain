@@ -8,20 +8,22 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
+import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.CategoryItemAdapter;
-import ir.arapp.arappmain.Util.Services.DrawerManager;
+import ir.arapp.arappmain.Util.Services.ItemClickListener;
+import ir.arapp.arappmain.Util.Services.NavigationManager;
+import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentCategoryBinding;
 import ir.arapp.arappmain.viewmodel.CategoryViewModel;
 
-public class CategoryFragment extends Fragment
+public class CategoryFragment extends Fragment implements ItemClickListener
 {
 
 //    region Variable
     FragmentCategoryBinding fragmentCategoryBinding;
-    CategoryViewModel categoryViewModel;
-    CategoryItemAdapter categoryItemAdapter;
+    private CategoryItemAdapter categoryItemAdapter;
+    private SnackBarToast snackBarToast;
 //    endregion
 
     @Override
@@ -30,9 +32,11 @@ public class CategoryFragment extends Fragment
 //        Inflate the layout for this fragment
         fragmentCategoryBinding = FragmentCategoryBinding.inflate(inflater, container, false);
 //        Set View model
-        categoryViewModel = ViewModelProviders.of(requireActivity()).get(CategoryViewModel.class);
+        CategoryViewModel categoryViewModel = ViewModelProviders.of(requireActivity()).get(CategoryViewModel.class);
 //        Hooks
         categoryItemAdapter = new CategoryItemAdapter(fragmentCategoryBinding.getRoot());
+        snackBarToast = new SnackBarToast(fragmentCategoryBinding.getRoot());
+        categoryItemAdapter.itemClickListener = this;
 //        Set life cycle
         fragmentCategoryBinding.setLifecycleOwner(this);
 //        Recycler view Category items
@@ -41,8 +45,9 @@ public class CategoryFragment extends Fragment
             categoryItemAdapter.setCategories(categoryItems);
             setRecyclerView();
         });
-//        Drawer Locked
-        ((DrawerManager) requireActivity()).setDrawerLocked(true);
+//        Drawer Locked and visible Bottom navigation
+        ((NavigationManager) requireActivity()).setDrawerLocked(true);
+        ((NavigationManager) requireActivity()).bottomNavigationVisibility(true);
 //        Return view
         return fragmentCategoryBinding.getRoot();
     }
@@ -53,6 +58,12 @@ public class CategoryFragment extends Fragment
     {
         fragmentCategoryBinding.categoryRecyclerView.setHasFixedSize(true);
         fragmentCategoryBinding.categoryRecyclerView.setAdapter(categoryItemAdapter);
+    }
+//    On Click Listener on Recycler View items
+    @Override
+    public void onItemClickListener(View view, int position, String message)
+    {
+        snackBarToast.snackBarLongTime(message, requireActivity().findViewById(R.id.bottomNavigationView));
     }
 //    endregion
 }

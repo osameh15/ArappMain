@@ -27,7 +27,6 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
 
 //    region Variables
     FragmentValidateForgetPassBinding fragmentValidateForgetPassBinding;
-    ForgetPassViewModel forgetPassValidateViewModel;
     private SnackBarToast snackBarToast;
     private HideShowKeyboard hideShowKeyboard;
 //    endregion
@@ -38,7 +37,7 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
 //        Inflate the layout for this fragment
         fragmentValidateForgetPassBinding = FragmentValidateForgetPassBinding.inflate(inflater, container, false);
 //        Set view model
-        forgetPassValidateViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
+        ForgetPassViewModel forgetPassValidateViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
         fragmentValidateForgetPassBinding.setViewModel(forgetPassValidateViewModel);
         forgetPassValidateViewModel.snackBarMessage = this;
         forgetPassValidateViewModel.fragmentManager = this;

@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.DrawerManager;
+import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.databinding.FragmentSearchBinding;
 
 public class SearchFragment extends Fragment implements MaterialSearchBar.OnSearchActionListener
@@ -38,6 +38,9 @@ public class SearchFragment extends Fragment implements MaterialSearchBar.OnSear
         fragmentSearchBinding.searchView.openSearch();
         fragmentSearchBinding.searchView.setOnSearchActionListener(this);
         fragmentSearchBinding.searchView.setArrowIcon(R.drawable.ic_arrow_forward_black_48dp);
+//        Drawer Locked and visible Bottom navigation
+        ((NavigationManager) requireActivity()).setDrawerLocked(true);
+        ((NavigationManager) requireActivity()).bottomNavigationVisibility(true);
 //        Return view
         return fragmentSearchBinding.getRoot();
     }

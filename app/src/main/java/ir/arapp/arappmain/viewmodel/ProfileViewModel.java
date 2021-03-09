@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import ir.arapp.arappmain.Model.Profile;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.FragmentManager;
+import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 
 public class ProfileViewModel extends AndroidViewModel
 {
@@ -14,6 +16,8 @@ public class ProfileViewModel extends AndroidViewModel
 //    region Variable
     ArrayList<Profile> profileArrayList;
     MutableLiveData<ArrayList<Profile>> allProfileItems;
+    public SnackBarMessage snackBarMessage;
+    public FragmentManager fragmentManager;
 //    endregion
 
 //    Constructor
@@ -37,19 +41,39 @@ public class ProfileViewModel extends AndroidViewModel
 //    Set data to category array list
     private void populateList()
     {
-        profileArrayList.add(new Profile(1, R.drawable.icon, "افزودن سرویس"));
-        profileArrayList.add(new Profile(2, R.drawable.icon, "ویرایش سرویس"));
-        profileArrayList.add(new Profile(3, R.drawable.icon, "سرویس های من"));
-        profileArrayList.add(new Profile(4, R.drawable.icon, "رزرو سرویس"));
-        profileArrayList.add(new Profile(5, R.drawable.icon, "امتیازات من"));
-        profileArrayList.add(new Profile(6, R.drawable.icon, "نظرات من"));
-        profileArrayList.add(new Profile(7, R.drawable.icon, "تخفیفات"));
-        profileArrayList.add(new Profile(8, R.drawable.icon, "خروج از حساب کاربری"));
+        profileArrayList.add(new Profile(1, R.drawable.add_service, "افزودن سرویس"));
+        profileArrayList.add(new Profile(2, R.drawable.edit_service, "ویرایش سرویس"));
+        profileArrayList.add(new Profile(3, R.drawable.my_service, "سرویس های من"));
+        profileArrayList.add(new Profile(4, R.drawable.rezerve, "رزرو سرویس"));
+        profileArrayList.add(new Profile(5, R.drawable.rates, "امتیازات من"));
+        profileArrayList.add(new Profile(6, R.drawable.comments, "نظرات من"));
+        profileArrayList.add(new Profile(7, R.drawable.reduction, "تخفیفات"));
+        profileArrayList.add(new Profile(8, R.drawable.log_out, "خروج از حساب کاربری"));
     }
 //    Get all profile items
     public MutableLiveData<ArrayList<Profile>> getAllProfileItems()
     {
         return allProfileItems;
+    }
+//    Edit Profile User
+    public void editUserButton()
+    {
+        fragmentManager.navigateToFragment("editUser");
+    }
+//    Arapp Coin and navigate to fragment
+    public void coinButton()
+    {
+        snackBarMessage.onSuccess("آراپ کوین");
+    }
+//    Change User profile avatar
+    public void changePictureButton()
+    {
+        snackBarMessage.onSuccess("تغییر پروفایل کاربری");
+    }
+//    App setting
+    public void setting()
+    {
+        snackBarMessage.onSuccess("تنظیمات");
     }
 //    endregion
 }

@@ -7,16 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import java.util.ArrayList;
-
-import ir.arapp.arappmain.Model.Notification;
-import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.NotificationAdapter;
-import ir.arapp.arappmain.Util.Services.DrawerManager;
+import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.databinding.FragmentNotificationBinding;
 import ir.arapp.arappmain.viewmodel.NotificationViewModel;
 
@@ -25,8 +20,7 @@ public class NotificationFragment extends Fragment
 
 //    region Variable
     FragmentNotificationBinding fragmentNotificationBinding;
-    NotificationViewModel notificationViewModel;
-    NotificationAdapter notificationAdapter;
+    private NotificationAdapter notificationAdapter;
 //    endregion
 
     @Override
@@ -35,7 +29,7 @@ public class NotificationFragment extends Fragment
 //        Inflate the layout for this fragment
         fragmentNotificationBinding = FragmentNotificationBinding.inflate(inflater, container, false);
 //        Set view model
-        notificationViewModel = ViewModelProviders.of(requireActivity()).get(NotificationViewModel.class);
+        NotificationViewModel notificationViewModel = ViewModelProviders.of(requireActivity()).get(NotificationViewModel.class);
 //        Hooks
         notificationAdapter = new NotificationAdapter();
 //        Set life cycle
@@ -46,8 +40,9 @@ public class NotificationFragment extends Fragment
             notificationAdapter.setNotificationArrayList(notifications);
             setRecyclerView();
         });
-//        Drawer Locked
-        ((DrawerManager) requireActivity()).setDrawerLocked(true);
+//        Drawer Locked and visible Bottom navigation
+        ((NavigationManager) requireActivity()).setDrawerLocked(true);
+        ((NavigationManager) requireActivity()).bottomNavigationVisibility(true);
 //        Return view
         return fragmentNotificationBinding.getRoot();
     }

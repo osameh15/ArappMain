@@ -1,7 +1,6 @@
 package ir.arapp.arappmain.View.Fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.navigation.Navigation;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.DrawerManager;
+import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearchActionListener
@@ -33,8 +32,9 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
         fragmentHomeBinding.searchView.setArrowIcon(R.drawable.ic_arrow_forward_black_48dp);
         fragmentHomeBinding.searchView.setOnSearchActionListener(this);
         fragmentHomeBinding.searchView.setOnClickListener(view -> onSearchClick());
-//        Drawer Locked
-        ((DrawerManager) requireActivity()).setDrawerLocked(false);
+//        Drawer Locked and visible Bottom navigation
+        ((NavigationManager) requireActivity()).setDrawerLocked(false);
+        ((NavigationManager) requireActivity()).bottomNavigationVisibility(true);
 //        Return view
         return fragmentHomeBinding.getRoot();
     }
@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
         switch (buttonCode)
         {
             case MaterialSearchBar.BUTTON_NAVIGATION:
-                ((DrawerManager) requireActivity()).openDrawer();
+                ((NavigationManager) requireActivity()).openDrawer();
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;

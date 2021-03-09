@@ -10,6 +10,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import java.util.ArrayList;
 import ir.arapp.arappmain.Model.Category;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.ItemClickListener;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 
 public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapter.CategoryItemViewHolder>
@@ -17,7 +18,7 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
 //    region Variable
     private final View view;
     private ArrayList<Category> categories = new ArrayList<>();
-    private SnackBarToast snackBarToast;
+    public ItemClickListener itemClickListener;
 //    endregion
 
 //    region Methods
@@ -32,7 +33,6 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
     {
 //        Inflate Layout
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_category_item_container, parent, false);
-        snackBarToast = new SnackBarToast(view);
         return new CategoryItemViewHolder(itemView);
     }
     @Override
@@ -42,7 +42,7 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
         Category currentItem = categories.get(position);
 //        Set data and update xml
         holder.roundedImageView.setImageResource(currentItem.getPicture());
-        holder.cardView.setOnClickListener(view -> snackBarToast.snackBarShortTime(currentItem.getName()));
+        holder.cardView.setOnClickListener(view -> itemClickListener.onItemClickListener(this.view, currentItem.getId(), currentItem.getName()));
     }
     @Override
     public int getItemCount()

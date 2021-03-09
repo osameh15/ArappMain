@@ -17,34 +17,28 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.marozzi.roundbutton.RoundButton;
 
 import java.util.Objects;
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.DrawerManager;
+import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.ActivityHomeBinding;
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
-public class HomeActivity extends AppCompatActivity implements DrawerManager
+public class HomeActivity extends AppCompatActivity implements NavigationManager
 {
 
 //    region Variables
     private static final float END_SCALE = 0.9f;
-    ActivityHomeBinding activityHomeBinding;
-    NavHostFragment navHostFragment;
-    NavController navController;
-    AppBarConfiguration appBarConfiguration;
+    public ActivityHomeBinding activityHomeBinding;
+    private NavController navController;
     private SnackBarToast snackBarToast;
     private long backPressedTime;
     private String versionName;
@@ -57,15 +51,16 @@ public class HomeActivity extends AppCompatActivity implements DrawerManager
         super.onCreate(savedInstanceState);
         activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 //        Hooks
-        navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.mainFragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.mainFragment);
         snackBarToast = new SnackBarToast(activityHomeBinding.getRoot());
         sessionManager = new SessionManager(this);
 //        Action bar
         setSupportActionBar(activityHomeBinding.homeToolbar);
         Objects.requireNonNull(getSupportActionBar()).hide();
 //        Nav Controller for Bottom Navigation
+        assert navHostFragment != null;
         navController = navHostFragment.getNavController();
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //        Navigation drawer manager
         navigationDrawerManager();
@@ -305,7 +300,8 @@ public class HomeActivity extends AppCompatActivity implements DrawerManager
             snackBarToast.snackBarShortTime("هیچ کلاینتی یافت نشد!");
         }
     }
-//    Drawer Manager and handle it
+//    Navigation Manager and handle it
+//    Lock or unlock drawer navigation
     @Override
     public void setDrawerLocked(boolean shouldLock)
     {
@@ -318,10 +314,24 @@ public class HomeActivity extends AppCompatActivity implements DrawerManager
             activityHomeBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
     }
+//    Open or close Drawer Navigation
     @Override
     public void openDrawer()
     {
         activityHomeBinding.drawerLayout.openDrawer(GravityCompat.END);
+    }
+//    visible or gone visible bottom navigation
+    @Override
+    public void bottomNavigationVisibility(boolean setVisible)
+    {
+        if (setVisible)
+        {
+            activityHomeBinding.bottomNavigationView.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            activityHomeBinding.bottomNavigationView.setVisibility(View.GONE);
+        }
     }
 //    endregion
 //    endregion

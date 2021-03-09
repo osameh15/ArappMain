@@ -1,16 +1,21 @@
 package ir.arapp.arappmain.Util.Adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import java.util.ArrayList;
 import ir.arapp.arappmain.Model.Profile;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Services.ItemClickListener;
+import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 
 public class ProfileItemAdapter extends RecyclerView.Adapter<ProfileItemAdapter.ProfileItemViewHolder>
@@ -18,8 +23,8 @@ public class ProfileItemAdapter extends RecyclerView.Adapter<ProfileItemAdapter.
 
 //    region Variables
     private final View view;
+    public ItemClickListener itemClickListener;
     ArrayList<Profile> profileArrayList;
-    private SnackBarToast snackBarToast;
 //    endregion
 
 //    region Methods
@@ -35,7 +40,6 @@ public class ProfileItemAdapter extends RecyclerView.Adapter<ProfileItemAdapter.
 //        Inflate Layout
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_profile_container, parent, false);
 //        Hooks
-        snackBarToast = new SnackBarToast(view);
 //        Return view
         return new ProfileItemViewHolder(itemView);
     }
@@ -47,7 +51,7 @@ public class ProfileItemAdapter extends RecyclerView.Adapter<ProfileItemAdapter.
 //        Set data and update xml
         holder.roundedImageView.setImageResource(currentItem.getImage());
         holder.name.setText(currentItem.getName());
-        holder.cardView.setOnClickListener(view -> snackBarToast.snackBarShortTime(currentItem.getName()));
+        holder.cardView.setOnClickListener(view -> itemClickListener.onItemClickListener(this.view, currentItem.getId(), currentItem.getName()));
     }
     @Override
     public int getItemCount()
