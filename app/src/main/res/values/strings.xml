@@ -1,18 +1,18 @@
 <resources>
-    <!--     App Detail -->
+<!--     App Detail -->
     <string name="app_name">Arapp</string>
     <string name="app_name_persian">آراپ</string>
     <string name="app_version">نسخه آلفا 0.6.0</string>
     <string name="update">تغییرات نسخه 0.6.0: \n1- طراحی و بازسازی صفحه اول برنامه \n2- طراحی و تکمیل صفحات احراز هویت \n3- طراحی منوی زیر برای صفحه اصلی</string>
     <string name="about">آراپ، انتخاب همه سلیقه ها</string>
     <string name="privacy">کاربر گرامی لطفاً موارد زیر را جهت استفاده بهینه از خدمات و برنامه‌‏های کاربردی آراپ به دقت ملاحظه فرمایید. \nورود کاربران به وب‏‌سایت و برنامه آراپ هنگام استفاده از پروفایل شخصی، طرح‏‌های تشویقی، و سایر خدمات ارائه شده توسط آراپ به معنای آگاه بودن و پذیرفتن شرایط و قوانین و همچنین نحوه استفاده از سرویس‌‏ها و خدمات آراپ است. \nلازم به ذکر است شرایط و قوانین مندرج، جایگزین کلیه توافق‏‌های قبلی محسوب می‏‌شود.</string>
-    <!--     Splash Screen -->
+<!--     Splash Screen -->
     <string name="no_connection">عدم اتصال به اینترنت!</string>
     <string name="try_again">تلاش مجدد</string>
-    <!--     RegLog Fragment -->
+<!--     RegLog Fragment -->
     <string name="sign_up">عضویت</string>
     <string name="login_arapp">ورود به آراپ</string>
-    <!--     Register Fragments -->
+<!--     Register Fragments -->
     <string name="register">عضویت در آراپ</string>
     <string name="register_title">جهت عضویت، شماره موبایل خود را وارد نمایید</string>
     <string name="login_sign_up">آیا در آراپ عضویت دارید؟</string>
@@ -33,21 +33,21 @@
     <string name="get_service">سرویس گیرنده</string>
     <string name="law">قوانین آراپ</string>
     <string name="accept_law">را مطالعه کرده و می پذیرم.</string>
-    <!--     Login Fragment -->
+<!--     Login Fragment -->
     <string name="login_text">جهت ورود، شماره موبایل و رمز عبور را وارد نمایید</string>
     <string name="sign_up_login">هنوز در آراپ عضویت ندارید؟</string>
     <string name="forget_password_text">رمز عبور خود را فراموش کرده اید؟</string>
     <string name="forget_pass">بازیابی رمز عبور</string>
     <string name="login">ورود</string>
-    <!--     Forget Password Fragments -->
+<!--     Forget Password Fragments -->
     <string name="forget_pass_text">جهت بازیابی رمز عبور، شماره موبایل خود را وارد نمایید</string>
     <string name="forget_pass_new_pass">رمز عبور جدید خود را وارد نمایید</string>
-    <!--    Bottom navigation-->
+<!--    Bottom navigation-->
     <string name="home_page">صفحه اصلی</string>
     <string name="category">دسته بندی</string>
     <string name="notification">اعلانات</string>
     <string name="profile">صفحه کاربری</string>
-    <!--    Drawer navigation-->
+<!--    Drawer navigation-->
     <string name="favorite">نشان شده ها</string>
     <string name="notify_receives">دریافت اعلانات</string>
     <string name="share">به اشتراک گذاشتن</string>
@@ -57,17 +57,77 @@
     <string name="contact_us">ارتباط با آراپ</string>
     <string name="about_us">درباره آراپ</string>
     <string name="recently_changed">تغییرات اخیر</string>
-    <!--    Dialogs Text-->
+<!--    Dialogs Text-->
     <string name="no_change">تغییرات جدیدی اعمال نشده است</string>
     <string name="contact_report">ارتباط با ما و گزارش مشکلات</string>
     <string name="contact_us_text">جهت ارتباط با آراپ و ارائه انتقادات و پیشنهادات خود می توانید از طریق شماره و یا ایمیل زیر تماس حاصل فرمایید \nهمچنین جهت ارسال مشکلات احتمالی با ایمیل آراپ در ارتباط باشید</string>
     <string name="call_us">تماس تلفنی با آراپ</string>
     <string name="mail_us">ایمیل به آراپ</string>
-    <!--    Bottom Sheet Text-->
+<!--    Bottom Sheet Text-->
     <string name="understand">متوجه شدم</string>
-    <!--    Home Fragment-->
+<!--    Home Fragment-->
     <string name="search_hint">جستجو در آراپ</string>
     <string name="arapp_coin_count">10</string>
-    <!--    Profile Fragment-->
+<!--    Profile Fragment-->
     <string name="edit_user">ویرایش اطلاعات کاربری</string>
+    <string name="edit_user_text">در این قسمت می توانید اطلاعات کاربری خود را ویرایش کنید</string>
+    <string name="submit_info">ثبت اطلاعات</string>
+    <string name="bio">درباره من</string>
+    <string name="province_city">استان/شهر</string>
+    <string name="education">تحصیلات</string>
+    <string name="province">استان</string>
+    <string name="city">شهرستان</string>
+    <string name="type_of_service">نوع کاربری</string>
+    <string name="last_profile_update">آخرین بروزرسانی در:</string>
+<!--     Education Spinner List -->
+    <string-array name="education_list">
+        <item>تحصیلات خود را انتخاب نمایید</item>
+        <item>دیپلم و فوق دیپلم</item>
+        <item>کارشناسی</item>
+        <item>کارشناسی ارشد</item>
+        <item>دکتری و بالاتر</item>
+    </string-array>
+<!--     Province Spinner List-->
+    <string-array name="province_list">
+        <item>انتخاب استان</item>
+        <item>تهران</item>
+        <item>گیلان</item>
+    </string-array>
+<!--     City Spinner List -->
+    <string-array name="city_list_tehran">
+        <item>انتخاب شهرستان</item>
+        <item>تهران</item>
+        <item>شهریار</item>
+        <item>اسلامشهر</item>
+        <item>بهارستان</item>
+        <item>ملارد</item>
+        <item>پاکدشت</item>
+        <item>ری</item>
+        <item>قدس</item>
+        <item>رباط کریم</item>
+        <item>ورامین</item>
+        <item>قرچک</item>
+        <item>پردیس</item>
+        <item>دماوند</item>
+        <item>فیروزکوه</item>
+    </string-array>
+    <string-array name="city_list_gilan">
+        <item>انتخاب شهرستان</item>
+        <item>رشت</item>
+        <item>تالش</item>
+        <item>لاهیجان</item>
+        <item>رودسر</item>
+        <item>لنگرود</item>
+        <item>بندرانزلی</item>
+        <item>صومعه سرا</item>
+        <item>آستانه اشرفیه</item>
+        <item>رودبار</item>
+        <item>فومن</item>
+        <item>آستارا</item>
+        <item>رضوانشهر</item>
+        <item>شفت</item>
+        <item>ماسال</item>
+        <item>سیاهکل</item>
+        <item>املش</item>
+    </string-array>
 </resources>

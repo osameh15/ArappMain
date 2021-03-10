@@ -119,6 +119,5 @@
                 android:textColor="@color/colorAccent"
                 android:onClick="@{()->viewModel.editPhoneNumber()}"/>
         </LinearLayout>
-
     </RelativeLayout>
 </layout>

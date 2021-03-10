@@ -76,13 +76,10 @@
                     android:hint="@string/phone_number"
                     android:enabled="false">
                     <com.google.android.material.textfield.TextInputEditText
+                        style="@style/DisableEditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textSize="14sp"
-                        android:text="@={viewModel.phone}"
-                        android:textColor="@color/disable"
-                        android:fontFamily="@font/iransans"/>
+                        android:text="@={viewModel.phone}"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/TextInputStyle"
@@ -95,14 +92,12 @@
                     android:gravity="center_vertical|start"
                     android:hint="@string/name">
                     <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="text"
                         android:imeOptions="actionNext"
-                        android:textSize="14sp"
                         android:text="@={viewModel.name}"
-                        android:textColor="@color/colorAccentDark"
-                        android:fontFamily="@font/iransans"
                         android:maxLength="48"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -117,15 +112,13 @@
                     android:hint="@string/password"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
                         android:imeOptions="actionNext"
                         android:textAlignment="viewStart"
-                        android:textSize="14sp"
-                        android:text="@={viewModel.password}"
-                        android:textColor="@color/colorAccentDark"
-                        android:fontFamily="@font/iransans"/>
+                        android:text="@={viewModel.password}"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/TextInputStyle"
@@ -139,15 +132,13 @@
                     android:hint="@string/confirm_password"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
                         android:imeOptions="actionDone"
                         android:textAlignment="viewStart"
-                        android:textSize="14sp"
-                        android:text="@={viewModel.cnfPassword}"
-                        android:textColor="@color/colorAccentDark"
-                        android:fontFamily="@font/iransans"/>
+                        android:text="@={viewModel.cnfPassword}"/>
                 </com.google.android.material.textfield.TextInputLayout>
 <!--                 Type of Service panel -->
                 <RadioGroup

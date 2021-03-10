@@ -28,6 +28,5 @@
                 android:layout_gravity="center"
                 android:theme="@style/SearchViewMaterial" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

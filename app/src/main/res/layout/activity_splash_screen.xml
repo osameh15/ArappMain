@@ -65,6 +65,5 @@
             android:layout_centerHorizontal="true"
             android:text="@string/try_again"
             android:visibility="gone"/>
-
     </RelativeLayout>
 </layout>

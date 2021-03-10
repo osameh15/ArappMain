@@ -141,6 +141,19 @@
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusTopStart">8dp</item>
     </style>
+<!--     Edit Text Style -->
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/colorAccentDark</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/iransans</item>
+    </style>
+<!--     Disable Edit Text Style -->
+    <style name="DisableEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/disable</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/iransans</item>
+        <item name="android:enabled">false</item>
+    </style>
 <!--     Edit Text Error Theme -->
     <style name="ErrorTextStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/notificationColorRed</item>
@@ -192,29 +205,6 @@
         <item name="elevation">2dp</item>
     </style>
 <!--    Search View theme-->
-<!--    <style name="SearchViewMaterial" parent="MaterialSearchBarLight">
-        <item name="floatingSearch_searchBarMarginLeft">1dp</item>
-        <item name="floatingSearch_searchBarMarginRight">1dp</item>
-        <item name="floatingSearch_searchBarMarginTop">1dp</item>
-        <item name="floatingSearch_showSearchKey">true</item>
-        <item name="floatingSearch_close_search_on_keyboard_dismiss">true</item>
-        <item name="floatingSearch_suggestionsListAnimDuration">250</item>
-        <item name="floatingSearch_searchSuggestionTextSize">14dp</item>
-        <item name="floatingSearch_showMoveSuggestionUp">true</item>
-        <item name="floatingSearch_leftActionMode">showHamburger</item>
-        <item name="floatingSearch_backgroundColor">@color/searchBarPrimaryColor</item>
-        <item name="floatingSearch_viewSearchInputTextColor">@color/colorAccentDark</item>
-        <item name="floatingSearch_viewSuggestionItemTextColor">@color/colorAccentDark</item>
-        <item name="floatingSearch_hintTextColor">@color/searchBarHintColor</item>
-        <item name="floatingSearch_dividerColor">@color/searchBarDividerColor</item>
-        <item name="floatingSearch_clearBtnColor">@color/searchBarClearIconTintColor</item>
-        <item name="floatingSearch_leftActionColor">@color/colorAccentDark</item>
-        <item name="floatingSearch_menuItemIconColor">@color/colorAccentDark</item>
-        <item name="floatingSearch_suggestionRightIconColor">@color/colorAccentDark</item>
-        <item name="floatingSearch_actionMenuOverflowColor">@color/searchBarMenuIconTintColor</item>
-        <item name="fontFamily">@font/iransans_medium</item>
-        <item name="android:textSize">14sp</item>
-    </style>-->
     <style name="SearchViewMaterial" parent="MaterialSearchBarLight">
         <item name="mt_searchBarColor">@color/searchBarPrimaryColor</item>
         <item name="mt_dividerColor">@color/colorPrimaryDark</item>
@@ -234,25 +224,11 @@
         <item name="fontFamily">@font/iransans_medium</item>
         <item name="android:textSize">14sp</item>
     </style>
-
-    <!-- Spinner Theme -->
-<!--    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
-        <item name="android:textColor">@color/colorPrimary</item>
+<!--     Spinner Theme-->
+    <style name="SpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/colorAccentDark</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/iransans_bold</item>
-    </style>-->
-
-    <!-- loading style -->
-<!--    <style name="loadingStyle">-->
-<!--        <item name="SpinKit_Style">DoubleBounce</item>-->
-<!--        <item name="android:minWidth">40dip</item>-->
-<!--        <item name="android:maxWidth">40dip</item>-->
-<!--        <item name="android:minHeight">40dip</item>-->
-<!--        <item name="android:maxHeight">40dip</item>-->
-<!--    </style>-->
-
-    <!-- Text Switcher Style -->
-
-    <!-- Search Bar -->
+    </style>
 
 </resources>

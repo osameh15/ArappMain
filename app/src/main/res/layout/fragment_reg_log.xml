@@ -37,6 +37,5 @@
                     android:textAlignment="center"
                     android:fontFamily="@font/iransans_bold"
                     android:textColor="@color/colorAccent"/>
-
         </LinearLayout>
 </layout>

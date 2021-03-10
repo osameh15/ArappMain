@@ -67,14 +67,12 @@
                 android:gravity="center_vertical|start"
                 android:hint="@string/phone_number">
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="phone"
                     android:imeOptions="actionDone"
-                    android:textSize="14sp"
                     android:text="@={viewModel.phone}"
-                    android:textColor="@color/colorAccentDark"
-                    android:fontFamily="@font/iransans"
                     android:maxLength="11"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.marozzi.roundbutton.RoundButton
@@ -90,5 +88,4 @@
                 android:onClick="@{()->viewModel.onPhoneButtonClick()}"/>
         </LinearLayout>
     </RelativeLayout>
-
 </layout>

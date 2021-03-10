@@ -56,7 +56,7 @@
                 app:abb_tabColorDisabled="@color/disable"
                 app:abb_textAppearance="@style/textAppearanceBottomNavigation"
                 app:abb_rippleEnabled="true"
-                app:abb_rippleColor="@color/colorAccentDark"
+                app:abb_rippleColor="@color/disable"
                 app:abb_indicatorColor="@color/colorPrimary"
                 app:abb_indicatorAnimation="slide"
                 app:abb_indicatorAppearance="round"

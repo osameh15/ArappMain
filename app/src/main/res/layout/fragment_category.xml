@@ -38,5 +38,4 @@
             app:lottie_speed="1.5"
             android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

@@ -11,7 +11,7 @@
             name="viewModel"
             type="ir.arapp.arappmain.viewmodel.LoginViewModel"/>
     </data>
-
+<!--        Login panel -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +20,6 @@
         android:padding="20dp"
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
-<!--        Login panel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,14 +50,12 @@
                 android:gravity="center_vertical|start"
                 android:hint="@string/phone_number">
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
                 android:imeOptions="actionNext"
-                android:textSize="14sp"
                 android:text="@={viewModel.phone}"
-                android:textColor="@color/colorAccentDark"
-                android:fontFamily="@font/iransans"
                 android:maxLength="11"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -73,15 +70,13 @@
                 android:hint="@string/password"
                 app:passwordToggleEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
                     android:imeOptions="actionDone"
                     android:textAlignment="viewStart"
-                    android:textSize="14sp"
-                    android:text="@={viewModel.password}"
-                    android:textColor="@color/colorAccentDark"
-                    android:fontFamily="@font/iransans"/>
+                    android:text="@={viewModel.password}"/>
             </com.google.android.material.textfield.TextInputLayout>
 <!--             Forget password panel -->
             <LinearLayout
@@ -149,5 +144,4 @@
                 android:onClick="@{()->viewModel.signUpButton()}"/>
         </LinearLayout>
     </RelativeLayout>
-
 </layout>
