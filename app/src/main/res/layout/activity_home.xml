@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".View.Activities.HomeActivity">
-
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
@@ -15,7 +14,7 @@
             android:id="@+id/homeLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <!--         Toolbar -->
+<!--         Toolbar -->
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/homeToolbar"
                 android:layout_width="match_parent"
@@ -26,7 +25,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
             </com.google.android.material.appbar.MaterialToolbar>
-            <!--            fragment container-->
+<!--            fragment container-->
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/mainFragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
@@ -39,7 +38,7 @@
                 app:layout_constraintTop_toBottomOf="@id/homeToolbar"
                 app:navGraph="@navigation/nav_home"
                 app:defaultNavHost="true"/>
-            <!--            Bottom Navigation-->
+<!--            Bottom Navigation-->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
@@ -90,5 +89,4 @@
             app:menu="@menu/drawer_layout"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>
-
 </layout>

@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.ProfileFragment">
-    
+<!--    View model-->
     <data>
         <variable
             name="viewModel"
             type="ir.arapp.arappmain.viewmodel.ProfileViewModel" />
     </data>
-
+<!--    Profile panel-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/lightBack">
+<!--            Profile header-->
             <RelativeLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
@@ -158,6 +159,7 @@
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
             </RelativeLayout>
+<!--            Profile Item list-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/profileRecyclerView"
                 android:layout_width="wrap_content"

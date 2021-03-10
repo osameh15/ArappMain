@@ -68,4 +68,6 @@
     <!--    Home Fragment-->
     <string name="search_hint">جستجو در آراپ</string>
     <string name="arapp_coin_count">10</string>
+    <!--    Profile Fragment-->
+    <string name="edit_user">ویرایش اطلاعات کاربری</string>
 </resources>

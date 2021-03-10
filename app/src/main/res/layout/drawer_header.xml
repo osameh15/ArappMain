@@ -10,7 +10,6 @@
     android:layoutDirection="rtl"
     android:padding="10dp"
     android:gravity="center_vertical">
-
 <!--        Profile avatar-->
     <androidx.cardview.widget.CardView
         android:layout_width="100dp"
@@ -78,7 +77,5 @@
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccentDark"/>
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

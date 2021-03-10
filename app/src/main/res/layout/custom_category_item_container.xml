@@ -8,6 +8,7 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="3dp"
     android:layout_margin="8dp">
+<!--    Category Picture-->
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/categoryItemContainer"
         android:layout_width="match_parent"

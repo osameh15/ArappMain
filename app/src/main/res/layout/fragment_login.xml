@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.LoginFragment">
-
 <!--    view model-->
     <data>
         <variable
@@ -21,7 +20,6 @@
         android:padding="20dp"
         android:background="@color/lightBack"
         android:layoutDirection="rtl">
-
 <!--        Login panel -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,7 +148,6 @@
                 android:textColor="@color/colorAccent"
                 android:onClick="@{()->viewModel.signUpButton()}"/>
         </LinearLayout>
-
     </RelativeLayout>
 
 </layout>

@@ -1,18 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".View.Fragments.EditUserFragment">
-
+<!--    view model-->
     <data>
         <variable
             name="viewModel"
             type="ir.arapp.arappmain.viewmodel.EditUserViewModel" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:background="@color/lightBack"
+        android:layoutDirection="rtl">
+        <!--         Toolbar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/profileToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:theme="@style/Theme.MyFancyTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iransans"
+                    android:text="@string/edit_user"
+                    android:textColor="@color/lightBack"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+<!--        Edit User Profile panel-->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileToolbar">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/register_text"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/iransans_bold"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textColor="@color/colorAccentDark"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layoutDirection="locale"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/phone_number"
+                    android:enabled="false">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:textSize="14sp"
+                        android:text="@={viewModel.phone}"
+                        android:textColor="@color/disable"
+                        android:fontFamily="@font/iransans"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layoutDirection="locale"
+                    android:gravity="center_vertical|start"
+                    android:hint="@string/name">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
+                        android:textSize="14sp"
+                        android:text="@={viewModel.name}"
+                        android:textColor="@color/colorAccentDark"
+                        android:fontFamily="@font/iransans"
+                        android:maxLength="48"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layoutDirection="rtl"
+                    android:gravity="center_vertical"
+                    android:hint="@string/password"
+                    app:passwordToggleEnabled="true">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionNext"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"
+                        android:text="@={viewModel.password}"
+                        android:textColor="@color/colorAccentDark"
+                        android:fontFamily="@font/iransans"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layoutDirection="rtl"
+                    android:gravity="center_vertical"
+                    android:hint="@string/confirm_password"
+                    app:passwordToggleEnabled="true">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"
+                        android:text="@={viewModel.cnfPassword}"
+                        android:textColor="@color/colorAccentDark"
+                        android:fontFamily="@font/iransans"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--                 Type of Service panel -->
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:text="@string/set_service"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iransans_bold"
+                        android:textColor="@color/colorAccent"
+                        android:onClick="@{()->viewModel.setService()}"/>
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/get_service"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iransans_bold"
+                        android:textColor="@color/colorAccent"
+                        android:onClick="@{()->viewModel.getService()}"/>
+                </RadioGroup>
+                <!--                accept arapp law-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal"
+                    android:layoutDirection="rtl">
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="-8dp"
+                        android:onClick="@{()->viewModel.setCheckBox()}"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/law"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iransans_bold"
+                        android:textColor="@color/colorAccent"
+                        android:onClick="@{()->viewModel.readPrivacy()}"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/accept_law"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/iransans_bold"
+                        android:textColor="@color/colorAccentDark"/>
+                </LinearLayout>
+                <com.marozzi.roundbutton.RoundButton
+                    style="@style/ButtonDisableLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="@string/register"
+                    android:enabled="false"
+                    android:visibility="@{viewModel.checkBox ? View.GONE : View.VISIBLE}"/>
+                <com.marozzi.roundbutton.RoundButton
+                    style="@style/ButtonLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:text="@string/register"
+                    android:visibility="@{viewModel.checkBox ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{()->viewModel.onRegisterButtonClick()}"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

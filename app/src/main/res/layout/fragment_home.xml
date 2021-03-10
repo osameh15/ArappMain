@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Fragments.HomeFragment">
-
 <!--    <data>
         <variable
             name="viewModel"
@@ -16,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightBack">
-
+<!--        Search Toolbar panel-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,20 +26,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-<!--            <com.arlib.floatingsearchview.FloatingSearchView
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:layoutDirection="rtl"
-                app:floatingSearch_close_search_on_keyboard_dismiss="true"
-                app:floatingSearch_leftActionMode="showHamburger"
-                app:floatingSearch_searchBarMarginLeft="1dp"
-                app:floatingSearch_searchBarMarginRight="1dp"
-                app:floatingSearch_searchBarMarginTop="1dp"
-                app:floatingSearch_searchHint="@string/search_hint"
-                app:floatingSearch_showSearchKey="false"
-                app:floatingSearch_suggestionsListAnimDuration="250" />-->
             <com.mancj.materialsearchbar.MaterialSearchBar
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
@@ -51,7 +36,7 @@
                 android:layout_gravity="center"
                 android:theme="@style/SearchViewMaterial" />
         </LinearLayout>
-
+<!--        Special Service Items-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +51,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
