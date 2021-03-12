@@ -6,11 +6,11 @@ public class Profile
 {
 //    region Variable
     @SerializedName("id")
-    int id;
+    private int id;
     @SerializedName("image")
-    int image;
+    private int image;
     @SerializedName("name")
-    String name;
+    private String name;
 //    endregion
 
 //    region Methods

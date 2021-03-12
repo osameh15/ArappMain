@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.makeramen.roundedimageview.RoundedImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bannerImage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop"
+    app:riv_corner_radius="10dp"
+    app:riv_border_color="@color/colorAccentDark"
+    app:riv_border_width="0dp"
+    android:layout_margin="8dp">
+</com.makeramen.roundedimageview.RoundedImageView>

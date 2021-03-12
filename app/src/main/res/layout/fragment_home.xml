@@ -10,46 +10,59 @@
             name="viewModel"
             type="ir.arapp.arappmain.viewmodel.LoginViewModel"/>
     </data>-->
-<!--        Search fragment-->
-    <androidx.constraintlayout.widget.ConstraintLayout
+<!--    Refresh layout-->
+    <com.madapps.liquid.LiquidRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightBack">
-<!--        Search Toolbar panel-->
-        <LinearLayout
+        android:background="@color/lightBack"
+        android:animateLayoutChanges="true"
+        android:animationCache="false"
+        app:AniBackColor="@color/disable"
+        app:AniForeColor="@color/lightBack"
+        app:CircleSmaller="6">
+<!--        Home Fragment-->
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:background="@drawable/search_border"
-            android:gravity="center"
-            android:padding="1.25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <com.mancj.materialsearchbar.MaterialSearchBar
-                android:id="@+id/searchView"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layoutDirection="rtl"
-                app:mt_placeholder="@string/search_hint"
-                app:mt_hint="@string/search_hint"
-                android:layout_gravity="center"
-                android:theme="@style/SearchViewMaterial" />
-        </LinearLayout>
-<!--        Special Service Items-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="78dp"
-            android:layout_marginEnd="58dp"
-            android:fontFamily="@font/iransans_bold"
-            android:text="@string/home_page"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccentDark"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                android:background="@color/lightBack">
+<!--        Search Toolbar panel-->
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/search_border"
+                    android:gravity="center"
+                    android:padding="1.25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <com.mancj.materialsearchbar.MaterialSearchBar
+                        android:id="@+id/searchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layoutDirection="rtl"
+                        android:theme="@style/SearchViewMaterial"
+                        app:mt_hint="@string/search_hint"
+                        app:mt_placeholder="@string/search_hint" />
+                </LinearLayout>
+<!--        Banner View-->
+                <com.zhpan.bannerview.BannerViewPager
+                    android:id="@+id/bannerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    style="@style/BannerView"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.madapps.liquid.LiquidRefreshLayout>
 </layout>

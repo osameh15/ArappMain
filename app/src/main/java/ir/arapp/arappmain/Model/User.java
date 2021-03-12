@@ -6,41 +6,41 @@ public class User
 {
 //    region Variable
     @SerializedName("id")
-    int id;
+    private int id;
     @SerializedName("type")
-    String type;
+    private String type;
     @SerializedName("name")
-    String name;
+    private String name;
     @SerializedName("phone")
-    String phone;
+    private String phone;
     @SerializedName("mail")
-    String mail;
+    private String mail;
     @SerializedName("service")
-    String service;
+    private String service;
     @SerializedName("password")
-    String password;
+    private String password;
     @SerializedName("avatar")
-    String avatar;
+    private String avatar;
     @SerializedName("gender")
-    String gender;
+    private String gender;
     @SerializedName("edu")
-    String edu;
+    private String edu;
     @SerializedName("province")
-    String province;
+    private String province;
     @SerializedName("city")
-    String city;
+    private String city;
     @SerializedName("notify")
-    String notify;
+    private String notify;
     @SerializedName("verifiedCode")
-    String verifiedCode;
+    private String verifiedCode;
     @SerializedName("verifiedAt")
-    String verifiedAt;
+    private String verifiedAt;
     @SerializedName("createdAt")
-    String createdAt;
+    private String createdAt;
     @SerializedName("updatedAt")
-    String updatedAt;
+    private String updatedAt;
     @SerializedName("deletedAt")
-    String deletedAt;
+    private String deletedAt;
 //    endregion
 
 //    region Methods

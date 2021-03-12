@@ -226,9 +226,25 @@
     </style>
 <!--     Spinner Theme-->
     <style name="SpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
-        <item name="android:textColor">@color/colorAccentDark</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/iransans_bold</item>
+    </style>
+    <style name="BannerView">
+        <item name="bvp_auto_play">true</item>
+        <item name="bvp_can_loop">true</item>
+        <item name="bvp_indicator_normal_color">@color/lightBack</item>
+        <item name="bvp_indicator_checked_color">@color/colorAccentDark</item>
+        <item name="bvp_page_style">multi_page</item>
+        <item name="bvp_reveal_width">2dp</item>
+        <item name="bvp_round_corner">10dp</item>
+        <item name="bvp_indicator_style">circle</item>
+        <item name="bvp_indicator_slide_mode">worm</item>
+        <item name="bvp_indicator_gravity">center</item>
+        <item name="bvp_indicator_radius">8dp</item>
+        <item name="bvp_indicator_visibility">visible</item>
+        <item name="bvp_page_margin">16dp</item>
+        <item name="bvp_interval">5000</item>
+        <item name="bvp_scroll_duration">600</item>
     </style>
 
 </resources>

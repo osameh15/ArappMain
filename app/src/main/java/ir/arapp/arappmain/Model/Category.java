@@ -6,11 +6,11 @@ public class Category
 {
 //    region Variable
     @SerializedName("id")
-    int id;
+    private int id;
     @SerializedName("name")
-    String name;
+    private String name;
     @SerializedName("picture")
-    int picture;
+    private int picture;
 //    endregion
 //    region Methods
 //    Constructor

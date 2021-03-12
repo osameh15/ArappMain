@@ -82,6 +82,8 @@ dependencies
     implementation "com.github.zhpanvip:BannerViewPager:3.1.6"
 //    Rounded Image View
     implementation "com.makeramen:roundedimageview:2.3.0"
+//    Liquied Refresh layout
+    implementation 'com.github.mukeshsolanki:liquidrefreshlayout:1.0.2'
 //    Reactivex RxJava ...
     implementation "io.reactivex.rxjava3:rxjava:3.0.0"
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"

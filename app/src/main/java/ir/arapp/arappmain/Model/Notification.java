@@ -6,19 +6,19 @@ public class Notification
 {
 //    region Variables
     @SerializedName("id")
-    int id;
+    private int id;
     @SerializedName("title")
-    String title;
+    private String title;
     @SerializedName("subtitle")
-    String subtitle;
+    private String subtitle;
     @SerializedName("text")
-    String text;
+    private String text;
     @SerializedName("image")
-    int image;
+    private int image;
     @SerializedName("imageContext")
-    int imageContext;
+    private int imageContext;
     @SerializedName("createdAt")
-    String createdAt;
+    private String createdAt;
 //    endregion
 
 //    region Methods
