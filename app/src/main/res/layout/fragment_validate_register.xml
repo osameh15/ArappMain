@@ -110,14 +110,16 @@
                 android:visibility="@{viewModel.flag ? View.VISIBLE : View.GONE}"
                 android:onClick="@{()->viewModel.resendCode()}"/>
             <TextView
+                android:id="@+id/editPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/edit_phone_number"
                 android:textSize="14sp"
                 android:fontFamily="@font/iransans_bold"
-                android:textColor="@color/colorAccent"
-                android:onClick="@{()->viewModel.editPhoneNumber()}"/>
+                android:textColor="@color/disable"
+                android:enabled="false"
+                android:onClick="@{()->viewModel.editPhoneNumber()}" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

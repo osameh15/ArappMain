@@ -5,13 +5,12 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.zhpan.bannerview.BannerViewPager;
 import com.zhpan.bannerview.BaseViewHolder;
 
-import ir.arapp.arappmain.Model.BannerItem;
+import ir.arapp.arappmain.Model.Banner;
 import ir.arapp.arappmain.R;
 
-public class BannerViewHolder extends BaseViewHolder<BannerItem>
+public class BannerViewHolder extends BaseViewHolder<Banner>
 {
 //        region Variables
     RoundedImageView roundedImageView;
@@ -23,7 +22,7 @@ public class BannerViewHolder extends BaseViewHolder<BannerItem>
     }
 //        Bind data
     @Override
-    public void bindData(BannerItem data, int position, int pageSize)
+    public void bindData(Banner data, int position, int pageSize)
     {
         roundedImageView.setImageResource(data.getPicture());
     }

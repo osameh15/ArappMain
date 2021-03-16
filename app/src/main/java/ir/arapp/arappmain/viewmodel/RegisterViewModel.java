@@ -61,7 +61,14 @@ public class RegisterViewModel extends AndroidViewModel
         cnfPassword = new MutableLiveData<>();
         checkBox = new MutableLiveData<>();
         service = new MutableLiveData<>();
-//        set data
+//        Initialize
+        init();
+    }
+
+//    region method
+//    Initialize methods
+    private void init()
+    {
         phone.setValue("");
         flag.setValue(false);
         checkTime.setValue(false);
@@ -75,8 +82,6 @@ public class RegisterViewModel extends AndroidViewModel
         checkBox.setValue(false);
         service.setValue("");
     }
-
-//    region method
 //    On Cleared
     @Override
     protected void onCleared()
@@ -169,6 +174,8 @@ public class RegisterViewModel extends AndroidViewModel
             public void onFinish()
             {
                 currentTime.setValue(0L);
+                setTimer(currentTime);
+                fragmentManager.setFunction("editPhone");
                 flag.setValue(true);
                 checkTime.setValue(false);
             }
@@ -186,13 +193,17 @@ public class RegisterViewModel extends AndroidViewModel
         {
             timeColor.setValue(getApplication().getResources().getColor(R.color.notificationColorRed));
         }
+        else
+        {
+            timeColor.setValue(getApplication().getResources().getColor(R.color.colorAccentDark));
+        }
     }
 //    edit phone number
     public void editPhoneNumber()
     {
         fragmentManager.navigateToFragment("phoneRegister");
     }
-//    check accept application law
+//    Check accept application law
     public void setCheckBox()
     {
         if (Objects.equals(checkBox.getValue(), false))

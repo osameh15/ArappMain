@@ -1,25 +1,23 @@
 package ir.arapp.arappmain.Util.Adapters;
 
 import android.view.View;
-import androidx.annotation.NonNull;
-import com.makeramen.roundedimageview.RoundedImageView;
+
 import com.zhpan.bannerview.BaseBannerAdapter;
-import com.zhpan.bannerview.BaseViewHolder;
 
 import java.util.ArrayList;
 
-import ir.arapp.arappmain.Model.BannerItem;
+import ir.arapp.arappmain.Model.Banner;
 import ir.arapp.arappmain.R;
 
-public class BannerViewAdapter extends BaseBannerAdapter<BannerItem, BannerViewHolder>
+public class BannerViewAdapter extends BaseBannerAdapter<Banner, BannerViewHolder>
 {
 //    region Variables
-    ArrayList<BannerItem> bannerItems = new ArrayList<>();
+    ArrayList<Banner> banners = new ArrayList<>();
 //    endregion
 
 //    region Methods
     @Override
-    protected void onBind(BannerViewHolder holder, BannerItem data, int position, int pageSize)
+    protected void onBind(BannerViewHolder holder, Banner data, int position, int pageSize)
     {
         holder.bindData(data, position, pageSize);
     }
@@ -34,15 +32,15 @@ public class BannerViewAdapter extends BaseBannerAdapter<BannerItem, BannerViewH
         return R.layout.custom_banner_item_container;
     }
 //    Set banner Items
-    public void setBannerItems(ArrayList<BannerItem> bannerItems)
+    public void setBanners(ArrayList<Banner> banners)
     {
-        this.bannerItems = bannerItems;
+        this.banners = banners;
         notifyDataSetChanged();
     }
 //    Get banner Items
-    public ArrayList<BannerItem> getBannerItems()
+    public ArrayList<Banner> getBanners()
     {
-        return this.bannerItems;
+        return this.banners;
     }
 //    endregion
 }

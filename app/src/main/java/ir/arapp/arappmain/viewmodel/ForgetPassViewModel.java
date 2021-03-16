@@ -58,6 +58,13 @@ public class ForgetPassViewModel extends AndroidViewModel
         time = new MutableLiveData<>();
         timeColor = new MutableLiveData<>();
 //        set data
+        init();
+    }
+
+//    region method
+//    Initialize Methods
+    private void init()
+    {
         phone.setValue("");
         validate.setValue("");
         checkTime.setValue(false);
@@ -68,8 +75,6 @@ public class ForgetPassViewModel extends AndroidViewModel
         time.setValue("");
         timeColor.setValue(getApplication().getResources().getColor(R.color.colorAccentDark));
     }
-
-//    region method
 //    On Cleared
     @Override
     protected void onCleared()
@@ -150,6 +155,8 @@ public class ForgetPassViewModel extends AndroidViewModel
             public void onFinish()
             {
                 currentTime.setValue(0L);
+                setTimer(currentTime);
+                fragmentManager.setFunction("editPhone");
                 flag.setValue(true);
                 checkTime.setValue(false);
             }
@@ -166,6 +173,10 @@ public class ForgetPassViewModel extends AndroidViewModel
         if (s.getValue() < 10)
         {
             timeColor.setValue(getApplication().getResources().getColor(R.color.notificationColorRed));
+        }
+        else
+        {
+            timeColor.setValue(getApplication().getResources().getColor(R.color.colorAccentDark));
         }
     }
 //    edit phone number

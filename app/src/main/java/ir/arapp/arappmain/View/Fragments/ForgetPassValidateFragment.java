@@ -73,9 +73,14 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
                 fragmentValidateForgetPassBinding.pinView.setLineColor(
                         ResourcesCompat.getColor(getResources(), R.color.notificationColorRed, requireActivity().getTheme()));
                 break;
+            case "editPhone":
+                fragmentValidateForgetPassBinding.editPhone.setEnabled(true);
+                fragmentValidateForgetPassBinding.editPhone.setTextColor(getResources().getColor(R.color.colorAccent));
+                break;
             case "resend":
-                fragmentValidateForgetPassBinding.timer.setTextColor(getResources().getColor(R.color.colorAccentDark));
                 fragmentValidateForgetPassBinding.pinView.setText("");
+                fragmentValidateForgetPassBinding.editPhone.setEnabled(false);
+                fragmentValidateForgetPassBinding.editPhone.setTextColor(getResources().getColor(R.color.disable));
                 fragmentValidateForgetPassBinding.pinView.setLineColor(
                         ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, requireActivity().getTheme()));
                 break;
@@ -117,7 +122,6 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
                 break;
             case "phone":
                 navController.navigate(R.id.action_forgetPassValidateFragment_to_forgetPassPhoneFragment);
-                requireActivity().getViewModelStore().clear();
                 hideShowKeyboard.hideKeyboardFrom(true);
                 break;
         }

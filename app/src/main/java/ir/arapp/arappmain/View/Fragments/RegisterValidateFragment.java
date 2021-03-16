@@ -73,9 +73,14 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
                 fragmentValidateRegisterBinding.pinView.setLineColor(
                         ResourcesCompat.getColor(getResources(), R.color.notificationColorRed, requireActivity().getTheme()));
                 break;
+            case "editPhone":
+                fragmentValidateRegisterBinding.editPhone.setEnabled(true);
+                fragmentValidateRegisterBinding.editPhone.setTextColor(getResources().getColor(R.color.colorAccent));
+                break;
             case "resend":
-                fragmentValidateRegisterBinding.timer.setTextColor(getResources().getColor(R.color.colorAccentDark));
                 fragmentValidateRegisterBinding.pinView.setText("");
+                fragmentValidateRegisterBinding.editPhone.setEnabled(false);
+                fragmentValidateRegisterBinding.editPhone.setTextColor(getResources().getColor(R.color.disable));
                 fragmentValidateRegisterBinding.pinView.setLineColor(
                         ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, requireActivity().getTheme()));
                 break;
@@ -108,12 +113,10 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     {
 //        Nav Controller
         final NavController navController = Navigation.findNavController(requireView());
-
         switch (message)
         {
             case "phoneRegister":
                 navController.navigate(R.id.action_registerValidateFragment_to_registerPhoneFragment);
-                requireActivity().getViewModelStore().clear();
                 hideShowKeyboard.hideKeyboardFrom(true);
                 break;
             case "register":

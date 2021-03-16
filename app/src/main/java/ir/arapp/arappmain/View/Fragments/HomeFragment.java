@@ -14,9 +14,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.zhpan.bannerview.BannerViewPager;
 
-import java.util.ArrayList;
-
-import ir.arapp.arappmain.Model.BannerItem;
+import ir.arapp.arappmain.Model.Banner;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.BannerViewAdapter;
 import ir.arapp.arappmain.Util.Adapters.BannerViewHolder;
@@ -31,7 +29,7 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
     //    region Variable
     FragmentHomeBinding fragmentHomeBinding;
     HomeViewModel homeViewModel;
-    BannerViewPager<BannerItem, BannerViewHolder> bannerViewPager;
+    BannerViewPager<Banner, BannerViewHolder> bannerViewPager;
     BannerViewAdapter bannerViewAdapter;
     SnackBarToast snackBarToast;
 //    endregion
@@ -57,7 +55,7 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
 //        Set banner news
         homeViewModel.getAllBannerItems().observe(getViewLifecycleOwner(), bannerItems ->
         {
-            bannerViewAdapter.setBannerItems(bannerItems);
+            bannerViewAdapter.setBanners(bannerItems);
             bannerAdapter();
         });
 //        Return view
@@ -117,10 +115,10 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
                 })
                 .setOnPageClickListener(position ->
                 {
-                    BannerItem bannerItem = bannerViewPager.getData().get(position);
-                    snackBarToast.snackBarLongTime(bannerItem.getText(), requireActivity().findViewById(R.id.bottomNavigationView));
+                    Banner banner = bannerViewPager.getData().get(position);
+                    snackBarToast.snackBarLongTime(banner.getText(), requireActivity().findViewById(R.id.bottomNavigationView));
                 })
-                .create(bannerViewAdapter.getBannerItems());
+                .create(bannerViewAdapter.getBanners());
     }
 //    Fragment navigation
 //    Error/success message

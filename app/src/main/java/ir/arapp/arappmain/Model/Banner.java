@@ -2,7 +2,7 @@ package ir.arapp.arappmain.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BannerItem
+public class Banner
 {
 //    region Variables
     @SerializedName("id")
@@ -19,7 +19,7 @@ public class BannerItem
 //    region Methods
 //    Constructor
 
-    public BannerItem(int id, int visible, int picture, String text, String createdAt)
+    public Banner(int id, int visible, int picture, String text, String createdAt)
     {
         this.id = id;
         this.visible = visible;
