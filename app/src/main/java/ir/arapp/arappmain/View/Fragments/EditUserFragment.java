@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
 
+import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Adapters.SpinnerAdapter;
 import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.databinding.FragmentEditUserBinding;
 
@@ -40,6 +42,7 @@ public class EditUserFragment extends Fragment
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentEditUserBinding.profileToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         fragmentEditUserBinding.profileToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
+        fragmentEditUserBinding.educationSpinner.setAdapter(new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout));
 //        Return View
         return fragmentEditUserBinding.getRoot();
     }

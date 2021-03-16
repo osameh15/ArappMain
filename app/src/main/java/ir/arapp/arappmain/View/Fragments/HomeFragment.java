@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
@@ -22,14 +23,16 @@ import ir.arapp.arappmain.Util.Adapters.BannerViewHolder;
 import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentHomeBinding;
+import ir.arapp.arappmain.viewmodel.HomeViewModel;
 
 public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearchActionListener
 {
 
     //    region Variable
     FragmentHomeBinding fragmentHomeBinding;
+    HomeViewModel homeViewModel;
     BannerViewPager<BannerItem, BannerViewHolder> bannerViewPager;
-    ArrayList<BannerItem> bannerLists;
+    BannerViewAdapter bannerViewAdapter;
     SnackBarToast snackBarToast;
 //    endregion
 
@@ -38,8 +41,10 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
     {
 //        Inflate the layout for this fragment
         fragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false);
+//        Set view model
+        homeViewModel = ViewModelProviders.of(requireActivity()).get(HomeViewModel.class);
 //        Hooks
-        bannerLists = new ArrayList<>();
+        bannerViewAdapter = new BannerViewAdapter();
         snackBarToast = new SnackBarToast(fragmentHomeBinding.getRoot());
         bannerViewPager = fragmentHomeBinding.getRoot().findViewById(R.id.bannerView);
 //        Search View Material
@@ -50,8 +55,11 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
         ((NavigationManager) requireActivity()).setDrawerLocked(false);
         ((NavigationManager) requireActivity()).bottomNavigationVisibility(true);
 //        Set banner news
-        setBannerItems();
-        bannerAdapter();
+        homeViewModel.getAllBannerItems().observe(getViewLifecycleOwner(), bannerItems ->
+        {
+            bannerViewAdapter.setBannerItems(bannerItems);
+            bannerAdapter();
+        });
 //        Return view
         return fragmentHomeBinding.getRoot();
     }
@@ -91,18 +99,10 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
         }
     }
 //    endregion
-//    Banner View pager
-    private void setBannerItems()
-    {
-        bannerLists.add(new BannerItem(1, 1, R.drawable.arapp_default, "اطلاعیه شماره 1", "23 اسفند 1399"));
-        bannerLists.add(new BannerItem(2, 1, R.drawable.news_one, "اطلاعیه شماره 2", "3 فروردین 1400"));
-        bannerLists.add(new BannerItem(3, 1, R.drawable.news_two, "اطلاعیه شماره 3", "23 فروردین 1400"));
-        bannerLists.add(new BannerItem(4, 1, R.drawable.news_three, "اطلاعیه شماره 4", "28 فروردین 1400"));
-        bannerLists.add(new BannerItem(5, 1, R.drawable.news_four, "اطلاعیه شماره 5", "10 اردیبهشت 1400"));
-    }
+//    Banner View Adapter
     private void bannerAdapter()
     {
-        BannerViewAdapter bannerViewAdapter = new BannerViewAdapter();
+
         bannerViewPager
                 .setOffScreenPageLimit(2)
                 .setLifecycleRegistry(getLifecycle())
@@ -120,8 +120,7 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
                     BannerItem bannerItem = bannerViewPager.getData().get(position);
                     snackBarToast.snackBarLongTime(bannerItem.getText(), requireActivity().findViewById(R.id.bottomNavigationView));
                 })
-                .create(bannerLists);
-        bannerViewAdapter.notifyDataSetChanged();
+                .create(bannerViewAdapter.getBannerItems());
     }
 //    Fragment navigation
 //    Error/success message
