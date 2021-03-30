@@ -18,12 +18,9 @@ public class EditUserViewModel extends AndroidViewModel
 {
 //    region Variables
     Context context;
-    ArrayList<String> eduList;
-    ArrayList<String> provinceList;
-    ArrayList<String> cityList;
-    MutableLiveData<ArrayList<String>> allEduList;
-    MutableLiveData<ArrayList<String>> allProvinceList;
-    MutableLiveData<ArrayList<String>> allCityList;
+    public ArrayList<String> eduList;
+    public ArrayList<String> provinceList;
+    public ArrayList<String> cityList;
 //    endregion
 
 //    Constructor
@@ -35,9 +32,6 @@ public class EditUserViewModel extends AndroidViewModel
         eduList = new ArrayList<>();
         provinceList = new ArrayList<>();
         cityList = new ArrayList<>();
-        allEduList = new MutableLiveData<>();
-        allProvinceList = new MutableLiveData<>();
-        allCityList = new MutableLiveData<>();
 //        Initialize
         init();
     }
@@ -47,6 +41,24 @@ public class EditUserViewModel extends AndroidViewModel
     {
         eduList.addAll(Arrays.asList(context.getResources().getStringArray(R.array.education_list)));
         provinceList.addAll(Arrays.asList(context.getResources().getStringArray(R.array.province_list)));
+    }
+    public void setCityList(int cityCode)
+    {
+        if (cityCode == 0)
+        {
+            cityList.clear();
+            cityList.add("ابتدا استان را انتخاب نمایید");
+        }
+        else if (cityCode == 1)
+        {
+            cityList.clear();
+            cityList.addAll(Arrays.asList(context.getResources().getStringArray(R.array.city_list_tehran)));
+        }
+        else if(cityCode == 2)
+        {
+            cityList.clear();
+            cityList.addAll(Arrays.asList(context.getResources().getStringArray(R.array.city_list_gilan)));
+        }
     }
 //    endregion
 }

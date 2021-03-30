@@ -1,6 +1,7 @@
 package ir.arapp.arappmain.View.Fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.madapps.liquid.LiquidRefreshLayout;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.zhpan.bannerview.BannerViewPager;
 
@@ -58,6 +60,8 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
             bannerViewAdapter.setBanners(bannerItems);
             bannerAdapter();
         });
+//        Refresh layout
+        liquidRefreshLayout();
 //        Return view
         return fragmentHomeBinding.getRoot();
     }
@@ -96,7 +100,6 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
                 break;
         }
     }
-//    endregion
 //    Banner View Adapter
     private void bannerAdapter()
     {
@@ -120,6 +123,24 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
                 })
                 .create(bannerViewAdapter.getBanners());
     }
+//    Refresh layout and get data
+    private void liquidRefreshLayout()
+    {
+        int TIME_REFRESH = 2000;
+        fragmentHomeBinding.liquidRefreshLayout.setOnRefreshListener(new LiquidRefreshLayout.OnRefreshListener()
+        {
+            @Override
+            public void completeRefresh()
+            {
+            }
+            @Override
+            public void refreshing()
+            {
+                new Handler().postDelayed(()-> fragmentHomeBinding.liquidRefreshLayout.finishRefreshing(), TIME_REFRESH);
+            }
+        });
+    }
+//    endregion
 //    Fragment navigation
 //    Error/success message
 //    endregion

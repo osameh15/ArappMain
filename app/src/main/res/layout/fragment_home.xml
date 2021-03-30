@@ -12,12 +12,13 @@
     </data>-->
 <!--    Refresh layout-->
     <com.madapps.liquid.LiquidRefreshLayout
+        android:id="@+id/liquidRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightBack"
         android:animateLayoutChanges="true"
         android:animationCache="false"
-        app:AniBackColor="@color/disable"
+        app:AniBackColor="@color/colorPrimaryDark"
         app:AniForeColor="@color/lightBack"
         app:CircleSmaller="6">
 <!--        Home Fragment-->

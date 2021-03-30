@@ -9,6 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
+
+import java.util.Collections;
+import java.util.List;
+
 import ir.arapp.arappmain.R;
 
 public class SpinnerAdapter extends ArrayAdapter<String>
@@ -24,7 +28,13 @@ public class SpinnerAdapter extends ArrayAdapter<String>
         typeface = ResourcesCompat.getFont(context, R.font.iransans_bold);
     }
 
-//    region Methods
+    public SpinnerAdapter(@NonNull Context context, int resource, @NonNull List<String> objects)
+    {
+        super(context, resource, 0, objects);
+        typeface = ResourcesCompat.getFont(context, R.font.iransans_bold);
+    }
+
+    //    region Methods
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
@@ -44,6 +54,12 @@ public class SpinnerAdapter extends ArrayAdapter<String>
     public void setDropDownViewResource(int resource)
     {
         super.setDropDownViewResource(resource);
+    }
+
+    @Override
+    public int getPosition(@Nullable String item)
+    {
+        return super.getPosition(item);
     }
     //    endregion
 }
