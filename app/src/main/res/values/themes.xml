@@ -135,6 +135,11 @@
         <item name="boxStrokeColor">@color/colorAccent</item>
         <item name="boxStrokeErrorColor">@color/notificationColorRed</item>
         <item name="errorTextAppearance">@style/ErrorTextStyle</item>
+        <item name="counterTextAppearance">@style/counterAppearance</item>
+        <item name="counterTextColor">@color/colorPrimaryDark</item>
+        <item name="counterOverflowTextAppearance">@style/ErrorTextStyle</item>
+        <item name="helperTextTextAppearance">@style/helperTextStyle</item>
+        <item name="helperTextTextColor">@color/notificationColorRed</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="boxCornerRadiusBottomEnd">8dp</item>
         <item name="boxCornerRadiusTopEnd">8dp</item>
@@ -157,6 +162,17 @@
 <!--     Edit Text Error Theme -->
     <style name="ErrorTextStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/notificationColorRed</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/iransans</item>
+    </style>
+<!--    Helper Text Style-->
+    <style name="helperTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/iransans</item>
+    </style>
+    <!-- Counter Theme -->
+    <style name="counterAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/lightBack</item>
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/iransans</item>
     </style>

@@ -10,7 +10,7 @@ public class RetrofitClient
 {
 
 //    region Variable
-    private static final String BASE_URL = "http://cafestudy.ir/public/";
+    private static final String BASE_URL = "http://arappOfficial.com/";
     private static RetrofitClient mInstance;
     private final Retrofit retrofit;
 //    endregion

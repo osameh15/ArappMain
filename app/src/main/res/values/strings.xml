@@ -79,7 +79,14 @@
     <string name="city">شهرستان</string>
     <string name="type_of_service">نوع کاربری</string>
     <string name="last_profile_update">آخرین بروزرسانی در:</string>
-<!--     Education Spinner List -->
+    <string name="add_service">افزودن سرویس</string>
+    <string name="add_service_text">جهت افزودن سرویس جدید، اطلاعات زیر را تکمیل نمایید</string>
+    <string name="name_service">عنوان سرویس</string>
+    <string name="helper_text">این بخش، بعدا قابل ویرایش نخواهد بود</string>
+    <string name="subtitle_service">مختصری از سرویس</string>
+    <string name="text_service">توضیحات سرویس</string>
+    <string name="address_service">نشانی</string>
+    <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>
         <item>دیپلم و فوق دیپلم</item>

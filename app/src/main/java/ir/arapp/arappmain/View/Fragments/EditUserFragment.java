@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
@@ -73,13 +74,19 @@ public class EditUserFragment extends Fragment
     private void spinnerAdapter()
     {
 //        Edu Spinner
-        SpinnerAdapter eduAdapter = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, editUserViewModel.eduList);
-        eduAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
-        fragmentEditUserBinding.educationSpinner.setAdapter(eduAdapter);
+        editUserViewModel.getAllEduList().observe(getViewLifecycleOwner(), edu ->
+        {
+            SpinnerAdapter eduAdapter = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, edu);
+            eduAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
+            fragmentEditUserBinding.educationSpinner.setAdapter(eduAdapter);
+        });
 //        Province Spinner
-        SpinnerAdapter provinceAdapter = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, editUserViewModel.provinceList);
-        provinceAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
-        fragmentEditUserBinding.provinceSpinner.setAdapter(provinceAdapter);
+        editUserViewModel.getAllProvinceList().observe(getViewLifecycleOwner(), province ->
+        {
+            SpinnerAdapter provinceAdapter = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, province);
+            provinceAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
+            fragmentEditUserBinding.provinceSpinner.setAdapter(provinceAdapter);
+        });
 //        City Spinner
         fragmentEditUserBinding.provinceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -98,9 +105,12 @@ public class EditUserFragment extends Fragment
                 {
                     editUserViewModel.setCityList(0);
                 }
-                SpinnerAdapter cityAdapter = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, editUserViewModel.cityList);
-                cityAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
-                fragmentEditUserBinding.citySpinner.setAdapter(cityAdapter);
+                editUserViewModel.getAllCityList().observe(getViewLifecycleOwner(), city ->
+                {
+                    SpinnerAdapter cityAdapter = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, city);
+                    cityAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
+                    fragmentEditUserBinding.citySpinner.setAdapter(cityAdapter);
+                });
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent)
