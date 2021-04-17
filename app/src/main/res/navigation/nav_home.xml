@@ -63,6 +63,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_profileFragment_to_addServiceFragment"
+            app:destination="@id/addServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -82,4 +85,9 @@
         android:name="ir.arapp.arappmain.View.Fragments.EditUserFragment"
         android:label="fragment_edit_user"
         tools:layout="@layout/fragment_edit_user" />
+    <fragment
+        android:id="@+id/addServiceFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.AddServiceFragment"
+        android:label="fragment_add_service"
+        tools:layout="@layout/fragment_add_service" />
 </navigation>

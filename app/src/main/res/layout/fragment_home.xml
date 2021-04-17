@@ -56,7 +56,7 @@
                 <com.zhpan.bannerview.BannerViewPager
                     android:id="@+id/bannerView"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="200dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
                     app:layout_constraintEnd_toEndOf="parent"

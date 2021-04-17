@@ -86,6 +86,10 @@
     <string name="subtitle_service">مختصری از سرویس</string>
     <string name="text_service">توضیحات سرویس</string>
     <string name="address_service">نشانی</string>
+    <string name="submit_location">ثبت موقعیت مکانی</string>
+    <string name="time_activity">زمان شروع و پایان فعالیت</string>
+    <string name="opening_year">سال افتتاح سرویس</string>
+    <string name="set_time">تنظیم زمان</string>
     <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>
@@ -136,5 +140,87 @@
         <item>ماسال</item>
         <item>سیاهکل</item>
         <item>املش</item>
+    </string-array>
+<!--     Category Spinner List -->
+    <string-array name="category_list">
+        <item>دسته بندی سرویس را انتخاب نمایید</item>
+        <item>رستوران</item>
+        <item>فست فود</item>
+        <item>کافه</item>
+        <item>هتل</item>
+        <item>مسافرخانه</item>
+        <item>مراکز خرید</item>
+    </string-array>
+<!--     Opening year Spinner List -->
+    <string-array name="year_list">
+        <item>سال افتتاح سرویس را ثبت کنید</item>
+        <item>1400</item>
+        <item>1399</item>
+        <item>1398</item>
+        <item>1397</item>
+        <item>1396</item>
+        <item>1395</item>
+        <item>1394</item>
+        <item>1393</item>
+        <item>1392</item>
+        <item>1391</item>
+        <item>1390</item>
+        <item>1389</item>
+        <item>1388</item>
+        <item>1387</item>
+        <item>1386</item>
+        <item>1385</item>
+        <item>1384</item>
+        <item>1383</item>
+        <item>1382</item>
+        <item>1381</item>
+        <item>1380</item>
+        <item>1379</item>
+        <item>1378</item>
+        <item>1377</item>
+        <item>1376</item>
+        <item>1375</item>
+        <item>1374</item>
+        <item>1373</item>
+        <item>1372</item>
+        <item>13971</item>
+        <item>1370</item>
+        <item>1369</item>
+        <item>1368</item>
+        <item>1367</item>
+        <item>1366</item>
+        <item>1365</item>
+        <item>1364</item>
+        <item>1363</item>
+        <item>1362</item>
+        <item>1361</item>
+        <item>1360</item>
+        <item>1359</item>
+        <item>1358</item>
+        <item>1357</item>
+        <item>1356</item>
+        <item>1355</item>
+        <item>1354</item>
+        <item>1353</item>
+        <item>1352</item>
+        <item>1351</item>
+        <item>1350</item>
+        <item>1349</item>
+        <item>1348</item>
+        <item>1347</item>
+        <item>1346</item>
+        <item>1345</item>
+        <item>1344</item>
+        <item>1343</item>
+        <item>1342</item>
+        <item>1341</item>
+        <item>1340</item>
+        <item>1339</item>
+        <item>1338</item>
+        <item>1337</item>
+        <item>1336</item>
+        <item>1335</item>
+        <item>1334</item>
+        <item>1333</item>
     </string-array>
 </resources>

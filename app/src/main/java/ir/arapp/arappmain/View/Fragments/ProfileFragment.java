@@ -88,6 +88,10 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
         {
             navController.navigate(R.id.action_profileFragment_to_editUserFragment);
         }
+        else if (message.equals("addService"))
+        {
+            navController.navigate(R.id.action_profileFragment_to_addServiceFragment);
+        }
     }
 //    Set methods for specific function
     @Override
@@ -113,7 +117,7 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
         switch (position)
         {
             case 1:
-                navigateToFragment("editUser");
+                navigateToFragment("addService");
                 break;
             case 8:
                 sessionManager.setLogin(false);

@@ -22,12 +22,16 @@ import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentAddServiceBinding;
 import ir.arapp.arappmain.databinding.FragmentEditUserBinding;
+import ir.arapp.arappmain.viewmodel.AddServiceViewModel;
 import ir.arapp.arappmain.viewmodel.EditUserViewModel;
 
 public class AddServiceFragment extends Fragment
 {
+
 //    region Variables
     FragmentAddServiceBinding fragmentAddServiceBinding;
+    AddServiceViewModel addServiceViewModel;
+    SnackBarToast snackBarToast;
 //    endregion
 
     @Override
@@ -42,7 +46,10 @@ public class AddServiceFragment extends Fragment
 //        Inflate the layout for this fragment
         fragmentAddServiceBinding = FragmentAddServiceBinding.inflate(inflater, container, false);
 //        Set view model
+        addServiceViewModel = ViewModelProviders.of(requireActivity()).get(AddServiceViewModel.class);
+        fragmentAddServiceBinding.setViewModel(addServiceViewModel);
 //        Hooks
+        snackBarToast = new SnackBarToast(fragmentAddServiceBinding.getRoot());
 //        Set LifeCycle
         fragmentAddServiceBinding.setLifecycleOwner(this);
 //        Drawer Locked and visible Bottom navigation
@@ -52,6 +59,8 @@ public class AddServiceFragment extends Fragment
         ((AppCompatActivity)requireActivity()).setSupportActionBar(fragmentAddServiceBinding.profileToolbar);
         Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         fragmentAddServiceBinding.profileToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
+//        Spinner Adapter
+        spinnerAdapter();
 //        Return View
         return fragmentAddServiceBinding.getRoot();
     }
@@ -65,6 +74,23 @@ public class AddServiceFragment extends Fragment
         menu.clear();
     }
 //    Spinner adapter
+    private void spinnerAdapter()
+    {
+//        Set category Spinner
+        addServiceViewModel.getAllCategory().observe(getViewLifecycleOwner(), category ->
+        {
+            SpinnerAdapter categorySpinner = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, category);
+            categorySpinner.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
+            fragmentAddServiceBinding.categorySpinner.setAdapter(categorySpinner);
+        });
+//        Opening year spinner
+        addServiceViewModel.getAllOpeningYear().observe(getViewLifecycleOwner(), openingYear ->
+        {
+            SpinnerAdapter yearAdapter = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, openingYear);
+            yearAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
+            fragmentAddServiceBinding.openingYearSpinner.setAdapter(yearAdapter);
+        });
+    }
 //    Back button navigation
     private void onNavigateUp()
 {

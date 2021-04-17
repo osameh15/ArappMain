@@ -45,6 +45,7 @@ public class EditUserFragment extends Fragment
         fragmentEditUserBinding = FragmentEditUserBinding.inflate(inflater, container, false);
 //        Set view model
         editUserViewModel = ViewModelProviders.of(requireActivity()).get(EditUserViewModel.class);
+        fragmentEditUserBinding.setViewModel(editUserViewModel);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentEditUserBinding.getRoot());
 //        Set LifeCycle
@@ -62,7 +63,7 @@ public class EditUserFragment extends Fragment
         return fragmentEditUserBinding.getRoot();
     }
 
-    //    region Methods
+//    region Methods
 //    Option menu and manage it
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
