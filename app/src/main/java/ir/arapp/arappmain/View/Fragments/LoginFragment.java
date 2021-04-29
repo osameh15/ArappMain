@@ -44,7 +44,7 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Fragment
         loginViewModel.snackBarMessage = this;
         loginViewModel.fragmentManager = this;
 //        Set Life Cycle
-            fragmentLoginBinding.setLifecycleOwner(this);
+        fragmentLoginBinding.setLifecycleOwner(this);
 //        Hooks
         sessionManager = new SessionManager(requireContext());
         snackBarToast = new SnackBarToast(fragmentLoginBinding.getRoot());

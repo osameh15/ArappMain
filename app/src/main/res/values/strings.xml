@@ -90,6 +90,8 @@
     <string name="time_activity">زمان شروع و پایان فعالیت</string>
     <string name="opening_year">سال افتتاح سرویس</string>
     <string name="set_time">تنظیم زمان</string>
+    <string name="edit_service">ویرایش سرویس</string>
+    <string name="change_location">تغییر موقعیت مکانی روی نقشه</string>
     <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>
