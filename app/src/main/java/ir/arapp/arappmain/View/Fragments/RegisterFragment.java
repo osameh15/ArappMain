@@ -2,8 +2,6 @@ package ir.arapp.arappmain.View.Fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -13,8 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.marozzi.roundbutton.RoundButton;
@@ -45,9 +44,9 @@ public class RegisterFragment extends Fragment implements SnackBarMessage, Fragm
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentRegisterBinding = FragmentRegisterBinding.inflate(inflater, container, false);
+        fragmentRegisterBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false);
 //        Set View model
-        RegisterViewModel registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
+        RegisterViewModel registerViewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
         fragmentRegisterBinding.setViewModel(registerViewModel);
         registerViewModel.snackBarMessage = this;
         registerViewModel.fragmentManager = this;

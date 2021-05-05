@@ -1,17 +1,21 @@
 package ir.arapp.arappmain.View.Fragments;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import java.util.Objects;
+
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
@@ -33,9 +37,9 @@ public class RegisterPhoneFragment extends Fragment implements SnackBarMessage, 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentPhoneRegisterBinding = FragmentPhoneRegisterBinding.inflate(inflater, container, false);
+        fragmentPhoneRegisterBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_phone_register, container, false);
 //        Set view model
-        RegisterViewModel registerPhoneViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
+        RegisterViewModel registerPhoneViewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
         fragmentPhoneRegisterBinding.setViewModel(registerPhoneViewModel);
         registerPhoneViewModel.snackBarMessage = this;
         registerPhoneViewModel.fragmentManager = this;

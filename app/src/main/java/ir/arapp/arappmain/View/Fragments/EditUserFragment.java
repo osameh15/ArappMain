@@ -1,5 +1,7 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,10 +13,13 @@ import android.widget.AdapterView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
@@ -23,6 +28,9 @@ import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentEditUserBinding;
 import ir.arapp.arappmain.viewmodel.EditUserViewModel;
+import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
+import ir.hamsaa.persiandatepicker.api.PersianPickerDate;
+import ir.hamsaa.persiandatepicker.api.PersianPickerListener;
 
 public class EditUserFragment extends Fragment
 {
@@ -30,6 +38,7 @@ public class EditUserFragment extends Fragment
     FragmentEditUserBinding fragmentEditUserBinding;
     EditUserViewModel editUserViewModel;
     SnackBarToast snackBarToast;
+    private Typeface typeface;
 //    endregion
 
     @Override
@@ -42,12 +51,13 @@ public class EditUserFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentEditUserBinding = FragmentEditUserBinding.inflate(inflater, container, false);
+        fragmentEditUserBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_user, container, false);
 //        Set view model
-        editUserViewModel = ViewModelProviders.of(requireActivity()).get(EditUserViewModel.class);
+        editUserViewModel = new ViewModelProvider(requireActivity()).get(EditUserViewModel.class);
         fragmentEditUserBinding.setViewModel(editUserViewModel);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentEditUserBinding.getRoot());
+        typeface = ResourcesCompat.getFont(requireContext(), R.font.iransans_bold);
 //        Set LifeCycle
         fragmentEditUserBinding.setLifecycleOwner(this);
 //        Drawer Locked and visible Bottom navigation
@@ -59,6 +69,8 @@ public class EditUserFragment extends Fragment
         fragmentEditUserBinding.profileToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
 //        Spinner adapter
         spinnerAdapter();
+//        Set Birthday
+        fragmentEditUserBinding.setBirthday.setOnClickListener(v -> setBirthday());
 //        Return View
         return fragmentEditUserBinding.getRoot();
     }
@@ -118,6 +130,37 @@ public class EditUserFragment extends Fragment
             {
             }
         });
+    }
+//    set Birthday
+    private void setBirthday()
+    {
+        PersianDatePickerDialog persianDatePickerDialog = new PersianDatePickerDialog(requireContext());
+        persianDatePickerDialog
+            .setPositiveButtonString("تایید")
+            .setNegativeButton("صرف نظر")
+            .setTodayButton("امروز")
+            .setTodayButtonVisible(true)
+            .setMinYear(1300)
+            .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
+            .setInitDate(1330, 1, 15)
+            .setActionTextColor(Color.GRAY)
+            .setTypeFace(typeface)
+            .setActionTextColor(getResources().getColor(R.color.colorPrimary))
+            .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
+            .setShowInBottomSheet(true)
+            .setListener(new PersianPickerListener()
+            {
+                @Override
+                public void onDateSelected(@NotNull PersianPickerDate persianPickerDate)
+                {
+                    fragmentEditUserBinding.textBirthday.setText(persianPickerDate.getPersianLongDate());
+                }
+                @Override
+                public void onDismissed()
+                {
+                }
+            });
+        persianDatePickerDialog.show();
     }
 //    Back button navigation
     private void onNavigateUp()

@@ -5,9 +5,11 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
@@ -40,9 +42,9 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false);
+        fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 //        Set view model
-        homeViewModel = ViewModelProviders.of(requireActivity()).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 //        Hooks
         bannerViewAdapter = new BannerViewAdapter();
         snackBarToast = new SnackBarToast(fragmentHomeBinding.getRoot());

@@ -6,24 +6,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-
+import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
-
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.SpinnerAdapter;
 import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentAddServiceBinding;
-import ir.arapp.arappmain.databinding.FragmentEditUserBinding;
 import ir.arapp.arappmain.viewmodel.AddServiceViewModel;
-import ir.arapp.arappmain.viewmodel.EditUserViewModel;
 
 public class AddServiceFragment extends Fragment
 {
@@ -44,9 +42,9 @@ public class AddServiceFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentAddServiceBinding = FragmentAddServiceBinding.inflate(inflater, container, false);
+        fragmentAddServiceBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_service, container, false);
 //        Set view model
-        addServiceViewModel = ViewModelProviders.of(requireActivity()).get(AddServiceViewModel.class);
+        addServiceViewModel = new ViewModelProvider(requireActivity()).get(AddServiceViewModel.class);
         fragmentAddServiceBinding.setViewModel(addServiceViewModel);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentAddServiceBinding.getRoot());
@@ -61,6 +59,8 @@ public class AddServiceFragment extends Fragment
         fragmentAddServiceBinding.profileToolbar.setNavigationOnClickListener(view1 -> onNavigateUp());
 //        Spinner Adapter
         spinnerAdapter();
+//        Time Picker
+        timePicker();
 //        Return View
         return fragmentAddServiceBinding.getRoot();
     }
@@ -77,6 +77,19 @@ public class AddServiceFragment extends Fragment
     private void spinnerAdapter()
     {
 //        Set category Spinner
+        try
+        {
+            Field popup = Spinner.class.getDeclaredField("mPopup");
+            popup.setAccessible(true);
+            // Get private mPopup member variable and try cast to ListPopupWindow
+            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(fragmentAddServiceBinding.openingYearSpinner);
+            // Set popupWindow height to 300px
+            popupWindow.setHeight(300);
+        }
+        catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e)
+        {
+            // silently fail...
+        }
         addServiceViewModel.getAllCategory().observe(getViewLifecycleOwner(), category ->
         {
             SpinnerAdapter categorySpinner = new SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, category);
@@ -90,6 +103,11 @@ public class AddServiceFragment extends Fragment
             yearAdapter.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown);
             fragmentAddServiceBinding.openingYearSpinner.setAdapter(yearAdapter);
         });
+    }
+//    Time Picker
+    private void timePicker()
+    {
+
     }
 //    Back button navigation
     private void onNavigateUp()

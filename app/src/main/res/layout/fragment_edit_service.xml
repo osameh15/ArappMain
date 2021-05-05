@@ -234,7 +234,7 @@
                                 android:fontFamily="@font/iransans_bold"
                                 android:textColor="@color/colorAccentDark"/>
                         </RelativeLayout>
-                        <!--                Time Activity Spinner-->
+<!--                Time Activity Spinner-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -267,7 +267,7 @@
                             android:layout_marginBottom="15dp"
                             android:gravity="center"
                             android:text="@string/set_time"/>
-                        <!--                Opening year-->
+<!--                Opening year-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

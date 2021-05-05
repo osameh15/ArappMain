@@ -95,7 +95,7 @@
                 android:gravity="center"
                 android:text="@string/submit_continue"
                 android:visibility="@{viewModel.flag ? View.GONE : View.VISIBLE}"
-                android:onClick="@{()->viewModel.validateCodeNumber()}"/>
+                android:onClick="@{viewModel::validateCodeNumber}"/>
 <!--            resend code button-->
             <com.marozzi.roundbutton.RoundButton
                 style="@style/ButtonLoadingPrimary"
@@ -108,7 +108,7 @@
                 android:gravity="center"
                 android:text="@string/verification_code_retry"
                 android:visibility="@{viewModel.flag ? View.VISIBLE : View.GONE}"
-                android:onClick="@{()->viewModel.resendCode()}"/>
+                android:onClick="@{viewModel::resendCode}"/>
             <TextView
                 android:id="@+id/editPhone"
                 android:layout_width="wrap_content"
@@ -119,7 +119,7 @@
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/disable"
                 android:enabled="false"
-                android:onClick="@{()->viewModel.editPhoneNumber()}" />
+                android:onClick="@{viewModel::editPhoneNumber}" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

@@ -7,7 +7,7 @@ plugins
 android
 {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.3"
 
     defaultConfig
     {
@@ -28,7 +28,7 @@ android
     {
         release
         {
-            minifyEnabled false
+            minifyEnabled true
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -48,8 +48,8 @@ android
 dependencies
 {
 //    Variable
-    def nav_version = "2.3.4"
-    def lifecycle_version = "2.3.0"
+    def nav_version = "2.3.5"
+    def lifecycle_version = "2.3.1"
 
 //    Base dependencies ...
     implementation "androidx.appcompat:appcompat:1.2.0"
@@ -58,42 +58,41 @@ dependencies
     implementation "com.android.support:multidex:1.0.3"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "androidx.cardview:cardview:1.0.0"
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.recyclerview:recyclerview:1.2.0"
 //    Bottom Navigation ...
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.0'
 //    Lottie file ...
-    implementation "com.airbnb.android:lottie:3.4.2"
+    implementation 'com.airbnb.android:lottie:3.7.0'
 //    Search View Material
     implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
     implementation 'com.github.arimorty:floatingsearchview:2.1.1'
 //    Folding cell
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
 //     Glide ...
-    implementation "com.github.bumptech.glide:glide:4.11.0"
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 //     Loading button ...
     implementation "com.marozzi.roundbutton:round-button:1.0.7"
 //    PinView ...
     implementation "com.chaos.view:pinview:1.4.3"
 //    Banner page view
     implementation "com.github.zhpanvip:BannerViewPager:3.1.6"
+//    Date Picker
+    implementation 'com.github.aliab:Persian-Date-Picker-Dialog:1.6.1'
+    implementation 'com.github.adawoud:BottomSheetTimeRangePicker:1.11'
 //    Rounded Image View
     implementation "com.makeramen:roundedimageview:2.3.0"
-//    Liquied Refresh layout
+//    Liquid Refresh layout
     implementation 'com.github.mukeshsolanki:liquidrefreshlayout:1.0.2'
-//    Reactivex RxJava ...
-    implementation "io.reactivex.rxjava3:rxjava:3.0.0"
-    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
 //     ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 //     LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
 //    LifeCycle
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
 //     Annotation processor. noinspection LifecycleAnnotationProcessorWithJava8
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 //     Retrofit and Gson ...
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"

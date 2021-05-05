@@ -3,6 +3,8 @@ package ir.arapp.arappmain.viewmodel;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.os.CountDownTimer;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
@@ -93,7 +95,7 @@ public class RegisterViewModel extends AndroidViewModel
         }
     }
 //    Submit phone Button
-    public void onPhoneButtonClick()
+    public void onPhoneButtonClick(View view)
     {
         if (Objects.requireNonNull(phone.getValue()).isEmpty())
         {
@@ -113,7 +115,7 @@ public class RegisterViewModel extends AndroidViewModel
         {
             if (Objects.equals(flag.getValue(), true))
             {
-                resendCode();
+                resendCode(view);
             }
             else
             {
@@ -128,7 +130,7 @@ public class RegisterViewModel extends AndroidViewModel
         fragmentManager.navigateToFragment("login");
     }
 //    validate code
-    public void validateCodeNumber()
+    public void validateCodeNumber(View view)
     {
 //        Todo check validate code and connect to server
         if (Objects.requireNonNull(validate.getValue()).equals("232323"))
@@ -150,7 +152,7 @@ public class RegisterViewModel extends AndroidViewModel
         }
     }
 //    resend Code
-    public void resendCode()
+    public void resendCode(View view)
     {
 //        Todo connect to server and send validation code again
         flag.setValue(false);
@@ -199,12 +201,12 @@ public class RegisterViewModel extends AndroidViewModel
         }
     }
 //    edit phone number
-    public void editPhoneNumber()
+    public void editPhoneNumber(View view)
     {
         fragmentManager.navigateToFragment("phoneRegister");
     }
 //    Check accept application law
-    public void setCheckBox()
+    public void setCheckBox(View view)
     {
         if (Objects.equals(checkBox.getValue(), false))
         {
@@ -215,12 +217,12 @@ public class RegisterViewModel extends AndroidViewModel
             checkBox.setValue(false);
         }
     }
-    public void readPrivacy()
+    public void readPrivacy(View view)
     {
         fragmentManager.setFunction("privacy");
     }
 //    Ob Register Button Click
-    public void onRegisterButtonClick()
+    public void onRegisterButtonClick(View view)
     {
         if (Objects.requireNonNull(name.getValue()).isEmpty() &&
                 Objects.requireNonNull(password.getValue()).isEmpty() &&
@@ -241,23 +243,23 @@ public class RegisterViewModel extends AndroidViewModel
         {
             snackBarMessage.onFailure("نوع سرویس خود را مشخص نمایید");
         }
-        else if (checkPassword())
+        else if (checkPassword(view))
         {
 //        Todo connect to server and store user details
             fragmentManager.navigateToFragment("home");
         }
     }
 //    Check type of service
-    public void setService()
+    public void setService(View view)
     {
         service.setValue("سرویس دهنده");
     }
-    public void getService()
+    public void getService(View view)
     {
         service.setValue("سرویس گیرنده");
     }
 //    check password and confirm
-    private boolean checkPassword()
+    private boolean checkPassword(View view)
     {
         if (Objects.requireNonNull(password.getValue()).length() < 6)
         {

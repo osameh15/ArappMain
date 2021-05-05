@@ -92,6 +92,8 @@
     <string name="set_time">تنظیم زمان</string>
     <string name="edit_service">ویرایش سرویس</string>
     <string name="change_location">تغییر موقعیت مکانی روی نقشه</string>
+    <string name="birthday">تاریخ تولد</string>
+    <string name="set_birthday">تنظیم کنید</string>
     <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>

@@ -173,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal">
-                        <!--                Education Spinner-->
+<!--                Education Spinner-->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -209,7 +209,39 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"/>
                         </RelativeLayout>
-                        <!--                Province Spinner-->
+<!--                Birthday-->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:text="@string/birthday"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/iransans_bold"
+                            android:textColor="@color/colorAccentDark"
+                            android:drawablePadding="8dp"
+                            app:drawableStartCompat="@drawable/ic_outline_event_24" />
+                        <RelativeLayout
+                            android:id="@+id/setBirthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/spinner_background">
+                            <TextView
+                                android:id="@+id/textBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="@string/set_birthday"
+                                android:textSize="14sp"
+                                android:textAlignment="center"
+                                android:fontFamily="@font/iransans_bold"
+                                android:textColor="@color/colorAccentDark"/>
+                        </RelativeLayout>
+<!--                Province Spinner-->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -245,7 +277,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"/>
                         </RelativeLayout>
-                        <!--                City Spinner-->
+<!--                City Spinner-->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -281,7 +313,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"/>
                         </RelativeLayout>
-                        <!--                Type of Services-->
+<!--                Type of Services-->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -311,22 +343,23 @@
                                 android:fontFamily="@font/iransans_bold"
                                 android:textColor="@color/colorAccentDark"/>
                         </RelativeLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/last_profile_update"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/iransans_medium"
+                            android:textColor="@color/disable"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/last_profile_update"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/iransans_medium"
-                    android:textColor="@color/disable"/>
                 <com.marozzi.roundbutton.RoundButton
                     style="@style/ButtonLoading"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="55dp"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="14sp"
                     android:layout_marginTop="12dp"

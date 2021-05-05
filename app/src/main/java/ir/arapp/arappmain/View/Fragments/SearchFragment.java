@@ -3,6 +3,7 @@ package ir.arapp.arappmain.View.Fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -33,7 +34,7 @@ public class SearchFragment extends Fragment implements MaterialSearchBar.OnSear
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //         Inflate the layout for this fragment
-        fragmentSearchBinding = FragmentSearchBinding.inflate(inflater, container, false);
+        fragmentSearchBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false);
 //        Search Controller
         fragmentSearchBinding.searchView.openSearch();
         fragmentSearchBinding.searchView.setOnSearchActionListener(this);

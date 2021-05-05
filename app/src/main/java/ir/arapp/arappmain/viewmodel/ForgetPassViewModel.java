@@ -3,6 +3,7 @@ package ir.arapp.arappmain.viewmodel;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.os.CountDownTimer;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -86,7 +87,7 @@ public class ForgetPassViewModel extends AndroidViewModel
         }
     }
 //    on Button click listener
-    public void onPhoneButtonClick()
+    public void onPhoneButtonClick(View view)
     {
         if (Objects.requireNonNull(phone.getValue()).isEmpty())
         {
@@ -98,7 +99,7 @@ public class ForgetPassViewModel extends AndroidViewModel
         {
             if (Objects.equals(flag.getValue(), true))
             {
-                resendCode();
+                resendCode(view);
             }
             else
             {
@@ -109,7 +110,7 @@ public class ForgetPassViewModel extends AndroidViewModel
         fragmentManager.navigateToFragment("validate");
     }
 //    validate code
-    public void validateCodeNumber()
+    public void validateCodeNumber(View view)
     {
 //        Todo connect to server and check validate code
         if (Objects.requireNonNull(validate.getValue()).equals("232323"))
@@ -131,7 +132,7 @@ public class ForgetPassViewModel extends AndroidViewModel
         }
     }
 //    resend Code
-    public void resendCode()
+    public void resendCode(View view)
     {
 //        Todo send validate code again
         flag.setValue(false);
@@ -180,12 +181,12 @@ public class ForgetPassViewModel extends AndroidViewModel
         }
     }
 //    edit phone number
-    public void editPhoneNumber()
+    public void editPhoneNumber(View view)
     {
         fragmentManager.navigateToFragment("phone");
     }
 //    check password and confirm
-    public void checkPassword()
+    public void checkPassword(View view)
     {
         if (Objects.requireNonNull(password.getValue()).isEmpty())
         {

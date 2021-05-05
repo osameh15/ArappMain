@@ -10,18 +10,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Adapters.SpinnerAdapter;
 import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
-import ir.arapp.arappmain.databinding.FragmentAddServiceBinding;
 import ir.arapp.arappmain.databinding.FragmentEditServiceBinding;
-import ir.arapp.arappmain.viewmodel.AddServiceViewModel;
 import ir.arapp.arappmain.viewmodel.EditServiceViewModel;
 
 public class EditServiceFragment extends Fragment
@@ -43,9 +41,9 @@ public class EditServiceFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentEditServiceBinding = FragmentEditServiceBinding.inflate(inflater, container, false);
+        fragmentEditServiceBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_service, container, false);
 //        Set view model
-        editServiceViewModel = ViewModelProviders.of(requireActivity()).get(EditServiceViewModel.class);
+        editServiceViewModel = new ViewModelProvider(requireActivity()).get(EditServiceViewModel.class);
         fragmentEditServiceBinding.setViewModel(editServiceViewModel);
 //        Hooks
         snackBarToast = new SnackBarToast(fragmentEditServiceBinding.getRoot());

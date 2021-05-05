@@ -109,7 +109,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/login_arapp"
-                android:onClick="@{()->viewModel.checkPassword()}"/>
+                android:onClick="@{viewModel::checkPassword}"/>
         </LinearLayout>
     </RelativeLayout>
 </layout>

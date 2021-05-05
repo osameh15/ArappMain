@@ -6,14 +6,18 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
 import java.util.Objects;
+
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
@@ -35,9 +39,9 @@ public class RegisterValidateFragment extends Fragment implements SnackBarMessag
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-         fragmentValidateRegisterBinding = FragmentValidateRegisterBinding.inflate(inflater, container, false);
+         fragmentValidateRegisterBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_validate_register, container, false);
 //        Set view model
-        RegisterViewModel registerValidateViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
+        RegisterViewModel registerValidateViewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
         fragmentValidateRegisterBinding.setViewModel(registerValidateViewModel);
         registerValidateViewModel.snackBarMessage = this;
         registerValidateViewModel.fragmentManager = this;

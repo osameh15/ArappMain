@@ -102,7 +102,7 @@
                     android:textSize="14sp"
                     android:fontFamily="@font/iransans_bold"
                     android:textColor="@color/colorAccent"
-                    android:onClick="@{()->viewModel.forgetPassButton()}"/>
+                    android:onClick="@{viewModel::forgetPassButton}"/>
             </LinearLayout>
             <com.marozzi.roundbutton.RoundButton
                 style="@style/ButtonLoading"
@@ -114,7 +114,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/login"
-                android:onClick="@{()->viewModel.onButtonClick()}"/>
+                android:onClick="@{viewModel::onButtonClick}"/>
         </LinearLayout>
 <!--         Sign up panel -->
         <LinearLayout
@@ -141,7 +141,7 @@
                 android:textSize="14sp"
                 android:fontFamily="@font/iransans_bold"
                 android:textColor="@color/colorAccent"
-                android:onClick="@{()->viewModel.signUpButton()}"/>
+                android:onClick="@{viewModel::signUpButton}"/>
         </LinearLayout>
     </RelativeLayout>
 </layout>

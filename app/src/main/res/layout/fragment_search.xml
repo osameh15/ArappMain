@@ -26,7 +26,7 @@
                 app:mt_placeholder="@string/search_hint"
                 app:mt_hint="@string/search_hint"
                 android:layout_gravity="center"
-                android:theme="@style/SearchViewMaterial" />
+                style="@style/SearchViewMaterial" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

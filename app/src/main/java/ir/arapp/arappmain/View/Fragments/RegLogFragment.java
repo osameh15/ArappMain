@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -39,7 +40,7 @@ public class RegLogFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentRegLogBinding = FragmentRegLogBinding.inflate(inflater, container, false);
+        fragmentRegLogBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_reg_log, container, false);
 //        Check permission
         checkPermission();
 //        Return view

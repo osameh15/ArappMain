@@ -155,7 +155,7 @@
                         android:textSize="14sp"
                         android:fontFamily="@font/iransans_bold"
                         android:textColor="@color/colorAccent"
-                        android:onClick="@{()->viewModel.setService()}"/>
+                        android:onClick="@{viewModel::setService}"/>
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                         android:textSize="14sp"
                         android:fontFamily="@font/iransans_bold"
                         android:textColor="@color/colorAccent"
-                        android:onClick="@{()->viewModel.getService()}"/>
+                        android:onClick="@{viewModel::getService}"/>
                 </RadioGroup>
 <!--                accept arapp law-->
                 <LinearLayout
@@ -177,7 +177,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="-8dp"
-                        android:onClick="@{()->viewModel.setCheckBox()}"/>
+                        android:onClick="@{viewModel::setCheckBox}"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                         android:textSize="14sp"
                         android:fontFamily="@font/iransans_bold"
                         android:textColor="@color/colorAccent"
-                        android:onClick="@{()->viewModel.readPrivacy()}"/>
+                        android:onClick="@{viewModel::readPrivacy}"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
                     android:gravity="center"
                     android:text="@string/register"
                     android:visibility="@{viewModel.checkBox ? View.VISIBLE : View.GONE}"
-                    android:onClick="@{()->viewModel.onRegisterButtonClick()}"/>
+                    android:onClick="@{viewModel::onRegisterButtonClick}"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

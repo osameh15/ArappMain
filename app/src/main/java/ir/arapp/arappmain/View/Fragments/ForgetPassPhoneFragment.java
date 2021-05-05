@@ -5,13 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
 import java.util.Objects;
+
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
@@ -33,9 +37,9 @@ public class ForgetPassPhoneFragment extends Fragment implements SnackBarMessage
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentPhoneForgetPassBinding = FragmentPhoneForgetPassBinding.inflate(inflater, container, false);
+        fragmentPhoneForgetPassBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_phone_forget_pass, container, false);
 //        Set view model
-        ForgetPassViewModel forgetPassPhoneViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
+        ForgetPassViewModel forgetPassPhoneViewModel = new ViewModelProvider(requireActivity()).get(ForgetPassViewModel.class);
         fragmentPhoneForgetPassBinding.setViewModel(forgetPassPhoneViewModel);
         forgetPassPhoneViewModel.snackBarMessage = this;
         forgetPassPhoneViewModel.fragmentManager = this;

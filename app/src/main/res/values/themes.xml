@@ -11,6 +11,7 @@
         <item name="snackbarButtonStyle">@style/MaterialSnackBarTextButtonTheme</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackBarTextViewTheme</item>
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="numberPickerTheme">@style/customNumberPicker</item>
 <!--        <item name="android:windowTranslucentStatus">true</item>-->
 <!--        <item name="android:windowTranslucentNavigation">true</item>-->
     </style>
@@ -223,13 +224,13 @@
 <!--    Search View theme-->
     <style name="SearchViewMaterial" parent="MaterialSearchBarLight">
         <item name="mt_searchBarColor">@color/searchBarPrimaryColor</item>
+        <item name="fontFamily">@font/iransans</item>
         <item name="mt_dividerColor">@color/colorPrimaryDark</item>
         <item name="mt_navIconEnabled">true</item>
         <item name="mt_navIconTint">@color/colorAccentDark</item>
         <item name="mt_searchIconTint">@color/colorAccentDark</item>
         <item name="mt_clearIconTint">@color/colorAccentDark</item>
         <item name="mt_menuIconTint">@color/colorAccentDark</item>
-        <item name="mt_backIconDrawable">@drawable/ic_arrow_forward_black_48dp</item>
         <item name="mt_backIconTint">@color/colorAccentDark</item>
         <item name="mt_textCursorTint">@color/colorAccent</item>
         <item name="mt_textColor">@color/colorAccentDark</item>
@@ -237,7 +238,6 @@
         <item name="mt_placeholderColor">@color/searchBarPlaceholderColor</item>
         <item name="mt_highlightedTextColor">@color/colorAccent</item>
         <item name="mt_maxSuggestionsCount">6</item>
-        <item name="fontFamily">@font/iransans_medium</item>
         <item name="android:textSize">14sp</item>
     </style>
 <!--     Spinner Theme-->
@@ -261,6 +261,13 @@
         <item name="bvp_page_margin">16dp</item>
         <item name="bvp_interval">5000</item>
         <item name="bvp_scroll_duration">600</item>
+    </style>
+    <!-- Custom date picker theme -->
+    <style name="customNumberPicker">
+<!--        text color -->
+        <item name="android:textColorPrimary">@color/colorAccentDark</item>
+<!--        divider color -->
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

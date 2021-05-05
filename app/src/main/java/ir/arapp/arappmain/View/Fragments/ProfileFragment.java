@@ -6,15 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.Objects;
 
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.ProfileItemAdapter;
@@ -25,7 +24,6 @@ import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.AuthActivity;
-import ir.arapp.arappmain.View.Activities.HomeActivity;
 import ir.arapp.arappmain.databinding.FragmentProfileBinding;
 import ir.arapp.arappmain.viewmodel.ProfileViewModel;
 
@@ -43,9 +41,9 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false);
+        fragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
 //        Set View model
-        ProfileViewModel profileViewModel = ViewModelProviders.of(requireActivity()).get(ProfileViewModel.class);
+        ProfileViewModel profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
         fragmentProfileBinding.setViewModel(profileViewModel);
         profileViewModel.snackBarMessage = this;
         profileViewModel.fragmentManager = this;

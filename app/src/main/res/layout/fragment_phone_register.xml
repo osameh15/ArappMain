@@ -88,7 +88,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/submit_continue"
-                android:onClick="@{()->viewModel.onPhoneButtonClick()}"/>
+                android:onClick="@{viewModel::onPhoneButtonClick}"/>
         </LinearLayout>
 <!--         Login panel-->
         <LinearLayout

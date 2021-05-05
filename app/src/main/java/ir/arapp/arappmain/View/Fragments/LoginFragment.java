@@ -8,8 +8,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -20,8 +21,8 @@ import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.HomeActivity;
-import ir.arapp.arappmain.viewmodel.LoginViewModel;
 import ir.arapp.arappmain.databinding.FragmentLoginBinding;
+import ir.arapp.arappmain.viewmodel.LoginViewModel;
 
 public class LoginFragment extends Fragment implements SnackBarMessage, FragmentManager
 {
@@ -37,9 +38,9 @@ public class LoginFragment extends Fragment implements SnackBarMessage, Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
+        fragmentLoginBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
 //        Set view model
-        LoginViewModel loginViewModel = ViewModelProviders.of(requireActivity()).get(LoginViewModel.class);
+        LoginViewModel loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
         fragmentLoginBinding.setViewModel(loginViewModel);
         loginViewModel.snackBarMessage = this;
         loginViewModel.fragmentManager = this;

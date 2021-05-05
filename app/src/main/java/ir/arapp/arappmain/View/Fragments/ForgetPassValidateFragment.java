@@ -6,14 +6,18 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
 import java.util.Objects;
+
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Services.FragmentManager;
 import ir.arapp.arappmain.Util.Services.HideShowKeyboard;
@@ -35,9 +39,9 @@ public class ForgetPassValidateFragment extends Fragment implements SnackBarMess
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentValidateForgetPassBinding = FragmentValidateForgetPassBinding.inflate(inflater, container, false);
+        fragmentValidateForgetPassBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_validate_forget_pass, container, false);
 //        Set view model
-        ForgetPassViewModel forgetPassValidateViewModel = ViewModelProviders.of(requireActivity()).get(ForgetPassViewModel.class);
+        ForgetPassViewModel forgetPassValidateViewModel = new ViewModelProvider(requireActivity()).get(ForgetPassViewModel.class);
         fragmentValidateForgetPassBinding.setViewModel(forgetPassValidateViewModel);
         forgetPassValidateViewModel.snackBarMessage = this;
         forgetPassValidateViewModel.fragmentManager = this;

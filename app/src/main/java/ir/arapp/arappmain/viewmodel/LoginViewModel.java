@@ -1,6 +1,7 @@
 package ir.arapp.arappmain.viewmodel;
 
 import android.app.Application;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -40,17 +41,17 @@ public class LoginViewModel extends AndroidViewModel
         super.onCleared();
     }
 //    Sign Up button
-    public void signUpButton()
+    public void signUpButton(View view)
     {
         fragmentManager.navigateToFragment("signUp");
     }
 //    Forget Pass button
-    public void forgetPassButton()
+    public void forgetPassButton(View view)
     {
         fragmentManager.navigateToFragment("forgetPass");
     }
 //    Login Button Click listener
-    public void onButtonClick()
+    public void onButtonClick(View view)
     {
         if (Objects.requireNonNull(phone.getValue()).isEmpty() && Objects.requireNonNull(password.getValue()).isEmpty())
         {

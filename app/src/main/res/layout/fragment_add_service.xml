@@ -268,7 +268,7 @@
                             android:textSize="12sp"
                             android:fontFamily="@font/iransans"
                             android:textColor="@color/notificationColorRed"/>
-                        <!--                Time Activity Spinner-->
+<!--                Time Activity Spinner-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -290,16 +290,28 @@
                                 android:fontFamily="@font/iransans_bold"
                                 android:textColor="@color/colorAccentDark"/>
                         </LinearLayout>
-                        <com.marozzi.roundbutton.RoundButton
-                            style="@style/ButtonLoadingPrimary"
+                        <RelativeLayout
+                            android:id="@+id/setTimeActivity"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginEnd="14sp"
-                            android:layout_marginTop="12dp"
-                            android:layout_marginBottom="15dp"
-                            android:gravity="center"
-                            android:text="@string/set_time"/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/spinner_background">
+                            <TextView
+                                android:id="@+id/textTimeActivity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minLines="2"
+                                android:gravity="center"
+                                android:layout_centerInParent="true"
+                                android:text="@string/set_birthday"
+                                android:textSize="14sp"
+                                android:textAlignment="center"
+                                android:fontFamily="@font/iransans_bold"
+                                android:textColor="@color/colorAccentDark"/>
+                        </RelativeLayout>
                         <!--                Opening year-->
                         <LinearLayout
                             android:layout_width="match_parent"

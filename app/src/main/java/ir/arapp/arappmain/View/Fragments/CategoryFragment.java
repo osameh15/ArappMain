@@ -4,11 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-
+import androidx.lifecycle.ViewModelProvider;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.CategoryItemAdapter;
 import ir.arapp.arappmain.Util.Services.ItemClickListener;
@@ -30,9 +29,9 @@ public class CategoryFragment extends Fragment implements ItemClickListener
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentCategoryBinding = FragmentCategoryBinding.inflate(inflater, container, false);
+        fragmentCategoryBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_category, container, false);
 //        Set View model
-        CategoryViewModel categoryViewModel = ViewModelProviders.of(requireActivity()).get(CategoryViewModel.class);
+        CategoryViewModel categoryViewModel = new ViewModelProvider(requireActivity()).get(CategoryViewModel.class);
 //        Hooks
         categoryItemAdapter = new CategoryItemAdapter(fragmentCategoryBinding.getRoot());
         snackBarToast = new SnackBarToast(fragmentCategoryBinding.getRoot());

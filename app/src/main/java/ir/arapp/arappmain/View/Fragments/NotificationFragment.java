@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.NotificationAdapter;
 import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.databinding.FragmentNotificationBinding;
@@ -27,9 +29,9 @@ public class NotificationFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 //        Inflate the layout for this fragment
-        fragmentNotificationBinding = FragmentNotificationBinding.inflate(inflater, container, false);
+        fragmentNotificationBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_notification, container, false);
 //        Set view model
-        NotificationViewModel notificationViewModel = ViewModelProviders.of(requireActivity()).get(NotificationViewModel.class);
+        NotificationViewModel notificationViewModel = new ViewModelProvider(requireActivity()).get(NotificationViewModel.class);
 //        Hooks
         notificationAdapter = new NotificationAdapter();
 //        Set life cycle
