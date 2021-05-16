@@ -38,7 +38,7 @@
                     android:layout_margin="15dp"
                     android:background="@drawable/search_border"
                     android:gravity="center"
-                    android:padding="1.35dp"
+                    android:padding="1.5dp"
                     android:layoutDirection="rtl"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

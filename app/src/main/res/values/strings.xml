@@ -94,6 +94,8 @@
     <string name="change_location">تغییر موقعیت مکانی روی نقشه</string>
     <string name="birthday">تاریخ تولد</string>
     <string name="set_birthday">تنظیم کنید</string>
+    <string name="my_service">سرویس های من</string>
+    <string name="rate_count">5.0</string>
     <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>

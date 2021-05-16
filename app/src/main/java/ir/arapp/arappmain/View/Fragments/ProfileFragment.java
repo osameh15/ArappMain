@@ -54,15 +54,15 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
         profileItemAdapter.itemClickListener = this;
 //        Set Life Cycle
         fragmentProfileBinding.setLifecycleOwner(this);
+//        Drawer Locked and visible Bottom navigation
+        ((NavigationManager) requireActivity()).setDrawerLocked(true);
+        ((NavigationManager) requireActivity()).bottomNavigationVisibility(true);
 //        Recycler View Profile items
         profileViewModel.getAllProfileItems().observe(getViewLifecycleOwner(), profiles ->
         {
             profileItemAdapter.setProfileArrayList(profiles);
             setRecyclerView();
         });
-//        Drawer Locked and visible Bottom navigation
-        ((NavigationManager) requireActivity()).setDrawerLocked(true);
-        ((NavigationManager) requireActivity()).bottomNavigationVisibility(true);
 //        Return view
         return fragmentProfileBinding.getRoot();
     }
@@ -92,6 +92,9 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
                 break;
             case "editService":
                 navController.navigate(R.id.action_profileFragment_to_editServiceFragment);
+                break;
+            case "myService":
+                navController.navigate(R.id.action_profileFragment_to_myServiceFragment);
                 break;
         }
     }
@@ -123,6 +126,9 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
                 break;
             case 2:
                 navigateToFragment("editService");
+                break;
+            case 3:
+                navigateToFragment("myService");
                 break;
             case 8:
                 sessionManager.setLogin(false);

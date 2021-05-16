@@ -55,6 +55,7 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
         this.categories = categories;
         notifyDataSetChanged();
     }
+//    endregion
 //    View holder class
     static class CategoryItemViewHolder extends RecyclerView.ViewHolder
     {
@@ -71,5 +72,4 @@ public class CategoryItemAdapter extends RecyclerView.Adapter<CategoryItemAdapte
             roundedImageView = itemView.findViewById(R.id.categoryItemContainer);
         }
     }
-//    endregion
 }

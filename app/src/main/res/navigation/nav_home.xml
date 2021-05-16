@@ -58,17 +58,16 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_editUserFragment"
-            app:destination="@id/editUserFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:destination="@id/editUserFragment"/>
         <action
             android:id="@+id/action_profileFragment_to_addServiceFragment"
             app:destination="@id/addServiceFragment" />
         <action
             android:id="@+id/action_profileFragment_to_editServiceFragment"
             app:destination="@id/editServiceFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myServiceFragment"
+            app:destination="@id/myServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -98,4 +97,9 @@
         android:name="ir.arapp.arappmain.View.Fragments.EditServiceFragment"
         android:label="fragment_edit_service"
         tools:layout="@layout/fragment_edit_service" />
+    <fragment
+        android:id="@+id/myServiceFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.MyServiceFragment"
+        android:label="fragment_my_service"
+        tools:layout="@layout/fragment_my_service" />
 </navigation>

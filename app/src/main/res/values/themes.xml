@@ -227,6 +227,7 @@
         <item name="fontFamily">@font/iransans</item>
         <item name="mt_dividerColor">@color/colorPrimaryDark</item>
         <item name="mt_navIconEnabled">true</item>
+        <item name="mt_backIconDrawable">@drawable/ic_arrow_forward_black_48dp</item>
         <item name="mt_navIconTint">@color/colorAccentDark</item>
         <item name="mt_searchIconTint">@color/colorAccentDark</item>
         <item name="mt_clearIconTint">@color/colorAccentDark</item>

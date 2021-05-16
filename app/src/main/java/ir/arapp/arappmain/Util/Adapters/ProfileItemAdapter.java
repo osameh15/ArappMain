@@ -39,7 +39,6 @@ public class ProfileItemAdapter extends RecyclerView.Adapter<ProfileItemAdapter.
     {
 //        Inflate Layout
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_profile_container, parent, false);
-//        Hooks
 //        Return view
         return new ProfileItemViewHolder(itemView);
     }
