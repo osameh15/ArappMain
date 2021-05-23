@@ -4,8 +4,8 @@
     android:id="@+id/serviceCardView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="200dp"
-    android:layout_height="210dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="6dp"
     app:cardElevation="4dp"
     android:layout_margin="8dp"
@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layoutDirection="rtl">
+        android:layoutDirection="locale">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -35,8 +35,8 @@
                 android:id="@+id/loading"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
-                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:visibility="visible"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="loading.json"
@@ -48,9 +48,8 @@
                 android:layout_height="25dp"
                 android:layout_below="@id/serviceImageContainer"
                 android:background="@drawable/rate_zero_shape"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="-18dp"
-                android:layout_marginEnd="10dp">
+                android:layout_marginStart="10dp">
                 <TextView
                     android:id="@+id/rateService"
                     android:layout_width="match_parent"
@@ -67,7 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp">
+            android:layout_marginStart="5dp"
+            android:layoutDirection="rtl">
             <ImageView
                 android:id="@+id/time_service_image"
                 android:layout_width="16dp"
@@ -95,6 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/my_service"
+            android:layoutDirection="rtl"
             android:textSize="11sp"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/iransans"
@@ -103,9 +104,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp">
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp">
             <ImageView
                 android:id="@+id/comment_service_image"
                 android:layout_width="14dp"
@@ -127,6 +130,15 @@
                 android:layout_toEndOf="@id/comment_service_image"
                 android:layout_centerVertical="true"
                 tools:ignore="RelativeOverlap,SmallSp" />
+            <ImageView
+                android:id="@+id/editMyService"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="6dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/deleteMyService"
+                android:src="@drawable/ic_outline_edit_24"
+                android:contentDescription="@string/app_name" />
             <ImageView
                 android:id="@+id/deleteMyService"
                 android:layout_width="14dp"

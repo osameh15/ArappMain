@@ -14,8 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -77,10 +81,10 @@ public class MyServiceFragment extends Fragment implements ItemClickListener
 //    region methods
 //    Option menu and manage it
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu)
     {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.clear();
+        super.onPrepareOptionsMenu(menu);
+        menu.setGroupVisible(R.id.bottomNavigationMenu, false);
     }
 //    Back button navigation
     private void onNavigateUp()
@@ -91,7 +95,7 @@ public class MyServiceFragment extends Fragment implements ItemClickListener
     private void setRecyclerView()
     {
         fragmentMyServiceBinding.myServiceRecyclerView.setHasFixedSize(true);
-    //        Add spacing between 2 item
+//        Add spacing between 2 item
         fragmentMyServiceBinding.myServiceRecyclerView.addItemDecoration(new
                 MyServiceFragment.GridSpacingItemDecoration(2, 12, 1));
         fragmentMyServiceBinding.myServiceRecyclerView.setAdapter(myServiceAdapter);
@@ -100,7 +104,12 @@ public class MyServiceFragment extends Fragment implements ItemClickListener
     @Override
     public void onItemClickListener(View view, int position, String message)
     {
-        if (message.equals("delete"))
+        final NavController navController = Navigation.findNavController(requireView());
+        if (message.equals("edit"))
+        {
+            navController.navigate(R.id.action_myServiceFragment_to_editServiceFragment);
+        }
+        else if (message.equals("delete"))
         {
             snackBarToast.snackBarShortTime("حذف سرویس");
         }

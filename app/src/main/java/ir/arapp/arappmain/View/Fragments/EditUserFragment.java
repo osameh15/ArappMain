@@ -78,10 +78,10 @@ public class EditUserFragment extends Fragment
 //    region Methods
 //    Option menu and manage it
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu)
     {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.clear();
+        super.onPrepareOptionsMenu(menu);
+        menu.setGroupVisible(R.id.bottomNavigationMenu, false);
     }
 //    Spinner adapter
     private void spinnerAdapter()

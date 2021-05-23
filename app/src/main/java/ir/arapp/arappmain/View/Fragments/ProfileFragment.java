@@ -4,16 +4,25 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.ProfileItemAdapter;
@@ -24,6 +33,7 @@ import ir.arapp.arappmain.Util.Services.SessionManager;
 import ir.arapp.arappmain.Util.Services.SnackBarMessage;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.View.Activities.AuthActivity;
+import ir.arapp.arappmain.View.Activities.HomeActivity;
 import ir.arapp.arappmain.databinding.FragmentProfileBinding;
 import ir.arapp.arappmain.viewmodel.ProfileViewModel;
 
@@ -37,6 +47,12 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
     private SessionManager sessionManager;
 //    endregion
 
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -90,9 +106,6 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
             case "addService":
                 navController.navigate(R.id.action_profileFragment_to_addServiceFragment);
                 break;
-            case "editService":
-                navController.navigate(R.id.action_profileFragment_to_editServiceFragment);
-                break;
             case "myService":
                 navController.navigate(R.id.action_profileFragment_to_myServiceFragment);
                 break;
@@ -123,9 +136,6 @@ public class ProfileFragment extends Fragment implements SnackBarMessage, Fragme
         {
             case 1:
                 navigateToFragment("addService");
-                break;
-            case 2:
-                navigateToFragment("editService");
                 break;
             case 3:
                 navigateToFragment("myService");

@@ -14,6 +14,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 import ir.arapp.arappmain.R;
@@ -63,10 +65,10 @@ public class EditServiceFragment extends Fragment
 //    region Methods
 //    Option menu and manage it
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu)
     {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.clear();
+        super.onPrepareOptionsMenu(menu);
+        menu.setGroupVisible(R.id.bottomNavigationMenu, false);
     }
 //    Back button navigation
     private void onNavigateUp()

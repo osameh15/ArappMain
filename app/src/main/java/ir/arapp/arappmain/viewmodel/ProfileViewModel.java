@@ -41,8 +41,8 @@ public class ProfileViewModel extends AndroidViewModel
 //    Set data to category array list
     private void populateList()
     {
-        profileArrayList.add(new Profile(1, R.drawable.add_service, "افزودن سرویس"));
-        profileArrayList.add(new Profile(2, R.drawable.edit_service, "ویرایش سرویس"));
+        profileArrayList.add(new Profile(1, R.drawable.edit_service, "افزودن سرویس"));
+        profileArrayList.add(new Profile(2, R.drawable.add_service, "افزودن تبلیغات"));
         profileArrayList.add(new Profile(3, R.drawable.my_service, "سرویس های من"));
         profileArrayList.add(new Profile(4, R.drawable.rezerve, "رزرو سرویس"));
         profileArrayList.add(new Profile(5, R.drawable.rates, "امتیازات من"));

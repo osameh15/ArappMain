@@ -78,6 +78,7 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.MySe
             holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_max_shape);
         }
         holder.cardView.setOnClickListener(view -> itemClickListener.onItemClickListener(this.view, currentItem.getId(), currentItem.getTitle()));
+        holder.editService.setOnClickListener(view -> itemClickListener.onItemClickListener(this.view, currentItem.getId(), "edit"));
         holder.deleteService.setOnClickListener(view -> itemClickListener.onItemClickListener(this.view, currentItem.getId(), "delete"));
     }
     @Override
@@ -103,6 +104,7 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.MySe
         TextView time;
         TextView title;
         TextView comment;
+        ImageView editService;
         ImageView deleteService;
 //        endregion
 //        Constructor to View holder
@@ -118,6 +120,7 @@ public class MyServiceAdapter extends RecyclerView.Adapter<MyServiceAdapter.MySe
             time = itemView.findViewById(R.id.timeService);
             title = itemView.findViewById(R.id.titleService);
             comment = itemView.findViewById(R.id.commentService);
+            editService = itemView.findViewById(R.id.editMyService);
             deleteService = itemView.findViewById(R.id.deleteMyService);
         }
     }

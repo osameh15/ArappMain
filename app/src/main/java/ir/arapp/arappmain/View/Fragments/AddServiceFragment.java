@@ -1,5 +1,7 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,11 +12,23 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.arappmain.radialtimepicker.ClockMode;
+import com.arappmain.radialtimepicker.OnTimeResultListener;
+import com.arappmain.radialtimepicker.PageData;
+import com.arappmain.radialtimepicker.TimePickerBottomSheetFragment;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.reflect.Field;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Objects;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.SpinnerAdapter;
@@ -22,6 +36,7 @@ import ir.arapp.arappmain.Util.Services.NavigationManager;
 import ir.arapp.arappmain.Util.Services.SnackBarToast;
 import ir.arapp.arappmain.databinding.FragmentAddServiceBinding;
 import ir.arapp.arappmain.viewmodel.AddServiceViewModel;
+import kotlin.Unit;
 
 public class AddServiceFragment extends Fragment
 {
@@ -30,6 +45,7 @@ public class AddServiceFragment extends Fragment
     FragmentAddServiceBinding fragmentAddServiceBinding;
     AddServiceViewModel addServiceViewModel;
     SnackBarToast snackBarToast;
+    private TimePickerBottomSheetFragment timePickerBottomSheetFragment;
 //    endregion
 
     @Override
@@ -47,6 +63,7 @@ public class AddServiceFragment extends Fragment
         addServiceViewModel = new ViewModelProvider(requireActivity()).get(AddServiceViewModel.class);
         fragmentAddServiceBinding.setViewModel(addServiceViewModel);
 //        Hooks
+        timePickerBottomSheetFragment = new TimePickerBottomSheetFragment();
         snackBarToast = new SnackBarToast(fragmentAddServiceBinding.getRoot());
 //        Set LifeCycle
         fragmentAddServiceBinding.setLifecycleOwner(this);
@@ -66,14 +83,14 @@ public class AddServiceFragment extends Fragment
     }
 
 //    region Methods
-//    Option menu and manage it
+//    Menu option
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater)
+    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu)
     {
-        super.onCreateOptionsMenu(menu, inflater);
-        menu.clear();
+        super.onPrepareOptionsMenu(menu);
+        menu.setGroupVisible(R.id.bottomNavigationMenu, false);
     }
-//    Back button navigation
+    //    Back button navigation
     private void onNavigateUp()
     {
         requireActivity().onBackPressed();
@@ -97,9 +114,25 @@ public class AddServiceFragment extends Fragment
         });
     }
 //    Time Picker
+    @SuppressLint("SetTextI18n")
     private void timePicker()
     {
-
+        Typeface typeface = ResourcesCompat.getFont(requireContext(), R.font.yekan);
+        NumberFormat numberFormat = new DecimalFormat("00");
+        timePickerBottomSheetFragment.set24Hour(true);
+        timePickerBottomSheetFragment.setTextTypeFace(typeface);
+        timePickerBottomSheetFragment.initTime(8,0,21,0);
+        fragmentAddServiceBinding.setTimeActivity.setOnClickListener(v ->
+        {
+            timePickerBottomSheetFragment.setClockArrowMode(PageData.ClockArrow.Hour);
+            timePickerBottomSheetFragment.show(getChildFragmentManager(), "tag");
+        });
+        timePickerBottomSheetFragment.setOnTimeResultListener((aBoolean, i, i1, i2, i3) ->
+        {
+            fragmentAddServiceBinding.textTimeActivity.setText("زمان شروع: " + numberFormat.format(i) + ":" + numberFormat.format(i1)
+                    + "\n" + "زمان پایان: " + numberFormat.format(i2) + ":" + numberFormat.format(i3));
+            return Unit.INSTANCE;
+        });
     }
 //    endregion
 }

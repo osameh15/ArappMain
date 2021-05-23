@@ -87,6 +87,5 @@
             android:theme="@style/NavigationView"
             app:headerLayout="@layout/drawer_header"
             app:menu="@menu/drawer_layout"/>
-
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

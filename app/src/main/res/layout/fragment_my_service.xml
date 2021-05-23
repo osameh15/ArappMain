@@ -36,10 +36,8 @@
 <!--        Notification Item list-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myServiceRecyclerView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layoutDirection="rtl"
             android:layout_gravity="center_horizontal"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

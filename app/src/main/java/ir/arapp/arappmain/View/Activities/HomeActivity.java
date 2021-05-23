@@ -72,7 +72,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationManager
     }
 
 //    region Methods
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -283,6 +282,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationManager
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
+//    endregion
 //    Share app to another one
     private void shareApp()
     {
@@ -333,6 +333,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationManager
             activityHomeBinding.bottomNavigationView.setVisibility(View.GONE);
         }
     }
-//    endregion
 //    endregion
 }
