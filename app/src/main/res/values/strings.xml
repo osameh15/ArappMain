@@ -87,7 +87,7 @@
     <string name="text_service">توضیحات سرویس</string>
     <string name="address_service">نشانی</string>
     <string name="submit_location">ثبت موقعیت مکانی</string>
-    <string name="time_activity">زمان شروع و پایان فعالیت</string>
+    <string name="time_activity">زمان آغاز و پایان فعالیت(به صورت روزانه)</string>
     <string name="opening_year">سال افتتاح سرویس</string>
     <string name="set_time">تنظیم زمان</string>
     <string name="edit_service">ویرایش سرویس</string>
@@ -96,6 +96,10 @@
     <string name="set_birthday">تنظیم کنید</string>
     <string name="my_service">سرویس های من</string>
     <string name="rate_count">5.0</string>
+    <string name="delete_service">آیا از حذف سرویس اطمینان دارید؟</string>
+    <string name="delete_service_notify">در صورت تایید، امکان بازیابی وجود ندارد</string>
+    <string name="delete">حذف</string>
+    <string name="cancel">انصراف</string>
     <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>

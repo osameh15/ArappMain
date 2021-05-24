@@ -1,12 +1,15 @@
 package ir.arapp.arappmain.View.Fragments;
 
+import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +21,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -111,12 +117,35 @@ public class MyServiceFragment extends Fragment implements ItemClickListener
         }
         else if (message.equals("delete"))
         {
-            snackBarToast.snackBarShortTime("حذف سرویس");
+            deleteService();
         }
         else
         {
             snackBarToast.snackBarShortTime(message);
         }
+    }
+
+    private void deleteService()
+    {
+        int TIME_LOADING = 2200;
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(requireContext(), R.style.bottomSheetDialogTheme);
+        @SuppressLint("InflateParams") View bottomSheetView = LayoutInflater.from(requireContext())
+                .inflate(R.layout.custom_bottom_sheet_delete_service, null);
+//            View Hooks
+        LinearLayout deleteLinearLayout = bottomSheetView.findViewById(R.id.deleteServiceLinearLayout);
+        LinearLayout delete = bottomSheetView.findViewById(R.id.deleteServiceAction);
+        LinearLayout cancel = bottomSheetView.findViewById(R.id.cancelServiceAction);
+        LottieAnimationView loading = bottomSheetView.findViewById(R.id.loading);
+//            Set on click listener
+        delete.setOnClickListener(v ->
+            {
+                deleteLinearLayout.setVisibility(View.GONE);
+                loading.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(bottomSheetDialog::dismiss,TIME_LOADING);
+            });
+        cancel.setOnClickListener(v -> bottomSheetDialog.dismiss());
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
     }
 //    endregion
 

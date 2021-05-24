@@ -117,7 +117,7 @@ public class AddServiceFragment extends Fragment
     @SuppressLint("SetTextI18n")
     private void timePicker()
     {
-        Typeface typeface = ResourcesCompat.getFont(requireContext(), R.font.yekan);
+        Typeface typeface = ResourcesCompat.getFont(requireContext(), R.font.dana);
         NumberFormat numberFormat = new DecimalFormat("00");
         timePickerBottomSheetFragment.set24Hour(true);
         timePickerBottomSheetFragment.setTextTypeFace(typeface);
@@ -129,8 +129,8 @@ public class AddServiceFragment extends Fragment
         });
         timePickerBottomSheetFragment.setOnTimeResultListener((aBoolean, i, i1, i2, i3) ->
         {
-            fragmentAddServiceBinding.textTimeActivity.setText("زمان شروع: " + numberFormat.format(i) + ":" + numberFormat.format(i1)
-                    + "\n" + "زمان پایان: " + numberFormat.format(i2) + ":" + numberFormat.format(i3));
+            fragmentAddServiceBinding.textTimeActivity.setText("آغاز ارائه خدمات ساعت: " + numberFormat.format(i) + ":" + numberFormat.format(i1)
+                    + "\n" + "پایان ارائه خدمات ساعت: " + numberFormat.format(i2) + ":" + numberFormat.format(i3));
             return Unit.INSTANCE;
         });
     }

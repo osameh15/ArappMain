@@ -58,7 +58,7 @@
                     android:textSize="14sp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:fontFamily="@font/yekan"
+                    android:fontFamily="@font/dana"
                     android:textColor="@color/white"/>
             </FrameLayout>
         </RelativeLayout>
@@ -84,7 +84,7 @@
                 android:textSize="11sp"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="5dp"
-                android:fontFamily="@font/yekan"
+                android:fontFamily="@font/dana"
                 android:textColor="@android:color/darker_gray"
                 android:layout_toEndOf="@id/time_service_image"
                 android:layout_centerVertical="true"
@@ -125,7 +125,7 @@
                 android:textSize="11sp"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="5dp"
-                android:fontFamily="@font/yekan"
+                android:fontFamily="@font/dana"
                 android:textColor="@android:color/darker_gray"
                 android:layout_toEndOf="@id/comment_service_image"
                 android:layout_centerVertical="true"

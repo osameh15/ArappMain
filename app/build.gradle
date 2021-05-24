@@ -79,7 +79,7 @@ dependencies
     implementation "com.github.zhpanvip:BannerViewPager:3.1.6"
 //    Date Picker
     implementation 'com.github.aliab:Persian-Date-Picker-Dialog:1.6.1'
-    implementation 'com.github.osameh15:PersianRadialTimePicker:1.3.0'
+    implementation 'com.github.osameh15:PersianRadialTimePicker:1.3.1'
 //    Rounded Image View
     implementation "com.makeramen:roundedimageview:2.3.0"
 //    Liquid Refresh layout
