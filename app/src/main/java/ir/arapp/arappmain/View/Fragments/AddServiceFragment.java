@@ -1,6 +1,7 @@
 package ir.arapp.arappmain.View.Fragments;
 
 import android.annotation.SuppressLint;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -117,7 +118,7 @@ public class AddServiceFragment extends Fragment
     @SuppressLint("SetTextI18n")
     private void timePicker()
     {
-        Typeface typeface = ResourcesCompat.getFont(requireContext(), R.font.dana);
+        Typeface typeface = ResourcesCompat.getFont(requireContext(), R.font.iransans_farsi_num);
         NumberFormat numberFormat = new DecimalFormat("00");
         timePickerBottomSheetFragment.set24Hour(true);
         timePickerBottomSheetFragment.setTextTypeFace(typeface);

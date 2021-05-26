@@ -5,7 +5,7 @@
     <string name="app_version">نسخه آلفا 0.6.0</string>
     <string name="update">تغییرات نسخه 0.6.0: \n1- طراحی و بازسازی صفحه اول برنامه \n2- طراحی و تکمیل صفحات احراز هویت \n3- طراحی منوی زیر برای صفحه اصلی</string>
     <string name="about">آراپ، انتخاب همه سلیقه ها</string>
-    <string name="privacy">کاربر گرامی لطفاً موارد زیر را جهت استفاده بهینه از خدمات و برنامه‌‏های کاربردی آراپ به دقت ملاحظه فرمایید. \nورود کاربران به وب‏‌سایت و برنامه آراپ هنگام استفاده از پروفایل شخصی، طرح‏‌های تشویقی، و سایر خدمات ارائه شده توسط آراپ به معنای آگاه بودن و پذیرفتن شرایط و قوانین و همچنین نحوه استفاده از سرویس‌‏ها و خدمات آراپ است. \nلازم به ذکر است شرایط و قوانین مندرج، جایگزین کلیه توافق‏‌های قبلی محسوب می‏‌شود.</string>
+    <string name="privacy_text">کاربر گرامی لطفاً موارد زیر را جهت استفاده بهینه از خدمات و برنامه‌‏های کاربردی آراپ به دقت ملاحظه فرمایید. \nورود کاربران به وب‏‌سایت و برنامه آراپ هنگام استفاده از پروفایل شخصی، طرح‏‌های تشویقی، و سایر خدمات ارائه شده توسط آراپ به معنای آگاه بودن و پذیرفتن شرایط و قوانین و همچنین نحوه استفاده از سرویس‌‏ها و خدمات آراپ است. \nلازم به ذکر است شرایط و قوانین مندرج، جایگزین کلیه توافق‏‌های قبلی محسوب می‏‌شود.</string>
 <!--     Splash Screen -->
     <string name="no_connection">عدم اتصال به اینترنت!</string>
     <string name="try_again">تلاش مجدد</string>
@@ -87,7 +87,7 @@
     <string name="text_service">توضیحات سرویس</string>
     <string name="address_service">نشانی</string>
     <string name="submit_location">ثبت موقعیت مکانی</string>
-    <string name="time_activity">زمان آغاز و پایان فعالیت(به صورت روزانه)</string>
+    <string name="time_activity">زمان آغاز و پایان فعالیت (به صورت روزانه)</string>
     <string name="opening_year">سال افتتاح سرویس</string>
     <string name="set_time">تنظیم زمان</string>
     <string name="edit_service">ویرایش سرویس</string>
@@ -100,6 +100,27 @@
     <string name="delete_service_notify">در صورت تایید، امکان بازیابی وجود ندارد</string>
     <string name="delete">حذف</string>
     <string name="cancel">انصراف</string>
+    <string name="setting">تنظیمات</string>
+    <string name="public_setting">عمومی</string>
+    <string name="language">زبان (Language)</string>
+    <string name="persian">فارسی</string>
+    <string name="english">انگلیسی</string>
+    <string name="night_mode">حالت تاریک</string>
+    <string name="clear_history">پاک کردن حافظه جستجو</string>
+    <string name="show_arapp_in_setting">مشاهده آراپ در تنظیمات سیستم</string>
+    <string name="security">امنیتی</string>
+    <string name="change_password">تغییر رمز عبور</string>
+    <string name="check_update">بررسی بروز بودن آراپ</string>
+    <string name="other">سایر</string>
+    <string name="application_law">شرایط استفاده از خدمات</string>
+    <string name="privacy">حریم خصوصی</string>
+    <string name="delete_account">حذف حساب کاربری</string>
+    <string name="delete_account_text">در صورت حذف، حساب کاربری شما قابل بازیابی نمی باشد</string>
+    <string name="support">پشتیبانی</string>
+    <string name="two_step_verification">احراز هویت دو مرحله ای</string>
+    <string name="fingerprint">ورود به برنامه با اثر انگشت</string>
+    <string name="active">فعال</string>
+    <string name="deactivate">غیرفعال</string>
     <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>

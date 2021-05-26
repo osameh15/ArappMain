@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-            android:theme="@style/Theme.MyFancyTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -68,6 +67,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="0dp"
                     app:cardElevation="4dp"
                     app:cardPreventCornerOverlap="false"
@@ -86,7 +86,8 @@
                             android:layout_marginBottom="10dp"
                             android:layoutDirection="rtl"
                             android:gravity="center_vertical|start"
-                            android:hint="@string/name_service">
+                            android:hint="@string/name_service"
+                            android:enabled="false">
                             <com.google.android.material.textfield.TextInputEditText
                                 style="@style/DisableEditTextStyle"
                                 android:layout_width="match_parent"
@@ -167,23 +168,35 @@
                                 android:text=""
                                 android:maxLength="401"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--                Save location-->
-                        <com.marozzi.roundbutton.RoundButton
-                            style="@style/ButtonLoadingPrimary"
+<!--                        Change location-->
+                        <RelativeLayout
+                            android:id="@+id/changeLocation"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginEnd="14sp"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="15dp"
-                            android:gravity="center"
-                            android:text="@string/change_location"/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/spinner_background">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:minLines="2"
+                                android:layout_centerInParent="true"
+                                android:text="@string/submit_location"
+                                android:textSize="14sp"
+                                android:textAlignment="center"
+                                android:fontFamily="@font/iransans_bold"
+                                android:textColor="@color/colorAccentDark"/>
+                        </RelativeLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 <!--                Category Spinner-->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
                     android:layout_marginTop="12dp"
                     app:cardCornerRadius="0dp"
                     app:cardElevation="4dp"
@@ -238,6 +251,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
                             android:orientation="horizontal">
                             <com.airbnb.lottie.LottieAnimationView
                                 android:layout_width="24dp"
@@ -275,7 +289,7 @@
                                 android:text="@string/set_birthday"
                                 android:textSize="14sp"
                                 android:textAlignment="center"
-                                android:fontFamily="@font/iransans_bold"
+                                android:fontFamily="@font/iransans_farsi_num_bold"
                                 android:textColor="@color/colorAccentDark"/>
                         </RelativeLayout>
 <!--                Opening year-->

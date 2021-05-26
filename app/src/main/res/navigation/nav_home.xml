@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_profileFragment_to_myServiceFragment"
             app:destination="@id/myServiceFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -103,4 +106,9 @@
             android:id="@+id/action_myServiceFragment_to_editServiceFragment"
             app:destination="@id/editServiceFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="ir.arapp.arappmain.View.Fragments.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

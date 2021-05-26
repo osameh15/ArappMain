@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-            android:theme="@style/Theme.MyFancyTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -33,7 +32,7 @@
                     android:textSize="18sp" />
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
-<!--        Notification Item list-->
+<!--        Service Item list-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myServiceRecyclerView"
             android:layout_width="match_parent"

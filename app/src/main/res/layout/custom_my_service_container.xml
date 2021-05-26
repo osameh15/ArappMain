@@ -58,7 +58,7 @@
                     android:textSize="14sp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:fontFamily="@font/dana"
+                    android:fontFamily="@font/iransans_farsi_num"
                     android:textColor="@color/white"/>
             </FrameLayout>
         </RelativeLayout>
@@ -70,8 +70,8 @@
             android:layoutDirection="rtl">
             <ImageView
                 android:id="@+id/time_service_image"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/ic_baseline_access_time_24"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
@@ -84,7 +84,7 @@
                 android:textSize="11sp"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="5dp"
-                android:fontFamily="@font/dana"
+                android:fontFamily="@font/iransans_farsi_num"
                 android:textColor="@android:color/darker_gray"
                 android:layout_toEndOf="@id/time_service_image"
                 android:layout_centerVertical="true"
@@ -96,7 +96,8 @@
             android:layout_height="wrap_content"
             android:text="@string/my_service"
             android:layoutDirection="rtl"
-            android:textSize="11sp"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/iransans"
             android:textColor="@color/colorAccentDark"
@@ -105,14 +106,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layoutDirection="rtl"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="4dp">
             <ImageView
                 android:id="@+id/comment_service_image"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/ic_outline_mode_comment_24"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
@@ -125,27 +126,27 @@
                 android:textSize="11sp"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="5dp"
-                android:fontFamily="@font/dana"
+                android:fontFamily="@font/iransans_farsi_num"
                 android:textColor="@android:color/darker_gray"
                 android:layout_toEndOf="@id/comment_service_image"
                 android:layout_centerVertical="true"
                 tools:ignore="RelativeOverlap,SmallSp" />
             <ImageView
                 android:id="@+id/editMyService"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_marginEnd="6dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="12dp"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/deleteMyService"
                 android:src="@drawable/ic_outline_edit_24"
                 android:contentDescription="@string/app_name" />
             <ImageView
                 android:id="@+id/deleteMyService"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="4dp"
                 android:src="@drawable/ic_baseline_delete_outline_24"
                 android:contentDescription="@string/app_name" />
         </RelativeLayout>

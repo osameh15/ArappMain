@@ -22,7 +22,6 @@
             android:id="@+id/forgetPassToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/Theme.MyFancyTheme"
             android:background="@color/colorPrimary">
             <LinearLayout
                 android:layout_width="match_parent"

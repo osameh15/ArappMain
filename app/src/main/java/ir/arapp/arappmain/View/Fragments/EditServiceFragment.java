@@ -92,7 +92,7 @@ public class EditServiceFragment extends Fragment
     @SuppressLint("SetTextI18n")
     private void timePicker()
     {
-        Typeface typeface = ResourcesCompat.getFont(requireContext(), R.font.dana);
+        Typeface typeface = ResourcesCompat.getFont(requireContext(), R.font.iransans_farsi_num);
         NumberFormat numberFormat = new DecimalFormat("00");
         timePickerBottomSheetFragment.set24Hour(true);
         timePickerBottomSheetFragment.setTextTypeFace(typeface);

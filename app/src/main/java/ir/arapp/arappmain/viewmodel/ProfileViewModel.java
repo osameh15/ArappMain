@@ -68,12 +68,12 @@ public class ProfileViewModel extends AndroidViewModel
 //    Change User profile avatar
     public void changePictureButton()
     {
-        snackBarMessage.onSuccess("تغییر پروفایل کاربری");
+        fragmentManager.setFunction("image");
     }
 //    App setting
     public void setting()
     {
-        snackBarMessage.onSuccess("تنظیمات");
+        fragmentManager.navigateToFragment("setting");
     }
 //    endregion
 }

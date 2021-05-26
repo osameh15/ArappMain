@@ -1,22 +1,274 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base Theme -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryNightMode</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkNightMode</item>
-        <item name="colorAccent">@color/colorAccentNightMode</item>
-        <item name="colorError">@color/notificationColorRed</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+<!--     Base Theme -->
+<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorSecondary">@color/SecondaryColorPrimary</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorError">@color/notificationColorRed</item>
+    <item name="colorControlNormal">@color/lightBack</item>
+    <item name="snackbarStyle">@style/MaterialSnackBarTheme</item>
+    <item name="snackbarButtonStyle">@style/MaterialSnackBarTextButtonTheme</item>
+    <item name="snackbarTextViewStyle">@style/MaterialSnackBarTextViewTheme</item>
+    <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+    <item name="numberPickerTheme">@style/customNumberPicker</item>
+    <!--        <item name="android:windowTranslucentStatus">true</item>-->
+    <!--        <item name="android:windowTranslucentNavigation">true</item>-->
+</style>
+<!--     Snack bar Style -->
+<style name="MaterialSnackBarTheme" parent="@style/Widget.MaterialComponents.Snackbar">
+    <item name="backgroundTint">@color/colorPrimary</item>
+    <item name="boxCornerRadiusTopStart">8dp</item>
+    <item name="boxCornerRadiusTopEnd">8dp</item>
+    <item name="boxCornerRadiusBottomStart">8dp</item>
+    <item name="boxCornerRadiusBottomEnd">8dp</item>
+    <item name="elevation">1dp</item>
+    <item name="android:layout_margin">8dp</item>
+    <item name="android:layoutDirection">rtl</item>
+    <item name="actionTextColorAlpha">1.0</item>
+</style>
+<style name="MaterialSnackBarTextButtonTheme" parent="@style/Widget.MaterialComponents.Button.TextButton.Snackbar">
+    <item name="backgroundTint">@android:color/transparent</item>
+    <item name="android:textColor">@color/SecondaryColorPrimary</item>
+    <item name="android:textSize">12sp</item>
+    <item name="fontFamily">@font/iransans_bold</item>
+</style>
+<style name="MaterialSnackBarTextViewTheme" parent="@style/Widget.MaterialComponents.Snackbar.TextView">
+    <item name="android:textColor">@color/lightBack</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:alpha">1.0</item>
+    <item name="fontFamily">@font/iransans</item>
+</style>
+<!--     Button loading theme -->
+<style name="ButtonLoadingTransparent">
+    <item name="android:textSize">14sp</item>
+    <item name="android:fontFamily">@font/iransans_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.02</item>
+    <item name="android:lineSpacingExtra">4sp</item>
+    <item name="android:gravity">center_horizontal</item>
+    <item name="rb_animation_alpha">true</item>
+    <item name="rb_animation_progress_color">@color/splashButtonBorder</item>
+    <item name="rb_animation_progress_padding">8dp</item>
+    <item name="rb_animation_progress_width">3dp</item>
+    <item name="rb_animation_progress_style">circle</item>
+    <item name="rb_animation_corner_radius">5dp</item>
+    <item name="rb_animation_duration">500</item>
+    <item name="rb_background_color">@android:color/transparent</item>
+    <item name="rb_background_color_pressed">@color/splashButtonBorder</item>
+    <item name="rb_corner_color">@color/splashButtonBorder</item>
+    <item name="rb_corner_color_pressed">@color/splashButtonBorder</item>
+    <item name="rb_corner_radius">5dp</item>
+    <item name="rb_corner_width">2dp</item>
+    <item name="rb_text_color">@color/colorAccentDark</item>
+    <item name="rb_text_color_pressed">@color/splashButtonTextColor</item>
+</style>
+<style name="ButtonLoading">
+    <item name="android:textSize">15sp</item>
+    <item name="android:fontFamily">@font/iransans_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.02</item>
+    <item name="android:lineSpacingExtra">4sp</item>
+    <item name="android:gravity">center_horizontal</item>
+    <item name="rb_animation_alpha">true</item>
+    <item name="rb_animation_progress_color">@color/colorAccentDark</item>
+    <item name="rb_animation_progress_padding">8dp</item>
+    <item name="rb_animation_progress_width">3dp</item>
+    <item name="rb_animation_progress_style">circle</item>
+    <item name="rb_animation_corner_radius">8dp</item>
+    <item name="rb_animation_duration">500</item>
+    <item name="rb_background_color">@color/colorAccent</item>
+    <item name="rb_background_color_pressed">@color/colorAccentDark</item>
+    <item name="rb_corner_color">@color/colorAccentDark</item>
+    <item name="rb_corner_color_pressed">@color/colorAccent</item>
+    <item name="rb_corner_radius">8dp</item>
+    <item name="rb_corner_width">0dp</item>
+    <item name="rb_text_color">@color/lightBack</item>
+    <item name="rb_text_color_pressed">@color/disable</item>
+</style>
+<style name="ButtonLoadingPrimary">
+    <item name="android:textSize">15sp</item>
+    <item name="android:fontFamily">@font/iransans_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.02</item>
+    <item name="android:lineSpacingExtra">4sp</item>
+    <item name="android:gravity">center_horizontal</item>
+    <item name="rb_animation_alpha">true</item>
+    <item name="rb_animation_progress_color">@color/colorPrimaryDark</item>
+    <item name="rb_animation_progress_padding">8dp</item>
+    <item name="rb_animation_progress_width">3dp</item>
+    <item name="rb_animation_progress_style">circle</item>
+    <item name="rb_animation_corner_radius">8dp</item>
+    <item name="rb_animation_duration">500</item>
+    <item name="rb_background_color">@color/colorPrimary</item>
+    <item name="rb_background_color_pressed">@color/colorPrimaryDark</item>
+    <item name="rb_corner_color">@color/colorPrimaryDark</item>
+    <item name="rb_corner_color_pressed">@color/colorPrimary</item>
+    <item name="rb_corner_radius">8dp</item>
+    <item name="rb_corner_width">0dp</item>
+    <item name="rb_text_color">@color/lightBack</item>
+    <item name="rb_text_color_pressed">@color/disable</item>
+</style>
+<style name="ButtonDisableLoading">
+    <item name="android:textSize">15sp</item>
+    <item name="android:fontFamily">@font/iransans_bold</item>
+    <item name="android:textStyle">normal</item>
+    <item name="android:letterSpacing" tools:targetApi="lollipop">0.02</item>
+    <item name="android:lineSpacingExtra">4sp</item>
+    <item name="android:gravity">center_horizontal</item>
+    <item name="rb_background_color">@color/disable</item>
+    <item name="rb_corner_color">@color/colorAccentDark</item>
+    <item name="rb_corner_radius">8dp</item>
+    <item name="rb_corner_width">0dp</item>
+    <item name="rb_text_color">@color/lightBack</item>
+</style>
+<!--     Text Input Style -->
+<style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <item name="hintTextColor">@color/colorAccentDark</item>
+    <item name="android:textColorHint">@color/colorAccent</item>
+    <item name="android:elevation" tools:targetApi="lollipop">2dp</item>
+    <item name="placeholderTextColor">@color/colorPrimaryDark</item>
+    <item name="boxStrokeColor">@color/colorAccent</item>
+    <item name="boxStrokeErrorColor">@color/notificationColorRed</item>
+    <item name="errorTextAppearance">@style/ErrorTextStyle</item>
+    <item name="counterTextAppearance">@style/counterAppearance</item>
+    <item name="counterTextColor">@color/colorPrimaryDark</item>
+    <item name="counterOverflowTextAppearance">@style/ErrorTextStyle</item>
+    <item name="helperTextTextAppearance">@style/helperTextStyle</item>
+    <item name="helperTextTextColor">@color/notificationColorRed</item>
+    <item name="boxStrokeWidth">2dp</item>
+    <item name="boxCornerRadiusBottomEnd">8dp</item>
+    <item name="boxCornerRadiusTopEnd">8dp</item>
+    <item name="boxCornerRadiusBottomStart">8dp</item>
+    <item name="boxCornerRadiusTopStart">8dp</item>
+</style>
+<!--     Edit Text Style -->
+<style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+    <item name="android:textColor">@color/colorAccentDark</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:fontFamily">@font/iransans</item>
+</style>
+<!--     Disable Edit Text Style -->
+<style name="DisableEditTextStyle" parent="Widget.AppCompat.EditText">
+    <item name="android:textColor">@color/disable</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:fontFamily">@font/iransans</item>
+    <item name="android:enabled">false</item>
+</style>
+<!--     Edit Text Error Theme -->
+<style name="ErrorTextStyle" parent="@android:style/TextAppearance">
+    <item name="android:textColor">@color/notificationColorRed</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:fontFamily">@font/iransans</item>
+</style>
+<!--    Helper Text Style-->
+<style name="helperTextStyle" parent="@android:style/TextAppearance">
+    <item name="android:textSize">11sp</item>
+    <item name="android:fontFamily">@font/iransans</item>
+</style>
+<!-- Counter Theme -->
+<style name="counterAppearance" parent="@android:style/TextAppearance">
+    <item name="android:textColor">@color/lightBack</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:fontFamily">@font/iransans</item>
+</style>
+<!--     Validation Code Theme -->
+<style name="ValidationCode" parent="PinWidget.PinView">
+    <item name="android:background">@android:color/transparent</item>
+    <item name="fontFamily">@font/iransans_bold</item>
+    <item name="itemSpacing">8dp</item>
+    <item name="itemCount">6</item>
+    <item name="itemRadius">6dp</item>
+    <item name="viewType">rectangle</item>
+    <item name="android:inputType">number</item>
+    <item name="android:textSize">14sp</item>
+    <item name="lineColor">@color/colorPrimaryDark</item>
+    <item name="hideLineWhenFilled">false</item>
+    <item name="lineWidth">2dp</item>
+    <item name="android:cursorVisible">false</item>
+    <item name="android:minHeight">0dp</item>
+    <item name="android:maxLines">1</item>
+</style>
+<!--    Bottom Navigation View Text Appearance-->
+<style name="textAppearanceBottomNavigation">
+    <item name="android:fontFamily">@font/iransans_bold</item>
+    <item name="android:textSize">12sp</item>
+</style>
+<!--     Navigation drawer Theme -->
+<style name="NavigationView">
+    <item name="fontFamily">@font/iransans_medium</item>
+    <item name="colorPrimary">@color/colorAccentDark</item>
+    <item name="colorControlHighlight">@color/colorAccent</item>
+</style>
+<style name="NavigationView.TextAppearance">
+    <item name="fontFamily">@font/iransans_medium</item>
+    <item name="android:textSize">13sp</item>
+</style>
+<style name="NavigationView.ShapeAppearanceOverlay">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSize">8dp</item>
+</style>
+<!--     Bottom sheet theme -->
+<style name="bottomSheetDialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">
+    <item name="bottomSheetStyle">@style/bottomSheetStyle</item>
+</style>
+<style name="bottomSheetStyle" parent="Theme.Design.BottomSheetDialog">
+    <item name="background">@android:color/transparent</item>
+    <item name="elevation">2dp</item>
+</style>
+<!--    Search View theme-->
+<style name="SearchViewMaterial" parent="MaterialSearchBarLight">
+    <item name="mt_searchBarColor">@color/searchBarPrimaryColor</item>
+    <item name="fontFamily">@font/iransans</item>
+    <item name="mt_dividerColor">@color/colorPrimaryDark</item>
+    <item name="mt_navIconEnabled">true</item>
+    <item name="mt_backIconDrawable">@drawable/ic_arrow_forward_black_48dp</item>
+    <item name="mt_navIconTint">@color/colorAccentDark</item>
+    <item name="mt_searchIconTint">@color/colorAccentDark</item>
+    <item name="mt_clearIconTint">@color/colorAccentDark</item>
+    <item name="mt_menuIconTint">@color/colorAccentDark</item>
+    <item name="mt_backIconTint">@color/colorAccentDark</item>
+    <item name="mt_textCursorTint">@color/colorAccent</item>
+    <item name="mt_textColor">@color/colorAccentDark</item>
+    <item name="mt_hintColor">@color/searchBarHintColor</item>
+    <item name="mt_placeholderColor">@color/searchBarPlaceholderColor</item>
+    <item name="mt_highlightedTextColor">@color/colorAccent</item>
+    <item name="mt_maxSuggestionsCount">6</item>
+    <item name="android:textSize">14sp</item>
+</style>
+<!--     Spinner Theme-->
+<style name="SpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+    <item name="android:textSize">14sp</item>
+    <item name="android:fontFamily">@font/iransans_bold</item>
+</style>
+<style name="BannerView">
+    <item name="bvp_auto_play">true</item>
+    <item name="bvp_can_loop">true</item>
+    <item name="bvp_indicator_normal_color">@color/lightBack</item>
+    <item name="bvp_indicator_checked_color">@color/colorAccentDark</item>
+    <item name="bvp_page_style">multi_page</item>
+    <item name="bvp_reveal_width">2dp</item>
+    <item name="bvp_round_corner">10dp</item>
+    <item name="bvp_indicator_style">circle</item>
+    <item name="bvp_indicator_slide_mode">worm</item>
+    <item name="bvp_indicator_gravity">center</item>
+    <item name="bvp_indicator_radius">8dp</item>
+    <item name="bvp_indicator_visibility">visible</item>
+    <item name="bvp_page_margin">16dp</item>
+    <item name="bvp_interval">5000</item>
+    <item name="bvp_scroll_duration">600</item>
+</style>
+<!-- Custom date picker theme -->
+<style name="customNumberPicker">
+    <!--        text color -->
+    <item name="android:textColorPrimary">@color/colorAccentDark</item>
+    <!--        divider color -->
+    <item name="colorControlNormal">@color/colorPrimaryDark</item>
+</style>
 
-        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
-    </style>
-
-    <!-- Toolbar Theme -->
-    <style name="Theme.MyFancyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorControlNormal">@color/colorAccent</item>
-    </style>
 </resources>
+
 
     <!-- Base application theme. -->
 <!--    <style name="Theme.ArappMain" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->

@@ -7,6 +7,7 @@
         <item name="colorSecondary">@color/SecondaryColorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorError">@color/notificationColorRed</item>
+        <item name="colorControlNormal">@color/lightBack</item>
         <item name="snackbarStyle">@style/MaterialSnackBarTheme</item>
         <item name="snackbarButtonStyle">@style/MaterialSnackBarTextButtonTheme</item>
         <item name="snackbarTextViewStyle">@style/MaterialSnackBarTextViewTheme</item>
@@ -14,11 +15,6 @@
         <item name="numberPickerTheme">@style/customNumberPicker</item>
 <!--        <item name="android:windowTranslucentStatus">true</item>-->
 <!--        <item name="android:windowTranslucentNavigation">true</item>-->
-    </style>
-
-<!--     Toolbar Theme -->
-    <style name="Theme.MyFancyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorControlNormal">@color/lightBack</item>
     </style>
 <!--     Snack bar Style -->
     <style name="MaterialSnackBarTheme" parent="@style/Widget.MaterialComponents.Snackbar">
