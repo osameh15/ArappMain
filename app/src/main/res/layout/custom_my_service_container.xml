@@ -1,154 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/serviceCardView"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="6dp"
-    app:cardElevation="4dp"
-    android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/white">
-<!--    Profile Cards-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layoutDirection="locale">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/serviceCardView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="3:3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--    Profile Cards-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="locale">
+
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/serviceImageContainer"
-                android:layout_width="200dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                app:riv_corner_radius="6dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hotels"
+                app:layout_constraintHeight_percent="0.55"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:riv_border_width="0dp"
+                app:riv_corner_radius="6dp"
                 app:riv_mutate_background="false"
-                app:riv_tile_mode="clamp"
                 app:riv_oval="false"
-                android:src="@drawable/hotels"/>
+                app:riv_tile_mode="clamp" />
+
+            <ImageView
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_percent="0.14"
+                android:id="@+id/time_service_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_baseline_access_time_24"
+                app:layout_constraintBottom_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:tint="@color/white" />
+
+            <TextView
+                app:layout_constraintTop_toTopOf="@id/time_service_image"
+                app:layout_constraintWidth_percent="0.5"
+                android:id="@+id/timeService"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/iransans_farsi_num"
+                android:gravity="center_vertical"
+                android:text="@string/set_time"
+                android:textColor="@color/white"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toStartOf="@id/time_service_image"
+                app:layout_constraintStart_toEndOf="@id/rateServiceFrameLayout"
+                app:layout_constraintBottom_toBottomOf="@id/time_service_image"
+
+                tools:ignore="SmallSp" />
+
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/loading"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintDimensionRatio="100:80"
+                app:layout_constraintEnd_toEndOf="@id/serviceImageContainer"
+                app:layout_constraintStart_toStartOf="@id/serviceImageContainer"
+                app:layout_constraintTop_toTopOf="@id/serviceImageContainer"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="loading.json"
                 app:lottie_loop="true"
                 app:lottie_speed="1.5" />
+
             <FrameLayout
                 android:id="@+id/rateServiceFrameLayout"
-                android:layout_width="40dp"
-                android:layout_height="25dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_below="@id/serviceImageContainer"
                 android:background="@drawable/rate_zero_shape"
-                android:layout_marginTop="-18dp"
-                android:layout_marginStart="10dp">
+                app:layout_constraintBottom_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintDimensionRatio="40:25"
+                app:layout_constraintEnd_toEndOf="@id/serviceImageContainer"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@id/serviceImageContainer"
+                app:layout_constraintTop_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintWidth_percent="0.2">
+
                 <TextView
                     android:id="@+id/rateService"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rate_count"
-                    android:textSize="14sp"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/iransans_farsi_num"
-                    android:textColor="@color/white"/>
+                    android:gravity="center"
+                    android:text="@string/rate_count"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:autoSizeTextType="uniform" />
             </FrameLayout>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:layoutDirection="rtl">
-            <ImageView
-                android:id="@+id/time_service_image"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_baseline_access_time_24"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/app_name" />
-            <TextView
-                android:id="@+id/timeService"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/set_time"
-                android:textSize="11sp"
-                android:layoutDirection="rtl"
-                android:layout_marginStart="5dp"
-                android:fontFamily="@font/iransans_farsi_num"
-                android:textColor="@android:color/darker_gray"
-                android:layout_toEndOf="@id/time_service_image"
-                android:layout_centerVertical="true"
-                tools:ignore="SmallSp" />
-        </RelativeLayout>
-        <TextView
-            android:id="@+id/titleService"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/my_service"
-            android:layoutDirection="rtl"
-            android:textSize="12sp"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/iransans"
-            android:textColor="@color/colorAccentDark"
-            tools:ignore="SmallSp" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="4dp">
-            <ImageView
-                android:id="@+id/comment_service_image"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_outline_mode_comment_24"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/app_name" />
-            <TextView
-                android:id="@+id/commentService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/arapp_coin_count"
-                android:textSize="11sp"
-                android:layoutDirection="rtl"
-                android:layout_marginStart="5dp"
-                android:fontFamily="@font/iransans_farsi_num"
-                android:textColor="@android:color/darker_gray"
-                android:layout_toEndOf="@id/comment_service_image"
-                android:layout_centerVertical="true"
-                tools:ignore="RelativeOverlap,SmallSp" />
-            <ImageView
-                android:id="@+id/editMyService"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="12dp"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/deleteMyService"
-                android:src="@drawable/ic_outline_edit_24"
-                android:contentDescription="@string/app_name" />
-            <ImageView
-                android:id="@+id/deleteMyService"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="4dp"
-                android:src="@drawable/ic_baseline_delete_outline_24"
-                android:contentDescription="@string/app_name" />
-        </RelativeLayout>
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/serviceImageContainer">
+
+
+                <TextView
+                    android:id="@+id/titleService"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/iransans"
+                    android:gravity="center_vertical"
+                    android:text="@string/my_service"
+                    android:textColor="@color/colorAccentDark"
+                    app:autoSizeMaxTextSize="25sp"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@id/middle_service_guide_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/start_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/top_service_guide_line"
+                    tools:ignore="SmallSp" />
+
+                <ImageView
+                    android:id="@+id/comment_service_image"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_outline_mode_comment_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/end_guide_line"
+                    app:layout_constraintTop_toTopOf="@+id/bottom_service_guide_line" />
+
+                <TextView
+                    android:id="@+id/commentService"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/comment_service_image"
+                    android:fontFamily="@font/iransans_farsi_num"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/arapp_coin_count"
+                    android:textColor="@android:color/darker_gray"
+                    app:autoSizeMinTextSize="1sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/end_guide_line"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    app:layout_constraintStart_toStartOf="@+id/middle_vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/bottom_service_guide_line"
+                    app:layout_constraintWidth_percent="0.1"
+                    tools:ignore="RelativeOverlap,SmallSp" />
+
+                <ImageView
+                    android:id="@+id/editMyService"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/deleteMyService"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_outline_edit_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@+id/middle_vertical_guide_line"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@id/start_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/bottom_service_guide_line" />
+
+                <ImageView
+                    android:id="@+id/deleteMyService"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_baseline_delete_outline_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/start_guide_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bottom_service_guide_line" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/middle_vertical_guide_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.26" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/start_guide_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.13" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/middle_service_guide_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/bottom_service_guide_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.6" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/end_guide_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.84" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/top_service_guide_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
