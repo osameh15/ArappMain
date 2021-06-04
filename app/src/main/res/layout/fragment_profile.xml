@@ -161,6 +161,7 @@
             </RelativeLayout>
 <!--            Profile Item list-->
             <androidx.recyclerview.widget.RecyclerView
+                android:overScrollMode="never"
                 android:id="@+id/profileRecyclerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

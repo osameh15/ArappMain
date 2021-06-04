@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/serviceCardView"
+        android:id="@+id/high_order_services_serviceCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
@@ -25,7 +25,7 @@
             android:layoutDirection="locale">
 
             <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/serviceImageContainer"
+                android:id="@+id/high_order_services_serviceImageContainer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
@@ -45,22 +45,22 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintHeight_percent="0.14"
-                android:id="@+id/time_service_image"
+                android:id="@+id/high_order_services_time_service_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
 
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_baseline_access_time_24"
-                app:layout_constraintBottom_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 app:tint="@color/white" />
 
             <TextView
-                app:layout_constraintTop_toTopOf="@id/time_service_image"
+                app:layout_constraintTop_toTopOf="@id/high_order_services_time_service_image"
                 app:layout_constraintWidth_percent="0.5"
-                android:id="@+id/timeService"
+                android:id="@+id/high_order_services_timeService"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
@@ -70,45 +70,45 @@
                 android:textColor="@color/white"
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
-                app:layout_constraintEnd_toStartOf="@id/time_service_image"
-                app:layout_constraintStart_toEndOf="@id/rateServiceFrameLayout"
-                app:layout_constraintBottom_toBottomOf="@id/time_service_image"
+                app:layout_constraintEnd_toStartOf="@id/high_order_services_time_service_image"
+                app:layout_constraintStart_toEndOf="@id/high_order_services_rateServiceFrameLayout"
+                app:layout_constraintBottom_toBottomOf="@id/high_order_services_time_service_image"
 
                 tools:ignore="SmallSp" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/loading"
+                android:id="@+id/high_order_services_loading"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintDimensionRatio="100:80"
-                app:layout_constraintEnd_toEndOf="@id/serviceImageContainer"
-                app:layout_constraintStart_toStartOf="@id/serviceImageContainer"
-                app:layout_constraintTop_toTopOf="@id/serviceImageContainer"
+                app:layout_constraintEnd_toEndOf="@id/high_order_services_serviceImageContainer"
+                app:layout_constraintStart_toStartOf="@id/high_order_services_serviceImageContainer"
+                app:layout_constraintTop_toTopOf="@id/high_order_services_serviceImageContainer"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="loading.json"
                 app:lottie_loop="true"
                 app:lottie_speed="1.5" />
 
             <FrameLayout
-                android:id="@+id/rateServiceFrameLayout"
+                android:id="@+id/high_order_services_rateServiceFrameLayout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_below="@id/serviceImageContainer"
+                android:layout_below="@id/high_order_services_serviceImageContainer"
                 android:background="@drawable/rate_zero_shape"
-                app:layout_constraintBottom_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintDimensionRatio="40:25"
-                app:layout_constraintEnd_toEndOf="@id/serviceImageContainer"
+                app:layout_constraintEnd_toEndOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toStartOf="@id/serviceImageContainer"
-                app:layout_constraintTop_toBottomOf="@id/serviceImageContainer"
+                app:layout_constraintStart_toStartOf="@id/high_order_services_serviceImageContainer"
+                app:layout_constraintTop_toBottomOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintWidth_percent="0.2">
 
                 <TextView
-                    android:id="@+id/rateService"
+                    android:id="@+id/high_order_services_rateService"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -127,12 +127,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/serviceImageContainer">
+                app:layout_constraintTop_toBottomOf="@id/high_order_services_serviceImageContainer">
 
 
                 <TextView
                     android:layout_marginEnd="8dp"
-                    android:id="@+id/titleService"
+                    android:id="@+id/high_order_services_titleService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="4dp"
@@ -143,14 +143,14 @@
                     app:autoSizeMaxTextSize="25sp"
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toTopOf="@id/middle_service_guide_line"
+                    app:layout_constraintBottom_toTopOf="@id/high_order_services_middle_service_guide_line"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/start_guide_line"
-                    app:layout_constraintTop_toBottomOf="@id/top_service_guide_line"
+                    app:layout_constraintStart_toStartOf="@+id/high_order_services_start_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/high_order_services_top_service_guide_line"
                     tools:ignore="SmallSp" />
 
                 <ImageView
-                    android:id="@+id/comment_service_image"
+                    android:id="@+id/high_order_services_comment_service_image"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_alignParentStart="true"
@@ -159,15 +159,15 @@
                     android:src="@drawable/ic_outline_mode_comment_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/end_guide_line"
-                    app:layout_constraintTop_toTopOf="@+id/bottom_service_guide_line" />
+                    app:layout_constraintStart_toStartOf="@+id/high_order_services_end_guide_line"
+                    app:layout_constraintTop_toTopOf="@+id/high_order_services_bottom_service_guide_line" />
 
                 <TextView
-                    android:id="@+id/commentService"
+                    android:id="@+id/high_order_services_commentService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/comment_service_image"
+                    android:layout_toEndOf="@id/high_order_services_comment_service_image"
                     android:fontFamily="@font/iransans_farsi_num"
                     android:gravity="center_vertical|end"
                     android:text="@string/arapp_coin_count"
@@ -175,79 +175,79 @@
                     app:autoSizeMinTextSize="1sp"
                     app:autoSizeTextType="uniform"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/end_guide_line"
+                    app:layout_constraintEnd_toStartOf="@id/high_order_services_end_guide_line"
                     app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toStartOf="@+id/middle_vertical_guide_line"
-                    app:layout_constraintTop_toTopOf="@id/bottom_service_guide_line"
+                    app:layout_constraintStart_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/high_order_services_bottom_service_guide_line"
                     app:layout_constraintWidth_percent="0.1"
                     tools:ignore="RelativeOverlap,SmallSp" />
 
                 <ImageView
                     android:visibility="gone"
-                    android:id="@+id/editMyService"
+                    android:id="@+id/high_order_services_editMyService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_centerVertical="true"
-                    android:layout_toStartOf="@id/deleteMyService"
+                    android:layout_toStartOf="@id/high_order_services_deleteMyService"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_outline_edit_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/middle_vertical_guide_line"
+                    app:layout_constraintEnd_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
                     app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toEndOf="@id/start_guide_line"
-                    app:layout_constraintTop_toBottomOf="@id/bottom_service_guide_line" />
+                    app:layout_constraintStart_toEndOf="@id/high_order_services_start_guide_line"
+                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
 
                 <ImageView
                     android:visibility="gone"
-                    android:id="@+id/deleteMyService"
+                    android:id="@+id/high_order_services_deleteMyService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_baseline_delete_outline_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@id/start_guide_line"
+                    app:layout_constraintEnd_toStartOf="@id/high_order_services_start_guide_line"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/bottom_service_guide_line" />
+                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/middle_vertical_guide_line"
+                    android:id="@+id/high_order_services_middle_vertical_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.26" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/start_guide_line"
+                    android:id="@+id/high_order_services_start_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.13" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/middle_service_guide_line"
+                    android:id="@+id/high_order_services_middle_service_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.61" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/bottom_service_guide_line"
+                    android:id="@+id/high_order_services_bottom_service_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.68" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/end_guide_line"
+                    android:id="@+id/high_order_services_end_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.84" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/top_service_guide_line"
+                    android:id="@+id/high_order_services_top_service_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"

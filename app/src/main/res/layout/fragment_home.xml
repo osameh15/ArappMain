@@ -28,7 +28,7 @@
             android:fillViewport="true">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/lightBack">
 <!--        Search Toolbar panel-->
                 <LinearLayout
@@ -63,6 +63,54 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout"
                     style="@style/BannerView"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/high_order_container"
+                    app:layout_constraintTop_toBottomOf="@id/bannerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/teal_200"
+                        android:id="@+id/high_order_title"
+                        android:gravity="center"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="سرویس های مرتبه بالا"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        app:layout_constraintTop_toBottomOf="@id/high_order_title"
+                        android:paddingTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        tools:itemCount="12"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/home_high_order_services_item"
+                        android:id="@+id/recycler_view_high_order_services"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="30:20"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <FrameLayout
+                    android:id="@+id/home_fragment_middle_banner"
+                    app:layout_constraintTop_toBottomOf="@id/high_order_container"
+                    app:layout_constraintDimensionRatio="20:10"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_fragment_services_by_category"
+                    app:layout_constraintTop_toBottomOf="@id/home_fragment_middle_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="3:2"/>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </com.madapps.liquid.LiquidRefreshLayout>

@@ -7,12 +7,14 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import ir.arapp.arappmain.Model.Banner;
 import ir.arapp.arappmain.R;
+import ir.arapp.arappmain.Util.Adapters.HighOrderServicesAdapter;
 
 public class HomeViewModel extends AndroidViewModel
 {
 //    region Variables
     ArrayList<Banner> banners;
     MutableLiveData<ArrayList<Banner>> allBannerItems;
+    MutableLiveData<HighOrderServicesAdapter> highOrderServicesAdapterMutableLiveData = new MutableLiveData<>();
 //    endregion
 //    Constructor
     public HomeViewModel(@NonNull Application application)
@@ -28,6 +30,7 @@ public class HomeViewModel extends AndroidViewModel
 //    Initialize function and variables
     private void init()
     {
+        highOrderServicesAdapterMutableLiveData.postValue(new HighOrderServicesAdapter());
         populateList();
         allBannerItems.setValue(banners);
     }
@@ -45,5 +48,10 @@ public class HomeViewModel extends AndroidViewModel
     {
         return allBannerItems;
     }
+
 //    endregion
+
+    public MutableLiveData<HighOrderServicesAdapter> getHighOrderServicesAdapter(){
+        return highOrderServicesAdapterMutableLiveData;
+    }
 }
