@@ -12,15 +12,13 @@
         app:layout_constraintGuide_percent="0.2"
         android:orientation="horizontal"
         android:layout_height="wrap_content"/>
-    <TextView
+    <ir.arapp.arappmain.View.utils.AutoSizeTextView
         android:id="@+id/category_name"
-        app:autoSizeMinTextSize="1sp"
-        app:autoSizeMaxTextSize="36sp"
-        app:autoSizeTextType="uniform"
         android:gravity="center"
         android:text="دسته بندی سرویس"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintWidth_percent="0.4"
+        app:textSizeByPercent="1.5"
         app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +33,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="3:1"
         android:orientation="horizontal"
         tools:listitem="@layout/services_item_layout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="200dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

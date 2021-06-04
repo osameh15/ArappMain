@@ -5,4 +5,8 @@
 <!--        <attr name="cardCornerRadiusBySize" format="dimension"/>-->
     </declare-styleable>
 
+    <declare-styleable name="AutoSizeTextView">
+        <attr name="textSizeByPercent" format="float"/>
+    </declare-styleable>
+
 </resources>

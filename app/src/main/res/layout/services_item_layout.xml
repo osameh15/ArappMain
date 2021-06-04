@@ -3,18 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
+    android:layoutDirection="ltr"
     android:layout_height="match_parent">
 
     <ir.arapp.arappmain.View.utils.CustomCardView
-        android:id="@+id/high_order_services_serviceCardView"
+        android:layout_margin="8dp"
+        app:layout_constraintVertical_bias="1"
+        android:id="@+id/service_image_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
         app:cardBackgroundColor="@color/white"
+        app:cardCornerRadiusByPercent="0.07"
         app:cardElevation="4dp"
-        app:cardCornerRadiusByPercent="0.05"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="3:3"
+        app:layout_constraintBottom_toTopOf="@id/between_guide_line"
+        app:layout_constraintDimensionRatio="40:30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,7 +32,7 @@
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/hotels"
-                app:layout_constraintHeight_percent="0.7"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -40,43 +42,43 @@
                 app:riv_oval="false"
                 app:riv_tile_mode="clamp" />
 
-            <ImageView
-                android:visibility="gone"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintHeight_percent="0.14"
-                android:id="@+id/high_order_services_time_service_image"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_centerVertical="true"
+            <!--            <ImageView-->
+            <!--                android:visibility="gone"-->
+            <!--                android:layout_marginBottom="8dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                app:layout_constraintDimensionRatio="1:1"-->
+            <!--                app:layout_constraintHeight_percent="0.14"-->
+            <!--                android:id="@+id/high_order_services_time_service_image"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                android:layout_centerVertical="true"-->
 
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_access_time_24"
-                app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintEnd_toEndOf="parent"
+            <!--                android:contentDescription="@string/app_name"-->
+            <!--                android:src="@drawable/ic_baseline_access_time_24"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
 
-                app:tint="@color/white" />
+            <!--                app:tint="@color/white" />-->
 
-            <TextView
-                android:visibility="gone"
-                app:layout_constraintTop_toTopOf="@id/high_order_services_time_service_image"
-                app:layout_constraintWidth_percent="0.5"
-                android:id="@+id/high_order_services_timeService"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/iransans_farsi_num"
-                android:gravity="center_vertical"
-                android:text="@string/set_time"
-                android:textColor="@color/white"
-                app:autoSizeMinTextSize="1sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintEnd_toStartOf="@id/high_order_services_time_service_image"
-                app:layout_constraintStart_toEndOf="@id/high_order_services_rateServiceFrameLayout"
-                app:layout_constraintBottom_toBottomOf="@id/high_order_services_time_service_image"
+            <!--            <TextView-->
+            <!--                android:visibility="gone"-->
+            <!--                app:layout_constraintTop_toTopOf="@id/high_order_services_time_service_image"-->
+            <!--                app:layout_constraintWidth_percent="0.5"-->
+            <!--                android:id="@+id/high_order_services_timeService"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                android:layout_centerVertical="true"-->
+            <!--                android:fontFamily="@font/iransans_farsi_num"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:text="@string/set_time"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                app:autoSizeMinTextSize="1sp"-->
+            <!--                app:autoSizeTextType="uniform"-->
+            <!--                app:layout_constraintEnd_toStartOf="@id/high_order_services_time_service_image"-->
+            <!--                app:layout_constraintStart_toEndOf="@id/high_order_services_rateServiceFrameLayout"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@id/high_order_services_time_service_image"-->
 
-                tools:ignore="SmallSp" />
+            <!--                tools:ignore="SmallSp" />-->
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/high_order_services_loading"
@@ -86,7 +88,6 @@
                 android:layout_centerVertical="true"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintDimensionRatio="100:80"
                 app:layout_constraintEnd_toEndOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintStart_toStartOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintTop_toTopOf="@id/high_order_services_serviceImageContainer"
@@ -95,180 +96,214 @@
                 app:lottie_loop="true"
                 app:lottie_speed="1.5" />
 
-            <FrameLayout
-                android:visibility="gone"
-                android:id="@+id/high_order_services_rateServiceFrameLayout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_below="@id/high_order_services_serviceImageContainer"
-                android:background="@drawable/rate_zero_shape"
-                app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintDimensionRatio="40:25"
-                app:layout_constraintEnd_toEndOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toStartOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintTop_toBottomOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintWidth_percent="0.2">
-
-                <TextView
-                    android:id="@+id/high_order_services_rateService"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/iransans_farsi_num"
-                    android:gravity="center"
-                    android:text="@string/rate_count"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:autoSizeTextType="uniform" />
-            </FrameLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/high_order_services_serviceImageContainer">
-
-
-                <TextView
-                    android:layout_marginEnd="8dp"
-                    android:id="@+id/high_order_services_titleService"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/iransans"
-                    android:gravity="center_vertical"
-                    android:text="@string/my_service"
-                    android:textColor="@color/colorAccentDark"
-                    app:autoSizeMaxTextSize="25sp"
-                    app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toTopOf="@id/high_order_services_middle_service_guide_line"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/high_order_services_start_guide_line"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_top_service_guide_line"
-                    tools:ignore="SmallSp" />
-
-                <ImageView
-                    android:id="@+id/high_order_services_comment_service_image"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_outline_mode_comment_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/high_order_services_end_guide_line"
-                    app:layout_constraintTop_toTopOf="@+id/high_order_services_bottom_service_guide_line" />
-
-                <TextView
-                    android:id="@+id/high_order_services_commentService"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/high_order_services_comment_service_image"
-                    android:fontFamily="@font/iransans_farsi_num"
-                    android:gravity="center_vertical|end"
-                    android:text="@string/arapp_coin_count"
-                    android:textColor="@android:color/darker_gray"
-                    app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/high_order_services_end_guide_line"
-                    app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
-                    app:layout_constraintTop_toTopOf="@id/high_order_services_bottom_service_guide_line"
-                    app:layout_constraintWidth_percent="0.1"
-                    tools:ignore="RelativeOverlap,SmallSp" />
-
-                <ImageView
-                    android:visibility="gone"
-                    android:id="@+id/high_order_services_editMyService"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@id/high_order_services_deleteMyService"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_outline_edit_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
-                    app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toEndOf="@id/high_order_services_start_guide_line"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
-
-                <ImageView
-                    android:visibility="gone"
-                    android:id="@+id/high_order_services_deleteMyService"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_baseline_delete_outline_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@id/high_order_services_start_guide_line"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
-                <TextView
-                    app:autoSizeTextType="uniform"
-                    app:autoSizeMinTextSize="1sp"
-                    android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/high_order_services_middle_vertical_guide_line"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:text="place"
-                    android:id="@+id/high_order_services_place_textview"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"/>
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_middle_vertical_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.26" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_start_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.13" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_middle_service_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.61" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_bottom_service_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.68" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_end_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.84" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_top_service_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.0" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ir.arapp.arappmain.View.utils.CustomCardView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/between_guide_line"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.68" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guide_line"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="1" />
+    <ir.arapp.arappmain.View.utils.CustomCardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadiusByPercent="0.15"
+        app:cardElevation="4dp"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="3:1"
+        app:layout_constraintEnd_toEndOf="@id/service_image_card_view"
+        app:layout_constraintStart_toStartOf="@id/service_image_card_view"
+        app:layout_constraintTop_toBottomOf="@id/between_guide_line">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/high_order_services_serviceImageContainer">
+
+
+            <ir.arapp.arappmain.View.utils.AutoSizeTextView
+                android:id="@+id/high_order_services_titleService"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/iransans"
+                android:gravity="center_vertical"
+                android:text="@string/my_service"
+                android:textColor="@color/colorAccentDark"
+                app:layout_constraintBottom_toTopOf="@id/high_order_services_middle_service_guide_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/high_order_services_start_guide_line"
+                app:layout_constraintTop_toBottomOf="@id/high_order_services_top_service_guide_line"
+                app:textSizeByPercent="1.5"
+                tools:ignore="SmallSp" />
+
+            <ImageView
+                android:id="@+id/high_order_services_comment_service_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_outline_mode_comment_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/high_order_services_end_guide_line"
+                app:layout_constraintTop_toTopOf="@+id/high_order_services_bottom_service_guide_line" />
+
+            <TextView
+                android:id="@+id/high_order_services_commentService"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/high_order_services_comment_service_image"
+                android:fontFamily="@font/iransans_farsi_num"
+                android:gravity="center_vertical|end"
+                android:text="@string/arapp_coin_count"
+                android:textColor="@android:color/darker_gray"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/high_order_services_end_guide_line"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
+                app:layout_constraintTop_toTopOf="@id/high_order_services_bottom_service_guide_line"
+                app:layout_constraintWidth_percent="0.1"
+                tools:ignore="RelativeOverlap,SmallSp" />
+
+            <ImageView
+                android:id="@+id/high_order_services_editMyService"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/high_order_services_deleteMyService"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_outline_edit_24"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@id/high_order_services_start_guide_line"
+                app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
+
+            <ImageView
+                android:id="@+id/high_order_services_deleteMyService"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_baseline_delete_outline_24"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/high_order_services_start_guide_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
+
+            <TextView
+                android:id="@+id/high_order_services_place_textview"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="place"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/high_order_services_middle_vertical_guide_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/high_order_services_middle_vertical_guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.26" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/high_order_services_start_guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.13" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/high_order_services_middle_service_guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.61" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/high_order_services_bottom_service_guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.68" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/high_order_services_end_guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.84" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/high_order_services_top_service_guide_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ir.arapp.arappmain.View.utils.CustomCardView>
+
+    <ir.arapp.arappmain.View.utils.CustomCardView
+        android:id="@+id/high_order_services_rateServiceFrameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rate_zero_shape"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/gray_active_icon"
+        app:cardCornerRadiusByPercent="0.2"
+        app:cardElevation="5dp"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintTop_toTopOf="@id/service_image_card_view"
+        app:layout_constraintEnd_toEndOf="@id/service_image_card_view"
+        app:layout_constraintStart_toStartOf="@id/service_image_card_view"
+        app:layout_constraintBottom_toBottomOf="@id/service_image_card_view"
+        app:layout_constraintDimensionRatio="40:25"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintWidth_percent="0.2">
+
+        <TextView
+            android:id="@+id/high_order_services_rateService"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="@font/iransans_farsi_num"
+            android:gravity="center"
+            android:text="@string/rate_count"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:autoSizeTextType="uniform" />
+    </ir.arapp.arappmain.View.utils.CustomCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

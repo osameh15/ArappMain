@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import ir.arapp.arappmain.Model.Service;
-import ir.arapp.arappmain.databinding.HomeHighOrderServicesItemBinding;
+import ir.arapp.arappmain.databinding.ServicesItemLayoutBinding;
 
 public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServicesAdapter.HighOrderServicesViewHolder> {
 
@@ -26,7 +26,7 @@ public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServ
     @NotNull
     @Override
     public HighOrderServicesViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        HomeHighOrderServicesItemBinding viewBinding = HomeHighOrderServicesItemBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        ServicesItemLayoutBinding viewBinding = ServicesItemLayoutBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
         return new HighOrderServicesViewHolder(viewBinding);
     }
 
@@ -48,9 +48,9 @@ public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServ
     }
 
     public class HighOrderServicesViewHolder extends RecyclerView.ViewHolder {
-        private final HomeHighOrderServicesItemBinding binding;
+        private final ServicesItemLayoutBinding binding;
 
-        public HighOrderServicesViewHolder(@NonNull @NotNull HomeHighOrderServicesItemBinding viewBinding) {
+        public HighOrderServicesViewHolder(@NonNull @NotNull ServicesItemLayoutBinding viewBinding) {
             super(viewBinding.getRoot());
             this.binding = viewBinding;
         }

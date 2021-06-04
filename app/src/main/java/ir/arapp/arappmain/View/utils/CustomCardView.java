@@ -66,7 +66,7 @@ public class CustomCardView extends MaterialCardView {
             int width = this.getWidth();
             int height = this.getHeight();
             if (cornerRadiusByPercent >= 0 && cornerRadiusByPercent <= 1)
-                this.setRadius((float) (Math.sqrt(width * height) * cornerRadiusByPercent));
+                this.setRadius((float) (Math.min(width , height) * cornerRadiusByPercent));
 
         }
     }
