@@ -16,13 +16,19 @@ import java.util.ArrayList;
 import ir.arapp.arappmain.Model.Service;
 import ir.arapp.arappmain.databinding.ServicesItemLayoutBinding;
 
-public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServicesAdapter.HighOrderServicesViewHolder>  {
+public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServicesAdapter.HighOrderServicesViewHolder> implements RecyclerView.OnItemTouchListener {
 
-
+    SingleScrollDirectionEnforcer enforcer = new SingleScrollDirectionEnforcer();
     private final ArrayList<Service> services;
 
     public HighOrderServicesAdapter(ArrayList<Service> items) {
         this.services = items;
+
+//
+//        addOnItemTouchListener(enforcer)
+//        addOnScrollListener(enforcer)
+
+
     }
 
     @NonNull
@@ -48,6 +54,21 @@ public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServ
     @Override
     public int getItemViewType(int position) {
         return super.getItemViewType(position);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
+
+    }
+
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
     }
 
 
