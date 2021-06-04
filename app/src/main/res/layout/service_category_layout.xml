@@ -26,7 +26,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"/>
 
-    <ir.arapp.arappmain.view.utils.SingleDirectionRecyclerView
+    <androidx.recyclerview.widget.RecyclerView
+        android:overScrollMode="never"
         app:layout_constraintTop_toBottomOf="@id/guideline"
         android:id="@+id/recycler_view"
         tools:itemCount="8"

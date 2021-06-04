@@ -43,18 +43,18 @@ public class SingleScrollDirectionEnforcer extends RecyclerView.OnScrollListener
     public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
         if (e.getActionMasked() == MotionEvent.ACTION_DOWN) {
             scrollPointerId = e.getPointerId(0);
-            initialTouchX = (int) (e.getX() + 0.5f);
-            initialTouchY = (int) (e.getY() + 0.5f);
+            initialTouchX = (int) (e.getX() + 5f);
+            initialTouchY = (int) (e.getY() + 5f);
         } else if (e.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN) {
             int actionIndex = e.getActionIndex();
             scrollPointerId = e.getPointerId(actionIndex);
-            initialTouchX = (int) (e.getX(actionIndex) + 0.5f);
-            initialTouchY = (int) (e.getY(actionIndex) + 0.5f);
+            initialTouchX = (int) (e.getX(actionIndex) + 5f);
+            initialTouchY = (int) (e.getY(actionIndex) + 5f);
         } else if (e.getActionMasked() == MotionEvent.ACTION_UP) {
             int index = e.findPointerIndex(scrollPointerId);
             if (index >= 0 && scrollState != RecyclerView.SCROLL_STATE_DRAGGING) {
-                int x = (int) (e.getX(index) + 0.5f);
-                int y = (int) (e.getY(index) + 0.5f);
+                int x = (int) (e.getX(index) + 5f);
+                int y = (int) (e.getY(index) + 5f);
                 dx = x - initialTouchX;
                 dy = y - initialTouchY;
             }

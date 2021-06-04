@@ -40,8 +40,6 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
     BannerViewAdapter bannerViewAdapter;
     SnackBarToast snackBarToast;
     //
-    HighOrderServicesAdapter highOrderServicesAdapter;
-    RecyclerView highOrderRecyclerView;
 //    SingleDirectionRecyclerView mainRecyclerView;
 //    endregion
 
@@ -55,16 +53,22 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
 //        Hooks
         bannerViewAdapter = new BannerViewAdapter();
         snackBarToast = new SnackBarToast(fragmentHomeBinding.getRoot());
-        bannerViewPager = fragmentHomeBinding.getRoot().findViewById(R.id.bannerView);
+//        bannerViewPager = fragmentHomeBinding.getRoot().findViewById(R.id.bannerView);
 //        Search View Material
         fragmentHomeBinding.searchView.setArrowIcon(R.drawable.ic_arrow_forward_black_48dp);
         fragmentHomeBinding.searchView.setOnSearchActionListener(this);
         fragmentHomeBinding.searchView.setOnClickListener(view -> onSearchClick());
 //HighOrderServiceRecyclerView
-        highOrderRecyclerView = fragmentHomeBinding.recyclerViewHighOrderServices;
+
 //        mainRecyclerView = fragmentHomeBinding.getRoot().findViewById(R.id.main_recycler_view);
+
+        HomeFragmentMainAdapter adapter = new HomeFragmentMainAdapter(requireContext());
+        for (int i = 0; i < 10; i++) {
+            adapter.recyclerViewPropertiesList.add(new HomeFragmentMainAdapter.RecyclerViewProperties(requireContext()));
+        }
+        adapter.notifyDataSetChanged();
+        fragmentHomeBinding.mainRecyclerView.setAdapter(adapter);
         fragmentHomeBinding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false));
-        fragmentHomeBinding.mainRecyclerView.setAdapter(new HomeFragmentMainAdapter(requireContext()));
 
 //        Drawer Locked and visible Bottom navigation
         ((NavigationManager) requireActivity()).setDrawerLocked(false);
@@ -72,12 +76,12 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
 //        Set banner news
         homeViewModel.getAllBannerItems().observe(getViewLifecycleOwner(), bannerItems ->
         {
-            bannerViewAdapter.setBanners(bannerItems);
-            bannerAdapter();
+//            bannerViewAdapter.setBanners(bannerItems);
+//            bannerAdapter();
         });
         homeViewModel.getHighOrderServicesAdapter().observe(getViewLifecycleOwner(),highOrderServicesAdapter1 -> {
-            highOrderRecyclerView.setAdapter(highOrderServicesAdapter1);
-            highOrderRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false));
+//            highOrderRecyclerView.setAdapter(highOrderServicesAdapter1);
+//            highOrderRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false));
         });
 //        Refresh layout
         liquidRefreshLayout();
@@ -144,17 +148,17 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
 
     //    Refresh layout and get data
     private void liquidRefreshLayout() {
-        int TIME_REFRESH = 2000;
-        fragmentHomeBinding.liquidRefreshLayout.setOnRefreshListener(new LiquidRefreshLayout.OnRefreshListener() {
-            @Override
-            public void completeRefresh() {
-            }
-
-            @Override
-            public void refreshing() {
-                new Handler().postDelayed(() -> fragmentHomeBinding.liquidRefreshLayout.finishRefreshing(), TIME_REFRESH);
-            }
-        });
+//        int TIME_REFRESH = 2000;
+//        fragmentHomeBinding.liquidRefreshLayout.setOnRefreshListener(new LiquidRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void completeRefresh() {
+//            }
+//
+//            @Override
+//            public void refreshing() {
+//                new Handler().postDelayed(() -> fragmentHomeBinding.liquidRefreshLayout.finishRefreshing(), TIME_REFRESH);
+//            }
+//        });
     }
 //    endregion
 //    Fragment navigation
