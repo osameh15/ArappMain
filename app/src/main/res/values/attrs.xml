@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomCardView">
+        <attr name="cardCornerRadiusByPercent" format="float"/>
+<!--        <attr name="cardCornerRadiusBySize" format="dimension"/>-->
+    </declare-styleable>
+
+</resources>

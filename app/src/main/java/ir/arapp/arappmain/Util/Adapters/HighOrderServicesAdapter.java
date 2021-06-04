@@ -41,6 +41,12 @@ public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServ
         return services.size();
     }
 
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
     public class HighOrderServicesViewHolder extends RecyclerView.ViewHolder {
         private final HomeHighOrderServicesItemBinding binding;
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<ir.arapp.arappmain.View.utils.CustomCardView
     android:id="@+id/cardViewCategoryItemContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadiusByPercent="0.05"
     app:cardElevation="3dp"
     android:layout_margin="8dp">
 <!--    Category Picture-->
@@ -19,4 +19,4 @@
         app:riv_oval="false"
         app:riv_corner_radius="10dp"
         android:src="@drawable/arapp_default"/>
-</com.google.android.material.card.MaterialCardView>
+</ir.arapp.arappmain.View.utils.CustomCardView>

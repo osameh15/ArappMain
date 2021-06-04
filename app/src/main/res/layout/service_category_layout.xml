@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        app:layout_constraintGuide_percent="0.2"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/category_name"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeMaxTextSize="36sp"
+        app:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:text="دسته بندی سرویس"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        android:id="@+id/recycler_view"
+        tools:itemCount="8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="3:1"
+        android:orientation="horizontal"
+        tools:listitem="@layout/services_item_layout"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
