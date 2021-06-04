@@ -83,7 +83,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        app:layout_constraintDimensionRatio="30:20"/>
+                        app:layout_constraintDimensionRatio="30:19"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <FrameLayout

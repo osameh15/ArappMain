@@ -1,10 +1,12 @@
 package ir.arapp.arappmain.Util.Adapters;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.adapters.AbsListViewBindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -14,19 +16,20 @@ import java.util.ArrayList;
 import ir.arapp.arappmain.Model.Service;
 import ir.arapp.arappmain.databinding.ServicesItemLayoutBinding;
 
-public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServicesAdapter.HighOrderServicesViewHolder> {
+public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServicesAdapter.HighOrderServicesViewHolder>  {
 
 
     private final ArrayList<Service> services;
 
-    public HighOrderServicesAdapter(ArrayList<Service> items){
+    public HighOrderServicesAdapter(ArrayList<Service> items) {
         this.services = items;
     }
+
     @NonNull
     @NotNull
     @Override
     public HighOrderServicesViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        ServicesItemLayoutBinding viewBinding = ServicesItemLayoutBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        ServicesItemLayoutBinding viewBinding = ServicesItemLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new HighOrderServicesViewHolder(viewBinding);
     }
 
@@ -46,6 +49,7 @@ public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServ
     public int getItemViewType(int position) {
         return super.getItemViewType(position);
     }
+
 
     public class HighOrderServicesViewHolder extends RecyclerView.ViewHolder {
         private final ServicesItemLayoutBinding binding;

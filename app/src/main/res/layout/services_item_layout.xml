@@ -15,7 +15,7 @@
         app:cardCornerRadiusByPercent="0.07"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="40:35"
+        app:layout_constraintDimensionRatio="40:40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,20 +26,23 @@
             android:layoutDirection="locale">
 
             <ir.arapp.arappmain.View.utils.CustomCardView
-                app:layout_constraintHeight_percent="0.8"
                 android:id="@+id/high_order_services_serviceImageContainer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
-                app:cardElevation="8dp"
+                android:layout_margin="2dp"
                 android:src="@drawable/hotels"
                 app:cardCornerRadiusByPercent="0.08"
+                app:cardElevation="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/service_image_view"
                         android:layout_width="match_parent"
@@ -69,7 +72,6 @@
                         app:layout_constraintEnd_toEndOf="@id/service_image_view"
                         app:layout_constraintStart_toEndOf="@id/high_order_services_rateServiceFrameLayout"
                         app:layout_constraintTop_toTopOf="@id/high_order_services_rateServiceFrameLayout"
-                        app:layout_constraintWidth_percent="0.5"
                         app:textSizeByPercent="1.5"
                         tools:ignore="SmallSp" />
 
@@ -80,15 +82,15 @@
                         android:background="@drawable/rate_zero_shape"
                         android:visibility="visible"
                         app:cardBackgroundColor="@color/gray_active_icon"
-                        app:cardCornerRadiusByPercent="0.2"
+                        app:cardCornerRadiusByPercent="0.3"
                         app:cardElevation="5dp"
                         app:layout_constraintBottom_toBottomOf="@id/service_image_view"
-                        app:layout_constraintDimensionRatio="40:25"
+                        app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="@id/service_image_view"
-                        app:layout_constraintHorizontal_bias="0.1"
+                        app:layout_constraintHorizontal_bias="0.05"
                         app:layout_constraintStart_toStartOf="@id/service_image_view"
                         app:layout_constraintTop_toTopOf="@id/service_image_view"
-                        app:layout_constraintVertical_bias="0.9"
+                        app:layout_constraintVertical_bias="0.95"
                         app:layout_constraintWidth_percent="0.2">
 
                         <TextView
@@ -108,25 +110,23 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ir.arapp.arappmain.View.utils.CustomCardView>
 
-<!--            <com.makeramen.roundedimageview.RoundedImageView-->
-<!--                android:visibility="gone"-->
-<!--                app:layout_constraintHeight_percent="0.8"-->
-<!--                android:id="@+id/high_order_services_serviceImageContainer"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:scaleType="centerCrop"-->
-<!--                android:src="@drawable/hotels"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:riv_border_width="0dp"-->
-<!--                app:riv_corner_radius_bottom_right="16dp"-->
-<!--                app:riv_corner_radius_bottom_left="16dp"-->
-<!--                app:riv_mutate_background="false"-->
-<!--                app:riv_oval="false"-->
-<!--                app:riv_tile_mode="clamp" />-->
-
-
+            <!--            <com.makeramen.roundedimageview.RoundedImageView-->
+            <!--                android:visibility="gone"-->
+            <!--                app:layout_constraintHeight_percent="0.8"-->
+            <!--                android:id="@+id/high_order_services_serviceImageContainer"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                android:scaleType="centerCrop"-->
+            <!--                android:src="@drawable/hotels"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:riv_border_width="0dp"-->
+            <!--                app:riv_corner_radius_bottom_right="16dp"-->
+            <!--                app:riv_corner_radius_bottom_left="16dp"-->
+            <!--                app:riv_mutate_background="false"-->
+            <!--                app:riv_oval="false"-->
+            <!--                app:riv_tile_mode="clamp" />-->
 
 
             <com.airbnb.lottie.LottieAnimationView
@@ -171,50 +171,19 @@
                     android:id="@+id/high_order_services_commentService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    app:textSizeByPercent="50"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/high_order_services_comment_service_image"
                     android:fontFamily="@font/iransans_farsi_num"
-                    android:gravity="center_vertical|end"
+                    android:gravity="center"
                     android:text="@string/arapp_coin_count"
                     android:textColor="@android:color/darker_gray"
-                    app:autoSizeMinTextSize="1sp"
-                    app:autoSizeTextType="uniform"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/high_order_services_end_guide_line"
                     app:layout_constraintHorizontal_bias="0.95"
                     app:layout_constraintStart_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
                     app:layout_constraintTop_toTopOf="@id/high_order_services_bottom_service_guide_line"
-                    app:layout_constraintWidth_percent="0.1"
-                    tools:ignore="RelativeOverlap,SmallSp" />
-
-                <ImageView
-                    android:id="@+id/high_order_services_editMyService"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@id/high_order_services_deleteMyService"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_outline_edit_24"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
-                    app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toEndOf="@id/high_order_services_start_guide_line"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
-
-                <ImageView
-                    android:id="@+id/high_order_services_deleteMyService"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_baseline_delete_outline_24"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@id/high_order_services_start_guide_line"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
+                    app:layout_constraintWidth_percent="0.1" />
 
                 <ir.arapp.arappmain.View.utils.AutoSizeTextView
                     android:id="@+id/high_order_services_place_textview"
@@ -225,7 +194,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/high_order_services_middle_vertical_guide_line"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
+                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line"
+                    app:textSizeByPercent="1.5" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/high_order_services_middle_vertical_guide_line"
@@ -272,7 +242,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ir.arapp.arappmain.View.utils.CustomCardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
