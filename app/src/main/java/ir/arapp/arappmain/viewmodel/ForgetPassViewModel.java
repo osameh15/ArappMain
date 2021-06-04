@@ -13,8 +13,8 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.FragmentManager;
-import ir.arapp.arappmain.Util.Services.SnackBarMessage;
+import ir.arapp.arappmain.util.services.FragmentManager;
+import ir.arapp.arappmain.util.services.SnackBarMessage;
 
 public class ForgetPassViewModel extends AndroidViewModel
 {

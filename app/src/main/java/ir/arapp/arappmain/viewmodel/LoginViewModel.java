@@ -8,8 +8,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import java.util.Objects;
 
-import ir.arapp.arappmain.Util.Services.FragmentManager;
-import ir.arapp.arappmain.Util.Services.SnackBarMessage;
+import ir.arapp.arappmain.util.services.FragmentManager;
+import ir.arapp.arappmain.util.services.SnackBarMessage;
 
 public class LoginViewModel extends AndroidViewModel
 {

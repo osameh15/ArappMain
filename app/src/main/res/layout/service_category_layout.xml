@@ -12,7 +12,7 @@
         app:layout_constraintGuide_percent="0.2"
         android:orientation="horizontal"
         android:layout_height="wrap_content"/>
-    <ir.arapp.arappmain.View.utils.AutoSizeTextView
+    <ir.arapp.arappmain.view.utils.AutoSizeTextView
         android:id="@+id/category_name"
         android:gravity="center"
         android:text="دسته بندی سرویس"
@@ -26,7 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ir.arapp.arappmain.view.utils.SingleDirectionRecyclerView
         app:layout_constraintTop_toBottomOf="@id/guideline"
         android:id="@+id/recycler_view"
         tools:itemCount="8"

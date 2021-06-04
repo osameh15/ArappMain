@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
-import ir.arapp.arappmain.Model.Category;
+import ir.arapp.arappmain.model.Category;
 import ir.arapp.arappmain.R;
 
 public class CategoryViewModel extends AndroidViewModel

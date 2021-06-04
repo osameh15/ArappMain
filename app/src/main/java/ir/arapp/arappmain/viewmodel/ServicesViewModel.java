@@ -8,8 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
-import ir.arapp.arappmain.Model.Category;
-import ir.arapp.arappmain.Model.Service;
+import ir.arapp.arappmain.model.Service;
 import ir.arapp.arappmain.R;
 
 public class ServicesViewModel extends AndroidViewModel

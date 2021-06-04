@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="ltr">
 
-    <ir.arapp.arappmain.View.utils.CustomCardView
+    <ir.arapp.arappmain.view.utils.CustomCardView
         android:id="@+id/service_image_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layoutDirection="locale">
 
-            <ir.arapp.arappmain.View.utils.CustomCardView
+            <ir.arapp.arappmain.view.utils.CustomCardView
                 android:id="@+id/high_order_services_serviceImageContainer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -48,9 +48,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hotels" />
+                        android:src="@color/transparent" />
 
                     <FrameLayout
+                        android:visibility="gone"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:background="@drawable/transparent_gradient"
@@ -59,7 +60,7 @@
                         app:layout_constraintStart_toStartOf="@id/service_image_view"
                         app:layout_constraintTop_toTopOf="@id/service_image_view" />
 
-                    <ir.arapp.arappmain.View.utils.AutoSizeTextView
+                    <ir.arapp.arappmain.view.utils.AutoSizeTextView
                         android:id="@+id/high_order_services_titleService"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -75,7 +76,7 @@
                         app:textSizeByPercent="1.5"
                         tools:ignore="SmallSp" />
 
-                    <ir.arapp.arappmain.View.utils.CustomCardView
+                    <ir.arapp.arappmain.view.utils.CustomCardView
                         android:id="@+id/high_order_services_rateServiceFrameLayout"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -104,11 +105,11 @@
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             app:autoSizeTextType="uniform" />
-                    </ir.arapp.arappmain.View.utils.CustomCardView>
+                    </ir.arapp.arappmain.view.utils.CustomCardView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </ir.arapp.arappmain.View.utils.CustomCardView>
+            </ir.arapp.arappmain.view.utils.CustomCardView>
 
             <!--            <com.makeramen.roundedimageview.RoundedImageView-->
             <!--                android:visibility="gone"-->
@@ -167,7 +168,7 @@
                     app:layout_constraintStart_toStartOf="@+id/high_order_services_end_guide_line"
                     app:layout_constraintTop_toTopOf="@+id/high_order_services_bottom_service_guide_line" />
 
-                <ir.arapp.arappmain.View.utils.AutoSizeTextView
+                <ir.arapp.arappmain.view.utils.AutoSizeTextView
                     android:id="@+id/high_order_services_commentService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -185,7 +186,7 @@
                     app:layout_constraintTop_toTopOf="@id/high_order_services_bottom_service_guide_line"
                     app:layout_constraintWidth_percent="0.1" />
 
-                <ir.arapp.arappmain.View.utils.AutoSizeTextView
+                <ir.arapp.arappmain.view.utils.AutoSizeTextView
                     android:id="@+id/high_order_services_place_textview"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -241,7 +242,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ir.arapp.arappmain.View.utils.CustomCardView>
+    </ir.arapp.arappmain.view.utils.CustomCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

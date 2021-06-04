@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".View.Fragments.ProfileFragment">
+    tools:context=".view.fragments.ProfileFragment">
 <!--    View model-->
     <data>
         <variable

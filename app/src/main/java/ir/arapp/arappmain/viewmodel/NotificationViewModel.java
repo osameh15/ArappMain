@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
-import ir.arapp.arappmain.Model.Notification;
+import ir.arapp.arappmain.model.Notification;
 import ir.arapp.arappmain.R;
 
 public class NotificationViewModel extends AndroidViewModel

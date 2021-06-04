@@ -5,10 +5,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
-import ir.arapp.arappmain.Model.Profile;
+import ir.arapp.arappmain.model.Profile;
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Services.FragmentManager;
-import ir.arapp.arappmain.Util.Services.SnackBarMessage;
+import ir.arapp.arappmain.util.services.FragmentManager;
+import ir.arapp.arappmain.util.services.SnackBarMessage;
 
 public class ProfileViewModel extends AndroidViewModel
 {

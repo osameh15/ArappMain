@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ir.arapp.arappmain.View.utils.CustomCardView
+    <ir.arapp.arappmain.view.utils.CustomCardView
         android:id="@+id/serviceCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -256,5 +256,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ir.arapp.arappmain.View.utils.CustomCardView>
+    </ir.arapp.arappmain.view.utils.CustomCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

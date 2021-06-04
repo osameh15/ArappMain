@@ -5,10 +5,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
-import ir.arapp.arappmain.Model.Banner;
-import ir.arapp.arappmain.Model.Service;
+import ir.arapp.arappmain.model.Banner;
+import ir.arapp.arappmain.model.Service;
 import ir.arapp.arappmain.R;
-import ir.arapp.arappmain.Util.Adapters.HighOrderServicesAdapter;
+import ir.arapp.arappmain.util.adapter.HighOrderServicesAdapter;
 
 public class HomeViewModel extends AndroidViewModel
 {

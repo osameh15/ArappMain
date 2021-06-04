@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/regLogFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.RegLogFragment"
+        android:name="ir.arapp.arappmain.view.fragments.RegLogFragment"
         android:label="fragment_reg_log"
         tools:layout="@layout/fragment_reg_log" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.LoginFragment"
+        android:name="ir.arapp.arappmain.view.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgetPassPhoneFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.ForgetPassPhoneFragment"
+        android:name="ir.arapp.arappmain.view.fragments.ForgetPassPhoneFragment"
         android:label="fragment_phone_forget_pass"
         tools:layout="@layout/fragment_phone_forget_pass">
         <action
@@ -64,12 +64,12 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.RegisterFragment"
+        android:name="ir.arapp.arappmain.view.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/registerValidateFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.RegisterValidateFragment"
+        android:name="ir.arapp.arappmain.view.fragments.RegisterValidateFragment"
         android:label="fragment_validate_register"
         tools:layout="@layout/fragment_validate_register" >
         <action
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgetPassFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.ForgetPassFragment"
+        android:name="ir.arapp.arappmain.view.fragments.ForgetPassFragment"
         android:label="fragment_forget_pass"
         tools:layout="@layout/fragment_forget_pass" >
         <action
@@ -108,7 +108,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerPhoneFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.RegisterPhoneFragment"
+        android:name="ir.arapp.arappmain.view.fragments.RegisterPhoneFragment"
         android:label="fragment_phone_register"
         tools:layout="@layout/fragment_phone_register" >
         <action
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgetPassValidateFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.ForgetPassValidateFragment"
+        android:name="ir.arapp.arappmain.view.fragments.ForgetPassValidateFragment"
         android:label="fragment_validate_forget_pass"
         tools:layout="@layout/fragment_validate_forget_pass" >
         <action

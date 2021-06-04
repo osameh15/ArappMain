@@ -7,7 +7,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.HomeFragment"
+        android:name="ir.arapp.arappmain.view.fragments.HomeFragment"
         android:label="@string/home_page"
         tools:layout="@layout/fragment_home">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.CategoryFragment"
+        android:name="ir.arapp.arappmain.view.fragments.CategoryFragment"
         android:label="@string/category"
         tools:layout="@layout/fragment_category" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.NotificationFragment"
+        android:name="ir.arapp.arappmain.view.fragments.NotificationFragment"
         android:label="@string/notification"
         tools:layout="@layout/fragment_notification" >
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.ProfileFragment"
+        android:name="ir.arapp.arappmain.view.fragments.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.SearchFragment"
+        android:name="ir.arapp.arappmain.view.fragments.SearchFragment"
         android:label="@string/search_hint"
         tools:layout="@layout/fragment_search" >
         <action
@@ -84,22 +84,22 @@
     </fragment>
     <fragment
         android:id="@+id/editUserFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.EditUserFragment"
+        android:name="ir.arapp.arappmain.view.fragments.EditUserFragment"
         android:label="fragment_edit_user"
         tools:layout="@layout/fragment_edit_user" />
     <fragment
         android:id="@+id/addServiceFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.AddServiceFragment"
+        android:name="ir.arapp.arappmain.view.fragments.AddServiceFragment"
         android:label="fragment_add_service"
         tools:layout="@layout/fragment_add_service" />
     <fragment
         android:id="@+id/editServiceFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.EditServiceFragment"
+        android:name="ir.arapp.arappmain.view.fragments.EditServiceFragment"
         android:label="fragment_edit_service"
         tools:layout="@layout/fragment_edit_service" />
     <fragment
         android:id="@+id/myServiceFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.MyServiceFragment"
+        android:name="ir.arapp.arappmain.view.fragments.MyServiceFragment"
         android:label="fragment_my_service"
         tools:layout="@layout/fragment_my_service" >
         <action
@@ -108,7 +108,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="ir.arapp.arappmain.View.Fragments.SettingFragment"
+        android:name="ir.arapp.arappmain.view.fragments.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>
