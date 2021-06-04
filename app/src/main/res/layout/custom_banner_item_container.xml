@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scaleType="centerCrop"
-    app:riv_corner_radius="10dp"
+    app:riv_corner_radius="24dp"
     app:riv_border_color="@color/colorAccentDark"
     app:riv_border_width="0dp"
     android:layout_margin="8dp">

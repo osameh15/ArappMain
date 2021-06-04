@@ -41,6 +41,7 @@
                 app:riv_tile_mode="clamp" />
 
             <ImageView
+                android:visibility="gone"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintDimensionRatio="1:1"
@@ -58,6 +59,7 @@
                 app:tint="@color/white" />
 
             <TextView
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="@id/high_order_services_time_service_image"
                 app:layout_constraintWidth_percent="0.5"
                 android:id="@+id/high_order_services_timeService"
@@ -82,7 +84,7 @@
                 android:layout_height="0dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
                 app:layout_constraintDimensionRatio="100:80"
                 app:layout_constraintEnd_toEndOf="@id/high_order_services_serviceImageContainer"
@@ -94,6 +96,7 @@
                 app:lottie_speed="1.5" />
 
             <FrameLayout
+                android:visibility="gone"
                 android:id="@+id/high_order_services_rateServiceFrameLayout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -210,7 +213,18 @@
                     app:layout_constraintEnd_toStartOf="@id/high_order_services_start_guide_line"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line" />
-
+                <TextView
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="1sp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/high_order_services_middle_vertical_guide_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="place"
+                    android:id="@+id/high_order_services_place_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"/>
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/high_order_services_middle_vertical_guide_line"
                     android:layout_width="wrap_content"

@@ -51,6 +51,21 @@ public class Service
         this.deletedAt = deletedAt;
     }
 
+    public Service(int picture,String title,String location){
+        this.id = 0;
+        this.user_id = 0;
+        this.picture = picture;
+        this.title = title;
+        this.subtitle = "";
+        this.text = "";
+        this.rate = 0.0;
+        this.comments = 0;
+        this.location = location;
+        this.createdAt = "";
+        this.updatedAt = "";
+        this.deletedAt = "";
+    }
+
 //    region Setter
     public void setId(int id)
     {

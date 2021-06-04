@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import ir.arapp.arappmain.Model.Banner;
+import ir.arapp.arappmain.Model.Service;
 import ir.arapp.arappmain.R;
 import ir.arapp.arappmain.Util.Adapters.HighOrderServicesAdapter;
 
@@ -15,6 +16,7 @@ public class HomeViewModel extends AndroidViewModel
     ArrayList<Banner> banners;
     MutableLiveData<ArrayList<Banner>> allBannerItems;
     MutableLiveData<HighOrderServicesAdapter> highOrderServicesAdapterMutableLiveData = new MutableLiveData<>();
+    ArrayList<Service> highOrderServices;
 //    endregion
 //    Constructor
     public HomeViewModel(@NonNull Application application)
@@ -30,11 +32,25 @@ public class HomeViewModel extends AndroidViewModel
 //    Initialize function and variables
     private void init()
     {
-        highOrderServicesAdapterMutableLiveData.postValue(new HighOrderServicesAdapter());
+
         populateList();
         allBannerItems.setValue(banners);
+        initHighOrderServices();
     }
-//    Set data to banner array list
+
+    private void initHighOrderServices() {
+        highOrderServices = new ArrayList<>();
+        Service item = new Service(R.drawable.hotels,"سرویس های ویژه","تهران");
+        highOrderServices.add(item);
+        item = new Service(R.drawable.hotels,"محبوب ترین سرویس ها","تهران");
+        highOrderServices.add(item);
+        item = new Service(R.drawable.hotels,"جدید ترین سرویس ها","تهران");
+        highOrderServices.add(item);
+        highOrderServicesAdapterMutableLiveData.postValue(new HighOrderServicesAdapter(highOrderServices));
+
+    }
+
+    //    Set data to banner array list
     private void populateList()
     {
         banners.add(new Banner(1, 1, R.drawable.arapp_default, "اطلاعیه شماره 1", "23 اسفند 1399"));

@@ -9,9 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
+import ir.arapp.arappmain.Model.Service;
 import ir.arapp.arappmain.databinding.HomeHighOrderServicesItemBinding;
 
 public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServicesAdapter.HighOrderServicesViewHolder> {
+
+
+    private final ArrayList<Service> services;
+
+    public HighOrderServicesAdapter(ArrayList<Service> items){
+        this.services = items;
+    }
     @NonNull
     @NotNull
     @Override
@@ -22,17 +32,21 @@ public class HighOrderServicesAdapter extends RecyclerView.Adapter<HighOrderServ
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull HighOrderServicesViewHolder holder, int position) {
-
+        holder.binding.highOrderServicesPlaceTextview.setText(services.get(position).getLocation());
+        holder.binding.highOrderServicesTitleService.setText(services.get(position).getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return services.size();
     }
 
     public class HighOrderServicesViewHolder extends RecyclerView.ViewHolder {
+        private final HomeHighOrderServicesItemBinding binding;
+
         public HighOrderServicesViewHolder(@NonNull @NotNull HomeHighOrderServicesItemBinding viewBinding) {
             super(viewBinding.getRoot());
+            this.binding = viewBinding;
         }
     }
 }
