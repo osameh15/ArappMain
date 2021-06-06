@@ -44,6 +44,11 @@ class HomeFragmentMainAdapter(var context: Context) : RecyclerView.Adapter<Adapt
                 this.setRecycledViewPool(recycledViewPool)
                 adapter = ServiceByCategoryAdapter()
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//                layoutManager?.apply {
+//                    if (this is LinearLayoutManager){
+//                        recycleChildrenOnDetach = true
+//                    }
+//                }
             }
             Log.i(
                 "TAG1212",
