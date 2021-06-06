@@ -1,74 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.fragments.HomeFragment">
-   <data>
+
+    <data>
+
         <variable
             name="viewModel"
-            type="ir.arapp.arappmain.viewmodel.LoginViewModel"/>
+            type="ir.arapp.arappmain.viewmodel.LoginViewModel" />
     </data>
-<!--    Refresh layout-->
-<!--    <com.madapps.liquid.LiquidRefreshLayout-->
-<!--        android:id="@+id/liquidRefreshLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@color/lightBack"-->
-<!--        android:animateLayoutChanges="true"-->
-<!--        android:animationCache="false"-->
-<!--        app:AniBackColor="@color/colorPrimaryDark"-->
-<!--        app:AniForeColor="@color/lightBack"-->
-<!--        app:CircleSmaller="6">-->
-<!--&lt;!&ndash;        Home Fragment&ndash;&gt;-->
-<!--        -->
-<!--    </com.madapps.liquid.LiquidRefreshLayout>-->
+    <!--    Refresh layout-->
+    <!--    <com.madapps.liquid.LiquidRefreshLayout-->
+    <!--        android:id="@+id/liquidRefreshLayout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="@color/lightBack"-->
+    <!--        android:animateLayoutChanges="true"-->
+    <!--        android:animationCache="false"-->
+    <!--        app:AniBackColor="@color/colorPrimaryDark"-->
+    <!--        app:AniForeColor="@color/lightBack"-->
+    <!--        app:CircleSmaller="6">-->
+    <!--&lt;!&ndash;        Home Fragment&ndash;&gt;-->
+    <!--        -->
+    <!--    </com.madapps.liquid.LiquidRefreshLayout>-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:fitsSystemWindows="true"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/lightBack">
-        <!--        Search Toolbar panel-->
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:background="@drawable/search_border"
-            android:gravity="center"
-            android:padding="1.5dp"
-            android:layoutDirection="rtl"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <com.mancj.materialsearchbar.MaterialSearchBar
-                android:id="@+id/searchView"
+            android:background="#C7FBE4"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/linearLayout"
+                android:background="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                style="@style/SearchViewMaterial"
-                app:mt_hint="@string/search_hint"
-                app:mt_placeholder="@string/search_hint" />
-        </LinearLayout>
-        <!--        Banner View-->
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:paddingTop="8dp"
+                        android:scaleType="centerInside"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/logo"
+                        app:layout_collapseMode="none" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.Toolbar
+                    app:layout_collapseParallaxMultiplier="0.0"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetLeft="0dp"
+                    android:layout_margin="4dp"
+                    android:layout_gravity="bottom"
+                    app:layout_collapseMode="pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize">
+                    <com.google.android.material.card.MaterialCardView
+                        app:cardCornerRadius="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/search_border"
+                        android:gravity="center"
+                        android:layoutDirection="rtl"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.mancj.materialsearchbar.MaterialSearchBar
+                            android:id="@+id/searchView"
+                            style="@style/SearchViewMaterial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:mt_hint="@string/search_hint"
+                            app:mt_placeholder="@string/search_hint" />
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:fitsSystemWindows="true"
-            android:id="@+id/high_order_container"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
-            <androidx.recyclerview.widget.RecyclerView
-                android:overScrollMode="never"
-                android:fitsSystemWindows="true"
-                android:id="@+id/main_recycler_view"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/high_order_container"
+
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="0dp"
+                android:fitsSystemWindows="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:overScrollMode="never" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

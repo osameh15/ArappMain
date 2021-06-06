@@ -36,7 +36,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         highOrderServices!!.add(item)
         item = Service(R.drawable.hotels, "جدید ترین سرویس ها", "تهران")
         highOrderServices!!.add(item)
-        highOrderServicesAdapter.postValue(ServiceByCategoryAdapter(highOrderServices!!))
+//        highOrderServicesAdapter.postValue(ServiceByCategoryAdapter(highOrderServices!!))
     }
 
     //    Set data to banner array list

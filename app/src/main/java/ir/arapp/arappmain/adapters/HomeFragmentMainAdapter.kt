@@ -13,11 +13,18 @@ import ir.arapp.arappmain.adapters.HomeFragmentMainAdapter.AdapterViewHolder
 import ir.arapp.arappmain.adapters.services.ServiceByCategoryAdapter
 import java.util.*
 
-class HomeFragmentMainAdapter(var context: Context) : RecyclerView.Adapter<AdapterViewHolder>() {
-    var recycledViewPool :RecycledViewPool = RecycledViewPool().apply {
-        setMaxRecycledViews(0,Int.MAX_VALUE)
+class HomeFragmentMainAdapter(var context: Context) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    var recycledViewPool: RecycledViewPool = RecycledViewPool().apply {
+        setMaxRecycledViews(0, Int.MAX_VALUE)
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        if (viewType == 1) {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.banner_layout, parent, false)
+            return BannerViewHolder(view)
+        }
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.service_category_layout, parent, false)
         //        ServiceCategoryLayoutBinding binding = ServiceCategoryLayoutBinding
@@ -26,23 +33,26 @@ class HomeFragmentMainAdapter(var context: Context) : RecyclerView.Adapter<Adapt
 
     }
 
-    override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (position == 3 || position == 0) 1 else 0
     }
 
     override fun getItemCount(): Int {
         return 12
     }
 
-    class AdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class AdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var recyclerView: RecyclerView
 
         init {
             recyclerView = itemView.findViewById(R.id.recycler_view)
             recyclerView.apply {
                 isNestedScrollingEnabled = false
-                this.setRecycledViewPool(recycledViewPool)
-                adapter = ServiceByCategoryAdapter()
+                this.setRecycledViewPool(this@HomeFragmentMainAdapter.recycledViewPool)
+                adapter = ServiceByCategoryAdapter(this@HomeFragmentMainAdapter.context)
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 //                layoutManager?.apply {
 //                    if (this is LinearLayoutManager){
@@ -56,6 +66,9 @@ class HomeFragmentMainAdapter(var context: Context) : RecyclerView.Adapter<Adapt
             )
         }
     }
+
+    class BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
