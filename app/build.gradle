@@ -2,6 +2,7 @@ plugins
 {
     id 'com.android.application'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-android'
 }
 
 android
@@ -85,12 +86,12 @@ dependencies
 //    Liquid Refresh layout
     implementation 'com.github.mukeshsolanki:liquidrefreshlayout:1.0.2'
 //     ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 //     LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 //    LifeCycle
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 //     Annotation processor. noinspection LifecycleAnnotationProcessorWithJava8
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 //     Retrofit and Gson ...
@@ -98,6 +99,6 @@ dependencies
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
 //    Navigation
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 }
