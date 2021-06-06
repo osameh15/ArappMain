@@ -12,7 +12,7 @@ import ir.arapp.arappmain.R;
 
 public class CustomCardView extends MaterialCardView {
 
-
+    private boolean canChange = true;
     public float getCornerRadiusByPercent() {
         return cornerRadiusByPercent;
     }
@@ -20,6 +20,11 @@ public class CustomCardView extends MaterialCardView {
     //value must be between 0f..1f
     public void setCornerRadiusByPercent(float cornerRadiusByPercent) {
         this.cornerRadiusByPercent = cornerRadiusByPercent;
+        postInvalidate();
+    }
+
+    void changeCornerSize(){
+        canChange = true;
         postInvalidate();
     }
 
@@ -52,21 +57,30 @@ public class CustomCardView extends MaterialCardView {
     }
 
     private void init(Context context, AttributeSet attrs) {
-
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomCardView);
-//        cornerRadiusBySize = typedArray.getDimension(R.styleable.CustomCardView_cardCornerRadiusBySize,0f);
         cornerRadiusByPercent = typedArray.getFloat(R.styleable.CustomCardView_cardCornerRadiusByPercent, -1f);
         typedArray.recycle();
+        changeCornerSize();
+    }
+
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        changeCornerSize();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         if (canvas != null) {
-            int width = this.getWidth();
-            int height = this.getHeight();
-            if (cornerRadiusByPercent >= 0 && cornerRadiusByPercent <= 1)
-                this.setRadius((float) (Math.min(width , height) * cornerRadiusByPercent));
+            if (canChange){
+                int width = this.getWidth();
+                int height = this.getHeight();
+                if (cornerRadiusByPercent >= 0 && cornerRadiusByPercent <= 1)
+                    this.setRadius((float) (Math.min(width , height) * cornerRadiusByPercent));
+                canChange = false;
+            }
 
         }
     }

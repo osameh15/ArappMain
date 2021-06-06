@@ -61,14 +61,15 @@ public class HomeFragment extends Fragment implements MaterialSearchBar.OnSearch
 //HighOrderServiceRecyclerView
 
 //        mainRecyclerView = fragmentHomeBinding.getRoot().findViewById(R.id.main_recycler_view);
-
         HomeFragmentMainAdapter adapter = new HomeFragmentMainAdapter(requireContext());
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
             adapter.recyclerViewPropertiesList.add(new HomeFragmentMainAdapter.RecyclerViewProperties(requireContext()));
         }
         adapter.notifyDataSetChanged();
         fragmentHomeBinding.mainRecyclerView.setAdapter(adapter);
-        fragmentHomeBinding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false));
+        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false);
+        linearLayoutManager.setRecycleChildrenOnDetach(true);
+        fragmentHomeBinding.mainRecyclerView.setLayoutManager(linearLayoutManager);
 
 //        Drawer Locked and visible Bottom navigation
         ((NavigationManager) requireActivity()).setDrawerLocked(false);

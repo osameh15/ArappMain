@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+    android:layout_height="200dp"
     android:layoutDirection="ltr">
 
-    <ir.arapp.arappmain.view.utils.CustomCardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/service_image_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadiusByPercent="0.07"
         app:cardElevation="2dp"
@@ -32,7 +33,7 @@
                 android:scaleType="centerCrop"
                 android:layout_margin="2dp"
                 android:src="@drawable/hotels"
-                app:cardCornerRadiusByPercent="0.08"
+                app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.8"
@@ -60,7 +61,9 @@
                         app:layout_constraintStart_toStartOf="@id/service_image_view"
                         app:layout_constraintTop_toTopOf="@id/service_image_view" />
 
-                    <ir.arapp.arappmain.view.utils.AutoSizeTextView
+                    <TextView
+                        android:layout_margin="4dp"
+                        app:autoSizeTextType="uniform"
                         android:id="@+id/high_order_services_titleService"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -73,17 +76,18 @@
                         app:layout_constraintEnd_toEndOf="@id/service_image_view"
                         app:layout_constraintStart_toEndOf="@id/high_order_services_rateServiceFrameLayout"
                         app:layout_constraintTop_toTopOf="@id/high_order_services_rateServiceFrameLayout"
-                        app:textSizeByPercent="1.5"
                         tools:ignore="SmallSp" />
 
-                    <ir.arapp.arappmain.view.utils.CustomCardView
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        app:cardCornerRadius="8dp"
                         android:id="@+id/high_order_services_rateServiceFrameLayout"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:background="@drawable/rate_zero_shape"
                         android:visibility="visible"
                         app:cardBackgroundColor="@color/gray_active_icon"
-                        app:cardCornerRadiusByPercent="0.3"
+                        app:cardCornerRadiusByPercent="0.25"
                         app:cardElevation="5dp"
                         app:layout_constraintBottom_toBottomOf="@id/service_image_view"
                         app:layout_constraintDimensionRatio="1:1"
@@ -105,7 +109,7 @@
                             android:textColor="@color/white"
                             android:textSize="14sp"
                             app:autoSizeTextType="uniform" />
-                    </ir.arapp.arappmain.view.utils.CustomCardView>
+                    </androidx.cardview.widget.CardView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -168,11 +172,11 @@
                     app:layout_constraintStart_toStartOf="@+id/high_order_services_end_guide_line"
                     app:layout_constraintTop_toTopOf="@+id/high_order_services_bottom_service_guide_line" />
 
-                <ir.arapp.arappmain.view.utils.AutoSizeTextView
+                <TextView
                     android:id="@+id/high_order_services_commentService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:textSizeByPercent="50"
+                    app:autoSizeTextType="uniform"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/high_order_services_comment_service_image"
                     android:fontFamily="@font/iransans_farsi_num"
@@ -186,7 +190,7 @@
                     app:layout_constraintTop_toTopOf="@id/high_order_services_bottom_service_guide_line"
                     app:layout_constraintWidth_percent="0.1" />
 
-                <ir.arapp.arappmain.view.utils.AutoSizeTextView
+                <TextView
                     android:id="@+id/high_order_services_place_textview"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -196,7 +200,7 @@
                     app:layout_constraintEnd_toStartOf="@id/high_order_services_middle_vertical_guide_line"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line"
-                    app:textSizeByPercent="1.5" />
+                    app:autoSizeTextType="uniform"/>
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/high_order_services_middle_vertical_guide_line"
@@ -242,7 +246,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ir.arapp.arappmain.view.utils.CustomCardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
