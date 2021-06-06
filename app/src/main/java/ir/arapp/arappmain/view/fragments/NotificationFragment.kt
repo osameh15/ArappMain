@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentNotificationBinding
 import ir.arapp.arappmain.model.Notification
-import ir.arapp.arappmain.util.adapter.NotificationAdapter
+import ir.arapp.arappmain.adapters.NotificationAdapter
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.viewmodel.NotificationViewModel
 import java.util.*

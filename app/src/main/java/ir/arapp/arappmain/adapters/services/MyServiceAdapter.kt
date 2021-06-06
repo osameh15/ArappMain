@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.util.adapter
+package ir.arapp.arappmain.adapters.services
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import com.google.android.material.card.MaterialCardView
 import com.makeramen.roundedimageview.RoundedImageView
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.model.Service
-import ir.arapp.arappmain.util.adapter.MyServiceAdapter.MyServiceItemViewHolder
+import ir.arapp.arappmain.adapters.services.MyServiceAdapter.MyServiceItemViewHolder
 import ir.arapp.arappmain.util.services.ItemClickListener
 import java.util.*
 

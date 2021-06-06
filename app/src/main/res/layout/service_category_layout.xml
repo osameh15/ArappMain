@@ -12,13 +12,14 @@
         app:layout_constraintGuide_percent="0.2"
         android:orientation="horizontal"
         android:layout_height="wrap_content"/>
-    <ir.arapp.arappmain.view.utils.AutoSizeTextView
+    <TextView
         android:id="@+id/category_name"
         android:gravity="center"
         android:text="دسته بندی سرویس"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintWidth_percent="0.4"
-        app:textSizeByPercent="1.5"
+        app:autoSizeTextType="uniform"
+        android:layout_margin="4dp"
         app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

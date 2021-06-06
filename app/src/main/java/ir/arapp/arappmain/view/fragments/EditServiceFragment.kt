@@ -29,7 +29,10 @@ class EditServiceFragment : Fragment() {
     var editServiceViewModel: EditServiceViewModel? = null
     var snackBarToast: SnackBarToast? = null
     private var timePickerBottomSheetFragment: TimePickerBottomSheetFragment? = null
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentEditServiceBinding = null
+    }
     //    endregion
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

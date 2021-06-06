@@ -21,7 +21,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentMyServiceBinding
 import ir.arapp.arappmain.model.Service
-import ir.arapp.arappmain.util.adapter.MyServiceAdapter
+import ir.arapp.arappmain.adapters.services.MyServiceAdapter
 import ir.arapp.arappmain.util.services.ItemClickListener
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentEditUserBinding
-import ir.arapp.arappmain.util.adapter.SpinnerAdapter
+import ir.arapp.arappmain.adapters.SpinnerAdapter
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.EditUserViewModel
@@ -33,6 +33,10 @@ class EditUserFragment : Fragment() {
     var snackBarToast: SnackBarToast? = null
     private var typeface: Typeface? = null
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentEditUserBinding = null
+    }
     //    endregion
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -15,15 +15,15 @@ import com.zhpan.bannerview.BannerViewPager
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentHomeBinding
 import ir.arapp.arappmain.model.Banner
-import ir.arapp.arappmain.util.adapter.BannerViewAdapter
-import ir.arapp.arappmain.util.adapter.BannerViewHolder
-import ir.arapp.arappmain.util.adapter.HighOrderServicesAdapter
-import ir.arapp.arappmain.util.adapter.HomeFragmentMainAdapter
-import ir.arapp.arappmain.util.adapter.HomeFragmentMainAdapter.RecyclerViewProperties
+import ir.arapp.arappmain.adapters.banner.BannerViewAdapter
+import ir.arapp.arappmain.adapters.banner.BannerViewHolder
+import ir.arapp.arappmain.adapters.services.ServiceByCategoryAdapter
+import ir.arapp.arappmain.adapters.HomeFragmentMainAdapter
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.HomeViewModel
 import java.util.*
+import java.util.concurrent.Executors
 
 class HomeFragment : Fragment(), OnSearchActionListener {
     //    region Variable
@@ -56,25 +56,28 @@ class HomeFragment : Fragment(), OnSearchActionListener {
         )
         //        Hooks
         bannerViewAdapter = BannerViewAdapter()
-        snackBarToast = SnackBarToast(fragmentHomeBinding!!.root)
+        snackBarToast = SnackBarToast(fragmentHomeBinding.root)
         //        bannerViewPager = fragmentHomeBinding.getRoot().findViewById(R.id.bannerView);
 //        Search View Material
-        fragmentHomeBinding!!.searchView.setArrowIcon(R.drawable.ic_arrow_forward_black_48dp)
-        fragmentHomeBinding!!.searchView.setOnSearchActionListener(this)
-        fragmentHomeBinding!!.searchView.setOnClickListener { view: View? -> onSearchClick() }
+        fragmentHomeBinding.searchView.setArrowIcon(R.drawable.ic_arrow_forward_black_48dp)
+        fragmentHomeBinding.searchView.setOnSearchActionListener(this)
+        fragmentHomeBinding.searchView.setOnClickListener { view: View? -> onSearchClick() }
         //HighOrderServiceRecyclerView
 
 //        mainRecyclerView = fragmentHomeBinding.getRoot().findViewById(R.id.main_recycler_view);
-        val adapter = HomeFragmentMainAdapter(requireContext())
-        for (i in 0..5) {
-            adapter.recyclerViewPropertiesList.add(RecyclerViewProperties(requireContext()))
+        Executors.newSingleThreadExecutor().execute {
+            requireActivity().runOnUiThread {
+                val adapter = HomeFragmentMainAdapter(requireContext())
+                fragmentHomeBinding!!.mainRecyclerView.adapter = adapter
+                val linearLayoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                linearLayoutManager.recycleChildrenOnDetach = true
+                fragmentHomeBinding!!.mainRecyclerView.layoutManager = linearLayoutManager
+            }
         }
-        adapter.notifyDataSetChanged()
-        fragmentHomeBinding!!.mainRecyclerView.adapter = adapter
-        val linearLayoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        linearLayoutManager.recycleChildrenOnDetach = true
-        fragmentHomeBinding!!.mainRecyclerView.layoutManager = linearLayoutManager
+
+
+
 
 //        Drawer Locked and visible Bottom navigation
         (requireActivity() as NavigationManager).setDrawerLocked(false)
@@ -85,7 +88,7 @@ class HomeFragment : Fragment(), OnSearchActionListener {
             { bannerItems: ArrayList<Banner> -> })
         homeViewModel!!.highOrderServicesAdapter.observe(
             viewLifecycleOwner,
-            { highOrderServicesAdapter1: HighOrderServicesAdapter? -> })
+            { highOrderServicesAdapter1: ServiceByCategoryAdapter? -> })
         //        Refresh layout
         liquidRefreshLayout()
         //        Return view

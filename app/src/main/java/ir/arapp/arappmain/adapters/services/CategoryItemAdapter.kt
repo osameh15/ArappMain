@@ -1,7 +1,7 @@
-package ir.arapp.arappmain.util.adapter
+package ir.arapp.arappmain.adapters.services
 
 import androidx.recyclerview.widget.RecyclerView
-import ir.arapp.arappmain.util.adapter.CategoryItemAdapter.CategoryItemViewHolder
+import ir.arapp.arappmain.adapters.services.CategoryItemAdapter.CategoryItemViewHolder
 import ir.arapp.arappmain.util.services.ItemClickListener
 import android.view.ViewGroup
 import android.view.LayoutInflater

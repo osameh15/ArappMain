@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.util.adapter
+package ir.arapp.arappmain.adapters
 
 import android.content.Context
 import android.graphics.Typeface

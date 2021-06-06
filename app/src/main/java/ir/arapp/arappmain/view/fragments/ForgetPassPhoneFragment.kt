@@ -26,6 +26,10 @@ class ForgetPassPhoneFragment : Fragment(), SnackBarMessage, FragmentManager {
     private var hideShowKeyboard: HideShowKeyboard? = null
     private var snackBarToast: SnackBarToast? = null
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentPhoneForgetPassBinding  = null
+    }
     //    endregion
     override fun onCreateView(
         inflater: LayoutInflater,

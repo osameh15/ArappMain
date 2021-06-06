@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.model.Banner
 import ir.arapp.arappmain.model.Service
-import ir.arapp.arappmain.util.adapter.HighOrderServicesAdapter
+import ir.arapp.arappmain.adapters.services.ServiceByCategoryAdapter
 import java.util.*
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
@@ -17,7 +17,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     var allBannerItems: MutableLiveData<ArrayList<Banner>>
 
     //    endregion
-    var highOrderServicesAdapter = MutableLiveData<HighOrderServicesAdapter>()
+    var highOrderServicesAdapter = MutableLiveData<ServiceByCategoryAdapter>()
     var highOrderServices: ArrayList<Service>? = null
 
     //    region Methods
@@ -36,7 +36,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         highOrderServices!!.add(item)
         item = Service(R.drawable.hotels, "جدید ترین سرویس ها", "تهران")
         highOrderServices!!.add(item)
-        highOrderServicesAdapter.postValue(HighOrderServicesAdapter(highOrderServices!!))
+        highOrderServicesAdapter.postValue(ServiceByCategoryAdapter(highOrderServices!!))
     }
 
     //    Set data to banner array list

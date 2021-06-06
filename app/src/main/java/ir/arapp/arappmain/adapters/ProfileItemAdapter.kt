@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.util.adapter
+package ir.arapp.arappmain.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import com.google.android.material.card.MaterialCardView
 import com.makeramen.roundedimageview.RoundedImageView
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.model.Profile
-import ir.arapp.arappmain.util.adapter.ProfileItemAdapter.ProfileItemViewHolder
+import ir.arapp.arappmain.adapters.ProfileItemAdapter.ProfileItemViewHolder
 import ir.arapp.arappmain.util.services.ItemClickListener
 import java.util.*
 

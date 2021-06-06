@@ -28,6 +28,10 @@ class ForgetPassValidateFragment : Fragment(), SnackBarMessage, FragmentManager 
     private var snackBarToast: SnackBarToast? = null
     private var hideShowKeyboard: HideShowKeyboard? = null
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentValidateForgetPassBinding = null
+    }
     //    endregion
     override fun onCreateView(
         inflater: LayoutInflater,

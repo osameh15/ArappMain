@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.util.adapter
+package ir.arapp.arappmain.adapters.banner
 
 import android.view.View
 import com.zhpan.bannerview.BaseBannerAdapter

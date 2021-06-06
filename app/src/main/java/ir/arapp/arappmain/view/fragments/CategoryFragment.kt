@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentCategoryBinding
 import ir.arapp.arappmain.model.Category
-import ir.arapp.arappmain.util.adapter.CategoryItemAdapter
+import ir.arapp.arappmain.adapters.services.CategoryItemAdapter
 import ir.arapp.arappmain.util.services.ItemClickListener
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
@@ -24,6 +24,10 @@ class CategoryFragment : Fragment(), ItemClickListener {
     private var categoryItemAdapter: CategoryItemAdapter? = null
     private var snackBarToast: SnackBarToast? = null
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentCategoryBinding = null
+    }
     //    endregion
     override fun onCreateView(
         inflater: LayoutInflater,
