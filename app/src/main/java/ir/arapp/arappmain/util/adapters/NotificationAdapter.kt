@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.adapters
+package ir.arapp.arappmain.util.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.makeramen.roundedimageview.RoundedImageView
 import com.ramotion.foldingcell.FoldingCell
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Notification
-import ir.arapp.arappmain.adapters.NotificationAdapter.NotificationViewHolder
+import ir.arapp.arappmain.model.base.Notification
+import ir.arapp.arappmain.util.adapters.NotificationAdapter.NotificationViewHolder
 import java.util.*
 
 class NotificationAdapter : RecyclerView.Adapter<NotificationViewHolder>() {

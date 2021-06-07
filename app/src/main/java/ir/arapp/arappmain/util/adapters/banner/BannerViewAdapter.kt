@@ -1,9 +1,9 @@
-package ir.arapp.arappmain.adapters.banner
+package ir.arapp.arappmain.util.adapters.banner
 
 import android.view.View
 import com.zhpan.bannerview.BaseBannerAdapter
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Banner
+import ir.arapp.arappmain.model.base.Banner
 import java.util.*
 
 class BannerViewAdapter : BaseBannerAdapter<Banner, BannerViewHolder>() {

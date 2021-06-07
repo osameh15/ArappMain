@@ -13,11 +13,13 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content"/>
     <TextView
+        android:fontFamily="@font/iransans_ultra_light"
+        android:textColor="@color/darkBack"
         android:id="@+id/category_name"
-        android:gravity="center"
+        android:gravity="center_vertical|right"
         android:text="دسته بندی سرویس"
         app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintWidth_percent="0.3"
         app:autoSizeTextType="uniform"
         android:layout_margin="4dp"
         app:layout_constraintBottom_toTopOf="@id/guideline"

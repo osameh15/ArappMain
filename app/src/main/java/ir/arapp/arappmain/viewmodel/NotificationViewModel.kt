@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Notification
+import ir.arapp.arappmain.model.base.Notification
 import java.util.*
 
 class NotificationViewModel(application: Application) : AndroidViewModel(application) {

@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.model
+package ir.arapp.arappmain.model.base
 
 import com.google.gson.annotations.SerializedName
 
@@ -75,14 +75,14 @@ class Service {
         this.deletedAt = deletedAt
     }
 
-    constructor(picture: Int, title: String, location: String) {
+    constructor(picture: Int, title: String, location: String, rate: Double) {
         id = 0
         user_id = 0
         this.picture = picture
         this.title = title
         subtitle = ""
         text = ""
-        rate = 0.0
+        this.rate = rate
         comments = 0
         this.location = location
         createdAt = ""

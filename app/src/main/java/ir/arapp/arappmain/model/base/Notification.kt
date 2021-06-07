@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.model
+package ir.arapp.arappmain.model.base
 
 import com.google.gson.annotations.SerializedName
 

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Profile
+import ir.arapp.arappmain.model.base.Profile
 import ir.arapp.arappmain.util.services.FragmentManager
 import ir.arapp.arappmain.util.services.SnackBarMessage
 import java.util.*

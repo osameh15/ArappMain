@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Category
+import ir.arapp.arappmain.model.base.Category
 import java.util.*
 
 class CategoryViewModel(application: Application) : AndroidViewModel(application) {

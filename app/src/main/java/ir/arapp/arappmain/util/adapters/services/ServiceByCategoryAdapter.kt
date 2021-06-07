@@ -1,38 +1,30 @@
-package ir.arapp.arappmain.adapters.services
+package ir.arapp.arappmain.util.adapters.services
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.ServicesItemLayoutBinding
-import ir.arapp.arappmain.model.Service
-import ir.arapp.arappmain.adapters.services.ServiceByCategoryAdapter.HighOrderServicesViewHolder
+import ir.arapp.arappmain.model.ServiceByCategory
+import ir.arapp.arappmain.model.base.Service
+import ir.arapp.arappmain.util.adapters.services.ServiceByCategoryAdapter.HighOrderServicesViewHolder
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ServiceByCategoryAdapter(var context: Context) : RecyclerView.Adapter<HighOrderServicesViewHolder>() {
+class ServiceByCategoryAdapter(val context: Context,_services: ArrayList<Service>) :
+    RecyclerView.Adapter<HighOrderServicesViewHolder>() {
 
     var orientation = LinearLayoutManager.HORIZONTAL
-
-
-    var imageDrawable: ArrayList<Bitmap?> = ArrayList()
-
-    init {
-
-
-            imageDrawable.add(BitmapFactory.decodeResource(context.resources, R.drawable.cafe))
-            imageDrawable.add(BitmapFactory.decodeResource(context.resources, R.drawable.hotels))
-            imageDrawable.add(BitmapFactory.decodeResource(context.resources, R.drawable.restaurant))
-
-
-    }
+    var services = _services
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -70,15 +62,19 @@ class ServiceByCategoryAdapter(var context: Context) : RecyclerView.Adapter<High
 
     override fun onBindViewHolder(holder: HighOrderServicesViewHolder, position: Int) {
         setWidthHeightByOrientation(holder.binding.root, orientation)
-        context?.let {
-            holder.binding.serviceImageView.setImageBitmap(imageDrawable[position % 3])
+        holder.binding.apply {
+            val service = services[position]
+            serviceItemLayoutTitleService.text = service.title
+            serviceItemLayoutRateService.text = service.rate.toString()
+            serviceItemLayoutPlaceTextview.text = service.location
+            Glide.with(context).load(service.picture).into(serviceImageView)
         }
 //        holder.binding.highOrderServicesPlaceTextview.setText(services.get(position).getLocation());
 //        holder.binding.highOrderServicesTitleService.setText(services.get(position).getTitle());
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return services.size
     }
 
     inner class HighOrderServicesViewHolder(val binding: ServicesItemLayoutBinding) :

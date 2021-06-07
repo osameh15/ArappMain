@@ -22,8 +22,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentProfileBinding
-import ir.arapp.arappmain.model.Profile
-import ir.arapp.arappmain.adapters.ProfileItemAdapter
+import ir.arapp.arappmain.model.base.Profile
+import ir.arapp.arappmain.util.adapters.ProfileItemAdapter
 import ir.arapp.arappmain.util.services.*
 import ir.arapp.arappmain.view.activities.AuthActivity
 import ir.arapp.arappmain.viewmodel.ProfileViewModel

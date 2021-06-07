@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentCategoryBinding
-import ir.arapp.arappmain.model.Category
-import ir.arapp.arappmain.adapters.services.CategoryItemAdapter
+import ir.arapp.arappmain.model.base.Category
+import ir.arapp.arappmain.util.adapters.services.CategoryItemAdapter
 import ir.arapp.arappmain.util.services.ItemClickListener
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast

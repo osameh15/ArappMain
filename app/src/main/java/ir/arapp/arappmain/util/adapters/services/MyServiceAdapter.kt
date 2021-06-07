@@ -1,4 +1,4 @@
-package ir.arapp.arappmain.adapters.services
+package ir.arapp.arappmain.util.adapters.services
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
 import com.makeramen.roundedimageview.RoundedImageView
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Service
-import ir.arapp.arappmain.adapters.services.MyServiceAdapter.MyServiceItemViewHolder
+import ir.arapp.arappmain.model.base.Service
+import ir.arapp.arappmain.util.adapters.services.MyServiceAdapter.MyServiceItemViewHolder
 import ir.arapp.arappmain.util.services.ItemClickListener
 import java.util.*
 
@@ -51,13 +51,13 @@ class MyServiceAdapter     //    endregion
             holder.rate.text = "-"
             holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_zero_shape)
         } else if (currentItem.rate < 2) {
-            holder.rate.text = java.lang.Double.toString(currentItem.rate)
+            holder.rate.text = currentItem.rate.toString()
             holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_min_shape)
         } else if (currentItem.rate < 4) {
-            holder.rate.text = java.lang.Double.toString(currentItem.rate)
+            holder.rate.text = currentItem.rate.toString()
             holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_normal_shape)
         } else if (currentItem.rate <= 5) {
-            holder.rate.text = java.lang.Double.toString(currentItem.rate)
+            holder.rate.text = currentItem.rate.toString()
             holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_max_shape)
         }
         holder.cardView.setOnClickListener { view: View? ->

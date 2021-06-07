@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="200dp"
-    android:layoutDirection="ltr">
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    tools:layout_height="200dp">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/service_image_card_view"
+    <ir.arapp.arappmain.view.utils.CustomCardView
+        android:id="@+id/service_item_layout_service_image_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        app:cardCornerRadius="16dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadiusByPercent="0.07"
+        app:cardCornerRadius="16dp"
+        app:cardCornerRadiusByPercent="0.09"
         app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="40:40"
@@ -26,12 +27,12 @@
             android:layout_height="match_parent"
             android:layoutDirection="locale">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/high_order_services_serviceImageContainer"
+            <ir.arapp.arappmain.view.utils.CustomCardView
+                android:id="@+id/service_item_layout_serviceImageContainer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:scaleType="centerCrop"
                 android:layout_margin="2dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/hotels"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
@@ -52,41 +53,42 @@
                         android:src="@drawable/hotels" />
 
                     <FrameLayout
-                        android:visibility="visible"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:background="@drawable/transparent_gradient"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@id/service_image_view"
                         app:layout_constraintEnd_toEndOf="@id/service_image_view"
                         app:layout_constraintStart_toStartOf="@id/service_image_view"
                         app:layout_constraintTop_toTopOf="@id/service_image_view" />
 
                     <TextView
-                        android:layout_margin="4dp"
-                        app:autoSizeTextType="uniform"
-                        android:id="@+id/high_order_services_titleService"
+                        android:id="@+id/service_item_layout_titleService"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_margin="4dp"
                         android:layout_marginEnd="8dp"
                         android:fontFamily="@font/iransans"
-                        android:gravity="center"
+                        android:gravity="center_vertical|start"
                         android:text="@string/my_service"
                         android:textColor="@color/colorAccentDarkNightMode"
-                        app:layout_constraintBottom_toBottomOf="@id/high_order_services_rateServiceFrameLayout"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintBottom_toBottomOf="@id/service_item_layout_rateServiceFrameLayout"
                         app:layout_constraintEnd_toEndOf="@id/service_image_view"
-                        app:layout_constraintStart_toEndOf="@id/high_order_services_rateServiceFrameLayout"
-                        app:layout_constraintTop_toTopOf="@id/high_order_services_rateServiceFrameLayout"
+                        app:layout_constraintStart_toEndOf="@id/service_item_layout_rateServiceFrameLayout"
+                        app:layout_constraintTop_toTopOf="@id/service_item_layout_rateServiceFrameLayout"
+                        app:layout_constraintWidth_percent="0.6"
                         tools:ignore="SmallSp" />
 
                     <androidx.cardview.widget.CardView
-                        android:layout_margin="4dp"
-                        app:cardCornerRadius="8dp"
-                        android:id="@+id/high_order_services_rateServiceFrameLayout"
+                        android:id="@+id/service_item_layout_rateServiceFrameLayout"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_margin="4dp"
                         android:background="@drawable/rate_zero_shape"
                         android:visibility="visible"
                         app:cardBackgroundColor="@color/gray_active_icon"
+                        app:cardCornerRadius="8dp"
                         app:cardCornerRadiusByPercent="0.25"
                         app:cardElevation="5dp"
                         app:layout_constraintBottom_toBottomOf="@id/service_image_view"
@@ -99,7 +101,7 @@
                         app:layout_constraintWidth_percent="0.2">
 
                         <TextView
-                            android:id="@+id/high_order_services_rateService"
+                            android:id="@+id/service_item_layout_rateService"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -113,12 +115,12 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </ir.arapp.arappmain.view.utils.CustomCardView>
 
             <!--            <com.makeramen.roundedimageview.RoundedImageView-->
             <!--                android:visibility="gone"-->
             <!--                app:layout_constraintHeight_percent="0.8"-->
-            <!--                android:id="@+id/high_order_services_serviceImageContainer"-->
+            <!--                android:id="@+id/service_item_layout_serviceImageContainer"-->
             <!--                android:layout_width="0dp"-->
             <!--                android:layout_height="0dp"-->
             <!--                android:scaleType="centerCrop"-->
@@ -135,16 +137,16 @@
 
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/high_order_services_loading"
+                android:id="@+id/service_item_layout_loading"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintEnd_toEndOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintStart_toStartOf="@id/high_order_services_serviceImageContainer"
-                app:layout_constraintTop_toTopOf="@id/high_order_services_serviceImageContainer"
+                app:layout_constraintBottom_toBottomOf="@id/service_item_layout_serviceImageContainer"
+                app:layout_constraintEnd_toEndOf="@id/service_item_layout_serviceImageContainer"
+                app:layout_constraintStart_toStartOf="@id/service_item_layout_serviceImageContainer"
+                app:layout_constraintTop_toTopOf="@id/service_item_layout_serviceImageContainer"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="loading.json"
                 app:lottie_loop="true"
@@ -157,10 +159,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/high_order_services_serviceImageContainer">
+                app:layout_constraintTop_toBottomOf="@id/service_item_layout_serviceImageContainer">
 
                 <ImageView
-                    android:id="@+id/high_order_services_comment_service_image"
+                    android:id="@+id/service_item_layout_comment_service_image"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_alignParentStart="true"
@@ -169,76 +171,102 @@
                     android:src="@drawable/ic_outline_mode_comment_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/high_order_services_end_guide_line"
-                    app:layout_constraintTop_toTopOf="@+id/high_order_services_bottom_service_guide_line" />
+                    app:layout_constraintStart_toStartOf="@+id/service_item_layout_end_guide_line"
+                    app:layout_constraintTop_toTopOf="@+id/service_item_layout_bottom_service_guide_line" />
 
                 <TextView
-                    android:id="@+id/high_order_services_commentService"
+                    android:id="@+id/service_item_layout_commentService"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:autoSizeTextType="uniform"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/high_order_services_comment_service_image"
+                    android:layout_toEndOf="@id/service_item_layout_comment_service_image"
                     android:fontFamily="@font/iransans_farsi_num"
                     android:gravity="center"
                     android:text="@string/arapp_coin_count"
                     android:textColor="@android:color/darker_gray"
+                    app:autoSizeTextType="uniform"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/high_order_services_end_guide_line"
-                    app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toStartOf="@+id/high_order_services_middle_vertical_guide_line"
-                    app:layout_constraintTop_toTopOf="@id/high_order_services_bottom_service_guide_line"
-                    app:layout_constraintWidth_percent="0.1" />
+                    app:layout_constraintEnd_toStartOf="@id/service_item_layout_end_guide_line"
+                    app:layout_constraintStart_toEndOf="@+id/service_item_layout_start_guide_line"
+                    app:layout_constraintTop_toTopOf="@id/service_item_layout_bottom_service_guide_line" />
 
                 <TextView
-                    android:id="@+id/high_order_services_place_textview"
+                    android:id="@+id/service_item_layout_place_textview"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:fontFamily="@font/iransans_ultra_light"
                     android:gravity="center"
                     android:text="place"
+                    app:autoSizeTextType="uniform"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/high_order_services_middle_vertical_guide_line"
+                    app:layout_constraintEnd_toStartOf="@id/service_item_layout_middle_vertical_guide_line"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/high_order_services_bottom_service_guide_line"
-                    app:autoSizeTextType="uniform"/>
+                    app:layout_constraintTop_toBottomOf="@id/service_item_layout_bottom_service_guide_line" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/service_item_layout_last_time_changed_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/service_item_layout_start_guide_line"
+                    app:layout_constraintStart_toEndOf="@id/service_item_layout_middle_vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        app:autoSizeMinTextSize="1sp"
+                        android:text="a minaute ago"
+                        android:id="@+id/service_item_layout_last_time_changed_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8"
+                        android:gravity="center"
+                        app:autoSizeTextType="uniform" />
+
+                    <androidx.constraintlayout.utils.widget.ImageFilterView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_access_time_24" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_middle_vertical_guide_line"
+                    android:id="@+id/service_item_layout_middle_vertical_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.26" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_start_guide_line"
+                    android:id="@+id/service_item_layout_start_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.13" />
+                    app:layout_constraintGuide_percent="0.75" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_middle_service_guide_line"
+                    android:id="@+id/service_item_layout_middle_service_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.61" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_bottom_service_guide_line"
+                    android:id="@+id/service_item_layout_bottom_service_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.0" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_end_guide_line"
+                    android:id="@+id/service_item_layout_end_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.84" />
+                    app:layout_constraintGuide_percent="0.9" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/high_order_services_top_service_guide_line"
+                    android:id="@+id/service_item_layout_top_service_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -246,7 +274,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </ir.arapp.arappmain.view.utils.CustomCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

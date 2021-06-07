@@ -14,16 +14,13 @@ import com.mancj.materialsearchbar.MaterialSearchBar.OnSearchActionListener
 import com.zhpan.bannerview.BannerViewPager
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentHomeBinding
-import ir.arapp.arappmain.model.Banner
-import ir.arapp.arappmain.adapters.banner.BannerViewAdapter
-import ir.arapp.arappmain.adapters.banner.BannerViewHolder
-import ir.arapp.arappmain.adapters.services.ServiceByCategoryAdapter
-import ir.arapp.arappmain.adapters.HomeFragmentMainAdapter
+import ir.arapp.arappmain.model.base.Banner
+import ir.arapp.arappmain.util.adapters.banner.BannerViewAdapter
+import ir.arapp.arappmain.util.adapters.banner.BannerViewHolder
+import ir.arapp.arappmain.util.adapters.services.AllServicesCategoryAdapter
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.HomeViewModel
-import java.util.*
-import java.util.concurrent.Executors
 
 class HomeFragment : Fragment(), OnSearchActionListener {
     //    region Variable
@@ -46,9 +43,8 @@ class HomeFragment : Fragment(), OnSearchActionListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 //        Inflate the layout for this fragment
-//        fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         _fragmentHomeBinding = FragmentHomeBinding.inflate(inflater, container, false)
         //        Set view model
         homeViewModel = ViewModelProvider(requireActivity()).get(
@@ -58,41 +54,40 @@ class HomeFragment : Fragment(), OnSearchActionListener {
         bannerViewAdapter = BannerViewAdapter()
         snackBarToast = SnackBarToast(fragmentHomeBinding.root)
         //        bannerViewPager = fragmentHomeBinding.getRoot().findViewById(R.id.bannerView);
-//        Search View Material
+        setUpViews()
+        //        Return view
+        return fragmentHomeBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpObservers()
+
+
+    }
+
+    private fun setUpObservers() {
+        homeViewModel?.apply {
+            homeAdapterDataLiveData.observe(viewLifecycleOwner) {
+                fragmentHomeBinding.mainRecyclerView.adapter =
+                    AllServicesCategoryAdapter(requireContext(), this@HomeFragment, it)
+                fragmentHomeBinding.mainRecyclerView.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+        }
+    }
+
+    private fun setUpViews() {
+        //        Search View Material
         fragmentHomeBinding.searchView.setArrowIcon(R.drawable.ic_arrow_forward_black_48dp)
         fragmentHomeBinding.searchView.setOnSearchActionListener(this)
         fragmentHomeBinding.searchView.setOnClickListener { view: View? -> onSearchClick() }
-        //HighOrderServiceRecyclerView
-
-//        mainRecyclerView = fragmentHomeBinding.getRoot().findViewById(R.id.main_recycler_view);
-        Executors.newSingleThreadExecutor().execute {
-            requireActivity().runOnUiThread {
-                val adapter = HomeFragmentMainAdapter(requireContext())
-                fragmentHomeBinding!!.mainRecyclerView.adapter = adapter
-                val linearLayoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                linearLayoutManager.recycleChildrenOnDetach = true
-                fragmentHomeBinding!!.mainRecyclerView.layoutManager = linearLayoutManager
-            }
-        }
-
-
-
-
-//        Drawer Locked and visible Bottom navigation
+        //        Drawer Locked and visible Bottom navigation
         (requireActivity() as NavigationManager).setDrawerLocked(false)
         (requireActivity() as NavigationManager).bottomNavigationVisibility(true)
         //        Set banner news
-        homeViewModel!!.allBannerItems.observe(
-            viewLifecycleOwner,
-            { bannerItems: ArrayList<Banner> -> })
-        homeViewModel!!.highOrderServicesAdapter.observe(
-            viewLifecycleOwner,
-            { highOrderServicesAdapter1: ServiceByCategoryAdapter? -> })
         //        Refresh layout
         liquidRefreshLayout()
-        //        Return view
-        return fragmentHomeBinding!!.root
     }
 
     //    region methods
@@ -120,7 +115,7 @@ class HomeFragment : Fragment(), OnSearchActionListener {
     //    Banner View Adapter
     private fun bannerAdapter() {
         bannerViewPager?.apply {
-            this.setOffScreenPageLimit(2)
+            setOffScreenPageLimit(2)
                 .setLifecycleRegistry(lifecycle)
                 .setAdapter(bannerViewAdapter)
                 .registerOnPageChangeCallback(object : OnPageChangeCallback() {

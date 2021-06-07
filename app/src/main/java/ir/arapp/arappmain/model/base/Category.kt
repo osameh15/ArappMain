@@ -1,8 +1,8 @@
-package ir.arapp.arappmain.model
+package ir.arapp.arappmain.model.base
 
 import com.google.gson.annotations.SerializedName
 
-class Category     //    endregion
+data class Category     //    endregion
 //    endregion
 //    region Methods
 //    Constructor

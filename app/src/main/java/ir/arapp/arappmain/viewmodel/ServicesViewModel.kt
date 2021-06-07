@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Service
+import ir.arapp.arappmain.model.base.Service
 import java.util.*
 
 class ServicesViewModel(application: Application) : AndroidViewModel(application) {

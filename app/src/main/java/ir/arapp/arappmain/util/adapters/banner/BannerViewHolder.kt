@@ -1,10 +1,10 @@
-package ir.arapp.arappmain.adapters.banner
+package ir.arapp.arappmain.util.adapters.banner
 
 import android.view.View
 import com.makeramen.roundedimageview.RoundedImageView
 import com.zhpan.bannerview.BaseViewHolder
 import ir.arapp.arappmain.R
-import ir.arapp.arappmain.model.Banner
+import ir.arapp.arappmain.model.base.Banner
 
 class BannerViewHolder(itemView: View) : BaseViewHolder<Banner>(itemView) {
     //        region Variables

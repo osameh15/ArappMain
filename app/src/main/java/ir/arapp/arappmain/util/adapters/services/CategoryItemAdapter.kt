@@ -1,7 +1,7 @@
-package ir.arapp.arappmain.adapters.services
+package ir.arapp.arappmain.util.adapters.services
 
 import androidx.recyclerview.widget.RecyclerView
-import ir.arapp.arappmain.adapters.services.CategoryItemAdapter.CategoryItemViewHolder
+import ir.arapp.arappmain.util.adapters.services.CategoryItemAdapter.CategoryItemViewHolder
 import ir.arapp.arappmain.util.services.ItemClickListener
 import android.view.ViewGroup
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.view.View
 import ir.arapp.arappmain.R
 import com.google.android.material.card.MaterialCardView
 import com.makeramen.roundedimageview.RoundedImageView
-import ir.arapp.arappmain.model.Category
+import ir.arapp.arappmain.model.base.Category
 import java.util.ArrayList
 
 class CategoryItemAdapter     //    endregion
