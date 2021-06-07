@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ir.arapp.arappmain.view.utils.CustomCardView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_width="80dp"
+    tools:layout_height="80dp"
+    android:layout_margin="4dp"
+    android:layout_gravity="center"
+    android:background="@drawable/rate_zero_shape"
+    android:visibility="visible"
+    app:cardBackgroundColor="@color/gray_active_icon"
+    app:cardCornerRadiusByPercent="0.5"
+    app:cardElevation="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHeight_percent="0.85"
+            app:layout_constraintWidth_percent="0.85"
+            android:id="@+id/rate_number_layout_rate_text_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/iransans_farsi_num"
+            android:gravity="center"
+            android:text="@string/rate_count"
+            android:textColor="@color/white"
+            app:autoSizeMinTextSize="1sp"
+            app:autoSizeTextType="uniform" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ir.arapp.arappmain.view.utils.CustomCardView>

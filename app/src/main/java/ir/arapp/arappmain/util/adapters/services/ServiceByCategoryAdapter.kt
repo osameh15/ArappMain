@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -65,7 +66,7 @@ class ServiceByCategoryAdapter(val context: Context,_services: ArrayList<Service
         holder.binding.apply {
             val service = services[position]
             serviceItemLayoutTitleService.text = service.title
-            serviceItemLayoutRateService.text = service.rate.toString()
+            serviceItemLayoutRateServiceFrameLayout.rate = service.rate
             serviceItemLayoutPlaceTextview.text = service.location
             Glide.with(context).load(service.picture).into(serviceImageView)
         }

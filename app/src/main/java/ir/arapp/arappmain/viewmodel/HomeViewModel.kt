@@ -47,9 +47,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         homeAdapterData.add(HomeAdapterViewHolderModel(SERVICE_BY_CATEGORY).apply {
             serviceByCategoryModel = ServiceByCategory(
                 arrayListOf(
-                    Service(R.drawable.cafe, "کافه", "رشت", 4.3),
+                    Service(R.drawable.cafe, "کافه", "رشت", 1.3),
                     Service(R.drawable.hotels, "هتل", "تنکابن", 2.4),
-                    Service(R.drawable.restaurant, "رستوران", "تهران", 2.3),
+                    Service(R.drawable.restaurant, "رستوران", "تهران", 1.3),
                     Service(R.drawable.hotels, "هتل", "کاشان", 3.2),
                     Service(R.drawable.fast_food, "فست فود", "رامسر", 5.0),
                 ),

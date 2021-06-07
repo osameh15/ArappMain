@@ -80,17 +80,11 @@
                         app:layout_constraintWidth_percent="0.6"
                         tools:ignore="SmallSp" />
 
-                    <androidx.cardview.widget.CardView
+                    <ir.arapp.arappmain.view.utils.RateNumberView
                         android:id="@+id/service_item_layout_rateServiceFrameLayout"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_margin="4dp"
-                        android:background="@drawable/rate_zero_shape"
-                        android:visibility="visible"
-                        app:cardBackgroundColor="@color/gray_active_icon"
-                        app:cardCornerRadius="8dp"
-                        app:cardCornerRadiusByPercent="0.25"
-                        app:cardElevation="5dp"
                         app:layout_constraintBottom_toBottomOf="@id/service_image_view"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="@id/service_image_view"
@@ -98,20 +92,39 @@
                         app:layout_constraintStart_toStartOf="@id/service_image_view"
                         app:layout_constraintTop_toTopOf="@id/service_image_view"
                         app:layout_constraintVertical_bias="0.95"
-                        app:layout_constraintWidth_percent="0.2">
+                        app:layout_constraintWidth_percent="0.2"/>
+<!--                    <androidx.cardview.widget.CardView-->
+<!--                        android:id="@+id/service_item_layout_rateServiceFrameLayout"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_margin="4dp"-->
+<!--                        android:background="@drawable/rate_zero_shape"-->
+<!--                        android:visibility="visible"-->
+<!--                        app:cardBackgroundColor="@color/gray_active_icon"-->
+<!--                        app:cardCornerRadius="8dp"-->
+<!--                        app:cardCornerRadiusByPercent="0.25"-->
+<!--                        app:cardElevation="5dp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@id/service_image_view"-->
+<!--                        app:layout_constraintDimensionRatio="1:1"-->
+<!--                        app:layout_constraintEnd_toEndOf="@id/service_image_view"-->
+<!--                        app:layout_constraintHorizontal_bias="0.05"-->
+<!--                        app:layout_constraintStart_toStartOf="@id/service_image_view"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/service_image_view"-->
+<!--                        app:layout_constraintVertical_bias="0.95"-->
+<!--                        app:layout_constraintWidth_percent="0.2">-->
 
-                        <TextView
-                            android:id="@+id/service_item_layout_rateService"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/iransans_farsi_num"
-                            android:gravity="center"
-                            android:text="@string/rate_count"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"
-                            app:autoSizeTextType="uniform" />
-                    </androidx.cardview.widget.CardView>
+<!--                        <TextView-->
+<!--                            android:id="@+id/service_item_layout_rateService"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:fontFamily="@font/iransans_farsi_num"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="@string/rate_count"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="14sp"-->
+<!--                            app:autoSizeTextType="uniform" />-->
+<!--                    </androidx.cardview.widget.CardView>-->
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
