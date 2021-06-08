@@ -5,18 +5,21 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    tools:layout_height="200dp">
+    tools:layout_height="220dp">
 
     <ir.arapp.arappmain.view.utils.CustomCardView
         android:id="@+id/service_item_layout_service_image_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="16dp"
         app:cardCornerRadiusByPercent="0.09"
         app:cardElevation="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/service_item_layout_bottom_card_view_guide"
         app:layout_constraintDimensionRatio="40:40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,102 +177,73 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/service_item_layout_serviceImageContainer">
 
-                <ImageView
-                    android:id="@+id/service_item_layout_comment_service_image"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_outline_mode_comment_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/service_item_layout_end_guide_line"
-                    app:layout_constraintTop_toTopOf="@+id/service_item_layout_bottom_service_guide_line" />
-
-                <TextView
-                    android:id="@+id/service_item_layout_commentService"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/service_item_layout_comment_service_image"
-                    android:fontFamily="@font/iransans_farsi_num"
-                    android:gravity="center"
-                    android:text="@string/arapp_coin_count"
-                    android:textColor="@android:color/darker_gray"
-                    app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/service_item_layout_end_guide_line"
-                    app:layout_constraintStart_toEndOf="@+id/service_item_layout_start_guide_line"
-                    app:layout_constraintTop_toTopOf="@id/service_item_layout_bottom_service_guide_line" />
-
-                <TextView
-                    android:id="@+id/service_item_layout_place_textview"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:fontFamily="@font/iransans_ultra_light"
-                    android:gravity="center"
-                    android:text="place"
-                    app:autoSizeTextType="uniform"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/service_item_layout_middle_vertical_guide_line"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/service_item_layout_bottom_service_guide_line" />
-
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/service_item_layout_last_time_changed_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/service_item_layout_start_guide_line"
-                    app:layout_constraintStart_toEndOf="@id/service_item_layout_middle_vertical_guide_line"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/service_item_layout_middle_vertical_guide_line"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
 
                     <TextView
-                        app:autoSizeMinTextSize="1sp"
-                        android:text="a minaute ago"
-                        android:id="@+id/service_item_layout_last_time_changed_text_view"
+                        android:layout_marginRight="4dp"
+                        android:id="@+id/service_item_layout_commentService"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="8"
-                        android:gravity="center"
-                        app:autoSizeTextType="uniform" />
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/iransans_farsi_num"
+                        android:gravity="center_vertical|right"
+                        android:text="456456"
+                        android:textColor="@android:color/darker_gray"
+                        app:autoSizeTextType="uniform"
+                        android:layout_weight="80" />
+                    <ImageView
+                        android:id="@+id/service_item_layout_comment_service_image"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_outline_mode_comment_24"
+                        android:layout_weight="19" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/service_item_layout_middle_vertical_guide_line"
+
+                    android:layout_width="0dp"
+                    android:layout_height="0dp">
+                    <TextView
+                        android:id="@+id/service_item_layout_place_textview"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/iransans_ultra_light"
+                        android:gravity="right|center_vertical"
+                        android:text="place"
+                        android:layout_weight="3"
+                        app:autoSizeTextType="uniform"/>
                     <androidx.constraintlayout.utils.widget.ImageFilterView
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_baseline_access_time_24" />
+                        android:layout_weight="1"
+                        app:tint="@color/light_gray_inactive_icon"
+                        android:src="@drawable/place_ic"
+                        android:layout_height="match_parent"/>
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/service_item_layout_middle_vertical_guide_line"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.26" />
+                    app:layout_constraintGuide_percent="0.55" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/service_item_layout_start_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.75" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/service_item_layout_middle_service_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.61" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/service_item_layout_bottom_service_guide_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.0" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/service_item_layout_end_guide_line"
@@ -288,6 +262,43 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ir.arapp.arappmain.view.utils.CustomCardView>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/service_item_layout_bottom_card_view_guide"
+        app:layout_constraintGuide_percent="0.93"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/service_item_layout_last_time_changed_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/service_item_layout_bottom_card_view_guide">
+        <TextView
+
+            app:autoSizeMinTextSize="1sp"
+            android:text="چند دقیقه قبل"
+            android:id="@+id/service_item_layout_last_time_changed_text_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center_vertical|start"
+            app:autoSizeTextType="uniform" />
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_access_time_24" />
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
