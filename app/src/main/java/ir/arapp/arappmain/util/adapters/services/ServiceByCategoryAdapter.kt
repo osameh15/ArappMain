@@ -1,23 +1,21 @@
 package ir.arapp.arappmain.util.adapters.services
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.ServicesItemLayoutBinding
-import ir.arapp.arappmain.model.ServiceByCategory
 import ir.arapp.arappmain.model.base.Service
 import ir.arapp.arappmain.util.adapters.services.ServiceByCategoryAdapter.HighOrderServicesViewHolder
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ServiceByCategoryAdapter(val context: Context,_services: ArrayList<Service>) :
+class ServiceByCategoryAdapter(
+    val context: Context,
+    _services: ArrayList<Service>
+) :
     RecyclerView.Adapter<HighOrderServicesViewHolder>() {
 
     var orientation = LinearLayoutManager.HORIZONTAL
