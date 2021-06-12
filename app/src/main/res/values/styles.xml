@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="service_horizontal_item">
+        <item name="drawableTint">@color/light_gray_inactive_icon</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="autoSizeMaxTextSize">30sp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">1sp</item>
+        <item name="fontFamily">@font/iransans_ultra_light</item>
+    </style>
+</resources>

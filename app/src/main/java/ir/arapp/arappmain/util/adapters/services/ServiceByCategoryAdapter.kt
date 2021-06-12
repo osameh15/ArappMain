@@ -1,6 +1,7 @@
 package ir.arapp.arappmain.util.adapters.services
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import ir.arapp.arappmain.databinding.ServicesItemLayoutBinding
 import ir.arapp.arappmain.model.base.Service
 import ir.arapp.arappmain.util.adapters.services.ServiceByCategoryAdapter.HighOrderServicesViewHolder
+import ir.arapp.arappmain.view.activities.ServiceActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -67,6 +69,10 @@ class ServiceByCategoryAdapter(
             serviceItemLayoutRateServiceFrameLayout.rate = service.rate
             serviceItemLayoutPlaceTextview.text = service.location
             Glide.with(context).load(service.picture).into(serviceImageView)
+            holder.binding.root.setOnClickListener {
+                val intent = Intent(context,ServiceActivity::class.java)
+                context.startActivity(intent)
+            }
         }
 //        holder.binding.highOrderServicesPlaceTextview.setText(services.get(position).getLocation());
 //        holder.binding.highOrderServicesTitleService.setText(services.get(position).getTitle());
