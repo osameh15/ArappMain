@@ -91,3 +91,98 @@ class Service {
     }
     //    endregion
 }
+
+
+class SendService {
+
+    @SerializedName("title")
+    var title: String
+
+    @SerializedName("start_time")
+    var startTime = "22:30"
+
+    @SerializedName("end_time")
+    var endTime = "23:30"
+
+    @SerializedName("category_id")
+    var categoryId: Int = 1
+
+    @SerializedName("address")
+    var address: String = "تهران - میدان انقلاب"
+
+    @SerializedName("summry")
+    var summry: String = "summry"
+
+    @SerializedName("birth")
+    var birth : Int = 10
+
+    @SerializedName("description")
+    var description: String = "description"
+
+
+    @SerializedName("avatar")
+    var picture: String
+
+    constructor(picture: String, title: String) {
+        this.picture = picture
+        this.title = title
+    }
+
+}
+class CompletedService {
+
+    @SerializedName("created_at")
+    var createdAt:String = ""
+
+    @SerializedName("rate")
+    var rate:String = ""
+
+
+    @SerializedName("updated_at")
+    var updatedAt:String = ""
+
+    @SerializedName("id")
+    var id:Int = 0
+
+    @SerializedName("user_id")
+    var userId:Int = 0
+
+    @SerializedName("status")
+    var status:String = ""
+
+
+
+    @SerializedName("title")
+    var title: String = ""
+
+    @SerializedName("start_time")
+    var startTime = "22:30"
+
+    @SerializedName("end_time")
+    var endTime = "23:30"
+
+    @SerializedName("category_id")
+    var categoryId: Int = 1
+
+    @SerializedName("address")
+    var address: String = "تهران - میدان انقلاب"
+
+    @SerializedName("summry")
+    var summry: String = "summry"
+
+    @SerializedName("birth")
+    var birth : Int = 10
+
+    @SerializedName("description")
+    var description: String = "description"
+
+
+    @SerializedName("avatar")
+    var picture: String
+
+    constructor(picture: String, title: String) {
+        this.picture = picture
+        this.title = title
+    }
+
+}
