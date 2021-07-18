@@ -44,7 +44,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.hotels, "هتل", "کاشان", 3.2),
                     Service(R.drawable.fast_food, "فست فود", "رامسر", 5.0),
                 ),
-                Category(0, "ویژه", 0)
+                Category(0, "ویژه")
             )
         })
         homeAdapterData.add(HomeAdapterViewHolderModel(SERVICE_BY_CATEGORY).apply {
@@ -56,7 +56,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.fast_food, "فست فود", "رامسر", 4.93),
                     Service(R.drawable.shops, "هتل", "تنکابن", 4.4),
                 ),
-                Category(0, "محبوب ترین ها", 0)
+                Category(0, "محبوب ترین ها")
             )
         })
         homeAdapterData.add(HomeAdapterViewHolderModel(BANNER).apply {
@@ -77,7 +77,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.cafe, "کافه", "رشت", 4.3),
                     Service(R.drawable.shops, "هتل", "تنکابن", 4.4),
                 ),
-                Category(0, "رستوران", 0)
+                Category(0, "رستوران")
             )
         })
 
@@ -90,7 +90,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.restaurant, "رستوران", "تهران", 4.3),
                     Service(R.drawable.cafe, "کافه", "رشت", 4.3),
                 ),
-                Category(0, "فست فود", 0)
+                Category(0, "فست فود")
             )
         })
         homeAdapterData.add(HomeAdapterViewHolderModel(SERVICE_BY_CATEGORY).apply {
@@ -102,7 +102,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.hotels, "هتل", "کاشان", 3.2),
                     Service(R.drawable.hotels, "هتل", "تنکابن", 4.4),
                 ),
-                Category(0, "کافه", 0)
+                Category(0, "کافه")
             )
         })
         homeAdapterData.add(HomeAdapterViewHolderModel(SERVICE_BY_CATEGORY).apply {
@@ -114,7 +114,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.hotels, "هتل", "کاشان", 3.2),
                     Service(R.drawable.hotels, "هتل", "تنکابن", 4.4),
                 ),
-                Category(0, "هتل", 0)
+                Category(0, "هتل")
             )
         })
         homeAdapterData.add(HomeAdapterViewHolderModel(SERVICE_BY_CATEGORY).apply {
@@ -126,7 +126,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.hotels, "هتل", "کاشان", 3.2),
                     Service(R.drawable.hotels, "هتل", "تنکابن", 4.4),
                 ),
-                Category(0, "مسافرخانه", 0)
+                Category(0, "مسافرخانه")
             )
         })
         homeAdapterData.add(HomeAdapterViewHolderModel(SERVICE_BY_CATEGORY).apply {
@@ -138,7 +138,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     Service(R.drawable.hotels, "هتل", "کاشان", 3.2),
                     Service(R.drawable.hotels, "هتل", "تنکابن", 4.4),
                 ),
-                Category(0, "مرکز خرید", 0)
+                Category(0, "مرکز خرید")
             )
         })
         homeAdapterData.add(HomeAdapterViewHolderModel(BANNER).apply {

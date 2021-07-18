@@ -16,9 +16,7 @@ import com.google.gson.GsonBuilder
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.ActivitySplashScreenBinding
 import ir.arapp.arappmain.model.AllServices
-import ir.arapp.arappmain.model.base.GetService
-import ir.arapp.arappmain.model.base.ResponseModel
-import ir.arapp.arappmain.model.base.SendService
+import ir.arapp.arappmain.model.base.*
 import ir.arapp.arappmain.util.server.Api
 import ir.arapp.arappmain.util.services.SessionManager
 import okhttp3.ResponseBody
@@ -59,16 +57,86 @@ class SplashScreenActivity : AppCompatActivity() {
 //                Log.i("ResponseTAG", "get service onFailure: ${t.message}")
 //            }
 //        })
+//        api.resendUser(RegisterResult(6)).enqueue(object:Callback<ResponseModel<RegisterResult>>{
+//            override fun onResponse(
+//                call: Call<ResponseModel<RegisterResult>>,
+//                response: Response<ResponseModel<RegisterResult>>
+//            ) {
+//                Log.i("ResponseTAG", "get service onResponse: ${response.isSuccessful}")
+//                Log.i("ResponseTAG", "get service onResponse: ${response.errorBody()?.string()}")
+//            }
+//
+//            override fun onFailure(call: Call<ResponseModel<RegisterResult>>, t: Throwable) {
+//                Log.i("ResponseTAG", "get service onFailure: ${t.message}")
+//            }
+//        })
 
-//        api.getAllServices().enqueue(object : Callback<AllServices> {
-//            override fun onResponse(call: Call<AllServices>, response: Response<AllServices>) {
+        api.verifyUser(Verify(6,23453)).enqueue(object:Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                Log.i("ResponseTAG", "get service onResponse: ${response.isSuccessful}")
+                Log.i("ResponseTAG", "get service onResponse: ${response.errorBody()?.string()}")
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.i("ResponseTAG", "get service onFailure: ${t.message}")
+            }
+        })
+
+
+
+
+
+//        api.registerUser(registerBody = RegisterBody("09361051762"))
+//            .enqueue(object : Callback<ResponseModel<RegisterResult>> {
+//                override fun onResponse(
+//                    call: Call<ResponseModel<RegisterResult>>,
+//                    response: Response<ResponseModel<RegisterResult>>
+//                ) {
+//                    if (response.isSuccessful)
+//                        Log.i(
+//                            "ResponseTAG",
+//                            " remove service successfull:   ${response.body()}"
+//                        )
+//                    else Log.i(
+//                        "ResponseTAG",
+//                        "remove service: ${response.code()}  ${response.errorBody()?.string()}"
+//                    )
+//                }
+//
+//                override fun onFailure(call: Call<ResponseModel<RegisterResult>>, t: Throwable) {
+//                    Log.i("ResponseTAG", " remove service onFailure:   ${t.message}")
+//                }
+//            })
+//        api.getAllServices().enqueue(object : Callback<ResponseModel<GetAllServices>> {
+//            override fun onResponse(call: Call<ResponseModel<GetAllServices>>, response: Response<ResponseModel<GetAllServices>>) {
 //                response.body()?.let {
 //                    Log.i("ResponseTAG", " $it")
 //                }
 //            }
 //
-//            override fun onFailure(call: Call<AllServices>, t: Throwable) {
+//            override fun onFailure(call: Call<ResponseModel<GetAllServices>>, t: Throwable) {
 //                Log.i("ResponseTAG", "onFailure ${t.message}")
+//            }
+//        })
+
+//        api.getAllCategory().enqueue(object:Callback<ResponseModel<GetAllCategories>>{
+//            override fun onResponse(
+//                call: Call<ResponseModel<GetAllCategories>>,
+//                response: Response<ResponseModel<GetAllCategories>>
+//            ) {
+//                if (response.isSuccessful)
+//                    Log.i(
+//                        "ResponseTAG",
+//                        " remove service successfull:   ${response.body()}"
+//                    )
+//                else Log.i(
+//                    "ResponseTAG",
+//                    "remove service: ${response.code()}  ${response.errorBody()?.string()}"
+//                )
+//            }
+//
+//            override fun onFailure(call: Call<ResponseModel<GetAllCategories>>, t: Throwable) {
+//                Log.i("ResponseTAG", " remove service onFailure:   ${t.message}")
 //            }
 //        })
 

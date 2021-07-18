@@ -44,3 +44,49 @@ class User     //    endregion
     ) var updatedAt: String, //    endregion
     @field:SerializedName("deletedAt") var deletedAt: String
 )
+
+class UserInfo {
+    constructor(
+        name: String,
+        email: String,
+        serviceType: String,
+        password: String,
+        passwordConfirmation: String,
+        token: String
+    ) : this(name, email, password, passwordConfirmation, token) {
+        this.serviceType = serviceType
+    }
+
+    constructor(
+        name: String,
+        email: String,
+        password: String,
+        passwordConfirmation: String,
+        token: String
+    ) {
+        this.email = email
+        this.name = name
+        this.password = password
+        this.passwordConfirmation = passwordConfirmation
+        this.token = token
+        this.serviceType = "provider"
+    }
+
+    @SerializedName("name")
+    var name: String? = null
+
+    @SerializedName("email")
+    var email: String? = null
+
+    @SerializedName("service_type")
+    var serviceType: String? = null
+
+    @SerializedName("password")
+    var password: String? = null
+
+    @SerializedName("password_confirmation")
+    var passwordConfirmation: String? = null
+
+    @SerializedName("token")
+    var token: String? = null
+}

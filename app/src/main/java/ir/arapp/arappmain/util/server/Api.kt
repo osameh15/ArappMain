@@ -1,10 +1,7 @@
 package ir.arapp.arappmain.util.server
 
 import ir.arapp.arappmain.model.AllServices
-import ir.arapp.arappmain.model.base.GetService
-import ir.arapp.arappmain.model.base.ResponseModel
-import ir.arapp.arappmain.model.base.SendService
-import ir.arapp.arappmain.model.base.Service
+import ir.arapp.arappmain.model.base.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -24,7 +21,7 @@ interface Api {
     }
 
     @GET("api/get-all-services")
-    fun getAllServices(): Call<AllServices>
+    fun getAllServices(): Call<ResponseModel<GetAllServices>>
 
     @POST("api/add-new-service")
     fun addNewService(
@@ -70,6 +67,82 @@ interface Api {
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "Accept" to "application/json",
         )
-    )
+    ):Call<ResponseModel<GetAllCategories>>
+
+//  register api
+    @POST("api/register")
+    fun registerUser(
+        @Body registerBody:RegisterBody,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ):Call<ResponseModel<RegisterResult>>
+    @POST("api/resend")
+    fun resendUser(
+        @Body registerBody:RegisterResult,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ):Call<ResponseModel<RegisterResult>>
+
+    @POST("api/verify")
+    fun verifyUser(
+        @Body verify:Verify,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )):Call<ResponseBody>
+
+    @POST("api/set-user-information")
+    fun setUserInfo(
+        @Body userInfo: UserInfo,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ):Call<ResponseBody>
+
+
+    @POST("api/login")
+    fun loginUser(
+        @Body loginMobile: LoginMobile,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ):Call<ResponseBody>
+
+
+    @POST("api/forget-request")
+    fun forgetRequest(
+        @Body number: RegisterBody,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ):Call<ResponseBody>
+
+    @POST("api/verify-forgot-password-code")
+    fun verifyForgotPasswordCode(
+        @Body verify: Verify,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ):Call<ResponseBody>
+
+    @POST("api/set-new-password")
+    fun setNewPassword(
+        @Body newPassword: NewPassword,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ):Call<ResponseBody>
+
+
+
 
 }

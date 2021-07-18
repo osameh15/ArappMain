@@ -1,6 +1,7 @@
 package ir.arapp.arappmain.model.base
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 class Service {
     //    region Setter
@@ -121,10 +122,10 @@ class SendService {
 
 
     @SerializedName("avatar")
-    var picture: String
+    var pictureBase64: String?= null
 
-    constructor(picture: String, title: String) {
-        this.picture = picture
+    constructor(pictureBase64: String, title: String) {
+        this.pictureBase64 = pictureBase64
         this.title = title
     }
 
@@ -149,7 +150,6 @@ class CompletedService {
 
     @SerializedName("status")
     var status:String = ""
-
 
 
     @SerializedName("title")
@@ -178,11 +178,6 @@ class CompletedService {
 
 
     @SerializedName("avatar")
-    var picture: String
-
-    constructor(picture: String, title: String) {
-        this.picture = picture
-        this.title = title
-    }
+    var pictureUrl: String? = null
 
 }

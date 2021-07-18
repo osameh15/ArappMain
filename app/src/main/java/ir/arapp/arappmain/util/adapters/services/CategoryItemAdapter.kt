@@ -31,12 +31,12 @@ class CategoryItemAdapter     //    endregion
 //        get current item in category
         val currentItem = categories[position]
         //        Set data and update xml
-        holder.roundedImageView.setImageResource(currentItem.picture)
+//        holder.roundedImageView.setImageResource(currentItem.picture)
         holder.cardView.setOnClickListener { view: View? ->
             itemClickListener!!.onItemClickListener(
                 this.view,
-                currentItem.id,
-                currentItem.name
+                currentItem.id?:0,
+                currentItem.title
             )
         }
     }

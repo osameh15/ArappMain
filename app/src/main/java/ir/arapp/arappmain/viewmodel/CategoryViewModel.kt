@@ -24,13 +24,18 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
 
     //    Set data to category array list
     private fun populateList() {
-//        TODO connect to server
-        categories.add(Category(1, "رستوران", R.drawable.restaurant))
-        categories.add(Category(2, "فست فود", R.drawable.fast_food))
-        categories.add(Category(3, "کافه", R.drawable.cafe))
-        categories.add(Category(4, "هتل", R.drawable.hotels))
-        categories.add(Category(5, "مسافرخانه", R.drawable.rest_room))
-        categories.add(Category(6, "مراکز خرید", R.drawable.shops))
+        categories.add(Category(1, "رستوران"))
+        categories.add(Category(2, "فست فود"))
+        categories.add(Category(3, "کافه"))
+        categories.add(Category(4, "هتل"))
+        categories.add(Category(5, "مسافرخانه"))
+        categories.add(Category(6, "مراکز خرید"))
+//        categories.add(Category( 1, "رستوران", R.drawable.restaurant))
+//        categories.add(Category(2, "فست فود", R.drawable.fast_food))
+//        categories.add(Category(3, "کافه", R.drawable.cafe))
+//        categories.add(Category(4, "هتل", R.drawable.hotels))
+//        categories.add(Category(5, "مسافرخانه", R.drawable.rest_room))
+//        categories.add(Category(6, "مراکز خرید", R.drawable.shops))
     }
 
     //    endregion

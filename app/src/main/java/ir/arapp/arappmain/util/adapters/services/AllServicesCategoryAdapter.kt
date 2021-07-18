@@ -68,7 +68,7 @@ class AllServicesCategoryAdapter(
         if (holder is ServiceByCategoryHolder) {
             holder.binding.apply {
                 viewHolderModels[position].serviceByCategoryModel?.let {
-                    categoryName.text = it.category.name
+                    categoryName.text = it.category.title
                     recyclerView.adapter?.let { adapter ->
                         if (adapter is ServiceByCategoryAdapter) {
                             adapter.services = it.services
