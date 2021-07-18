@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 class GetService {
     @SerializedName("service")
-    var service: CompletedService? = null
+    var serviceData: GetServiceData? = null
 }
 
 class GetAllServices {
-    var services = ArrayList<CompletedService>()
+    var services = ArrayList<GetServiceData>()
 }
 
 class NewPassword{

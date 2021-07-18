@@ -94,62 +94,65 @@ class Service {
 }
 
 
-class SendService {
+class PostServiceData {
 
     @SerializedName("title")
-    var title: String
+    var title: String? = null
 
     @SerializedName("start_time")
-    var startTime = "22:30"
+    var startTime :String? = null
 
     @SerializedName("end_time")
-    var endTime = "23:30"
+    var endTime :String? = null
 
     @SerializedName("category_id")
     var categoryId: Int = 1
 
     @SerializedName("address")
-    var address: String = "تهران - میدان انقلاب"
+    var address: String? = null
 
     @SerializedName("summry")
-    var summry: String = "summry"
+    var summary: String? = null
 
     @SerializedName("birth")
-    var birth : Int = 10
+    var birth: Int = 10
 
     @SerializedName("description")
-    var description: String = "description"
+    var description: String? = null
 
 
     @SerializedName("avatar")
-    var pictureBase64: String?= null
+    var pictureBase64: String? = null
 
     constructor(pictureBase64: String, title: String) {
         this.pictureBase64 = pictureBase64
         this.title = title
     }
 
+    constructor()
+
 }
-class CompletedService {
+
+class GetServiceData {
 
     @SerializedName("created_at")
-    var createdAt:String = ""
+    var createdAt: String = ""
 
     @SerializedName("rate")
-    var rate:String = ""
+    var rate: String = ""
 
 
     @SerializedName("updated_at")
-    var updatedAt:String = ""
+    var updatedAt: String = ""
 
     @SerializedName("id")
-    var id:Int = 0
+    var id: Int = 0
 
     @SerializedName("user_id")
-    var userId:Int = 0
+    var userId: Int = 0
 
     @SerializedName("status")
-    var status:String = ""
+    var status: String = ""
 
 
     @SerializedName("title")
@@ -171,7 +174,7 @@ class CompletedService {
     var summry: String = "summry"
 
     @SerializedName("birth")
-    var birth : Int = 10
+    var birth: Int = 10
 
     @SerializedName("description")
     var description: String = "description"

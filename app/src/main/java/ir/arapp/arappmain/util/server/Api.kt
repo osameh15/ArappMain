@@ -1,6 +1,5 @@
 package ir.arapp.arappmain.util.server
 
-import ir.arapp.arappmain.model.AllServices
 import ir.arapp.arappmain.model.base.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -10,14 +9,16 @@ interface Api {
     companion object {
         val BaseUrl = "http://arrapp.herokuapp.com/"
         var userToken =
-            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWIxM2RiMmYyZmM4MzJjYzZiMmRiM2M1NzJjNWE2NGE2ZWNkYzJiZjh" +
-                    "mMmI5ZTRhNGVmZTU2NzExY2VlNzU0YWYxM2U0MDk4ZGJlYjU5ODkiLCJpYXQiOjE2MjY1MDI1NTkuMjMzMzI5LCJuYmYiOjE2MjY1MDI1NTkuMjMzMzMz" +
-                    "LCJleHAiOjE2NTgwMzg1NTkuMjI4NTg2LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.aL6x2P5FpAU9Uktq4lYc0RolXBCaaiX87y0R9us9hBYnI27ISiZ4Pc" +
-                    "ZcDclz5OHPsd3Kt0wLM8JyvrVBq0_A_SOb_KyZwWjB83UESO_B1J1nT7cPmN-7iyhHDyY742WwwckEohNaYwQBUsBFi5Z9qMmvha0d66z5VIO7GBS8c8TXn-m" +
-                    "PJe1inCbVLXyYwEha5AiG6hNfo7_zE4nLroQ3bAE3SiDpqbDvMQwzSNuyPRSJYiPV6APz2iAg0lP9ncXWKnt-uNL59Eu_OboQ12glWqoYNjoAuXDmP4X5Uz3jnof" +
-                    "9wyyNTcpkRhtXlPK0ZMnj5FtnLy29iiwqxHnCyYwaVxdCt4dB7lHYx9wNF23ZCWWTP1PC1uFUNKnqQ8y5UfAnAvUBlRqBomMuCSDP-1juqdr1-rOVpZSOVen" +
-                    "XQP5cW4uYPnhr9HeoeqllyxQM4-B-UMKTnRjOwYS_m2oq68UNLXOARTQfPeUDvMVNiy17KBOUu-VuIUaIeTyRSZ-mccPOFKIPKF3MGdixj1cDr3z1-ASaGRjphf7NCq8z7-ZTS" +
-                    "0j82P_05sTvlzu4X-3sHM7Rcr2XOHKJN3Rw5FH4nFpCxVXUZmUXcb-R-4B5XVGepAsNqWTabR7O71WPOeho6kKYu7SzPtxLZkBPO220sFlQAkDY7jNP_sncFssWDma9IDM"
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2U3ZjNmMzVjNGEzOTAxZmY" +
+                    "yNTc0Mjc1OTcwOWM3YWJlZGE1YTBmOGRjZmRmZDhhZTFkZjlmNGM2N2JmNjIwMjY5ZGU3ZWNlMGM3Y2Q5MjMiL" +
+                    "CJpYXQiOjE2MjY2MzE5ODYuMTc4ODAyLCJuYmYiOjE2MjY2MzE5ODYuMTc4ODA4LCJleHAiOjE2NTgxNjc5ODYuMTcyN" +
+                    "jc0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.m4FuIQWvAiEHzo-j4Jug7WNUQVij33wgVTdr76o00EC8CPvtugdEmuRWmEj1" +
+                    "Gh4ETt5pFQG6neJWnWtU0_zalr7S-yIZ4N82YXlKL16XU3XNuVE9D49q0S-PFkBGckBks7xo0glotmh_lSGY2GN1jRLzXGVz_" +
+                    "buTFCzTMiy9-cNGZWY6EOcikycuiLT5kn1vGWzpEcP1sudZZ1O8p6OrGjHDgXRX_vgTtH17Zlbp0MZn3tcauMGYXntcwRTd" +
+                    "2KipvReuawJCZM-ZGPg7QCoQP23iU0LdWxMQOC0I04-gZSVYnaer4M4cA_7j91JwcwYYnH64OT6knwYxUnbqy9oMFfYGxhOETX" +
+                    "jwjU8phKZV7cRpOWkNkOFprrItdi4furGNWnqHDUqdiddp-gNghrCuThGZPOiC5eJdAvlf1bzJT_oKfTSlVjmE7pPDkDxytq" +
+                    "IrrlwIKT2B4UaO1g4ArJA4lPprNo4-qbIkm82TxRrrUG8YhphqIzeCWh7asXeIVdJJjnuZKbA5YZxNso-EnydxXI2koF9rSH6_RTQ7xAqU1AH0KAtka5nZ" +
+                    "4D0kdiizBct0WkiQBLWAudf6YDATpgiYRV6KgDAEUmyPBOdJaaBZ2pNwLXAcN1syTWMOhf-TTRpnom4Q3w_ZSayhrvIJ6bcu3gd9nBXksKY_Jt16uBUd_Hk"
     }
 
     @GET("api/get-all-services")
@@ -25,13 +26,13 @@ interface Api {
 
     @POST("api/add-new-service")
     fun addNewService(
-        @Body service: SendService,
+        @Body serviceData: PostServiceData,
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "authorization" to userToken,
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ): Call<SendService>
+    ): Call<PostServiceData>
 
     @DELETE("api/delete-service/{service_id}")
     fun deleteServiceById(
@@ -54,13 +55,13 @@ interface Api {
     @POST("api/update-service/{service_id}")
     fun updateService(
         @Path("service_id",encoded = true) id:Int,
-        @Body service:SendService,
+        @Body serviceData:PostServiceData,
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "authorization" to userToken,
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ): Call<SendService>
+    ): Call<PostServiceData>
 
     @GET("api/get-all-category")
     fun getAllCategory(

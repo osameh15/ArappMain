@@ -102,6 +102,7 @@
                             android:gravity="center_vertical|start"
                             android:hint="@string/name_service">
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/service_title_edit_text"
                                 style="@style/EditTextStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -126,6 +127,7 @@
                             android:gravity="center_vertical|start"
                             android:hint="@string/subtitle_service">
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/add_service_summary_edit_text"
                                 style="@style/EditTextStyle"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -151,6 +153,7 @@
                             android:hint="@string/text_service">
                             <com.google.android.material.textfield.TextInputEditText
                                 style="@style/EditTextStyle"
+                                android:id="@+id/service_description_edit_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:inputType="textMultiLine|textCapSentences"
@@ -175,6 +178,7 @@
                             android:hint="@string/address_service">
                             <com.google.android.material.textfield.TextInputEditText
                                 style="@style/EditTextStyle"
+                                android:id="@+id/service_address_edit_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:inputType="textMultiLine|textCapSentences"
@@ -385,6 +389,7 @@
 <!--                Submit Button-->
                 <com.marozzi.roundbutton.RoundButton
                     style="@style/ButtonLoading"
+                    android:id="@+id/add_service_confirm_button"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginStart="14dp"

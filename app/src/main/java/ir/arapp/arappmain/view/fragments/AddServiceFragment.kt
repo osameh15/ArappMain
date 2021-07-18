@@ -1,13 +1,19 @@
 package ir.arapp.arappmain.view.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Base64.DEFAULT
+import android.util.Base64.encodeToString
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,10 +21,16 @@ import com.arappmain.radialtimepicker.PageData.ClockArrow
 import com.arappmain.radialtimepicker.TimePickerBottomSheetFragment
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentAddServiceBinding
+import ir.arapp.arappmain.model.base.PostServiceData
 import ir.arapp.arappmain.util.adapters.SpinnerAdapter
+import ir.arapp.arappmain.util.server.Retrofit
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.AddServiceViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.ByteArrayOutputStream
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
@@ -72,7 +84,47 @@ class AddServiceFragment : Fragment() {
         spinnerAdapter()
         //        Time Picker
         timePicker()
-        //        Return View
+
+
+        fragmentAddServiceBinding.addServiceConfirmButton.setOnClickListener {
+            Toast.makeText(requireContext(), "pressConfirmation", Toast.LENGTH_SHORT).show()
+            val serviceData = PostServiceData()
+            serviceData.title = fragmentAddServiceBinding.serviceTitleEditText.text?.toString()
+            serviceData.address = fragmentAddServiceBinding.serviceAddressEditText.text?.toString()
+            serviceData.description =
+                fragmentAddServiceBinding.serviceDescriptionEditText.text?.toString()
+            serviceData.summary =
+                fragmentAddServiceBinding.addServiceSummaryEditText.text?.toString()
+            serviceData.startTime = addServiceViewModel?.startTime
+            serviceData.endTime = addServiceViewModel?.endTime
+            var bitmap =
+                ResourcesCompat.getDrawable(resources, R.drawable.add_service, null)?.toBitmap()
+            bitmap?.let { bitmap ->
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+                val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
+                val encoded: String =
+                    encodeToString(byteArray, DEFAULT)
+                serviceData.pictureBase64 = encoded
+                Retrofit.api.addNewService(serviceData).enqueue(object : Callback<PostServiceData> {
+                    override fun onResponse(
+                        call: Call<PostServiceData>,
+                        response: Response<PostServiceData>
+                    ) {
+                        Toast.makeText(requireContext(), "start test", Toast.LENGTH_SHORT).show()
+                        Log.i(
+                            "TAG0912",
+                            "onResponse: ${response.isSuccessful}   ${response.body()}"
+                        )
+                    }
+
+                    override fun onFailure(call: Call<PostServiceData>, t: Throwable) {
+
+                    }
+                })
+            }
+            //        Return View
+        }
         return fragmentAddServiceBinding.getRoot()
     }
 
@@ -128,6 +180,8 @@ class AddServiceFragment : Fragment() {
      پایان ارائه خدمات ساعت: ${numberFormat.format(i2)}:${numberFormat.format(i3)}
      """.trimIndent()
             Unit
+            addServiceViewModel?.startTime = "${numberFormat.format(i)}:${numberFormat.format(i1)}"
+            addServiceViewModel?.endTime = "${numberFormat.format(i2)}:${numberFormat.format(i3)}"
         }
     } //    endregion
 }

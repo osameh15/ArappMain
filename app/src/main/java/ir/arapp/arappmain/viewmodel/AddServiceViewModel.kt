@@ -14,6 +14,8 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
     var context: Context
     var category: ArrayList<String>
     var openingYear: ArrayList<String>
+    var startTime:String = ""
+    var endTime:String = ""
 
     //    Return Methods
     var allCategory: MutableLiveData<ArrayList<String>>
