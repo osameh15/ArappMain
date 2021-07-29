@@ -1,16 +1,13 @@
 package ir.arapp.arappmain.view.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Base64.DEFAULT
-import android.util.Base64.encodeToString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -22,18 +19,13 @@ import com.arappmain.radialtimepicker.PageData.ClockArrow
 import com.arappmain.radialtimepicker.TimePickerBottomSheetFragment
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentAddServiceBinding
-import ir.arapp.arappmain.model.base.PostServiceData
+import ir.arapp.arappmain.model.base.Category
 import ir.arapp.arappmain.util.adapters.SpinnerAdapter
-import ir.arapp.arappmain.util.server.RetrofitClient
 import ir.arapp.arappmain.util.services.FragmentManager
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarMessage
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.AddServiceViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.io.ByteArrayOutputStream
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
@@ -69,6 +61,7 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
         addServiceViewModel = ViewModelProvider(requireActivity()).get(
             AddServiceViewModel::class.java
         )
+        addServiceViewModel!!.update()
         addServiceViewModel?.snackBarMessage = this
         addServiceViewModel?.fragmentManager = this
         var bitmap =
@@ -91,6 +84,22 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
         fragmentAddServiceBinding.profileToolbar.setNavigationOnClickListener { view1: View? -> onNavigateUp() }
         //        Spinner Adapter
         spinnerAdapter()
+        fragmentAddServiceBinding.categorySpinner.onItemSelectedListener = object:AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                addServiceViewModel!!.category_id.value =
+                    addServiceViewModel!!.allCategory.value!!.get(position).id
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
         //        Time Picker
         timePicker()
 
@@ -114,9 +123,13 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
 //        Set category Spinner
         addServiceViewModel!!.allCategory.observe(
             viewLifecycleOwner,
-            { category: ArrayList<String> ->
+            { category: ArrayList<Category> ->
+                var categories  = ArrayList<String>()
+                category.forEach {
+                    categories.add(it.title!!)
+                }
                 val categorySpinner =
-                    SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, category!!)
+                    SpinnerAdapter(requireContext(), R.layout.custom_spinner_layout, categories)
                 categorySpinner.setDropDownViewResource(R.layout.custom_spinner_layout_dropdown)
                 fragmentAddServiceBinding!!.categorySpinner.adapter = categorySpinner
             })

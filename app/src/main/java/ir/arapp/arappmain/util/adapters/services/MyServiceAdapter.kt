@@ -10,10 +10,12 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import com.makeramen.roundedimageview.RoundedImageView
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.ServicesItemLayoutBinding
+import ir.arapp.arappmain.model.base.GetServiceData
 import ir.arapp.arappmain.model.base.Service
 import ir.arapp.arappmain.util.adapters.services.MyServiceAdapter.MyServiceItemViewHolder
 import ir.arapp.arappmain.util.services.ItemClickListener
@@ -26,7 +28,7 @@ class MyServiceAdapter     //    endregion
     private val view: View
 ) : RecyclerView.Adapter<MyServiceItemViewHolder>() {
     var itemClickListener: ItemClickListener? = null
-    var services = ArrayList<Service>()
+    var services = ArrayList<GetServiceData>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -51,11 +53,11 @@ class MyServiceAdapter     //    endregion
             var layoutParams = root.layoutParams
             layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
             layoutParams.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
-            serviceImageView.setImageResource(currentItem.picture)
+            Glide.with(view.context).load(currentItem.pictureUrl).into(serviceImageView)
             serviceItemLayoutLastTimeChangedTextView.text = currentItem.createdAt
             serviceItemLayoutTitleService.text = currentItem.title
-            serviceItemLayoutCommentService.text = currentItem.comments.toString()
-            serviceItemLayoutRateServiceFrameLayout.rate = currentItem.rate
+//            serviceItemLayoutCommentService.text = currentItem.comments.toString()
+            serviceItemLayoutRateServiceFrameLayout.rate = currentItem.rate.toDouble()
             serviceItemLayoutLoading.visibility = View.GONE
             serviceItemLayoutServiceImageCardView.setOnClickListener { view: View? ->
                 itemClickListener!!.onItemClickListener(
@@ -66,45 +68,6 @@ class MyServiceAdapter     //    endregion
             }
 
         }
-//        holder.roundedImageView.setImageResource(currentItem.picture)
-//        holder.time.text = currentItem.createdAt
-//        holder.title.text = currentItem.title
-//        holder.comment.text = Integer.toString(currentItem.comments)
-//        holder.loading.visibility = View.GONE
-//        if (currentItem.rate == 0.0) {
-//            holder.rate.text = "-"
-//            holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_zero_shape)
-//        } else if (currentItem.rate < 2) {
-//            holder.rate.text = currentItem.rate.toString()
-//            holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_min_shape)
-//        } else if (currentItem.rate < 4) {
-//            holder.rate.text = currentItem.rate.toString()
-//            holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_normal_shape)
-//        } else if (currentItem.rate <= 5) {
-//            holder.rate.text = currentItem.rate.toString()
-//            holder.rateFrameLayout.setBackgroundResource(R.drawable.rate_max_shape)
-//        }
-//        holder.cardView.setOnClickListener { view: View? ->
-//            itemClickListener!!.onItemClickListener(
-//                this.view,
-//                currentItem.id,
-//                currentItem.title
-//            )
-//        }
-//        holder.editService.setOnClickListener { view: View? ->
-//            itemClickListener!!.onItemClickListener(
-//                this.view,
-//                currentItem.id,
-//                "edit"
-//            )
-//        }
-//        holder.deleteService.setOnClickListener { view: View? ->
-//            itemClickListener!!.onItemClickListener(
-//                this.view,
-//                currentItem.id,
-//                "delete"
-//            )
-//        }
     }
 
     override fun getItemCount(): Int {

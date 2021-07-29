@@ -7,13 +7,13 @@ import android.graphics.Bitmap
 import android.util.Base64
 import android.util.Log
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.google.android.material.snackbar.Snackbar
 import ir.arapp.arappmain.R
+import ir.arapp.arappmain.model.base.Category
+import ir.arapp.arappmain.model.base.GetAllCategories
 import ir.arapp.arappmain.model.base.PostServiceData
+import ir.arapp.arappmain.model.base.ResponseModel
 import ir.arapp.arappmain.util.server.RetrofitClient
 import ir.arapp.arappmain.util.services.FragmentManager
 import ir.arapp.arappmain.util.services.SnackBarMessage
@@ -48,9 +48,10 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
 
     @JvmField
     var summary: MutableLiveData<String> = MutableLiveData()
+
     var image: MutableLiveData<Bitmap> = MutableLiveData()
 
-
+    var category_id: MutableLiveData<Int> = MutableLiveData()
     //snakeBar
     var snackBarMessage: SnackBarMessage? = null
 
@@ -64,7 +65,7 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
         postServiceData.summary = summary?.value
         postServiceData.description = description?.value
         postServiceData.address = address?.value
-        postServiceData.categoryId = 1
+        postServiceData.categoryId = category_id.value!!
         postServiceData.startTime = startTime?.value
         postServiceData.endTime = endTime?.value
         postServiceData.birth = 12
@@ -93,7 +94,7 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     //    Return Methods
-    var allCategory: MutableLiveData<ArrayList<String>>
+    var allCategory: MutableLiveData<ArrayList<Category>>
 
     //    endregion
     var allOpeningYear: MutableLiveData<ArrayList<String>>
@@ -101,9 +102,10 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
     //    region Methods
     //    Initialize
     private fun init() {
-        category.addAll(Arrays.asList(*context.resources.getStringArray(R.array.category_list)))
+//        category.addAll(Arrays.asList(*context.resources.getStringArray(R.array.category_list)))
+
         openingYear.addAll(Arrays.asList(*context.resources.getStringArray(R.array.year_list)))
-        allCategory.value = category
+//        allCategory.value = category
         allOpeningYear.value = openingYear
     }
 
@@ -127,5 +129,26 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
         val encoded: String =
             Base64.encodeToString(byteArray, Base64.DEFAULT)
         return encoded
+    }
+
+    fun update() {
+        RetrofitClient.api.getAllCategory().enqueue(object:Callback<ResponseModel<GetAllCategories>>{
+            override fun onResponse(
+                call: Call<ResponseModel<GetAllCategories>>,
+                response: Response<ResponseModel<GetAllCategories>>
+            ) {
+                response.body()?.let {
+                    it.result?.let {
+                        it.categories?.let {
+                            allCategory.value = it as ArrayList<Category>
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseModel<GetAllCategories>>, t: Throwable) {
+
+            }
+        })
     }
 }

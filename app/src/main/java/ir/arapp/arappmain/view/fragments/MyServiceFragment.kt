@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ import ir.arapp.arappmain.util.adapters.services.MyServiceAdapter
 import ir.arapp.arappmain.util.services.ItemClickListener
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
+import ir.arapp.arappmain.viewmodel.MyServicesViewModel
 import ir.arapp.arappmain.viewmodel.ServicesViewModel
 import java.util.*
 
@@ -34,10 +36,12 @@ class MyServiceFragment : Fragment(), ItemClickListener {
     val fragmentMyServiceBinding get() = _fragmentMyServiceBinding!!
     private var myServiceAdapter: MyServiceAdapter? = null
     private var snackBarToast: SnackBarToast? = null
+    private var myServiceViewModel: AndroidViewModel? = null
     override fun onDestroyView() {
         super.onDestroyView()
         _fragmentMyServiceBinding = null
     }
+
     //    endregion
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,9 +57,10 @@ class MyServiceFragment : Fragment(), ItemClickListener {
         _fragmentMyServiceBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_my_service, container, false)
         //        Set view model
-        val servicesViewModel = ViewModelProvider(requireActivity()).get(
-            ServicesViewModel::class.java
+        var myServiceViewModel = ViewModelProvider(requireActivity()).get(
+            MyServicesViewModel::class.java
         )
+        myServiceViewModel.update()
         //        Hooks
         myServiceAdapter = MyServiceAdapter(fragmentMyServiceBinding.getRoot())
         snackBarToast = SnackBarToast(fragmentMyServiceBinding.getRoot())
@@ -71,12 +76,10 @@ class MyServiceFragment : Fragment(), ItemClickListener {
             .setDisplayHomeAsUpEnabled(true)
         fragmentMyServiceBinding.profileToolbar.setNavigationOnClickListener { view1: View? -> onNavigateUp() }
         //        Recycler View Services items
-        servicesViewModel.allCategoryItems.observe(
-            viewLifecycleOwner,
-            { services: ArrayList<Service> ->
-                myServiceAdapter?.services = services
-                setRecyclerView()
-            })
+        myServiceViewModel.services.observe(viewLifecycleOwner) { services ->
+            myServiceAdapter?.services = services
+            setRecyclerView()
+        }
         //        Return view
         return fragmentMyServiceBinding.getRoot()
     }

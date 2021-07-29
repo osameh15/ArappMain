@@ -4,7 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
+import ir.arapp.arappmain.model.base.GetAllServices
+import ir.arapp.arappmain.model.base.ResponseModel
 import ir.arapp.arappmain.model.base.Service
+import ir.arapp.arappmain.util.server.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class ServicesViewModel(application: Application) : AndroidViewModel(application) {
@@ -19,12 +25,13 @@ class ServicesViewModel(application: Application) : AndroidViewModel(application
     //    Initialize function and variables
     private fun init() {
         populateList()
+
         allCategoryItems.value = myServices
     }
 
-    //    Set data to category array list
+//        Set data to category array list
     private fun populateList() {
-//        TODO connect to server
+//
         myServices.add(
             Service(
                 1,

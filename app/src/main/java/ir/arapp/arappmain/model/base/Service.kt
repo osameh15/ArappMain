@@ -95,7 +95,6 @@ class Service {
 
 
 class PostServiceData {
-
     @SerializedName("title")
     var title: String? = null
 

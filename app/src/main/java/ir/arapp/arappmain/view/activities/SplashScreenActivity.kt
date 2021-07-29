@@ -65,6 +65,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun goToHomeActivity() {
+        RetrofitClient.login(sessionManager!!.getPhoneNumber(this)!!,sessionManager!!.getPassword(this)!!)
         val homeActivity = Intent(this@SplashScreenActivity, HomeActivity::class.java)
         startActivity(homeActivity)
         finish()
@@ -81,7 +82,7 @@ class SplashScreenActivity : AppCompatActivity() {
         if (sessionManager!!.checkConnection()) {
 //            Check User logged in
             if (flag) {
-                RetrofitClient.login(sessionManager!!.getPhoneNumber(this)!!,sessionManager!!.getPassword(this)!!)
+
                 goToHomeActivity()
             } else {
                 goToRegLogActivity()
