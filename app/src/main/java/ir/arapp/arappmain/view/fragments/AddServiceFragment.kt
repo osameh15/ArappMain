@@ -16,6 +16,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.arappmain.radialtimepicker.PageData.ClockArrow
 import com.arappmain.radialtimepicker.TimePickerBottomSheetFragment
@@ -23,8 +24,10 @@ import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentAddServiceBinding
 import ir.arapp.arappmain.model.base.PostServiceData
 import ir.arapp.arappmain.util.adapters.SpinnerAdapter
-import ir.arapp.arappmain.util.server.Retrofit
+import ir.arapp.arappmain.util.server.RetrofitClient
+import ir.arapp.arappmain.util.services.FragmentManager
 import ir.arapp.arappmain.util.services.NavigationManager
+import ir.arapp.arappmain.util.services.SnackBarMessage
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.AddServiceViewModel
 import retrofit2.Call
@@ -35,7 +38,7 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-class AddServiceFragment : Fragment() {
+class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
     //    region Variables
     var _fragmentAddServiceBinding: FragmentAddServiceBinding? = null
     val fragmentAddServiceBinding get() = _fragmentAddServiceBinding!!
@@ -66,6 +69,12 @@ class AddServiceFragment : Fragment() {
         addServiceViewModel = ViewModelProvider(requireActivity()).get(
             AddServiceViewModel::class.java
         )
+        addServiceViewModel?.snackBarMessage = this
+        addServiceViewModel?.fragmentManager = this
+        var bitmap =
+            ResourcesCompat.getDrawable(resources, R.drawable.add_service, null)?.toBitmap()
+        addServiceViewModel?.image = MutableLiveData(bitmap)
+
         fragmentAddServiceBinding.setViewModel(addServiceViewModel)
         //        Hooks
         timePickerBottomSheetFragment = TimePickerBottomSheetFragment()
@@ -85,46 +94,6 @@ class AddServiceFragment : Fragment() {
         //        Time Picker
         timePicker()
 
-
-        fragmentAddServiceBinding.addServiceConfirmButton.setOnClickListener {
-            Toast.makeText(requireContext(), "pressConfirmation", Toast.LENGTH_SHORT).show()
-            val serviceData = PostServiceData()
-            serviceData.title = fragmentAddServiceBinding.serviceTitleEditText.text?.toString()
-            serviceData.address = fragmentAddServiceBinding.serviceAddressEditText.text?.toString()
-            serviceData.description =
-                fragmentAddServiceBinding.serviceDescriptionEditText.text?.toString()
-            serviceData.summary =
-                fragmentAddServiceBinding.addServiceSummaryEditText.text?.toString()
-            serviceData.startTime = addServiceViewModel?.startTime
-            serviceData.endTime = addServiceViewModel?.endTime
-            var bitmap =
-                ResourcesCompat.getDrawable(resources, R.drawable.add_service, null)?.toBitmap()
-            bitmap?.let { bitmap ->
-                val byteArrayOutputStream = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
-                val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
-                val encoded: String =
-                    encodeToString(byteArray, DEFAULT)
-                serviceData.pictureBase64 = encoded
-                Retrofit.api.addNewService(serviceData).enqueue(object : Callback<PostServiceData> {
-                    override fun onResponse(
-                        call: Call<PostServiceData>,
-                        response: Response<PostServiceData>
-                    ) {
-                        Toast.makeText(requireContext(), "start test", Toast.LENGTH_SHORT).show()
-                        Log.i(
-                            "TAG0912",
-                            "onResponse: ${response.isSuccessful}   ${response.body()}"
-                        )
-                    }
-
-                    override fun onFailure(call: Call<PostServiceData>, t: Throwable) {
-
-                    }
-                })
-            }
-            //        Return View
-        }
         return fragmentAddServiceBinding.getRoot()
     }
 
@@ -180,8 +149,25 @@ class AddServiceFragment : Fragment() {
      پایان ارائه خدمات ساعت: ${numberFormat.format(i2)}:${numberFormat.format(i3)}
      """.trimIndent()
             Unit
-            addServiceViewModel?.startTime = "${numberFormat.format(i)}:${numberFormat.format(i1)}"
-            addServiceViewModel?.endTime = "${numberFormat.format(i2)}:${numberFormat.format(i3)}"
+            addServiceViewModel?.startTime?.value = "${numberFormat.format(i)}:${numberFormat.format(i1)}"
+            addServiceViewModel?.endTime?.value = "${numberFormat.format(i2)}:${numberFormat.format(i3)}"
         }
     } //    endregion
+
+    override fun onSuccess(message: String?) {
+        Log.i("TAG123123", "onResponse body: onSuccess")
+        snackBarToast!!.snackBarShortTime(message, fragmentAddServiceBinding.root)
+    }
+
+    override fun onFailure(message: String?) {
+        snackBarToast!!.snackBarShortTime(message, fragmentAddServiceBinding.root)
+    }
+
+    override fun setFunction(type: String?) {
+
+    }
+
+    override fun navigateToFragment(message: String?) {
+
+    }
 }

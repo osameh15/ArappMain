@@ -7,6 +7,10 @@ class GetService {
     var serviceData: GetServiceData? = null
 }
 
+class GetToken{
+    var token:String? = null
+}
+
 class GetAllServices {
     var services = ArrayList<GetServiceData>()
 }
@@ -62,6 +66,11 @@ class LoginMobile{
     var password:String? = null
 }
 
+class LoginToken{
+    @SerializedName("login_token")
+    var loginToken:String? = null
+}
+
 class GetAllCategories {
     @SerializedName("categories")
     var categories: List<Category>? = null
@@ -72,9 +81,9 @@ class GetAllCategories {
 
 class ResponseModel<T> {
     @SerializedName("Success")
-    var success: Boolean = false
+    var success: Boolean? = null
     @SerializedName("message")
-    var message: String = ""
+    var message: String? = null
     @SerializedName("result")
     var result: T? = null
 }

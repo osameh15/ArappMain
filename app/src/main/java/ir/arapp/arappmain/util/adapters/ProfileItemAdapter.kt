@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.gamapp.blurcardview.BlurCardView
 import com.google.android.material.card.MaterialCardView
 import com.makeramen.roundedimageview.RoundedImageView
 import ir.arapp.arappmain.R

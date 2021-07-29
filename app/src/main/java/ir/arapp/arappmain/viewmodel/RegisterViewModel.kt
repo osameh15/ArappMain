@@ -3,35 +3,56 @@ package ir.arapp.arappmain.viewmodel
 import android.annotation.SuppressLint
 import android.app.Application
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
+import ir.arapp.arappmain.model.base.*
+import ir.arapp.arappmain.util.server.RetrofitClient
 import ir.arapp.arappmain.util.services.FragmentManager
 import ir.arapp.arappmain.util.services.SnackBarMessage
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Response
 import java.util.*
 import java.util.regex.Pattern
+import javax.security.auth.callback.Callback
 
 class RegisterViewModel(application: Application) : AndroidViewModel(application) {
+
+    var id: MutableLiveData<Int> = MutableLiveData(0)
+    var token:MutableLiveData<String> = MutableLiveData("")
+    var email:MutableLiveData<String> = MutableLiveData("")
+
     @JvmField
     var phone: MutableLiveData<String>
+
     @JvmField
     var validate: MutableLiveData<String>
+
     @JvmField
     var flag: MutableLiveData<Boolean>
     private val checkTime // check current time is start();
             : MutableLiveData<Boolean>
     var currentTime: MutableLiveData<Long>
+
     @JvmField
     var time: MutableLiveData<String>
+
     @JvmField
     var timeColor: MutableLiveData<Int>
+
     @JvmField
     var name: MutableLiveData<String>
+
     @JvmField
     var password: MutableLiveData<String>
+
     @JvmField
     var cnfPassword: MutableLiveData<String>
+
     @JvmField
     var checkBox: MutableLiveData<Boolean>
     var service: MutableLiveData<String>
@@ -78,7 +99,31 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
             snackBarMessage!!.onFailure("شماره موبایل با فرمت درست وارد نشده است")
             return
         }
-        //        Todo connect to server and send sms validation code
+        phone.value?.let {
+            RetrofitClient.api.registerUser(RegisterBody(it))
+                .enqueue(object : retrofit2.Callback<ResponseModel<RegisterResult>> {
+                    override fun onResponse(
+                        call: Call<ResponseModel<RegisterResult>>,
+                        response: Response<ResponseModel<RegisterResult>>
+                    ) {
+                        if (response.isSuccessful){
+                            response.body()?.result?.id?.let {
+                                id.value = it
+                                fragmentManager!!.navigateToFragment("validate")
+                            }
+                        }
+
+                    }
+
+                    override fun onFailure(
+                        call: Call<ResponseModel<RegisterResult>>,
+                        t: Throwable
+                    ) {
+
+                    }
+                })
+        }
+
 //        Start Countdown timer
         if (currentTime.value == 0L) {
             if (flag.value == true) {
@@ -87,7 +132,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                 startCountDownTimer()
             }
         }
-        fragmentManager!!.navigateToFragment("validate")
+
     }
 
     //    Login Button
@@ -97,9 +142,28 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 
     //    validate code
     fun validateCodeNumber(view: View?) {
-//        Todo check validate code and connect to server
-        if (Objects.requireNonNull(validate.value) == "232323") {
-            fragmentManager!!.navigateToFragment("register")
+        if (Objects.requireNonNull(validate.value)!!.toInt() > 1) {
+            RetrofitClient.api.verifyUser(Verify(id.value!!, validate.value!!.toInt())).enqueue(object :
+                retrofit2.Callback<ResponseModel<GetToken>> {
+                override fun onResponse(
+                    call: Call<ResponseModel<GetToken>>,
+                    response: Response<ResponseModel<GetToken>>
+                ) {
+                    if (response.isSuccessful){
+                        response.body()?.result?.token?.let {
+                            token.value = it
+                            fragmentManager!!.navigateToFragment("register")
+                        }
+
+                    }
+
+                }
+
+                override fun onFailure(call: Call<ResponseModel<GetToken>>, t: Throwable) {
+
+                }
+            })
+
         } else {
             if (validate.value!!.length == 0) {
                 fragmentManager!!.setFunction("error")
@@ -186,18 +250,42 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         } else if (service.value!!.isEmpty()) {
             snackBarMessage!!.onFailure("نوع سرویس خود را مشخص نمایید")
         } else if (checkPassword(view)) {
-//        Todo connect to server and store user details
-            fragmentManager!!.navigateToFragment("home")
+            RetrofitClient.api.setUserInfo(
+                UserInfo(
+                    name.value!!,
+                    email.value!!,
+                    service.value!!,
+                    password.value!!,
+                    cnfPassword.value!!,
+                    token.value!!
+                )
+            )
+                .enqueue(object : retrofit2.Callback<ResponseModel<LoginToken>> {
+                    override fun onResponse(
+                        call: Call<ResponseModel<LoginToken>>,
+                        response: Response<ResponseModel<LoginToken>>
+                    ) {
+                        if (response.isSuccessful){
+                            fragmentManager!!.navigateToFragment("home")
+                        } else{
+
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseModel<LoginToken>>, t: Throwable) {
+
+                    }
+                })
         }
     }
 
     //    Check type of service
     fun setService(view: View?) {
-        service.value = "سرویس دهنده"
+        service.value = "provider"
     }
 
     fun getService(view: View?) {
-        service.value = "سرویس گیرنده"
+        service.value = "receiver"
     }
 
     //    check password and confirm

@@ -31,6 +31,11 @@ class SessionManager @SuppressLint("CommitPrefEdits") constructor(  //    Contex
         editor.commit()
         Log.d(TAG, "user login session modified!")
     }
+    fun setUserInfo(phone: String,password: String){
+        editor.putString(PHONE_NUMBER,phone)
+        editor.putString(PASSWORD,password)
+        editor.commit()
+    }
 
     //     Get login session modified ...
     val isLoggedIn: Boolean
@@ -48,6 +53,14 @@ class SessionManager @SuppressLint("CommitPrefEdits") constructor(  //    Contex
             null
         }
     }//        Commit change
+
+    fun getPhoneNumber(_context: Context):String?{
+        return sharedPreferences.getString(PHONE_NUMBER,"")
+    }
+
+    fun getPassword(_context: Context):String?{
+        return sharedPreferences.getString(PASSWORD,"")
+    }
 
     //    Set pop up dialog(recently changed)only once time after each app update...
     //    Get stored version name ...
@@ -70,6 +83,8 @@ class SessionManager @SuppressLint("CommitPrefEdits") constructor(  //    Contex
         //    Shared preference filename
         private const val PREF_NAME = "arapp"
         private const val KEY_IS_LOGGED_IN = "isLoggedIn"
+        private const val PHONE_NUMBER = "phone"
+        private const val PASSWORD = "password"
         private const val KEY_VERSION_NAME = "versionName"
     }
 

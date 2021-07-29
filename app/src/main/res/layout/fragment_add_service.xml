@@ -111,7 +111,7 @@
                                 android:minLines="1"
                                 android:maxLines="1"
                                 android:ems="10"
-                                android:text=""
+                                android:text="@={viewModel.title}"
                                 android:maxLength="31"/>
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
@@ -136,8 +136,8 @@
                                 android:minLines="1"
                                 android:maxLines="2"
                                 android:ems="10"
-                                android:text=""
-                                android:maxLength="41"/>
+                                android:text="@={viewModel.summary}"
+                                android:maxLength="41" />
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/TextInputStyle"
@@ -161,7 +161,7 @@
                                 android:minLines="1"
                                 android:maxLines="10"
                                 android:ems="10"
-                                android:text=""
+                                android:text="@={viewModel.description}"
                                 android:maxLength="401"/>
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
@@ -186,7 +186,7 @@
                                 android:minLines="1"
                                 android:maxLines="6"
                                 android:ems="10"
-                                android:text=""
+                                android:text="@={viewModel.address}"
                                 android:maxLength="401"/>
                         </com.google.android.material.textfield.TextInputLayout>
 <!--                        Save location-->
@@ -397,6 +397,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
+                    android:onClick="@{viewModel.onAddServiceButtonClick}"
                     android:text="@string/submit_info"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

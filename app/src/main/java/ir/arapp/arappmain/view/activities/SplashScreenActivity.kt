@@ -1,32 +1,16 @@
 package ir.arapp.arappmain.view.activities
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
-import android.util.Base64
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.ActivitySplashScreenBinding
-import ir.arapp.arappmain.model.AllServices
 import ir.arapp.arappmain.model.base.*
-import ir.arapp.arappmain.util.server.Api
+import ir.arapp.arappmain.util.server.RetrofitClient
 import ir.arapp.arappmain.util.services.SessionManager
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.ByteArrayOutputStream
-import kotlin.math.log
 
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -38,8 +22,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
     //    endregion
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
 //       Inflate layout
         super.onCreate(savedInstanceState)
         _activitySplashScreenBinding =
@@ -99,6 +81,7 @@ class SplashScreenActivity : AppCompatActivity() {
         if (sessionManager!!.checkConnection()) {
 //            Check User logged in
             if (flag) {
+                RetrofitClient.login(sessionManager!!.getPhoneNumber(this)!!,sessionManager!!.getPassword(this)!!)
                 goToHomeActivity()
             } else {
                 goToRegLogActivity()

@@ -7,8 +7,14 @@ import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
+import ir.arapp.arappmain.model.base.*
+import ir.arapp.arappmain.util.server.RetrofitClient
 import ir.arapp.arappmain.util.services.FragmentManager
 import ir.arapp.arappmain.util.services.SnackBarMessage
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 import java.util.regex.Pattern
 
@@ -73,13 +79,24 @@ class ForgetPassViewModel(application: Application) : AndroidViewModel(applicati
                 startCountDownTimer()
             }
         }
-        //        Todo on response. connect to server and send sms code
-        fragmentManager!!.navigateToFragment("validate")
+        //       to do on response. connect to server and send sms code
+        RetrofitClient.api.forgetRequest(RegisterBody(phone.value!!)).enqueue(object :Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful){
+                    fragmentManager!!.navigateToFragment("validate")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+
+            }
+        })
+
     }
 
     //    validate code
     fun validateCodeNumber(view: View?) {
-//        Todo connect to server and check validate code
+//       to do connect to server and check validate code
         if (Objects.requireNonNull(validate.value) == "232323") {
             fragmentManager!!.navigateToFragment("forgetPass")
         } else {
@@ -87,15 +104,28 @@ class ForgetPassViewModel(application: Application) : AndroidViewModel(applicati
                 fragmentManager!!.setFunction("error")
                 snackBarMessage!!.onFailure("ابتدا کد ارسال شده را وارد نمایید")
             } else {
-                fragmentManager!!.setFunction("error")
-                snackBarMessage!!.onFailure("کد وارد شده صحیح نیست")
+                RetrofitClient.api.verifyUser(Verify(7,validate.value!!.toInt())).enqueue(object:
+                    Callback<ResponseModel<GetToken>>{
+                    override fun onResponse(
+                        call: Call<ResponseModel<GetToken>>,
+                        response: Response<ResponseModel<GetToken>>
+                    ) {
+
+                    }
+
+                    override fun onFailure(call: Call<ResponseModel<GetToken>>, t: Throwable) {
+
+                    }
+                })
+//                fragmentManager!!.setFunction("error")
+//                snackBarMessage!!.onFailure("کد وارد شده صحیح نیست")
             }
         }
     }
 
     //    resend Code
     fun resendCode(view: View?) {
-//        Todo send validate code again
+//       to do send validate code again
         flag.value = false
         validate.value = ""
         fragmentManager!!.setFunction("resend")
@@ -155,7 +185,7 @@ class ForgetPassViewModel(application: Application) : AndroidViewModel(applicati
             snackBarMessage!!.onFailure("رمزعبور های وارد شده یکسان نیستند")
             return
         }
-        //        Todo connect to sever and submit the last changes
+        //       to do connect to sever and submit the last changes
         snackBarMessage!!.onSuccess("رمز عبور شما با موفقیت تغییر کرد")
         fragmentManager!!.navigateToFragment("login")
     } //    endregion

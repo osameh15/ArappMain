@@ -81,6 +81,7 @@ dependencies
 //    Date Picker
     implementation 'com.github.aliab:Persian-Date-Picker-Dialog:1.6.1'
     implementation 'com.github.aliHosseinNezhad:PersianRadialTimePicker:1.3.2'
+    implementation 'com.github.aliHosseinNezhad:BlurCardView:1.0.0'
 //    Rounded Image View
     implementation "com.makeramen:roundedimageview:2.3.0"
 //    Liquid Refresh layout

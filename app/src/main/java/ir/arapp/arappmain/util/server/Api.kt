@@ -8,17 +8,7 @@ import retrofit2.http.*
 interface Api {
     companion object {
         val BaseUrl = "http://arrapp.herokuapp.com/"
-        var userToken =
-            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2U3ZjNmMzVjNGEzOTAxZmY" +
-                    "yNTc0Mjc1OTcwOWM3YWJlZGE1YTBmOGRjZmRmZDhhZTFkZjlmNGM2N2JmNjIwMjY5ZGU3ZWNlMGM3Y2Q5MjMiL" +
-                    "CJpYXQiOjE2MjY2MzE5ODYuMTc4ODAyLCJuYmYiOjE2MjY2MzE5ODYuMTc4ODA4LCJleHAiOjE2NTgxNjc5ODYuMTcyN" +
-                    "jc0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.m4FuIQWvAiEHzo-j4Jug7WNUQVij33wgVTdr76o00EC8CPvtugdEmuRWmEj1" +
-                    "Gh4ETt5pFQG6neJWnWtU0_zalr7S-yIZ4N82YXlKL16XU3XNuVE9D49q0S-PFkBGckBks7xo0glotmh_lSGY2GN1jRLzXGVz_" +
-                    "buTFCzTMiy9-cNGZWY6EOcikycuiLT5kn1vGWzpEcP1sudZZ1O8p6OrGjHDgXRX_vgTtH17Zlbp0MZn3tcauMGYXntcwRTd" +
-                    "2KipvReuawJCZM-ZGPg7QCoQP23iU0LdWxMQOC0I04-gZSVYnaer4M4cA_7j91JwcwYYnH64OT6knwYxUnbqy9oMFfYGxhOETX" +
-                    "jwjU8phKZV7cRpOWkNkOFprrItdi4furGNWnqHDUqdiddp-gNghrCuThGZPOiC5eJdAvlf1bzJT_oKfTSlVjmE7pPDkDxytq" +
-                    "IrrlwIKT2B4UaO1g4ArJA4lPprNo4-qbIkm82TxRrrUG8YhphqIzeCWh7asXeIVdJJjnuZKbA5YZxNso-EnydxXI2koF9rSH6_RTQ7xAqU1AH0KAtka5nZ" +
-                    "4D0kdiizBct0WkiQBLWAudf6YDATpgiYRV6KgDAEUmyPBOdJaaBZ2pNwLXAcN1syTWMOhf-TTRpnom4Q3w_ZSayhrvIJ6bcu3gd9nBXksKY_Jt16uBUd_Hk"
+        var userToken: String = ""
     }
 
     @GET("api/get-all-services")
@@ -54,8 +44,8 @@ interface Api {
 
     @POST("api/update-service/{service_id}")
     fun updateService(
-        @Path("service_id",encoded = true) id:Int,
-        @Body serviceData:PostServiceData,
+        @Path("service_id", encoded = true) id: Int,
+        @Body serviceData: PostServiceData,
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "authorization" to userToken,
             "Accept" to "application/json",
@@ -63,38 +53,59 @@ interface Api {
         )
     ): Call<PostServiceData>
 
+    @GET("api/get-category-service/{category_id}")
+    fun getServicesByCategoryId(
+        @Path("category_id", encoded = true) categoryId: Int,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "authorization" to userToken,
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ): Call<ResponseModel<GetAllServices>>
+
+    @GET("api/get-my-services")
+    fun getMyServices(
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "authorization" to userToken,
+            "accept" to "application/json"
+        )
+    ):Call<ResponseModel<GetAllServices>>
+
+
     @GET("api/get-all-category")
     fun getAllCategory(
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "Accept" to "application/json",
         )
-    ):Call<ResponseModel<GetAllCategories>>
+    ): Call<ResponseModel<GetAllCategories>>
 
-//  register api
+    //  register api
     @POST("api/register")
     fun registerUser(
-        @Body registerBody:RegisterBody,
+        @Body registerBody: RegisterBody,
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ):Call<ResponseModel<RegisterResult>>
+    ): Call<ResponseModel<RegisterResult>>
+
     @POST("api/resend")
     fun resendUser(
-        @Body registerBody:RegisterResult,
+        @Body registerBody: RegisterResult,
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ):Call<ResponseModel<RegisterResult>>
+    ): Call<ResponseModel<RegisterResult>>
 
     @POST("api/verify")
     fun verifyUser(
-        @Body verify:Verify,
+        @Body verify: Verify,
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "Accept" to "application/json",
             "Content-Type" to "application/json"
-        )):Call<ResponseBody>
+        )
+    ): Call<ResponseModel<GetToken>>
 
     @POST("api/set-user-information")
     fun setUserInfo(
@@ -103,7 +114,7 @@ interface Api {
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ):Call<ResponseBody>
+    ): Call<ResponseModel<LoginToken>>
 
 
     @POST("api/login")
@@ -113,7 +124,7 @@ interface Api {
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ):Call<ResponseBody>
+    ): Call<ResponseModel<List<LoginToken>>>
 
 
     @POST("api/forget-request")
@@ -123,7 +134,7 @@ interface Api {
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ):Call<ResponseBody>
+    ): Call<ResponseBody>
 
     @POST("api/verify-forgot-password-code")
     fun verifyForgotPasswordCode(
@@ -132,7 +143,7 @@ interface Api {
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ):Call<ResponseBody>
+    ): Call<ResponseBody>
 
     @POST("api/set-new-password")
     fun setNewPassword(
@@ -141,9 +152,7 @@ interface Api {
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ):Call<ResponseBody>
-
-
+    ): Call<ResponseBody>
 
 
 }

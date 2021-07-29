@@ -1,12 +1,20 @@
 package ir.arapp.arappmain.viewmodel
 
 import android.app.Application
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import ir.arapp.arappmain.model.base.LoginMobile
+import ir.arapp.arappmain.model.base.LoginToken
+import ir.arapp.arappmain.model.base.ResponseModel
+import ir.arapp.arappmain.util.server.RetrofitClient
 import ir.arapp.arappmain.util.services.FragmentManager
+import ir.arapp.arappmain.util.services.SessionManager
 import ir.arapp.arappmain.util.services.SnackBarMessage
-import java.util.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
     //    region Variable
@@ -34,7 +42,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     //    Login Button Click listener
-    fun onButtonClick(view: View?) {
+    fun onLoginButtonClick(view: View?) {
         if (phone.value!!.isEmpty() && password.value!!
                 .isEmpty()
         ) {
@@ -47,8 +55,27 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             snackBarMessage!!.onFailure("رمزعبور را وارد نمایید")
             return
         }
-        //        Todo connect to server
-        fragmentManager!!.navigateToFragment("home")
+        Log.i("TAG123123", "onResponse body: start call ${phone.value!!} , ${password.value!!}")
+        RetrofitClient.api.loginUser(LoginMobile(phone.value!!,password.value!!)).enqueue(object :
+            Callback<ResponseModel<List<LoginToken>>>{
+            override fun onResponse(
+                call: Call<ResponseModel<List<LoginToken>>>,
+                response: Response<ResponseModel<List<LoginToken>>>
+            ) {
+                Log.i("TAG123123", "onResponse body: ${response.body()?.toString()}")
+                Log.i("TAG123123", "onResponse errorBody : ${response.errorBody()?.string()}")
+                if (response.isSuccessful){
+                    RetrofitClient.saveLoginToken(response,phone.value!!,password.value!!,view!!.context)
+                    SessionManager(view!!.context).setUserInfo(phone.value!!,password.value!!)
+                    fragmentManager!!.navigateToFragment("home")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseModel<List<LoginToken>>>, t: Throwable) {
+                Log.i("TAG123123", "onFailure message: ${t.message}")
+            }
+        })
+
     } //    endregion
 
     //    endregion

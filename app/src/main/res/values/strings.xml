@@ -121,6 +121,7 @@
     <string name="fingerprint">ورود به برنامه با اثر انگشت</string>
     <string name="active">فعال</string>
     <string name="deactivate">غیرفعال</string>
+    <string name="email">ایمیل</string>
     <!--     Education Spinner List -->
     <string-array name="education_list">
         <item>تحصیلات خود را انتخاب نمایید</item>
