@@ -397,7 +397,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
-                    android:onClick="@{viewModel.onAddServiceButtonClick}"
+                    android:onClick="@{viewModel::onAddServiceButtonClick}"
                     android:text="@string/submit_info"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

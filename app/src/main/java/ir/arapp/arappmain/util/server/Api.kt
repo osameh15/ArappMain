@@ -44,14 +44,26 @@ interface Api {
 
     @POST("api/update-service/{service_id}")
     fun updateService(
-        @Path("service_id", encoded = true) id: Int,
-        @Body serviceData: PostServiceData,
+        @Path("service_id", encoded = true)
+        id: Int,
+        @Body serviceData: UpdateServiceData,
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "authorization" to userToken,
             "Accept" to "application/json",
             "Content-Type" to "application/json"
         )
-    ): Call<PostServiceData>
+    ): Call<ResponseBody>
+
+    @POST("api/update-service/{service_id}")
+    fun updateServiceWithImage(
+        @Path("service_id", encoded = true) id: Int,
+        @Body serviceData: UpdateServiceData,
+        @HeaderMap tokenMap: Map<String, String> = mapOf(
+            "authorization" to userToken,
+            "Accept" to "application/json",
+            "Content-Type" to "application/json"
+        )
+    ): Call<ResponseBody>
 
     @GET("api/get-category-service/{category_id}")
     fun getServicesByCategoryId(
@@ -63,14 +75,14 @@ interface Api {
         )
     ): Call<ResponseModel<GetAllServices>>
 
+
     @GET("api/get-my-services")
     fun getMyServices(
         @HeaderMap tokenMap: Map<String, String> = mapOf(
             "authorization" to userToken,
             "accept" to "application/json"
         )
-    ):Call<ResponseModel<GetAllServices>>
-
+    ): Call<ResponseModel<GetAllServices>>
 
     @GET("api/get-all-category")
     fun getAllCategory(
@@ -107,6 +119,7 @@ interface Api {
         )
     ): Call<ResponseModel<GetToken>>
 
+
     @POST("api/set-user-information")
     fun setUserInfo(
         @Body userInfo: UserInfo,
@@ -125,7 +138,6 @@ interface Api {
             "Content-Type" to "application/json"
         )
     ): Call<ResponseModel<List<LoginToken>>>
-
 
     @POST("api/forget-request")
     fun forgetRequest(

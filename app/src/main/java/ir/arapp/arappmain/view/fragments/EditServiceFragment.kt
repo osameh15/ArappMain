@@ -13,8 +13,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.arappmain.radialtimepicker.PageData.ClockArrow
 import com.arappmain.radialtimepicker.TimePickerBottomSheetFragment
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentEditServiceBinding
+import ir.arapp.arappmain.model.base.GetServiceData
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.EditServiceViewModel
@@ -43,7 +46,7 @@ class EditServiceFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 //        Inflate the layout for this fragment
         _fragmentEditServiceBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_edit_service, container, false)
@@ -51,6 +54,14 @@ class EditServiceFragment : Fragment() {
         editServiceViewModel = ViewModelProvider(requireActivity()).get(
             EditServiceViewModel::class.java
         )
+        arguments?.getString("serviceData")?.let {
+            val gson = Gson()
+            val type = object: TypeToken<GetServiceData>(){}.type
+            var serviceData :GetServiceData = gson.fromJson(it,type)
+            editServiceViewModel!!.setValues(serviceData)
+        }
+
+
         fragmentEditServiceBinding.setViewModel(editServiceViewModel)
         //        Hooks
         snackBarToast = SnackBarToast(fragmentEditServiceBinding.getRoot())
@@ -87,7 +98,10 @@ class EditServiceFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun timePicker() {
         val typeface = ResourcesCompat.getFont(requireContext(), R.font.iransans_farsi_num)
-        val numberFormat: NumberFormat = DecimalFormat("00")
+        val numberFormat: NumberFormat = DecimalFormat.getInstance(Locale.US).apply {
+            this as DecimalFormat
+            this.applyLocalizedPattern("00")
+        }
         timePickerBottomSheetFragment!!.set24Hour(true)
         timePickerBottomSheetFragment!!.setTextTypeFace(typeface)
         timePickerBottomSheetFragment!!.initTime(8, 0, 21, 0)
@@ -100,7 +114,8 @@ class EditServiceFragment : Fragment() {
      آغاز ارائه خدمات ساعت: ${numberFormat.format(i)}:${numberFormat.format(i1)}
      پایان ارائه خدمات ساعت: ${numberFormat.format(i2)}:${numberFormat.format(i3)}
      """.trimIndent()
-            Unit
+            editServiceViewModel?.startTime?.value = "${numberFormat.format(i)}:${numberFormat.format(i1)}"
+            editServiceViewModel?.endTime?.value = "${numberFormat.format(i2)}:${numberFormat.format(i3)}"
         }
     } //    endregion
 }

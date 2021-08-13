@@ -21,15 +21,11 @@ class RetrofitClient {
                         call: Call<ResponseModel<List<LoginToken>>>,
                         response: Response<ResponseModel<List<LoginToken>>>
                     ) {
-                        response.body()?.let { body ->
-                            body.result?.let { result ->
-                                if (result.size > 0) {
-                                    result[0].loginToken?.let { token ->
-                                        Log.i("TAG023123", "onResponse: $token")
-                                        Api.userToken = "Bearer $token"
-                                    }
+                        response.body()?.result?.let {
+                            if (it.isNotEmpty()){
+                                it.get(0).loginToken?.let {
+                                    Api.userToken = "Bearer $it"
                                 }
-
                             }
                         }
                     }
@@ -42,30 +38,6 @@ class RetrofitClient {
                     }
                 })
         }
-        fun saveLoginToken(
-            response: Response<ResponseModel<List<LoginToken>>>,
-            phone: String,
-            password: String,
-            context: Context
-        ) {
-            var sharedPreferences = context.getSharedPreferences("loginInfo",Context.MODE_PRIVATE)
-            var editor = sharedPreferences.edit()
-            editor.putString("phone",phone)
-            editor.putString("password",password)
-            response.body()?.let {
-                it.result?.let {
-                    if (it.size > 0)
-                        it[0].let {
-                            it.loginToken?.let {
-                                Api.userToken = "Bearer $it"
-                                editor.putString("token",Api.userToken)
-                            }
-                        }
-                }
-            }
-            editor.apply()
-        }
-
         private val retrofit: Retrofit = Retrofit.Builder().baseUrl(Api.BaseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()

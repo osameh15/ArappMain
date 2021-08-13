@@ -11,9 +11,9 @@
         android:id="@+id/service_item_layout_service_image_card_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="4dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="16dp"
@@ -73,8 +73,10 @@
                         android:layout_marginEnd="8dp"
                         android:fontFamily="@font/iransans"
                         android:gravity="center_vertical|start"
+                        android:lines="1"
                         android:text="@string/my_service"
                         android:textColor="@color/colorAccentDarkNightMode"
+                        app:autoSizeMinTextSize="1sp"
                         app:autoSizeTextType="uniform"
                         app:layout_constraintBottom_toBottomOf="@id/service_item_layout_rateServiceFrameLayout"
                         app:layout_constraintEnd_toEndOf="@id/service_image_view"
@@ -95,39 +97,39 @@
                         app:layout_constraintStart_toStartOf="@id/service_image_view"
                         app:layout_constraintTop_toTopOf="@id/service_image_view"
                         app:layout_constraintVertical_bias="0.95"
-                        app:layout_constraintWidth_percent="0.2"/>
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:id="@+id/service_item_layout_rateServiceFrameLayout"-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="0dp"-->
-<!--                        android:layout_margin="4dp"-->
-<!--                        android:background="@drawable/rate_zero_shape"-->
-<!--                        android:visibility="visible"-->
-<!--                        app:cardBackgroundColor="@color/gray_active_icon"-->
-<!--                        app:cardCornerRadius="8dp"-->
-<!--                        app:cardCornerRadiusByPercent="0.25"-->
-<!--                        app:cardElevation="5dp"-->
-<!--                        app:layout_constraintBottom_toBottomOf="@id/service_image_view"-->
-<!--                        app:layout_constraintDimensionRatio="1:1"-->
-<!--                        app:layout_constraintEnd_toEndOf="@id/service_image_view"-->
-<!--                        app:layout_constraintHorizontal_bias="0.05"-->
-<!--                        app:layout_constraintStart_toStartOf="@id/service_image_view"-->
-<!--                        app:layout_constraintTop_toTopOf="@id/service_image_view"-->
-<!--                        app:layout_constraintVertical_bias="0.95"-->
-<!--                        app:layout_constraintWidth_percent="0.2">-->
+                        app:layout_constraintWidth_percent="0.2" />
+                    <!--                    <androidx.cardview.widget.CardView-->
+                    <!--                        android:id="@+id/service_item_layout_rateServiceFrameLayout"-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_height="0dp"-->
+                    <!--                        android:layout_margin="4dp"-->
+                    <!--                        android:background="@drawable/rate_zero_shape"-->
+                    <!--                        android:visibility="visible"-->
+                    <!--                        app:cardBackgroundColor="@color/gray_active_icon"-->
+                    <!--                        app:cardCornerRadius="8dp"-->
+                    <!--                        app:cardCornerRadiusByPercent="0.25"-->
+                    <!--                        app:cardElevation="5dp"-->
+                    <!--                        app:layout_constraintBottom_toBottomOf="@id/service_image_view"-->
+                    <!--                        app:layout_constraintDimensionRatio="1:1"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="@id/service_image_view"-->
+                    <!--                        app:layout_constraintHorizontal_bias="0.05"-->
+                    <!--                        app:layout_constraintStart_toStartOf="@id/service_image_view"-->
+                    <!--                        app:layout_constraintTop_toTopOf="@id/service_image_view"-->
+                    <!--                        app:layout_constraintVertical_bias="0.95"-->
+                    <!--                        app:layout_constraintWidth_percent="0.2">-->
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/service_item_layout_rateService"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:fontFamily="@font/iransans_farsi_num"-->
-<!--                            android:gravity="center"-->
-<!--                            android:text="@string/rate_count"-->
-<!--                            android:textColor="@color/white"-->
-<!--                            android:textSize="14sp"-->
-<!--                            app:autoSizeTextType="uniform" />-->
-<!--                    </androidx.cardview.widget.CardView>-->
+                    <!--                        <TextView-->
+                    <!--                            android:id="@+id/service_item_layout_rateService"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_gravity="center"-->
+                    <!--                            android:fontFamily="@font/iransans_farsi_num"-->
+                    <!--                            android:gravity="center"-->
+                    <!--                            android:text="@string/rate_count"-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textSize="14sp"-->
+                    <!--                            app:autoSizeTextType="uniform" />-->
+                    <!--                    </androidx.cardview.widget.CardView>-->
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -178,62 +180,68 @@
                 app:layout_constraintTop_toBottomOf="@id/service_item_layout_serviceImageContainer">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/service_item_layout_middle_vertical_guide_line"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent">
-
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:layout_marginRight="4dp"
                         android:id="@+id/service_item_layout_commentService"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="80"
+                        android:lines="1"
+                        app:autoSizeMinTextSize="1sp"
                         android:fontFamily="@font/iransans_farsi_num"
                         android:gravity="center_vertical|right"
-                        android:text="456456"
+                        android:text="45"
                         android:textColor="@android:color/darker_gray"
-                        app:autoSizeTextType="uniform"
-                        android:layout_weight="80" />
+                        app:autoSizeTextType="uniform" />
+
                     <ImageView
+                        android:paddingRight="2dp"
                         android:id="@+id/service_item_layout_comment_service_image"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
+                        android:layout_weight="29"
                         android:contentDescription="@string/app_name"
-                        android:src="@drawable/ic_outline_mode_comment_24"
-                        android:layout_weight="19" />
+                        android:src="@drawable/ic_outline_mode_comment_24" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/service_item_layout_middle_vertical_guide_line"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    android:layout_width="0dp"
-                    android:layout_height="0dp">
                     <TextView
                         android:id="@+id/service_item_layout_place_textview"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="5"
                         android:fontFamily="@font/iransans_ultra_light"
                         android:gravity="right|center_vertical"
+                        android:lines="1"
                         android:text="place"
-                        android:layout_weight="3"
-                        app:autoSizeTextType="uniform"/>
+                        app:autoSizeMinTextSize="1sp"
+                        app:autoSizeTextType="uniform" />
+
                     <androidx.constraintlayout.utils.widget.ImageFilterView
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:tint="@color/light_gray_inactive_icon"
                         android:src="@drawable/place_ic"
-                        android:layout_height="match_parent"/>
+                        app:tint="@color/light_gray_inactive_icon" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -242,7 +250,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.55" />
+                    app:layout_constraintGuide_percent="0.23" />
 
 
                 <androidx.constraintlayout.widget.Guideline
@@ -262,40 +270,43 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ir.arapp.arappmain.view.utils.CustomCardView>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/service_item_layout_bottom_card_view_guide"
-        app:layout_constraintGuide_percent="0.93"
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.93" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/service_item_layout_last_time_changed_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
 
-        app:layout_constraintWidth_percent="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/service_item_layout_bottom_card_view_guide">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/service_item_layout_bottom_card_view_guide"
+        app:layout_constraintWidth_percent="0.8">
+
         <TextView
 
-            app:autoSizeMinTextSize="1sp"
-            android:text="چند دقیقه قبل"
             android:id="@+id/service_item_layout_last_time_changed_text_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8"
             android:gravity="center_vertical|start"
+            android:text="چند دقیقه قبل"
+            app:autoSizeMinTextSize="1sp"
             app:autoSizeTextType="uniform" />
+
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_access_time_24" />
-
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

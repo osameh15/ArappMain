@@ -19,7 +19,7 @@ class MyServicesViewModel(application: Application) :AndroidViewModel(applicatio
                 call: Call<ResponseModel<GetAllServices>>,
                 response: Response<ResponseModel<GetAllServices>>
             ) {
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     response.body()?.let {
                         it.result?.let {
                             it.services?.let {

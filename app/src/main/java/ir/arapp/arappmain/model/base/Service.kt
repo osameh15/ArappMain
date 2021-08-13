@@ -99,10 +99,10 @@ class PostServiceData {
     var title: String? = null
 
     @SerializedName("start_time")
-    var startTime :String? = null
+    var startTime: String? = null
 
     @SerializedName("end_time")
-    var endTime :String? = null
+    var endTime: String? = null
 
     @SerializedName("category_id")
     var categoryId: Int = 1
@@ -182,4 +182,32 @@ class GetServiceData {
     @SerializedName("avatar")
     var pictureUrl: String? = null
 
+}
+
+open class UpdateServiceData {
+    @SerializedName("start_time")
+    var startTime: String? = null
+
+    @SerializedName("end_time")
+    var endTime: String? = null
+
+    @SerializedName("category_id")
+    var categoryId: Int = 1
+
+    @SerializedName("address")
+    var address: String? = null
+
+    @SerializedName("summry")
+    var summary: String? = null
+
+    @SerializedName("birth")
+    var birth: Int = 10
+
+    @SerializedName("description")
+    var description: String? = null
+}
+
+class UpdateServiceWithImage : UpdateServiceData() {
+    @SerializedName("avatar")
+    var pictureBase64: String? = null
 }

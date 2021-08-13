@@ -94,7 +94,7 @@
                                 android:layout_height="match_parent"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:text="" />
+                                android:text="@={viewModel.title}" />
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/TextInputStyle"
@@ -117,7 +117,7 @@
                                 android:minLines="1"
                                 android:maxLines="2"
                                 android:ems="10"
-                                android:text=""
+                                android:text="@={viewModel.summary}"
                                 android:maxLength="41"/>
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
@@ -141,7 +141,7 @@
                                 android:minLines="1"
                                 android:maxLines="10"
                                 android:ems="10"
-                                android:text=""
+                                android:text="@={viewModel.description}"
                                 android:maxLength="401"/>
                         </com.google.android.material.textfield.TextInputLayout>
                         <com.google.android.material.textfield.TextInputLayout
@@ -165,7 +165,7 @@
                                 android:minLines="1"
                                 android:maxLines="6"
                                 android:ems="10"
-                                android:text=""
+                                android:text="@={viewModel.address}"
                                 android:maxLength="401"/>
                         </com.google.android.material.textfield.TextInputLayout>
 <!--                        Change location-->
@@ -344,6 +344,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="15dp"
                     android:gravity="center"
+                    android:onClick="@{viewModel::updateService}"
                     android:text="@string/submit_info"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

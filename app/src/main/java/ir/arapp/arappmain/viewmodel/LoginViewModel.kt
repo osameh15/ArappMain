@@ -65,7 +65,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 Log.i("TAG123123", "onResponse body: ${response.body()?.toString()}")
                 Log.i("TAG123123", "onResponse errorBody : ${response.errorBody()?.string()}")
                 if (response.isSuccessful){
-                    RetrofitClient.saveLoginToken(response,phone.value!!,password.value!!,view!!.context)
                     SessionManager(view!!.context).setUserInfo(phone.value!!,password.value!!)
                     fragmentManager!!.navigateToFragment("home")
                 }

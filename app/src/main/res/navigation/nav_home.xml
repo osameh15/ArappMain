@@ -96,7 +96,12 @@
         android:id="@+id/editServiceFragment"
         android:name="ir.arapp.arappmain.view.fragments.EditServiceFragment"
         android:label="fragment_edit_service"
-        tools:layout="@layout/fragment_edit_service" />
+        tools:layout="@layout/fragment_edit_service" >
+        <argument
+            android:name="serviceData"
+            app:argType="string"
+            android:defaultValue='""' />
+    </fragment>
     <fragment
         android:id="@+id/myServiceFragment"
         android:name="ir.arapp.arappmain.view.fragments.MyServiceFragment"

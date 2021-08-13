@@ -7,6 +7,8 @@ import android.graphics.Bitmap
 import android.util.Base64
 import android.util.Log
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ir.arapp.arappmain.R
@@ -52,6 +54,8 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
     var image: MutableLiveData<Bitmap> = MutableLiveData()
 
     var category_id: MutableLiveData<Int> = MutableLiveData()
+
+    var birth = MutableLiveData<Int>()
     //snakeBar
     var snackBarMessage: SnackBarMessage? = null
 
@@ -60,7 +64,13 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
 
 
     fun onAddServiceButtonClick(view: View?) {
-        var postServiceData = PostServiceData()
+
+        var array = arrayOf(R.drawable.restaurant_1,R.drawable.restaurant_2,R.drawable.restaurant_3,R.drawable.coffe_1,R.drawable.coffe_2,R.drawable.coffe_3,R.drawable.hotel_1,R.drawable.hotel_2,R.drawable.hotel_3)
+        var random = kotlin.random.Random(java.util.Calendar.getInstance().timeInMillis)
+        var bitmap =
+            ResourcesCompat.getDrawable(view!!.resources, array[random.nextInt(from = 0,until = array.lastIndex)], null)?.toBitmap()
+        image.value = bitmap!!
+        val postServiceData = PostServiceData()
         postServiceData.title = title?.value
         postServiceData.summary = summary?.value
         postServiceData.description = description?.value
@@ -68,7 +78,7 @@ class AddServiceViewModel(application: Application) : AndroidViewModel(applicati
         postServiceData.categoryId = category_id.value!!
         postServiceData.startTime = startTime?.value
         postServiceData.endTime = endTime?.value
-        postServiceData.birth = 12
+        postServiceData.birth = birth.value!!
         image.value?.let { bitmap ->
             postServiceData.pictureBase64 = convertToBase64(bitmap)
         }

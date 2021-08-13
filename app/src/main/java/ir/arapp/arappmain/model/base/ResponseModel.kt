@@ -62,7 +62,9 @@ class LoginMobile{
         this.mobile = mobileNumber
         this.password = password
     }
+    @SerializedName("mobile")
     var mobile:String? = null
+    @SerializedName("password")
     var password:String? = null
 }
 
@@ -82,8 +84,8 @@ class GetAllCategories {
 class ResponseModel<T> {
     @SerializedName("Success")
     var success: Boolean? = null
-    @SerializedName("message")
+    @SerializedName("Message")
     var message: String? = null
-    @SerializedName("result")
+    @SerializedName("Result")
     var result: T? = null
 }

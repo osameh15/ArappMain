@@ -1,6 +1,7 @@
 package ir.arapp.arappmain.view.fragments
 
 import android.annotation.SuppressLint
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarMessage
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.AddServiceViewModel
+import java.lang.Exception
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
@@ -53,7 +55,7 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 //        Inflate the layout for this fragment
         _fragmentAddServiceBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_service, container, false)
@@ -64,8 +66,10 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
         addServiceViewModel!!.update()
         addServiceViewModel?.snackBarMessage = this
         addServiceViewModel?.fragmentManager = this
+        var array = arrayOf(R.drawable.hotels,R.drawable.cafe,R.drawable.restaurant,R.drawable.fast_food,R.drawable.restaurant_1,R.drawable.restaurant_2,R.drawable.restaurant_3,R.drawable.coffe_1,R.drawable.coffe_2,R.drawable.coffe_3,R.drawable.hotel_1,R.drawable.hotel_2,R.drawable.hotel_3)
+        var random = kotlin.random.Random(java.util.Calendar.getInstance().timeInMillis)
         var bitmap =
-            ResourcesCompat.getDrawable(resources, R.drawable.add_service, null)?.toBitmap()
+            ResourcesCompat.getDrawable(resources, array[random.nextInt(from = 0,until = array.lastIndex)], null)?.toBitmap()
         addServiceViewModel?.image = MutableLiveData(bitmap)
 
         fragmentAddServiceBinding.setViewModel(addServiceViewModel)
@@ -101,6 +105,29 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
             }
         }
         //        Time Picker
+        fragmentAddServiceBinding.openingYearSpinner.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                addServiceViewModel!!.allOpeningYear.value?.get(position)?.let {
+                    try {
+                        addServiceViewModel!!.birth.value = it.toInt()
+                    } catch (e:Exception){
+                        addServiceViewModel!!.birth.value = 0
+                    }
+
+                }
+                Log.i("TAG", "onItemSelected: ")
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
         timePicker()
 
         return fragmentAddServiceBinding.getRoot()
@@ -148,7 +175,10 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
     @SuppressLint("SetTextI18n")
     private fun timePicker() {
         val typeface = ResourcesCompat.getFont(requireContext(), R.font.iransans_farsi_num)
-        val numberFormat: NumberFormat = DecimalFormat("00")
+        val numberFormat: NumberFormat = DecimalFormat.getInstance(Locale.US).apply {
+            this as DecimalFormat
+            this.applyLocalizedPattern("00")
+        }
         timePickerBottomSheetFragment!!.set24Hour(true)
         timePickerBottomSheetFragment!!.setTextTypeFace(typeface)
         timePickerBottomSheetFragment!!.initTime(8, 0, 21, 0)
@@ -161,7 +191,7 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
      آغاز ارائه خدمات ساعت: ${numberFormat.format(i)}:${numberFormat.format(i1)}
      پایان ارائه خدمات ساعت: ${numberFormat.format(i2)}:${numberFormat.format(i3)}
      """.trimIndent()
-            Unit
+
             addServiceViewModel?.startTime?.value = "${numberFormat.format(i)}:${numberFormat.format(i1)}"
             addServiceViewModel?.endTime?.value = "${numberFormat.format(i2)}:${numberFormat.format(i3)}"
         }
@@ -169,7 +199,6 @@ class AddServiceFragment : Fragment(),SnackBarMessage,FragmentManager {
 
     override fun onSuccess(message: String?) {
         Log.i("TAG123123", "onResponse body: onSuccess")
-        snackBarToast!!.snackBarShortTime(message, fragmentAddServiceBinding.root)
     }
 
     override fun onFailure(message: String?) {

@@ -21,10 +21,7 @@ import ir.arapp.arappmain.util.adapters.services.MyServiceAdapter.MyServiceItemV
 import ir.arapp.arappmain.util.services.ItemClickListener
 import java.util.*
 
-class MyServiceAdapter     //    endregion
-//    region Methods
-//    Constructor
-    (  //    region Variables
+class MyServiceAdapter (
     private val view: View
 ) : RecyclerView.Adapter<MyServiceItemViewHolder>() {
     var itemClickListener: ItemClickListener? = null
@@ -35,12 +32,8 @@ class MyServiceAdapter     //    endregion
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyServiceItemViewHolder {
-////        Inflate Layout
-//        val itemView = LayoutInflater.from(parent.context)
-//            .inflate(R.layout.custom_my_service_container, parent, false)
-//        return MyServiceItemViewHolder(itemView)
-
-        val binding = ServicesItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            ServicesItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyServiceItemViewHolder(binding)
     }
 
@@ -50,23 +43,32 @@ class MyServiceAdapter     //    endregion
         val currentItem = services[position]
         //        Set data and update xml
         holder.binding.apply {
-            var layoutParams = root.layoutParams
+            val layoutParams = root.layoutParams
             layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
             layoutParams.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
             Glide.with(view.context).load(currentItem.pictureUrl).into(serviceImageView)
             serviceItemLayoutLastTimeChangedTextView.text = currentItem.createdAt
             serviceItemLayoutTitleService.text = currentItem.title
+            serviceItemLayoutCommentService.text = "12"
 //            serviceItemLayoutCommentService.text = currentItem.comments.toString()
             serviceItemLayoutRateServiceFrameLayout.rate = currentItem.rate.toDouble()
             serviceItemLayoutLoading.visibility = View.GONE
+            serviceItemLayoutPlaceTextview.text = currentItem.address
             serviceItemLayoutServiceImageCardView.setOnClickListener { view: View? ->
                 itemClickListener!!.onItemClickListener(
                     this@MyServiceAdapter.view,
-                    currentItem.id,
-                    currentItem.title
+                    position,
+                    "edit"
                 )
             }
-
+            serviceItemLayoutServiceImageCardView.setOnLongClickListener {
+                itemClickListener!!.onItemClickListener(
+                    this@MyServiceAdapter.view,
+                    position,
+                    "delete"
+                )
+                true
+            }
         }
     }
 
@@ -77,7 +79,8 @@ class MyServiceAdapter     //    endregion
 
     //    endregion
     //    View holder class
-    class MyServiceItemViewHolder(val binding: ServicesItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyServiceItemViewHolder(val binding: ServicesItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         //        region Variables
 //        var cardView: MaterialCardView
 //        var roundedImageView: RoundedImageView

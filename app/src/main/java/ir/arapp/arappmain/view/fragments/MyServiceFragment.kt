@@ -19,15 +19,19 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
 import ir.arapp.arappmain.R
 import ir.arapp.arappmain.databinding.FragmentMyServiceBinding
-import ir.arapp.arappmain.model.base.Service
 import ir.arapp.arappmain.util.adapters.services.MyServiceAdapter
+import ir.arapp.arappmain.util.server.RetrofitClient
 import ir.arapp.arappmain.util.services.ItemClickListener
 import ir.arapp.arappmain.util.services.NavigationManager
 import ir.arapp.arappmain.util.services.SnackBarToast
 import ir.arapp.arappmain.viewmodel.MyServicesViewModel
-import ir.arapp.arappmain.viewmodel.ServicesViewModel
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class MyServiceFragment : Fragment(), ItemClickListener {
@@ -36,7 +40,7 @@ class MyServiceFragment : Fragment(), ItemClickListener {
     val fragmentMyServiceBinding get() = _fragmentMyServiceBinding!!
     private var myServiceAdapter: MyServiceAdapter? = null
     private var snackBarToast: SnackBarToast? = null
-    private var myServiceViewModel: AndroidViewModel? = null
+    private var myServiceViewModel: MyServicesViewModel? = null
     override fun onDestroyView() {
         super.onDestroyView()
         _fragmentMyServiceBinding = null
@@ -57,10 +61,10 @@ class MyServiceFragment : Fragment(), ItemClickListener {
         _fragmentMyServiceBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_my_service, container, false)
         //        Set view model
-        var myServiceViewModel = ViewModelProvider(requireActivity()).get(
+        myServiceViewModel = ViewModelProvider(requireActivity()).get(
             MyServicesViewModel::class.java
         )
-        myServiceViewModel.update()
+        myServiceViewModel!!.update()
         //        Hooks
         myServiceAdapter = MyServiceAdapter(fragmentMyServiceBinding.getRoot())
         snackBarToast = SnackBarToast(fragmentMyServiceBinding.getRoot())
@@ -76,7 +80,7 @@ class MyServiceFragment : Fragment(), ItemClickListener {
             .setDisplayHomeAsUpEnabled(true)
         fragmentMyServiceBinding.profileToolbar.setNavigationOnClickListener { view1: View? -> onNavigateUp() }
         //        Recycler View Services items
-        myServiceViewModel.services.observe(viewLifecycleOwner) { services ->
+        myServiceViewModel!!.services.observe(viewLifecycleOwner) { services ->
             myServiceAdapter?.services = services
             setRecyclerView()
         }
@@ -114,15 +118,20 @@ class MyServiceFragment : Fragment(), ItemClickListener {
     override fun onItemClickListener(view: View?, position: Int, message: String?) {
         val navController = Navigation.findNavController(requireView())
         if (message == "edit") {
-            navController.navigate(R.id.action_myServiceFragment_to_editServiceFragment)
+            val bundle = Bundle()
+            val service = myServiceViewModel!!.services.value!!.get(position)
+            val gson = Gson()
+            val serviceJson = gson.toJson(service)
+            bundle.putString("serviceData",serviceJson)
+            navController.navigate(R.id.action_myServiceFragment_to_editServiceFragment,bundle)
         } else if (message == "delete") {
-            deleteService()
+            deleteService(position)
         } else {
             snackBarToast!!.snackBarShortTime(message)
         }
     }
 
-    private fun deleteService() {
+    private fun deleteService(position: Int) {
         val TIME_LOADING = 2200
         val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.bottomSheetDialogTheme)
         @SuppressLint("InflateParams") val bottomSheetView = LayoutInflater.from(requireContext())
@@ -137,7 +146,25 @@ class MyServiceFragment : Fragment(), ItemClickListener {
         delete.setOnClickListener { v: View? ->
             deleteLinearLayout.visibility = View.GONE
             loading.visibility = View.VISIBLE
-            Handler().postDelayed({ bottomSheetDialog.dismiss() }, TIME_LOADING.toLong())
+            RetrofitClient.api.deleteServiceById(myServiceViewModel!!.services.value!!.get(position).id)
+                .enqueue(object :
+                    Callback<ResponseBody> {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        if(response.isSuccessful){
+                            myServiceViewModel!!.update()
+                        }
+                        bottomSheetDialog.dismiss()
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        bottomSheetDialog.dismiss()
+                    }
+
+                })
+//            Handler().postDelayed({  }, TIME_LOADING.toLong())
         }
         cancel.setOnClickListener { v: View? -> bottomSheetDialog.dismiss() }
         bottomSheetDialog.setContentView(bottomSheetView)
